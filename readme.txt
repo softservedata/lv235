@@ -7,5 +7,5 @@ Pointing out the way we came,
 Prints in silver filigree;
 And our mothers always know,
 ---
-
+Sraka motyka :) 
 By the footprints in the snow,
