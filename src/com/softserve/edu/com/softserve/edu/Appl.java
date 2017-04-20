@@ -1,4 +1,4 @@
-package com.softserve.edu;
+package com.softserve.edu.com.softserve.edu;
 
 public class Appl {
 
@@ -6,6 +6,7 @@ public class Appl {
 
 		System.out.println("Hello World!");
 		System.out.println("Hi for lv235");
+		System.out.println("Test");
 	}
 
 }
