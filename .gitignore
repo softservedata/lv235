@@ -22,6 +22,7 @@ hs_err_pid*
 /.recommenders/
 /target/
 /bin/
+/build/
 /doc/
 /test-output/
 /.classpath
@@ -37,6 +38,7 @@ hs_err_pid*
 /**/target/
 /**/doc/
 /**/bin/
+/**/build/
 /**/test-output/
 /**/report/
 /**/.classpath
