@@ -8,6 +8,6 @@ Pointing out the way we came,
 Prints in silver filigree;
 And our mothers always know,
 ---
-Sraka motyka :) 
+Have a good day! lv-235
 By the footprints in the snow,
 Where it is the children go.
