@@ -2,10 +2,11 @@ package com.softserve.edu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 /*
- * Class for task 226
+ * Class for task 559
  */
-public class Task1_2 extends Task1{
+public class Task1_3 extends Task1 {
 
 	
 //	public static void main(String[] args) {
@@ -13,38 +14,33 @@ public class Task1_2 extends Task1{
 //	}
 
 	/*
-	 * Given natural numbers m, n. Get all their natural common multiples, smaller m*n.
+	 * Given a natural number n. Find all the smaller n numbers of Mersen. (A prime number is called 
+	 * a Mersen number if it can be represented as 2n-1, where p is also a prime number.)
 	 */
 	public void compute(){
 		int n = 0;
-		int m = 0;
+		int [] simpleNumbers = {2,3,5,7,11,13,17,19,23,29,31};
 		ArrayList<Integer> mass = new ArrayList();
 		try{
 			System.out.print("Input n  ");
 			n = Integer.valueOf(scanner.next());
-			System.out.print("Input m  ");
-			m = Integer.valueOf(scanner.next());
-			if(n<0 || m<0){
+			if(n<0){
 				throw new NumberFormatException();
 			}
 		}
 		catch (NumberFormatException e){
-		System.out.println("Input integer n and m");	
+		System.out.println("Input integer n");	
 		contunie();
 		return;
 		}
 		
-		for(int i = Math.max(n, m); i<n*m; i++){
-			if(i%n==0 && i%m == 0){
-				mass.add(i);
+		for(int i = 0; i<simpleNumbers.length; i++){
+			if(Math.pow(2, simpleNumbers[i])-1 < n){
+				mass.add((int)Math.pow(2, simpleNumbers[i])-1);
+				System.out.println(mass.get(i));
 			}
 		}
-		if(mass.size()==0){
-			System.out.println("No number");
-		}
-		for(int i : mass){
-			System.out.println(i);
-		}
+		
 		contunie();
 	}
 	

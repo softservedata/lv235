@@ -3,18 +3,18 @@ package com.softserve.edu;
 import java.util.Scanner;
 
 /*
- * Console application task 87
+ * Class for task 87
  */
-public class Task1_1 {
-	public static Scanner scanner = new Scanner(System.in);
-	public static void main(String[] args) {
-			compute();
-	}
+public class Task1_1 extends Task1 {
+	
+//	public static void main(String[] args) {
+//			compute();
+//	}
 	
 	/*
 	 * Given a natural number n, m. Obtain the sum of m last digits of the number n.
 	 */
-	public static void compute(){
+	public void compute(){
 		int n = 0;
 		int m = 0;
 		int sum = 0;
@@ -23,6 +23,9 @@ public class Task1_1 {
 			n = Integer.valueOf(scanner.next());
 			System.out.print("Input m  ");
 			m = Integer.valueOf(scanner.next());
+			if(n<0 || m<0){
+				throw new NumberFormatException();
+			}
 		}
 		catch (NumberFormatException e){
 		System.out.println("Input integer n and m");	
@@ -63,7 +66,7 @@ public class Task1_1 {
 	/*
 	 * Continue compute????
 	 */
-	public static void contunie(){
+	public void contunie(){
 		System.out.println("\nFor  exit click 'e' to contunie click eny key");
 		String y = scanner.next().toUpperCase();
 		if(y.equals("E")){
