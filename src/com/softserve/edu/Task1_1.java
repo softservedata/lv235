@@ -1,16 +1,10 @@
 package com.softserve.edu;
 
-import java.util.Scanner;
 
 /*
  * Class for task 87
  */
 public class Task1_1 extends Task1 {
-	
-//	public static void main(String[] args) {
-//			compute();
-//	}
-	
 	/*
 	 * Given a natural number n, m. Obtain the sum of m last digits of the number n.
 	 */

@@ -1,17 +1,11 @@
 package com.softserve.edu;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 /*
  * Class for task 226
  */
 public class Task1_2 extends Task1{
-
 	
-//	public static void main(String[] args) {
-//		compute();
-//	}
-
 	/*
 	 * Given natural numbers m, n. Get all their natural common multiples, smaller m*n.
 	 */

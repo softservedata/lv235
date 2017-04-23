@@ -2,12 +2,16 @@ package com.softserve.edu;
 
 import java.util.Scanner;
 
+/*
+ * Console aplication program for Task1.
+ */
 public class Appl {
  
-	public static Scanner scanner = new Scanner(System.in);
-	private static Task1 task;
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		Task1 task;
 		String t = "";
+		
 		while(true){
 			System.out.println("For task1 click '1'\n For task2 click '2'");
 			System.out.println("For task3 click '3'");

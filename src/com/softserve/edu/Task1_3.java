@@ -1,18 +1,11 @@
 package com.softserve.edu;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /*
  * Class for task 559
  */
 public class Task1_3 extends Task1 {
-
-	
-//	public static void main(String[] args) {
-//		compute();
-//	}
-
 	/*
 	 * Given a natural number n. Find all the smaller n numbers of Mersen. (A prime number is called 
 	 * a Mersen number if it can be represented as 2n-1, where p is also a prime number.)
@@ -40,7 +33,6 @@ public class Task1_3 extends Task1 {
 				System.out.println(mass.get(i));
 			}
 		}
-		
 		contunie();
 	}
 	
