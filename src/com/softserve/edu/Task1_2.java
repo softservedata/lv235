@@ -1,23 +1,19 @@
 package com.softserve.edu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-/*
- * Console application task 87
- */
-public class Task1_1 {
+public class Task1_2 {
+
 	public static Scanner scanner = new Scanner(System.in);
 	public static void main(String[] args) {
-			compute();
+		compute();
 	}
-	
-	/*
-	 * Given a natural number n, m. Obtain the sum of m last digits of the number n.
-	 */
+
 	public static void compute(){
 		int n = 0;
 		int m = 0;
-		int sum = 0;
+		ArrayList<Integer> mass = new ArrayList();
 		try{
 			System.out.print("Input n  ");
 			n = Integer.valueOf(scanner.next());
@@ -30,39 +26,20 @@ public class Task1_1 {
 		return;
 		}
 		
-		int t = 0;
-		int rozmN = n;
-		int [] mass;
-		while (rozmN >10){
-			rozmN /= 10;
-			t++;
+		for(int i = Math.max(n, m); i<n*m; i++){
+			if(i%n==0 && i%m == 0){
+				mass.add(i);
+			}
 		}
-		t++;
-		if(m>t){
-			System.out.println("m over count of digits n");	
-			contunie();
-			return;
-		}	
-		
-		mass = new int[t];
-		
-		t = n;
-		for(int i = 0; i<mass.length; i++){
-			mass[i] = t/(1*(int)Math.pow(10,mass.length-1-i));
-			t = t%(1*(int)Math.pow(10,mass.length-1-i));
+		if(mass.size()==0){
+			System.out.println("No number");
 		}
-		
-		for(int i = mass.length-1; i>=mass.length-m; i--){
-			sum+= mass[i];
+		for(int i : mass){
+			System.out.println(i);
 		}
-		
-		System.out.println("Sum = "+ sum);	
 		contunie();
 	}
 	
-	/*
-	 * Continue compute????
-	 */
 	public static void contunie(){
 		System.out.println("\nFor  exit click 'e' to contunie click eny key");
 		String y = scanner.next().toUpperCase();
