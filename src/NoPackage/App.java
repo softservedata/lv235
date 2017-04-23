@@ -75,59 +75,12 @@ public class App {
 		m=(int) Math.sqrt(m);
 		t=m*m;
 		
-		//нічого цікавого)
-		/*	
-		if(x==m) {
-			return;
-		}
-		else if(x*x!=m) {
-			x=x+1;
-			q=x*x;
-			if(q>m)
-			{
-				x=x-1;
-				q=x*x;
-				m=m-q;
-				 {
-					//вернутися на початок
-				 }
-		}
-		}
-		*/
 		
-/*
-		if(m==0) {
-			return;
+		// Є багa, , х-1.
+		if(x+y+z+t!=n){
+		System.out.println("Виберіть інше число");
+		Task2();
 		}
-			else if(m==1) {
-				x=1;
-			}
-				else {
-					x=2;
-					while(m>=x && m!=0) {
-			x=x*x;
-			m=m-x;
-			System.out.println(x);
-			}
-		System.out.println(x);
-		}
-		
-		while(m>=y && m!=0) {
-		y=y*y;	
-		}
-		m=m-y;
-		
-		while(m>=z && m!=0) {
-			z=z*z;
-		}
-		m=m-z;
-		
-		while(m>=t && m!=0)
-		{
-			t=t*t;
-		}
- 		*/
-		
 		
 		System.out.println("n=" + n + " x^2=" + x + " y^2=" + y + " z^2=" + z + " t^2=" + t );
 		System.out.println();
