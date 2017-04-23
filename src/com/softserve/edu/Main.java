@@ -27,23 +27,19 @@ public class Main {
 					"Enter 3 to open task #554\n", "Enter 0 to exit\n");
 			Scanner scanner = new Scanner(System.in);
 			switch (scanner.nextInt()) {
-			case 1: {
+			case 1:
 				task108();
 				break;
-			}
-			case 2: {
+			case 2:
 				task331a();
-			}
 				break;
-			case 3: {
+			case 3:
 				task554();
-			}
 				break;
-			case 0: {
+			case 0:
 				scanner.close();
 				System.exit(0);
 				break;
-			}
 			default:
 				System.out.println("Enter correct number\n");
 				break;
@@ -115,8 +111,8 @@ public class Main {
 					int aplusb = (int) (Math.pow(a, 2) + Math.pow(b, 2));
 					int cpow = (int) Math.pow(c, 2);
 					if (aplusb == cpow) {
-						System.out.format("%na=%d " + "b=%d " + "c=%d%n", a, b,
-								c);
+						System.out
+								.format("a=%d " + "b=%d " + "c=%d%n", a, b, c);
 					}
 				}
 			}
