@@ -7,7 +7,6 @@ import java.util.Scanner;
  * This is a console application with all three tasks.
  */
 public class Main {
-
 	public static void main(String[] args) {
 		start();
 	}
@@ -57,13 +56,9 @@ public class Main {
 	 * that is bigger than n.
 	 */
 	private static void task108() {
-		int n = 0;
+		int n = enterNaturalNumber();
 		int r = 0;
 		int result = 0;
-		System.out.println("Enter a natural number n: ");
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in); // Can't close scanner here
-		n = scanner.nextInt();
 		if (n < 1) {
 			task108();
 		}
@@ -82,9 +77,7 @@ public class Main {
 	 * them if it's possible.
 	 */
 	private static void task331a() {
-		System.out.println("Enter a natural number n: ");
-		Scanner scanner = new Scanner(System.in);
-		int n = scanner.nextInt();
+		int n = enterNaturalNumber();
 		if (n < 1) {
 			task331a();
 		}
@@ -94,7 +87,8 @@ public class Main {
 					int res = (int) (Math.pow(a, 2) + Math.pow(b, 2) + Math
 							.pow(c, 2));
 					if (res == n) {
-						System.out.println("a=" + a + " b=" + b + " c=" + c);
+						System.out.format("%na=%d " + "b=%d " + "c=%d%n", a, b,
+								c);
 						break label;
 					}
 				}
@@ -110,7 +104,29 @@ public class Main {
 	 * natural numbers, each of which does not exceed n. a^2+b^2=c^2
 	 * (a<=b<=c<=n)
 	 */
-	private static void task554() { // TODO
+	private static void task554() {
+		int n = enterNaturalNumber();
+		if (n < 5) {
+			task554();
+		}
+		for (int a = 1; a <= n; a++) {
+			for (int b = 1; b <= n; b++) {
+				for (int c = 1; c <= n; c++) {
+					int aplusb = (int) (Math.pow(a, 2) + Math.pow(b, 2));
+					int cpow = (int) Math.pow(c, 2);
+					if (aplusb == cpow) {
+						System.out.format("%na=%d " + "b=%d " + "c=%d%n", a, b,
+								c);
+					}
+				}
+			}
+		}
+	}
 
+	private static int enterNaturalNumber() {
+		System.out.println("Enter a natural number n: ");
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in); // Can't close scanner here
+		return scanner.nextInt();
 	}
 }
