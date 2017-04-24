@@ -2,6 +2,9 @@ package com.softserve.edu.yarych;
 
 import java.util.Scanner;
 
+/*
+ * Task #325: a natural number n is given. Find all simple dividers of n.
+ */
 public class Task325 {
 
 	static Scanner sc = new Scanner(System.in);
