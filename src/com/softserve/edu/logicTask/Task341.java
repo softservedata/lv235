@@ -1,4 +1,4 @@
-package com.softserve.edu.LogicTask;
+package com.softserve.edu.logicTask;
 
 import java.util.ArrayList;
 import java.util.Collection;
