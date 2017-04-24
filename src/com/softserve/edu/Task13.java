@@ -3,9 +3,9 @@ package com.softserve.edu;
 import java.util.ArrayList;
 
 /**
- * Class Task13.
- *
+ * @version 1.2
  * @author IRudyk
+ * Class Task13.
  */
 public class Task13 extends Task1 {
 
@@ -20,8 +20,9 @@ public class Task13 extends Task1 {
     private static final int[]  VALUE_FOR_AUDIT = {2, 3, 5};
 
     /**
-     * method compute. Given a natural number n all the smaller n numbers of
-     * Mersen. (A prime number is called a Mersen number if it can be
+     * method compute.
+     * Task #559 Given a natural number n all the smaller n numbers of Mersen.
+     * (A prime number is called a Mersen number if it can be
      * represented as 2n-1, where p is also a prime number.)
      */
     public void compute() {

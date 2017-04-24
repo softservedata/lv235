@@ -3,12 +3,15 @@ package com.softserve.edu;
 import java.util.ArrayList;
 
 /**
+ * @version 1.2
+ * @author IRudyk
  * Class Task12.
  */
 public class Task12 extends Task1 {
     /**
-     * method compute. Given natural numbers m, n. Get all their natural common
-     * multiples, smaller m*n
+     * method compute.
+     * Task #226 method compute. Given natural numbers m, n.
+     * Get all their natural common multiples, smaller m*n
      */
     public void compute() {
         int n = 0;

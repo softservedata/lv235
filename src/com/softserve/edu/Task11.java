@@ -1,6 +1,8 @@
 package com.softserve.edu;
 
 /**
+ * @version 1.2
+ * @author IRudyk
  * Class Task11.
  */
 public class Task11 extends Task1 {
@@ -11,8 +13,8 @@ public class Task11 extends Task1 {
     private static final int NUMBER_TEN = 10;
     /**
      * method compute.
-     * Given a natural number n, m. Obtain the sum of m last digits of the
-     * number n
+     * Task #87 Given a natural number n, m.
+     * Obtain the sum of m last digits of the number n
      */
     public void compute() {
         int n = 0;
