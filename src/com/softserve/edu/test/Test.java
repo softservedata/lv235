@@ -1,6 +1,6 @@
-package com.softserve.edu.LogicTask;
+package com.softserve.edu.test;
 
-import com.softserve.edu.LogicTask.Test.B;
+import com.softserve.edu.test.Test.B;
 
 public class Test {
 
