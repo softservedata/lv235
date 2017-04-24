@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Task #224: a natural number n is given.
  * Find all natural dividers of n.
- * @author Àíäğ³é
+ * @author ĞĞ½Ğ´Ñ€Ñ–Ğ¹
  */
 
 public final class Task224 {

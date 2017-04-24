@@ -1,4 +1,4 @@
 /**
- * @author Андрій
+ * @author РђРЅРґСЂС–Р№
  */
 package com.softserve.edu.yarych;

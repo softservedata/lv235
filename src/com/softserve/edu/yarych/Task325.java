@@ -5,6 +5,7 @@ import java.util.Scanner;
 /**
  * Task #325: a natural number n is given.
  * Find all simple dividers of n.
+ * @author Андрій
  */
 public final class Task325 {
     /**

@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Task #224: a natural number n is given.
  * Among numbers 1, ..., n find every number, * which matches its square
  * (for example: 6^2 = 36, 25^2 = 625).
- * @author ¿Ì‰≥È
+ * @author –ê–Ω–¥—Ä—ñ–π
  */
 public final class Task561 {
     /**
