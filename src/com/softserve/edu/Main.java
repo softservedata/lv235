@@ -77,7 +77,7 @@ public class Main {
 		if (n < 1) {
 			task331a();
 		}
-		label: for (int a = 1; a < n; a++) {
+		for (int a = 1; a < n; a++) {
 			for (int b = 1; b < n; b++) {
 				for (int c = 1; c < n; c++) {
 					int res = (int) (Math.pow(a, 2) + Math.pow(b, 2) + Math
@@ -85,7 +85,7 @@ public class Main {
 					if (res == n) {
 						System.out.format("%na=%d " + "b=%d " + "c=%d%n", a, b,
 								c);
-						break label;
+						return;
 					}
 				}
 			}
