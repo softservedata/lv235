@@ -4,8 +4,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * This is a console application with all three tasks.
+ * @version 1.0.0
+ * @author Tymofii
  */
+/* This is a console application with all three tasks. */
 final class Main {
 
 	/**
