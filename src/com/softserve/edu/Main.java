@@ -6,11 +6,19 @@ import java.util.Scanner;
 /**
  * This is a console application with all three tasks.
  */
-public class Main {
-	public static void main(String[] args) {
+final class Main {
+
+	/**
+	 * The main method.
+	 * @param args
+	 */
+	public static void main(final String[] args) {
 		start();
 	}
 
+	/**
+	 * The start method.
+	 */
 	private static void start() {
 		try {
 			menu();
@@ -20,9 +28,12 @@ public class Main {
 		start();
 	}
 
+	/**
+	 * The menu method.
+	 */
 	private static void menu() {
 		while (true) {
-			System.out.format("%s%s%s%s", "Enter 1 to open task #108\n",
+			System.out.format("%s%s%s%s", "Enter 1 to open task " + "#108\n",
 					"Enter 2 to open task #331(a)\n",
 					"Enter 3 to open task #554\n", "Enter 0 to exit\n");
 			Scanner scanner = new Scanner(System.in);
@@ -47,7 +58,7 @@ public class Main {
 		}
 	}
 
-	/*
+	/**
 	 * Task #108. Given a positive integer n. Get the smallest number 2 ^ r,
 	 * that is bigger than n.
 	 */
@@ -67,7 +78,7 @@ public class Main {
 						+ result);
 	}
 
-	/*
+	/**
 	 * Task #331a. Given a positive integer n. Is it possible to represent a
 	 * number in the form of a sum of three squares of natural numbers? Show
 	 * them if it's possible.
@@ -95,14 +106,13 @@ public class Main {
 		}
 	}
 
-	/*
-	 * Task #554. Given a positive integer n. Get all the Pythagorean triples of
-	 * natural numbers, each of which does not exceed n. a^2+b^2=c^2
-	 * (a<=b<=c<=n)
+	/**
+	 * Task #554. Given a positive integer n. Get all the triples of natural
+	 * numbers, each of which does not exceed n. a^2+b^2=c^2 (a<=b<=c<=n)
 	 */
 	private static void task554() {
 		int n = enterNaturalNumber();
-		if (n < 5) {
+		if (n < 1) {
 			task554();
 		}
 		for (int a = 1; a <= n; a++) {
@@ -119,10 +129,14 @@ public class Main {
 		}
 	}
 
+	/**
+	 * The enterNaturalNumber method.
+	 * @return scanner object
+	 */
 	private static int enterNaturalNumber() {
 		System.out.println("Enter a natural number n: ");
 		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in); // Can't close scanner here
+		Scanner scanner = new Scanner(System.in); // Can't close scanner
 		return scanner.nextInt();
 	}
 }
