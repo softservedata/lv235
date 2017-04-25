@@ -17,19 +17,19 @@ public class Task1 {
 	 * Use this to run first task.
 	 */
 	public void runTask1() {
-		System.out.println("Дано натуральне число. Скільки цифр в числі n");
+		System.out.println("Given a positive integer. How many digits in the number n");
 
 		int n;
 		int m;
 		int counter = 0;
 
-		System.out.println("Введіть число n.");
+		System.out.println("Enter n.");
 		System.out.print(" n=");
 		n = input.nextInt();
 		//If you enter a letter, all crash..
 
 		if (n == 0) {
-			System.out.println("Число 0 має 1 цифру");
+			System.out.println("Number 0 has 1 digit");
 			return;
 	}
 
@@ -39,7 +39,16 @@ public class Task1 {
 			counter++;
 		}
 
-		// no switch-case for correct spell word "цифра"
-		System.out.println("число n " + n + " має " + counter + " цифр");
+		//for correct spelling word "digit(s)"
+		switch (counter) {
+		case 1:
+			System.out.println("Number n " + n + " has " + counter + " digit");
+			break;
+
+		default:
+			System.out.println("Number n " + n + " has " + counter + " digits");
+			break;
+		}
+
 	}
 }

@@ -35,8 +35,8 @@ private App() {
 
 		int taskChooser;
 
-		System.out.println("Виберіть номер задачі 1, 2, 3");
-		System.out.print("Вибранй номер: ");
+		System.out.println("Chose task number: 1, 2, 3");
+		System.out.print("> ");
 		taskChooser = input.nextInt();
 
 		switch (taskChooser) {
@@ -50,10 +50,14 @@ private App() {
 			task2.runTask2();
 			break;
 
-		default:
+		case 3:
 			Task3 task3 = new Task3();
 			task3.runTask3();
 			break;
+
+		default:
+			System.out.println("Enter correct number 1, 2 or 3");
+			taskChooser();
 
 		}
 	}

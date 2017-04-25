@@ -1,6 +1,6 @@
 /**
  * This package contains my hometasks.
- * 86 а) 332 178 б)
+ * 86 a) 332 178 b)
  * @author Volodymyr Zubchyns'kyi
  */
 

@@ -19,7 +19,7 @@ public class Task2 {
 	 */
 	public void runTask2() {
 
-		System.out.println("Дано натуральне число n. Вказати такі невід'ємні x,y,z,t, що n=x^2+y^2+z^2+t^2");
+		System.out.println("Given a positive integer n. Specify the following numbers x,y,z,t, when n=x^2+y^2+z^2+t^2");
 
 		int n;
 		int m;
@@ -45,9 +45,9 @@ public class Task2 {
 		m = (int) Math.sqrt(m);
 		t = m * m;
 
-		// Є багa, , х-1.
+		// Bug, , х-1.
 		if (x + y + z + t != n) {
-			System.out.println("Виберіть інше число");
+			System.out.println("Enter another number");
 			runTask2();
 		}
 
