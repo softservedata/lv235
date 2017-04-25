@@ -39,7 +39,6 @@ public class Task1Console extends Task1 {
             } catch (NumberFormatException e) {
                 System.out.println("number n, m must be natural");
             } finally {
-                scanner.close();
                 System.out.println("For continue click 'c' else click eni key");
                 String conf = scanner.next().toUpperCase();
                 if (!conf.equals("C")) {

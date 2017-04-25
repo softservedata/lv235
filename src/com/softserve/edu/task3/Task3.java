@@ -29,12 +29,10 @@ public class Task3 {
      */
     public ArrayList<Integer> compute(final int n) {
 
-        int l = 2;
-        l++;
         ArrayList<Integer> simpleNumbers = new ArrayList<>();
         ArrayList<Integer> rsesultMass = new ArrayList<>();
         simpleNumbers.add(2);
-        for (int i = l; i < MAX_SIMPLE_NUMBER; i++) {
+        for (int i = VALUE_FOR_AUDIT[1]; i < MAX_SIMPLE_NUMBER; i++) {
             if ((i % 2 != 0) && ((i % VALUE_FOR_AUDIT[1]) != 0)
                     && ((i % VALUE_FOR_AUDIT[2]) != 0)) {
                 simpleNumbers.add(i);
