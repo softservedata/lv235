@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by User on 4/24/2017.
+ * @version 1.0
  */
 public final class Second {
 
