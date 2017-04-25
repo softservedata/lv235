@@ -3,7 +3,9 @@ package com.softserve.edu;
 import java.util.Scanner;
 
 /**
- * @author IRudyk Class Task1.
+ * @version 1.3
+ * @author IRudyk
+ * Class Task1.
  */
 public abstract class Task1 {
     /**
@@ -41,7 +43,15 @@ public abstract class Task1 {
     public abstract void compute();
 
     /**
-     * abstract method contunie.
+     * method contunie.
      */
-    public abstract void contunie();
+    public void contunie(){
+        System.out.println("\nFor  exit click 'e' to contunie click eny key");
+        String y = getScanner().next().toUpperCase();
+        if (y.equals("E")) {
+            return;
+        } else {
+            compute();
+        }
+    }
 }

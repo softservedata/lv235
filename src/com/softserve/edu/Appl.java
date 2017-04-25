@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Main class Appl.
- *
+ * @version 1.0
  * @author IRudyk
  */
 public final class Appl {
@@ -55,4 +55,6 @@ public final class Appl {
             }
         }
     }
+    
+    
 }

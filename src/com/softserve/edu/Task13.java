@@ -58,17 +58,4 @@ public class Task13 extends Task1 {
         }
         contunie();
     }
-
-    /**
-     * method contunie.
-     */
-    public void contunie() {
-        System.out.println("\nFor  exit click 'e' to contunie click eny key");
-        String y = getScanner().next().toUpperCase();
-        if (y.equals("E")) {
-            return;
-        } else {
-            compute();
-        }
-    }
 }
