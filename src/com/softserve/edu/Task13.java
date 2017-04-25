@@ -31,15 +31,13 @@ public class Task13 extends Task1 {
         l++;
         ArrayList simpleNumbers = new ArrayList<>();
         simpleNumbers.add(2);
-        for (int i = 3; i < MAX_SIMPLE_NUMBER; i++) {
+        for (int i = l; i < MAX_SIMPLE_NUMBER; i++) {
             if ((i % 2 != 0) && ((i % VALUE_FOR_AUDIT[1]) != 0)
                     && ((i % VALUE_FOR_AUDIT[2]) != 0)) {
                 simpleNumbers.add(i);
             }
         }
-        
-        
-        
+
         ArrayList<Integer> mass = new ArrayList();
         try {
             System.out.print("Input n  ");
@@ -55,7 +53,7 @@ public class Task13 extends Task1 {
 
         for (int i = 0; i < simpleNumbers.size(); i++) {
             if (Math.pow(2, (int) simpleNumbers.get(i)) - 1 < n) {
-                mass.add((int) Math.pow(2, (int) simpleNumbers.get(i) - 1));
+                mass.add((int) simpleNumbers.get(i));
                 System.out.println(mass.get(i));
             }
         }
