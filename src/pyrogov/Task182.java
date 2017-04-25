@@ -47,9 +47,9 @@ public class Task182 {
 
 		}
 
-		System.out.println("Масив згенерованих чисел: " + Arrays.toString(numbers));
-		System.out.println("Кількість членів послідовності: " + count);
-		System.out.println("Сума членів послідовності: " + arraySum);
+		System.out.println("РњР°СЃРёРІ Р·РіРµРЅРµСЂРѕРІР°РЅРёС… С‡РёСЃРµР»: " + Arrays.toString(numbers));
+		System.out.println("РљС–Р»СЊРєС–СЃС‚СЊ С‡Р»РµРЅС–РІ РїРѕСЃР»С–РґРѕРІРЅРѕСЃС‚С–: " + count);
+		System.out.println("РЎСѓРјР° С‡Р»РµРЅС–РІ РїРѕСЃР»С–РґРѕРІРЅРѕСЃС‚С–: " + arraySum);
 
 	}
 
