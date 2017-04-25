@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 /**
  * Task #224: a natural number n is given.
- * Among numbers 1, ..., n find every number, * which matches its square
- * (for example: 6^2 = 36, 25^2 = 625).
+ * Among numbers 1, ..., n find every number, which matches
+ * last numbers of its square (for example: 6^2 = 36, 25^2 = 625).
  * @author Андрій
  */
 public final class Task561 {
     /**
      * Constant for using in calculations.
      */
-    public static final int MAXIMUM_REMAINDER = 100;
+    public static final int MAXIMUM_REMAINDER = 10;
     /**
      * Scanner object.
      */
@@ -31,7 +31,7 @@ public final class Task561 {
     public static void main(final String[] args) {
         System.out.println("Enter natural number: ");
         int number = sc.nextInt();
-        int decimal = MAXIMUM_REMAINDER;
+        int decimal = 1;
 
         for (int i = 1; i < number; i++) {
             int square = (int) Math.pow(i, 2);

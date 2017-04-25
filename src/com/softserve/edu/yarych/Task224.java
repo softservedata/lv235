@@ -1,7 +1,8 @@
 
 package com.softserve.edu.yarych;
 
-import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Task #224: a natural number n is given.
@@ -9,28 +10,41 @@ import java.util.Scanner;
  * @author Андрій
  */
 
-public final class Task224 {
+public class Task224 {
+
     /**
-     * Scanner object.
+     * Blah.
      */
-    private static Scanner sc = new Scanner(System.in);
+    private List<Integer> listOfDivisors = new LinkedList();
 
     /**
      * Private constructor.
      */
-    private Task224() {
+    public Task224() {
     }
 
     /**
-     * Main method.
-     * @param args from command line.
+     * @return current list of divisors
      */
-    public static void main(final String[] args) {
-        System.out.println("Enter natural number: ");
-        int number = sc.nextInt();
+    public List<Integer> getListOfDivisors() {
+        return listOfDivisors;
+    }
+
+    /**
+     * @param listOfDivs list to set (natural numbers)
+     */
+    public void setListOfDivisors(final List<Integer> listOfDivs) {
+        this.listOfDivisors = listOfDivs;
+    }
+
+    /**
+     * Method for finding all natural divisors of n.
+     * @param number for entering natural number.
+     */
+    public void calculate(final int number) {
         for (int i = 1; i <= number; i++) {
             if ((number % i) == 0) {
-                System.out.println(i);
+                listOfDivisors.add(i);
             }
         }
     }
