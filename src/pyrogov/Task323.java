@@ -43,9 +43,9 @@ public class Task323 {
 
 		while (b != 0) {
 
-			int tmp = a % b;
+			int temporary = a % b;
 			a = b;
-			b = tmp;
+			b = temporary;
 
 		}
 
