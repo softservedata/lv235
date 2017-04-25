@@ -1,4 +1,4 @@
-package com.softserve.edu.com.softserve.edu;
+package com.softserve.edu;
 
 /**
  * Created by ${Ihor} on ${24.04.2017}.

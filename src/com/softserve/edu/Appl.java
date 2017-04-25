@@ -1,4 +1,4 @@
-package com.softserve.edu.com.softserve.edu;
+package com.softserve.edu;
 
 public class Appl {
 
