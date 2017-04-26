@@ -9,7 +9,14 @@ import java.util.Scanner;
  */
 public class Task3 {
 
+	/**
+	 * This is multiple number
+	 */
 	private static final int MULTIPLE_NUMBER = 3;
+	/**
+	 * This is aliquent number
+	 */
+	private static final int ALIQUANT_NUMBER = 5;
 	/**
 	 * Scanner for reading from input.
 	 */
@@ -31,6 +38,18 @@ public class Task3 {
 	}
 
 	/**
+	 * Use this method to input data from console.
+	 * @param word - what will write, when you input data.
+	 * @return entered number.
+	 */
+	private int inputData(String word) {
+		int number;
+		System.out.print(word);
+		number = input.nextInt();
+		return number;
+	}
+
+	/**
 	 * Use this method to find numbers, which multiple 3 and aliquant 5
 	 * @param n - how many numbers need to check.
 	 * @param a - start number.
@@ -43,7 +62,7 @@ public class Task3 {
 			array[i] = a;
 			a += 1;
 			//Checking for multipluing 3 and aliquant 5
-			if (array[i] % MULTIPLE_NUMBER == 0 && array[i] % 5 != 0) {
+			if (array[i] % MULTIPLE_NUMBER == 0 && array[i] % ALIQUANT_NUMBER != 0) {
 				System.out.println("Number a = " + array[i] + " multiple 3 and aliquant 5" );
 				counter++;
 				noArgs = false;
@@ -55,17 +74,4 @@ public class Task3 {
 
 		System.out.println("There are " + counter + " numbers");
 	}
-
-	/**
-	 * Use this method to input data from console.
-	 * @param word - what will write, when you input data.
-	 * @return entered number.
-	 */
-	private int inputData(String word) {
-		int number;
-		System.out.print(word);
-		number = input.nextInt();
-		return number;
-	}
-
 }
