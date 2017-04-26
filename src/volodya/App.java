@@ -56,7 +56,7 @@ private App() {
 			break;
 
 		default:
-			System.out.println("Enter correct number 1, 2 or 3");
+			System.out.println("Enter a correct number 1, 2 or 3");
 			taskChooser();
 
 		}
