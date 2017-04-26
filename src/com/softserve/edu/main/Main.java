@@ -1,4 +1,4 @@
-package com.softserve.edu;
+package com.softserve.edu.main;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -112,7 +112,7 @@ final class Main {
 	 * Task #554. Given a positive integer n. Get all the triples of natural
 	 * numbers, each of which does not exceed n. a^2+b^2=c^2 (a<=b<=c<=n)
 	 */
-	private static void task554() {//TODO a<=b<=c
+	private static void task554() {// TODO a<=b<=c
 		int n = enterNaturalNumber();
 		if (n < 1) {
 			task554();
@@ -122,7 +122,7 @@ final class Main {
 				for (int c = 1; c <= n; c++) {
 					int aplusb = (int) (Math.pow(a, 2) + Math.pow(b, 2));
 					int cpow = (int) Math.pow(c, 2);
-					if (aplusb == cpow && a<=b && b<=c) {
+					if (aplusb == cpow && a <= b && b <= c) {
 						System.out
 								.format("a=%d " + "b=%d " + "c=%d%n", a, b, c);
 					}
