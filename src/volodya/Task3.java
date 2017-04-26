@@ -57,6 +57,9 @@ public class Task3 {
 	private void countMultipleAliquant(int n, int a) {
 		boolean noArgs = true;
 		int counter = 0;
+		//List<Integer> list = new ArrayList<Integer>();
+		//list.add(1);
+		//System.out.println(list);
 		int[] array = new int[n + 1];
 		for (int i = 0; i < n; i++) {
 			array[i] = a;
