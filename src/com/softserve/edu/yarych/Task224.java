@@ -15,7 +15,7 @@ public class Task224 {
     /**
      * Blah.
      */
-    private List<Integer> listOfDivisors = new LinkedList();
+    private List<Integer> listOfDivisors = new LinkedList<Integer>();
 
     /**
      * Private constructor.

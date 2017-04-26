@@ -1,33 +1,61 @@
 package com.softserve.edu.yarych;
 
-import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Task #325: a natural number n is given.
  * Find all simple dividers of n.
  * @author Андрій
  */
-public final class Task325 {
+public class Task325 {
+
     /**
-     * Scanner object.
+     * Blah.
      */
-    private static Scanner sc = new Scanner(System.in);
+    private List<Integer> listOfDivisors = new LinkedList<Integer>();
+    /**
+     * Variable for checking if number is simple.
+     */
+    private boolean isSimple = true;
 
     /**
      * Private constructor.
      */
-    private Task325() {
+    public Task325() {
     }
 
     /**
-     * Main method.
-     * @param args from command line.
+     * @return current list of divisors
      */
-    public static void main(final String[] args) {
-        System.out.println("Enter natural number: ");
-        int number = sc.nextInt();
-        boolean isSimple = true;
+    public List<Integer> getListOfDivisors() {
+        return listOfDivisors;
+    }
 
+    /**
+     * @param listOfDivs list to set (natural numbers)
+     */
+    public void setListOfDivisors(final List<Integer> listOfDivs) {
+        this.listOfDivisors = listOfDivs;
+    }
+    /**
+     * @return true if number is simple.
+     */
+    public boolean isSimple() {
+        return isSimple;
+    }
+
+    /**
+     * @param isSimpl value to set.
+     */
+    public void setSimple(final boolean isSimpl) {
+        this.isSimple = isSimpl;
+    }
+
+    /**
+     * @param number is a natural number from user.
+     */
+    public void calculate(final int number) {
         for (int i = 1; i <= number; i++) {
             if ((number % i) == 0) {
                 for (int j = 2; j <= Math.sqrt(i); j++) {
@@ -36,7 +64,7 @@ public final class Task325 {
                     }
                 }
                 if (isSimple) {
-                    System.out.println(i);
+                    listOfDivisors.add(i);
                 }
             }
         }
