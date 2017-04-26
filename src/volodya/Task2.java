@@ -26,8 +26,7 @@ public class Task2 {
 		int x, y, z, t;
 		int counter;
 
-		System.out.print(" n=");
-		n = input.nextInt();
+		n = inputData();
 		m = n;
 
 		m = (int) Math.sqrt(m);
@@ -52,5 +51,16 @@ public class Task2 {
 		}
 
 		System.out.println("n=" + n + " x^2=" + x + " y^2=" + y + " z^2=" + z + " t^2=" + t);
+	}
+
+	/**
+	 * Use this method to input data from console.
+	 * @return entered number n.
+	 */
+	private int inputData() {
+		int n;
+		System.out.print(" n=");
+		n = input.nextInt();
+		return n;
 	}
 }
