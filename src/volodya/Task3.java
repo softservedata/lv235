@@ -1,5 +1,6 @@
 package volodya;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -57,16 +58,15 @@ public class Task3 {
 	private void countMultipleAliquant(int n, int a) {
 		boolean noArgs = true;
 		int counter = 0;
-		//List<Integer> list = new ArrayList<Integer>();
-		//list.add(1);
-		//System.out.println(list);
-		int[] array = new int[n + 1];
+		ArrayList<Integer> numbers = new ArrayList<>();
 		for (int i = 0; i < n; i++) {
-			array[i] = a;
-			a += 1;
-			//Checking for multipluing 3 and aliquant 5
-			if (array[i] % MULTIPLE_NUMBER == 0 && array[i] % ALIQUANT_NUMBER != 0) {
-				System.out.println("Number a = " + array[i] + " multiple 3 and aliquant 5" );
+			numbers.add(a);
+			a++;
+		}
+
+		for (Integer number : numbers) {
+			if (number % MULTIPLE_NUMBER == 0 && number % ALIQUANT_NUMBER != 0) {
+				System.out.println("Number a = " + number + " multiple 3 and aliquant 5");
 				counter++;
 				noArgs = false;
 			}

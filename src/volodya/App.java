@@ -29,7 +29,7 @@ private App() {
 	}
 
 	/**
-	 * This method use to choose task number.
+	 * Use this method to choose task number.
 	 */
 	public static void taskChooser() {
 
