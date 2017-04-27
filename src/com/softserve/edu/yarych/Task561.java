@@ -42,8 +42,9 @@ public class Task561 {
     /**
      * Method for calculating the task.
      * @param number is a natural number from user.
+     * @return list of calculated numbers.
      */
-    public void calculate(final int number) {
+    public List<Integer> calculate(final int number) {
         int decimal = MAXIMUM_REMAINDER;
 
         for (int i = 1; i < number; i++) {
@@ -55,5 +56,6 @@ public class Task561 {
                 listOfNumbers.add(i);
             }
         }
+        return getListOfNumbers();
     }
 }

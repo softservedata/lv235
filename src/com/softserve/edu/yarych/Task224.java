@@ -40,12 +40,14 @@ public class Task224 {
     /**
      * Method for finding all natural divisors of n.
      * @param number for entering natural number.
+     * @return list on natural divisors.
      */
-    public void calculate(final int number) {
+    public List<Integer> calculate(final int number) {
         for (int i = 1; i <= number; i++) {
             if ((number % i) == 0) {
                 listOfDivisors.add(i);
             }
         }
+        return getListOfDivisors();
     }
 }

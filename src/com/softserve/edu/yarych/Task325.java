@@ -54,8 +54,9 @@ public class Task325 {
 
     /**
      * @param number is a natural number from user.
+     * @return list of simple divisors.
      */
-    public void calculate(final int number) {
+    public List<Integer> calculate(final int number) {
         for (int i = 1; i <= number; i++) {
             if ((number % i) == 0) {
                 for (int j = 2; j <= Math.sqrt(i); j++) {
@@ -68,5 +69,6 @@ public class Task325 {
                 }
             }
         }
+        return getListOfDivisors();
     }
 }
