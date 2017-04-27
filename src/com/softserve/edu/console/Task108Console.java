@@ -5,15 +5,11 @@ import java.util.Scanner;
 import com.softserve.edu.main.Task108;
 
 public class Task108Console extends Task108 implements NaturalNumberInput {
-	public static void main(String[] args) {
-		Task108Console task108Console = new Task108Console();
-		task108Console.start();
-	}
 
 	public void start() {
 		Task108Console task108Console = new Task108Console();
 		task108Console.toConsole(task108Console
-				.task108(StringToInt(enterNaturalNumber())));
+				.task108(stringToInt(enterNaturalNumber())));
 	}
 
 	public int task108(int number) {
@@ -24,7 +20,7 @@ public class Task108Console extends Task108 implements NaturalNumberInput {
 		return getResult();
 	}
 
-	public int StringToInt(String str) {
+	public int stringToInt(String str) {
 		return Integer.parseInt(str);
 	}
 
@@ -34,7 +30,7 @@ public class Task108Console extends Task108 implements NaturalNumberInput {
 		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in); // Can't close scanner here
 		String result = scanner.next();
-		setNumber(StringToInt(result));
+		setNumber(stringToInt(result));
 		if (isNatural(getNumber()) == false) {
 			return "Input isn't a natural number";
 		}
@@ -50,7 +46,11 @@ public class Task108Console extends Task108 implements NaturalNumberInput {
 	}
 
 	@Override
-	public void toConsole(int number) {
+	public String toConsole(int number) {
+		return "The smallest number 2^r, that is bigger than n is: \n" + number;
+	}
+
+	public void toConsole2(int number) {
 		System.out
 				.println("The smallest number 2^r, that is bigger than n is: \n"
 						+ number);

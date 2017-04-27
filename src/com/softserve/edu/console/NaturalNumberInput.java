@@ -5,5 +5,5 @@ public interface NaturalNumberInput {
 
 	boolean isNatural(int number);
 
-	void toConsole(int number);
+	String toConsole(int number);
 }
