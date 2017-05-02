@@ -23,7 +23,7 @@ public class Task3 {
      * method compute.
      * Task #559 smaller n numbers of Mersen.
      * (A prime number is called a Mersen number if it can be
-     * represented as 2n-1, where p is also a prime number.)
+     * represented as 2n-1, where n is also a prime number.)
      * @param n natural number n
      * @return numbers of Mersen
      */

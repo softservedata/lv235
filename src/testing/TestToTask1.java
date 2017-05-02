@@ -22,7 +22,7 @@ public class TestToTask1 {
     /**
      *
      */
-    Task1 task1 = new Task1();
+    private Task1 task1 = new Task1();
     /**
      * method setUpBeforeClass().
      * @throws Exception execute Exception
@@ -56,42 +56,62 @@ public class TestToTask1 {
     }
 
     /**
-     * n>m integer.
+     * n=m=0 integer.
      */
     @Test
-    public void testPositive() {
-        int expected = 13;
-        int actual = task1.compute(7484153, 4);
-        assertTrue(expected == actual);
+    public void testTrueNull() {
+        int expected = 0;
+        int actual = task1.compute(0, 0);
+        assertEquals(expected, actual);
     }
 
     /**
-     * n=m integer.
+     * n>0, m=0 integer.
      */
     @Test
-    public void testPositive2() {
-        int expected = 23;
-        int actual = task1.compute(32273254, 6);
-        assertTrue(expected == actual);
+    public void testNTrueNull() {
+        int expected = 0;
+        int actual = task1.compute(32273, 0);
+        assertEquals(expected, actual);
     }
 
     /**
-     * n=m integer.
+     * n>0 m>0 n>m integer.
      */
     @Test
-    public void testPositive3() {
+    public void testTrue1() {
         int expected = 5;
         int actual = task1.compute(10001005, 3);
-        assertTrue(expected == actual);
+        assertEquals(expected, actual);
     }
 
     /**
-     * n>0 integer m=0.
+     * n>0 m>0 n=m integer.
      */
     @Test
-    public void testNull1() {
-        int expected = 0;
-        int actual = task1.compute(32273254, 0);
-        assertTrue(expected == actual);
+    public void testTrue2() {
+        int expected = 14;
+        int actual = task1.compute(3227, 4);
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * n>0 m>0 n>m integer.
+     */
+    @Test
+    public void testFalse1() {
+        int expected = 10;
+        int actual = task1.compute(3417, 3);
+        assertNotEquals(expected, actual);
+    }
+
+    /**
+     * n>0 m>0 n=m integer.
+     */
+    @Test
+    public void testFalse2() {
+        int expected = 13;
+        int actual = task1.compute(3227, 4);
+        assertNotEquals(expected, actual);
     }
 }
