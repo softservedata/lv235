@@ -5,7 +5,7 @@ public class Task108 {
 	int power;
 	int result;
 
-	public Task108() {
+	public Task108() { 
 	}
 
 	public Task108(int number, int power, int result) {

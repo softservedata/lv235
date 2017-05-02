@@ -18,7 +18,7 @@ public class Task108ConsoleTest {
 
 	@BeforeClass
 	public static void initClass() {
-		System.out.println("Welcome!");
+		System.out.println("Welcome!"); 
 	}
 
 	@Before

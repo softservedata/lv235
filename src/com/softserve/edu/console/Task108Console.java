@@ -2,9 +2,10 @@ package com.softserve.edu.console;
 
 import java.util.Scanner;
 
+import com.softserve.edu.interfaces.ITask108;
 import com.softserve.edu.main.Task108;
 
-public class Task108Console extends Task108 implements NaturalNumberInput {
+public class Task108Console extends Task108 implements ITask108 {
 
 	public void start() {
 		Task108Console task108Console = new Task108Console();
