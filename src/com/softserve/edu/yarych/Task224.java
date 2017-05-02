@@ -11,16 +11,34 @@ import java.util.List;
  */
 
 public class Task224 {
-
+    /**
+     * number.
+     */
+    private int number;
     /**
      * Blah.
      */
     private List<Integer> listOfDivisors = new LinkedList<Integer>();
 
     /**
-     * Private constructor.
+     * Public constructor.
      */
     public Task224() {
+    }
+
+    /**
+     * Constructor with perameter.
+     * @param n is natural number.
+     */
+    public Task224(final int n) {
+        this.number = n;
+    }
+
+    /**
+     * @return number.
+     */
+    public int getNumber() {
+        return number;
     }
 
     /**
@@ -39,10 +57,9 @@ public class Task224 {
 
     /**
      * Method for finding all natural divisors of n.
-     * @param number for entering natural number.
      * @return list on natural divisors.
      */
-    public List<Integer> calculate(final int number) {
+    public List<Integer> calculate() {
         for (int i = 1; i <= number; i++) {
             if ((number % i) == 0) {
                 listOfDivisors.add(i);

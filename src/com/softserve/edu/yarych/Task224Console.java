@@ -26,13 +26,13 @@ public class Task224Console extends Task224 {
      * @param args from command line.
      */
     public static void main(final String[] args) {
-        Task224 number = new Task224();
         System.out.println("Enter natural number: ");
         int n = sc.nextInt();
+        Task224 number = new Task224(n);
         if (n <= 0) {
             System.out.println("You have entered non-natural number.");
         } else {
-            number.calculate(n);
+            number.calculate();
             for (Integer i : number.getListOfDivisors()) {
                 System.out.println(i);
             }

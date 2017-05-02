@@ -11,6 +11,10 @@ import java.util.List;
 public class Task325 {
 
     /**
+     * number.
+     */
+    private int number;
+    /**
      * Blah.
      */
     private List<Integer> listOfDivisors = new LinkedList<Integer>();
@@ -20,11 +24,19 @@ public class Task325 {
     private boolean isSimple = true;
 
     /**
-     * Private constructor.
+     * Puublic constructor.
      */
     public Task325() {
     }
 
+    /**
+     * Constructor with perameter.
+     * @param n is natural number.
+     */
+    public Task325(final int n) {
+        this.number = n;
+    }
+    
     /**
      * @return current list of divisors
      */
@@ -56,7 +68,7 @@ public class Task325 {
      * @param number is a natural number from user.
      * @return list of simple divisors.
      */
-    public List<Integer> calculate(final int number) {
+    public List<Integer> calculate() {
         for (int i = 1; i <= number; i++) {
             if ((number % i) == 0) {
                 for (int j = 2; j <= Math.sqrt(i); j++) {

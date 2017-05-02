@@ -18,13 +18,13 @@ public class Task325Console extends Task325 {
      * @param args from command line.
      */
     public static void main(final String[] args) {
-        Task325 number = new Task325();
         System.out.println("Enter natural number: ");
         int n = sc.nextInt();
+        Task325 number = new Task325(n);
         if (n <= 0) {
             System.out.println("You have entered non-natural number.");
         } else {
-            number.calculate(n);
+            number.calculate();
             for (Integer i : number.getListOfDivisors()) {
                 System.out.println(i);
             }
