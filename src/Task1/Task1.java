@@ -1,4 +1,4 @@
-package volodya;
+package Task1;
 
 import java.util.Scanner;
 
@@ -20,10 +20,10 @@ public class Task1 {
 		System.out.println("Given a positive integer. How many digits in the number n");
 
 		int n;
-		int counter = 0;
+		int counter;
 
 		n = inputData();
-		counter = findDigits(n, counter);
+		counter = findDigits(n);
 		showResult(n, counter);
 	}
 
@@ -46,10 +46,11 @@ public class Task1 {
 	 * @param counter - count, how many digits.
 	 * @return how many digits in number.
 	 */
-	private int findDigits(int n, int counter) {
+	public int findDigits(int n) {
 		int m;
+		int counter = 0;
 		if (n == 0) {
-			return 0;
+			return 1;
 		}
 		m = n;
 		while (m != 0) {

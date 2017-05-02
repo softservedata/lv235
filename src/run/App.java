@@ -1,6 +1,10 @@
-package volodya;
+package run;
 
 import java.util.Scanner;
+
+import Task1.Task1;
+import Task2.Task2;
+import Task3.Task3;
 
 /**
  * Main class.

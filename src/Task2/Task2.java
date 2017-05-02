@@ -1,4 +1,4 @@
-package volodya;
+package Task2;
 
 import java.util.Scanner;
 

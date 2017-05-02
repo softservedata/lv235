@@ -1,4 +1,4 @@
-package volodya;
+package Task3;
 
 import java.util.ArrayList;
 import java.util.Scanner;
