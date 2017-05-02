@@ -7,19 +7,27 @@
 
 package pyrogov;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Task323 {
+
 	public static void main(String[] args) {
 
-		System.out.println("coprime Integers >>>: " + getCoprimeIntegers(18));
+		System.out.println("Ведіть натуральне число n");
+		Scanner sc = new Scanner(System.in);
+		int n = Integer.parseInt(sc.next());
 
+		System.out.println("coprime Integers with number " + n + ": " + getCoprimeIntegers(n));
 	}
 
 	public static List<Integer> getCoprimeIntegers(int n) {
 
 		List<Integer> simpleDigits = new ArrayList<Integer>();
+		// змінна яка містить найбільший дільник для числа меншого ніж n
 		int greatestDivisor;
+		// перевірка всіх інтеджерів менших ніж n
 		for (int i = 1; i < n; i++) {
 
 			if (n % i != 0) {

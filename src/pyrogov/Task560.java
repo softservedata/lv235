@@ -8,52 +8,47 @@
    */
 package pyrogov;
 
-import java.awt.List;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 public class Task560 {
 	private final static int startRangeValue = 200;
 	private final static int endRangeValue = 300;
 
-	private static Map<Integer, Integer> getFriedlyIntegers() {
+	// дружні числа з Вікіпедії
+	public final static ArrayList<Integer> allFriedlyIntegers = new ArrayList<Integer>(Arrays.asList(220, 284, 1184,
+			1210, 2620, 2924, 5020, 5564, 6232, 6368, 10744, 10856, 12285, 14595, 17296, 18416, 63020, 76084));
 
-		ArrayList <Integer> possibleAmicableNums = new ArrayList<Integer>();
-		Map<Integer, Integer> amicableNumsMap = new HashMap<Integer, Integer>();
+	private static void checkFriedlyIntegers() {
 
-		for (int i = startRangeValue; i < endRangeValue; i++) {
+		ArrayList<Integer> filteredFriedlyIntegers = new ArrayList<Integer>();
+		for (Integer i = startRangeValue; i <= endRangeValue; i++) {
 
-			int dividersSum = getDividersSum(i);
+			if (allFriedlyIntegers.contains(i)) {
+				filteredFriedlyIntegers.add(i);
 
-			for (int k = startRangeValue; k < endRangeValue; k++) {
-
-				if (k == dividersSum) {
-					possibleAmicableNums.add(k);
-
-				}
-			}
-
-		}
-
-		for (Integer num : possibleAmicableNums) {
-
-			for (int j = 0; j < possibleAmicableNums.size(); j++) {
-
-				if (possibleAmicableNums.get(j) == getDividersSum(num)
-						&& num == getDividersSum(possibleAmicableNums.get(j)) && possibleAmicableNums.get(j) != num) {
-
-					if (!amicableNumsMap.keySet().contains(possibleAmicableNums.get(j))) {
-						amicableNumsMap.put(num, possibleAmicableNums.get(j));
-
-					}
-				}
 			}
 		}
 
-		possibleAmicableNums.clear();
+		if (!filteredFriedlyIntegers.isEmpty()) {
 
-		return amicableNumsMap;
+			for (Integer j = 1; j < filteredFriedlyIntegers.size(); j++) {
+
+				if (filteredFriedlyIntegers.get(j - 1) == getDividersSum(filteredFriedlyIntegers.get(j))) {
+					System.out.println(filteredFriedlyIntegers.get(j - 1) + " " + filteredFriedlyIntegers.get(j));
+
+				}
+
+			}
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		checkFriedlyIntegers();
+		// System.out.println("There are next amicable numbers in current range
+		// " + getFriedlyIntegers().toString());
 
 	}
 
@@ -70,12 +65,6 @@ public class Task560 {
 		}
 
 		return dividersSum;
-
-	}
-
-	public static void main(String[] args) {
-
-		System.out.println("There are next amicable numbers in current range " + getFriedlyIntegers().toString());
 
 	}
 
