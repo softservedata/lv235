@@ -6,20 +6,7 @@ import org.junit.Test;
 import Task1.Task1;
 
 public class RunTests {
-		/*@Before
-		public void init() {
-			task1 = new Task1();
-			task2 = new Task2();
-			task3 = new Task3();
-		}
 
-		@After
-		public void close() {
-			task1 = null;
-			task2 = null;
-			task3 = null;
-		}
-*/
 		@Test
 		public void test1()
 		{
