@@ -80,7 +80,9 @@ public final class Task107 {
             return 0;
         } else if (incomingNumber == THREE) {
             return 0;
-        } else if (incomingNumber >= FOUR) {
+        } else if (incomingNumber == FOUR) {
+        return 0;
+        } else if (incomingNumber > FOUR) {
             while ((int) Math.pow(FOUR, result + 1) < incomingNumber) {
                 result++;
             }
@@ -90,4 +92,3 @@ public final class Task107 {
         }
     }
 }
-
