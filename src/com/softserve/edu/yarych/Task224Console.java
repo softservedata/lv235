@@ -1,6 +1,7 @@
 package com.softserve.edu.yarych;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -17,8 +18,8 @@ public class Task224Console extends Task224 {
     /**
      * Default constructor from superclass.
      */
-    public Task224Console() {
-        super();
+    public Task224Console(int n) {
+        super(n);
     }
 
     /**
@@ -26,16 +27,13 @@ public class Task224Console extends Task224 {
      * @param args from command line.
      */
     public static void main(final String[] args) {
+        
         System.out.println("Enter natural number: ");
         int n = sc.nextInt();
         Task224 number = new Task224(n);
-        if (n <= 0) {
-            System.out.println("You have entered non-natural number.");
-        } else {
-            number.calculate();
-            for (Integer i : number.getListOfDivisors()) {
-                System.out.println(i);
-            }
+        number.calculate();
+        for (Integer i : number.getListOfDivisors()) {
+            System.out.println(i);
         }
     }
 }

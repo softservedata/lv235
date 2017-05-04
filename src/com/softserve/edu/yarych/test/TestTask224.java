@@ -28,7 +28,16 @@ public class TestTask224 {
         expected.add(1);
         expected.add(7);
         expected.add(11);
+        expected.add(77);
         List<Integer> actual = target.calculate();
         Assert.assertEquals(expected, actual);
+    }
+    
+    @Test
+    public void testCalculate3() {
+        Task224 target = new Task224(-1);
+        List<Integer> expected = new LinkedList<Integer>();
+        List<Integer> actual = target.calculate();
+        Assert.assertNotEquals(expected, actual);
     }
 }

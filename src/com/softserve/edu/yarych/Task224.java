@@ -20,13 +20,7 @@ public class Task224 {
      */
     private List<Integer> listOfDivisors = new LinkedList<Integer>();
 
-    /**
-     * Public constructor.
-     */
-    public Task224() {
-    }
-
-    /**
+     /**
      * Constructor with perameter.
      * @param n is natural number.
      */
@@ -60,9 +54,19 @@ public class Task224 {
      * @return list on natural divisors.
      */
     public List<Integer> calculate() {
-        for (int i = 1; i <= number; i++) {
-            if ((number % i) == 0) {
-                listOfDivisors.add(i);
+        if (number > 0) {
+            for (int i = 1; i <= number; i++) {
+                if ((number % i) == 0) {
+                    listOfDivisors.add(i);
+                }
+            }
+        } else {
+            try {
+                throw new NonNaturalNumberException("You have entered"
+                        + " non-natural number.");
+            } catch (NonNaturalNumberException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
         return getListOfDivisors();

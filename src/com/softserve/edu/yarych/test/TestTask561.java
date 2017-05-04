@@ -30,7 +30,7 @@ public class TestTask561 {
         expected.add(6);
         expected.add(25);
         List<Integer> actual = target.calculate();
-        Assert.assertNotEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
     }
 
 }
