@@ -18,15 +18,22 @@ public class Task2 {
 	 * Use this method to run Task 2.
 	 */
 	public void runTask2() {
-
 		System.out.println("Given a positive integer n. Specify the following numbers x,y,z,t, when n=x^2+y^2+z^2+t^2");
+		int n = inputData();
+		showResult(findMatch(n));
+	}
 
-		int n;
+	/**
+	 * Use this to find x^2 + y^2 + z^2 + t^2.
+	 * @param n - inputed by user.
+	 * @return array of  x^2; y^2; z^2; t^2.
+	 */
+	public int[] findMatch(int n) {
+
 		int m;
 		int x, y, z, t;
 		int counter;
 
-		n = inputData();
 		m = n;
 
 		m = (int) Math.sqrt(m);
@@ -45,12 +52,11 @@ public class Task2 {
 		t = m * m;
 
 		// Bug, , х-1.
-		if (x + y + z + t != n) {
-			System.out.println("Enter another number");
-			runTask2();
-		}
-
-		System.out.println("n=" + n + " x^2=" + x + " y^2=" + y + " z^2=" + z + " t^2=" + t);
+			if (x + y + z + t != n) {
+				System.out.println("Enter another number");
+				runTask2();
+			}
+		return new int[] { n, x, y, z, t };
 	}
 
 	/**
@@ -58,9 +64,16 @@ public class Task2 {
 	 * @return entered number n.
 	 */
 	private int inputData() {
-		int n;
 		System.out.print(" n=");
-		n = input.nextInt();
-		return n;
+		return input.nextInt();
+	}
+
+	/**
+	 * Use this to output data.
+	 * @param array - array to output.
+	 */
+	private void showResult(int[] array) {
+		System.out.println("n=" + array[0] + " x^2=" + array[1] + " y^2=" + array[2] + " z^2=" + array[3] + " t^2=" + array[4]);
+
 	}
 }
