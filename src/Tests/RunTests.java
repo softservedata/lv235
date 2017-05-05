@@ -1,10 +1,13 @@
 package Tests;
 
+import java.util.ArrayList;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import Task1.Task1;
 import Task2.Task2;
+import Task3.Task3;
 
 public class RunTests {
 
@@ -80,6 +83,48 @@ public class RunTests {
 			Task2 task2 = new Task2();
 			int[] actual = task2.findMatch(7);
 	        Assert.assertArrayEquals(expected, actual);
+		}
+
+
+		@Test
+		public void testTask31()
+		{
+			Task3 task3 = new Task3();
+			ArrayList<Integer> expected = new ArrayList<>();
+			expected.add(3);
+			expected.add(6);
+			expected.add(9);
+			ArrayList<Integer> actual = task3.countMultipleAliquant(10, 1);
+	        Assert.assertEquals(expected, actual);
+		}
+
+		@Test
+		public void testTask32()
+		{
+			Task3 task3 = new Task3();
+			ArrayList<Integer> expected = new ArrayList<>();
+			ArrayList<Integer> actual = task3.countMultipleAliquant(0, 0);
+			Assert.assertEquals(expected, actual);
+
+		}
+
+		@Test
+		public void testTask33()
+		{
+			Task3 task3 = new Task3();
+			ArrayList<Integer> expected = new ArrayList<>();
+			expected.add(9);
+			ArrayList<Integer> actual = task3.countMultipleAliquant(1, 9);
+		}
+
+		@Test
+		public void testTask34()
+		{
+			Task3 task3 = new Task3();
+			ArrayList<Integer> expected = new ArrayList<>();
+			expected.add(12);
+			expected.add(18);
+			ArrayList<Integer> actual = task3.countMultipleAliquant(10, 10);
 		}
 
 

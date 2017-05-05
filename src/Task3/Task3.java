@@ -23,19 +23,20 @@ public class Task3 {
 	 */
 	private Scanner input = new Scanner(System.in);
 
+	public int counter = 0;
 	/**
 	 * Use this to run 3rd Task.
 	 */
 	public void runTask3() {
 		System.out.println("Given a positive integer n ,a_1..a_n. How many numbers multiple 3 and aliquant 5 ");
 
-		int n = 0;
-		int a = 0;
+		int n;
+		int a;
 
 		n = inputData("n= ");
 		a = inputData("a= ");
 
-		countMultipleAliquant(n, a);
+		showResult(countMultipleAliquant(n, a));
 	}
 
 	/**
@@ -55,10 +56,11 @@ public class Task3 {
 	 * @param n - how many numbers need to check.
 	 * @param a - start number.
 	 */
-	private void countMultipleAliquant(int n, int a) {
+	public ArrayList<Integer> countMultipleAliquant(int n, int a) {
 		boolean noArgs = true;
-		int counter = 0;
 		ArrayList<Integer> numbers = new ArrayList<>();
+		ArrayList<Integer> resources = new ArrayList<>();
+
 		for (int i = 0; i < n; i++) {
 			numbers.add(a);
 			a++;
@@ -66,7 +68,7 @@ public class Task3 {
 
 		for (Integer number : numbers) {
 			if (number % MULTIPLE_NUMBER == 0 && number % ALIQUANT_NUMBER != 0) {
-				System.out.println("Number a = " + number + " multiple 3 and aliquant 5");
+				resources.add(number);
 				counter++;
 				noArgs = false;
 			}
@@ -74,7 +76,17 @@ public class Task3 {
 		if (noArgs) {
 			System.out.println("There are no numbers multiple 3 and aliquant 5");
 		}
+		return resources;
+	}
 
+	/**
+	 * Use this method to show result.
+	 * @param numbers - list, which to display.
+	 */
+	private void showResult(ArrayList<Integer> numbers) {
+		for (Integer number : numbers) {
+			System.out.println("Number a = " + number + " multiple 3 and aliquant 5");
+		}
 		System.out.println("There are " + counter + " numbers");
 	}
 }
