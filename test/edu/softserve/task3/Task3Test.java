@@ -18,13 +18,6 @@ public class Task3Test {
         List<Integer> list = new ArrayList<>();
         Task3 test = new Task3();
         list.addAll(Arrays.asList(153,370,371,407,1634,8208,9474));
-     /*   list.add(153);
-        list.add(370);
-        list.add(371);
-        list.add(407);
-        list.add(1634);
-        list.add(8208);
-        list.add(9474);*/
         assertEquals(list, test.task562());
     }
 }
