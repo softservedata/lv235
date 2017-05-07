@@ -59,8 +59,8 @@ public class Task182 {
 		}
 
 		System.out.println("Generated numbers array : " + Arrays.toString(numbers));
-		System.out.println("Кількість членів послідовності які діляться на 5 і не діляться на 7: " + count);
-		System.out.println("Сума членів послідовності які діляться на 5 і не діляться на 7: " + arraySum);
+		System.out.println(" The number of sequence members that div on 5 and do not div on 7 : " + count);
+		System.out.println("The sum of number of sequence members that div on 5 and do not div on 7: " + arraySum);
 
 	}
 
