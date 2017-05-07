@@ -9,9 +9,6 @@ import com.softserve.edu.logicTask.task107.Task107;
 
 public class Task107Test {
 
-    @Before
-    public void pre(){
-    }
     
     @Test
     public void test() {

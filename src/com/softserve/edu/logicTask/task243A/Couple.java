@@ -20,8 +20,8 @@ package com.softserve.edu.logicTask.task243A;
 public class Couple {
 
 /**
- * @param x first number of triplet.
- * @param y first number of triplet.
+ * @param x first number of couple.
+ * @param y first number of couple.
  */
     public Couple(final int x, final int y) {
         this.x = x;
@@ -35,7 +35,7 @@ public class Couple {
 
     /**
      *
-     * @return part of triplet(x, y).
+     * @return part of couple(x, y).
      */
     public int getX() {
         return x;
@@ -43,7 +43,7 @@ public class Couple {
 
     /**
      *
-     * @return part of triplet(x, y, z).
+     * @return part of couple(x, y).
      */
     public int getY() {
         return y;
@@ -52,7 +52,7 @@ public class Couple {
     /**
      *
      * @param x
-     *            part of triplet(x, y, z).
+     *            part of couple(x, y).
      */
     public void setX(final int x) {
         this.x = x;
@@ -61,10 +61,41 @@ public class Couple {
     /**
      *
      * @param y
-     *            part of triplet(x, y, z).
+     *            part of couple(x, y).
      */
     public void setY(final int y) {
         this.y = y;
+    }
+
+    /**
+     * I need Override to equals.
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + x;
+        result = prime * result + y;
+        return result;
+    }
+
+    /**
+     * I need Override to equals.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Couple other = (Couple) obj;
+        if (x != other.x)
+            return false;
+        if (y != other.y)
+            return false;
+        return true;
     }
 
     /**
