@@ -16,7 +16,7 @@ public class Task3 {
      */
     private static final int THREE = 3;
     /**
-     * NUMBER_TEN.
+     * NUMBER_FOUR.
      */
     private static final int FOUR = 4;
     /**
@@ -24,20 +24,15 @@ public class Task3 {
      */
     private static final int TEN = 10;
     /**
-     * NUMBER TEN_THOUSAND.
-     */
-    private static final int TEN_THOUSAND = 10000;
-
-    /**
      * method compute.
      * Task562.
      *
-     * @return sum n.
+     * @return Amstrong digits
      */
 
     public List<Integer> task562() {
         List<Integer> result = new ArrayList<>();
-        for (int i = TEN; i < TEN_THOUSAND; i++) {
+        for (int i = TEN; i < 9999; i++) {
             int n = i;
             int sum = 0;
             while (n > 0) {
