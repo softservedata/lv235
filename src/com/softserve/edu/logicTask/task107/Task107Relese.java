@@ -46,7 +46,14 @@ public class Task107Relese extends Task107 {
     public static void main(final String[] args) {
 
         Task107Relese task107Relese = new Task107Relese();
-
+        task107Relese.console(task107Relese);
+    }
+    /**
+     * Method main documentation comment.
+     *
+     * @param task107Relese Instance of class Task107Relese.
+     */
+    public void console(final Task107Relese task107Relese) {
         int incomingNumber; /* incoming number */
         boolean isRun = true;
         while (isRun) {
