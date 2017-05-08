@@ -12,10 +12,6 @@ import java.util.List;
 
 public class Task224 {
     /**
-     * number.
-     */
-    private int number;
-    /**
      * Blah.
      */
     private List<Integer> listOfDivisors = new LinkedList<Integer>();
@@ -24,18 +20,10 @@ public class Task224 {
      * Constructor with perameter.
      * @param n is natural number.
      */
-    public Task224(final int n) {
-        this.number = n;
+    public Task224() {
     }
 
-    /**
-     * @return number.
-     */
-    public int getNumber() {
-        return number;
-    }
-
-    /**
+       /**
      * @return current list of divisors
      */
     public List<Integer> getListOfDivisors() {
@@ -53,7 +41,7 @@ public class Task224 {
      * Method for finding all natural divisors of n.
      * @return list on natural divisors.
      */
-    public List<Integer> calculate() {
+    public List<Integer> calculate(final int number) {
         if (number > 0) {
             for (int i = 1; i <= number; i++) {
                 if ((number % i) == 0) {
@@ -66,7 +54,7 @@ public class Task224 {
                         + " non-natural number.");
             } catch (NonNaturalNumberException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
         return getListOfDivisors();

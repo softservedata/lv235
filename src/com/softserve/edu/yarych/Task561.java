@@ -15,10 +15,6 @@ public class Task561 {
      */
     public static final int MAXIMUM_REMAINDER = 10;
     /**
-     * number.
-     */
-    private int number;
-    /**
      * List for keeping needed numbers.
      */
     private List<Integer> listOfNumbers = new LinkedList<Integer>();
@@ -29,13 +25,6 @@ public class Task561 {
     public Task561() {
     }
 
-    /**
-     * Constructor with perameter.
-     * @param n is natural number.
-     */
-    public Task561(final int n) {
-        this.number = n;
-    }
     /**
      * @return current list with numbers.
      */
@@ -55,7 +44,7 @@ public class Task561 {
      * @param number is a natural number from user.
      * @return list of calculated numbers.
      */
-    public List<Integer> calculate() {
+    public List<Integer> calculate(final int number) {
         int decimal = MAXIMUM_REMAINDER;
 
         for (int i = 1; i < number; i++) {

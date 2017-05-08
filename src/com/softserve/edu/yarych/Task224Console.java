@@ -19,7 +19,6 @@ public class Task224Console extends Task224 {
      * Default constructor from superclass.
      */
     public Task224Console(int n) {
-        super(n);
     }
 
     /**
@@ -30,8 +29,8 @@ public class Task224Console extends Task224 {
         
         System.out.println("Enter natural number: ");
         int n = sc.nextInt();
-        Task224 number = new Task224(n);
-        number.calculate();
+        Task224 number = new Task224();
+        number.calculate(n);
         for (Integer i : number.getListOfDivisors()) {
             System.out.println(i);
         }

@@ -26,11 +26,11 @@ public class Task561Console extends Task561 {
     public static void main(final String[] args) {
         System.out.println("Enter natural number: ");
         int n = sc.nextInt();
-        Task561 number = new Task561(n);
+        Task561 number = new Task561();
         if (n <= 0) {
             System.out.println("You have entered non-natural number.");
         } else {
-            number.calculate();
+            number.calculate(n);
             for (Integer i : number.getListOfNumbers()) {
                 System.out.println(i);
             }
