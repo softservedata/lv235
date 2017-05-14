@@ -40,7 +40,7 @@ public class Task182 {
 	}
 
 	// метод для рахування значень
-	public static void printCalculatedValues(int arrayLength, int leftArrayBorder) {
+	public static int printCalculatedValues(int arrayLength, int leftArrayBorder) {
 
 		int[] numbers = new int[arrayLength];
 		int arraySum = 0;
@@ -61,7 +61,7 @@ public class Task182 {
 		System.out.println("Generated numbers array : " + Arrays.toString(numbers));
 		System.out.println(" The number of sequence members that div on 5 and do not div on 7 : " + count);
 		System.out.println("The sum of number of sequence members that div on 5 and do not div on 7: " + arraySum);
-
+		return arraySum;
 	}
 
 }
