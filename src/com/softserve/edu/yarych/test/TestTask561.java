@@ -26,9 +26,7 @@ public class TestTask561 {
 
     @Test
     public void testCalculate1() {
-        expected.add(1);
-        expected.add(5);
-        expected.add(6);
+        expected = target.calculate(16);
         List<Integer> actual = target.calculate(15);
         Assert.assertEquals(expected, actual);
     }
@@ -39,8 +37,24 @@ public class TestTask561 {
         expected.add(5);
         expected.add(6);
         expected.add(25);
-        List<Integer> actual = target.calculate(27);
+        expected.add(76);
+        expected.add(376);
+        expected.add(625);
+        expected.add(9376);
+        expected.add(83647);
+        expected.add(483647);
+        expected.add(7483647);
+        expected.add(47483647);
+        expected.add(147483647);
+        List<Integer> actual = target.calculate(1000000000);
         Assert.assertEquals(expected, actual);
+    }
+    
+    @Test 
+    public void testCalculate3() {
+        List<Integer> actual = target.calculate(0);
+        Assert.assertEquals(expected, actual);
+
     }
 
 }

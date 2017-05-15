@@ -23,12 +23,10 @@ public class TestTask325Test {
     public void tearDown() {
         target = null;
     }
+  
     @Test
     public void testCalculate1() {
-        expected.add(1);
-        expected.add(3);
-        expected.add(5);
-        List<Integer> actual = target.calculate(15);
+        List<Integer> actual = target.calculate(0);
         Assert.assertEquals(expected, actual);
     }
 
@@ -37,6 +35,15 @@ public class TestTask325Test {
         expected.add(1);
         expected.add(17);
         List<Integer> actual = target.calculate(17);
+        Assert.assertEquals(expected, actual);
+    }
+    
+    @Test
+    public void testCalculate3() {
+        expected.add(1);
+        expected.add(3);
+        expected.add(11);
+        List<Integer> actual = target.calculate(99);
         Assert.assertEquals(expected, actual);
     }
 }

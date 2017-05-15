@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.softserve.edu.yarych.NonNaturalNumberException;
 import com.softserve.edu.yarych.Task224;
 
 public class TestTask224 {
@@ -34,7 +35,7 @@ public class TestTask224 {
 
     @Test
     public void testCalculate2() {
-        List<Integer> expected = new LinkedList<Integer>();
+        expected = new LinkedList<Integer>();
         expected.add(1);
         expected.add(7);
         expected.add(11);
@@ -45,8 +46,7 @@ public class TestTask224 {
     
     @Test
     public void testCalculate3() {
-        List<Integer> expected = new LinkedList<Integer>();
-        List<Integer> actual = target.calculate(-1);
-        Assert.assertNotEquals(expected, actual);
+        List<Integer> actual = target.calculate(0);
+        Assert.assertEquals(expected, actual);
     }
 }

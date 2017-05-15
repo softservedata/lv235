@@ -56,16 +56,25 @@ public class Task325 {
      * @return list of simple divisors.
      */
     public List<Integer> calculate(final int number) {
-        for (int i = 1; i <= number; i++) {
-            if ((number % i) == 0) {
-                for (int j = 2; j <= Math.sqrt(i); j++) {
-                    if (i % j == 0) {
-                        isSimple = false;
+        if (number > 0) {
+            for (int i = 1; i <= number; i++) {
+                if ((number % i) == 0) {
+                    for (int j = 2; j <= (i - 1); j++) {
+                        if (i % j == 0) {
+                            isSimple = false;
+                        }
+                    }
+                    if (isSimple) {
+                        listOfDivisors.add(i);
                     }
                 }
-                if (isSimple) {
-                    listOfDivisors.add(i);
-                }
+            }          
+        } else {
+            try {
+                throw new NonNaturalNumberException("You have entered"
+                        + " non-natural number.");
+            } catch (NonNaturalNumberException e) {
+                e.printStackTrace();
             }
         }
         return getListOfDivisors();

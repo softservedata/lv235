@@ -53,8 +53,7 @@ public class Task224 {
                 throw new NonNaturalNumberException("You have entered"
                         + " non-natural number.");
             } catch (NonNaturalNumberException e) {
-                // TODO Auto-generated catch block
-//                e.printStackTrace();
+                e.printStackTrace();
             }
         }
         return getListOfDivisors();

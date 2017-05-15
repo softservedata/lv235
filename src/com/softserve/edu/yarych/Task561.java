@@ -47,13 +47,22 @@ public class Task561 {
     public List<Integer> calculate(final int number) {
         int decimal = MAXIMUM_REMAINDER;
 
-        for (int i = 1; i < number; i++) {
-            int square = (int) Math.pow(i, 2);
-            if (i == decimal) {
-                decimal *= MAXIMUM_REMAINDER;
-            }
-            if (i == square % decimal) {
-                listOfNumbers.add(i);
+        if (number > 0) {
+            for (int i = 1; i < number; i++) {
+                int square = (int) Math.pow(i, 2);
+                if (i == decimal) {
+                    decimal *= MAXIMUM_REMAINDER;
+                }
+                if (i == square % decimal) {
+                    listOfNumbers.add(i);
+                }
+            }            
+        } else {
+            try {
+                throw new NonNaturalNumberException("You have entered"
+                        + " non-natural number.");
+            } catch (NonNaturalNumberException e) {
+                e.printStackTrace();
             }
         }
         return getListOfNumbers();
