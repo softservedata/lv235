@@ -8,7 +8,7 @@ public class Task554 {
 	 * Task #554. Given a positive integer n. Get all the triples of natural
 	 * numbers, each of which does not exceed n. a^2+b^2=c^2 (a<=b<=c<=n)
 	 * @throws IsNotNaturalNumberException
-	 */
+	 */ 
 	public String task554(int number) throws IsNotNaturalNumberException {
 		if (isNatural(number) == false) {
 			throw new IsNotNaturalNumberException();

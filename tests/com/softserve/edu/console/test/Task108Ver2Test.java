@@ -33,7 +33,7 @@ public class Task108Ver2Test {
 
 	@Test(expected = IsNotNaturalNumberException.class)
 	public void task108Test2() throws IsNotNaturalNumberException {
-		int notNatural = 0;
+		int notNatural = 0; 
 		task108Ver2.task108(notNatural);
 	}
 
