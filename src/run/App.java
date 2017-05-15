@@ -2,9 +2,9 @@ package run;
 
 import java.util.Scanner;
 
-import Task1.Task1;
-import Task2.Task2;
-import Task3.Task3;
+import task1.Task1;
+import task2.Task2;
+import task3.Task3;
 
 /**
  * Main class.

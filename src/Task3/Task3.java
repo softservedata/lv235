@@ -1,6 +1,8 @@
-package Task3;
+package task3;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -56,10 +58,15 @@ public class Task3 {
 	 * @param n - how many numbers need to check.
 	 * @param a - start number.
 	 */
-	public ArrayList<Integer> countMultipleAliquant(int n, int a) {
+	public List<Integer> countMultipleAliquant(int n, int a) {
+
 		boolean noArgs = true;
-		ArrayList<Integer> numbers = new ArrayList<>();
-		ArrayList<Integer> resources = new ArrayList<>();
+		List<Integer> numbers = new ArrayList<>();
+		List<Integer> resources = new ArrayList<>();
+
+		if ( n <= 0 || a <= 0) {
+			throw new NumberFormatException();
+		}
 
 		for (int i = 0; i < n; i++) {
 			numbers.add(a);
@@ -74,7 +81,7 @@ public class Task3 {
 			}
 		}
 		if (noArgs) {
-			System.out.println("There are no numbers multiple 3 and aliquant 5");
+			throw new NoSuchElementException("There are no numbers multiple 3 and aliquant 5");
 		}
 		return resources;
 	}
@@ -83,7 +90,7 @@ public class Task3 {
 	 * Use this method to show result.
 	 * @param numbers - list, which to display.
 	 */
-	private void showResult(ArrayList<Integer> numbers) {
+	private void showResult(List<Integer> numbers) {
 		for (Integer number : numbers) {
 			System.out.println("Number a = " + number + " multiple 3 and aliquant 5");
 		}

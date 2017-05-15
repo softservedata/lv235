@@ -1,4 +1,4 @@
-package Task1;
+package task1;
 
 import java.util.Scanner;
 
@@ -36,7 +36,9 @@ public class Task1 {
 		System.out.println("Enter n.");
 		System.out.print(" n=");
 		n = input.nextInt();
-		//If you enter a letter, all crash..
+		if (n <= 0) {
+			throw new NumberFormatException("Try to enter a positive integer > 0");
+		}
 		return n;
 	}
 
@@ -49,8 +51,8 @@ public class Task1 {
 	public int findDigits(int n) {
 		int m;
 		int counter = 0;
-		if (n == 0) {
-			return 1;
+		if (n <= 0) {
+			throw new NumberFormatException();
 		}
 		m = n;
 		while (m != 0) {
