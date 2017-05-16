@@ -16,30 +16,27 @@ import java.util.Scanner;
  */
 
 public class Task182 {
-
-	public static int printCalculatedValues(int arrayLength, int leftArrayBorder) {
-
+	public static int[] printCalculatedValues(int arrayLength, int leftArrayBorder) throws Exception {
 		int[] numbers = new int[arrayLength];
 		int arraySum = 0;
 		int count = 0;
-
 		for (int i = 0; i < numbers.length; i++) {
-
 			numbers[i] = (int) ((i * 100) + leftArrayBorder);
-
 			if (numbers[i] % 5 == 0 && numbers[i] % 7 != 0) {
 				arraySum += numbers[i];
 				count++;
-
 			}
-
 		}
-
-//		System.out.println("Generated numbers array : " + Arrays.toString(numbers));
-//		System.out.println("The number of sequence members that div on 5 and do not div on 7 : " + count);
-//		System.out.println("The sum of number of sequence members that div on 5 and do not div on 7: " + arraySum);
-		
-		return (arraySum + count);
+		int[] arr = new int[] { arraySum, count };
+		if (arr[0] == 0 && arr[1] == 0) {
+			throw new Exception();
+		}
+		// System.out.println("Generated numbers array : " +
+		// Arrays.toString(numbers));
+		// System.out.println("The number of sequence members that div on 5 and
+		// do not div on 7 : " + count);
+		// System.out.println("The sum of number of sequence members that div on
+		// 5 and do not div on 7: " + arraySum);
+		return arr;
 	}
-
 }
