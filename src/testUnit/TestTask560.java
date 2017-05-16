@@ -27,22 +27,21 @@ public class TestTask560 {
 	@Test
 	public void checkFriedlyIntegers() {
 		
-		int expected1 = 220;
-		int expected2 = 284;
-		int actual = Task560.checkFriedlyIntegers();
-		assertEquals(expected1,expected1,actual);
+		int[] expected = new int[] { 220, 284 };
+		int []actual = Task560.checkFriedlyIntegers();
+		assertArrayEquals(expected, actual);
 		
 	}
-	@Test
-	public void checkFriedlyIntegers2() {
-		
-		int expected1 = 1;
-		int expected2 = 2;
-		int actual = Task560.checkFriedlyIntegers();
-		assertFalse(false);
-		assertEquals(expected1,expected1,actual);
+//	@Test
+//	public void checkFriedlyIntegers2() {
+//		
+//		int expected1 = 1;
+//		int expected2 = 2;
+//		int actual = Task560.checkFriedlyIntegers();
+//		assertFalse(false);
+//		assertEquals(expected1,expected1,actual);
 		
 	}
-	}
+	
 
 
