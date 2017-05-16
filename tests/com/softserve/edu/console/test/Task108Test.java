@@ -14,34 +14,34 @@ public class Task108Test {
 	@Test
 	public void task108Test() throws IsNotNaturalNumberException {
 		Task108dto expected = new Task108dto(4);
-		Task108dto actual = task108.compute(new Task108dto(2));
+		Task108dto actual = task108.compute(2);
 		assertEquals(expected, actual);
 	}
 
 	@Test(expected = IsNotNaturalNumberException.class)
 	public void task108Test2() throws IsNotNaturalNumberException {
 		int notNatural = 0;
-		task108.compute(new Task108dto(notNatural));
+		task108.compute(notNatural);
 	}
 
 	@Test
 	public void task108Test3() throws IsNotNaturalNumberException {
 		Task108dto expected = new Task108dto(2);
-		Task108dto actual = task108.compute(new Task108dto(1));
+		Task108dto actual = task108.compute(1);
 		assertEquals(expected, actual);
 	}
 
 	@Test
 	public void task108Test4() throws IsNotNaturalNumberException {
 		Task108dto expected = new Task108dto(2048);
-		Task108dto actual = task108.compute(new Task108dto(1024));
+		Task108dto actual = task108.compute(1024);
 		assertEquals(expected, actual);
 	}
 
 	@Test(expected = IsNotNaturalNumberException.class)
 	public void task108Test5() throws IsNotNaturalNumberException {
 		int notNatural = -1;
-		task108.compute(new Task108dto(notNatural));
+		task108.compute(notNatural);
 	}
 
 }

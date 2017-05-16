@@ -3,7 +3,7 @@ package com.softserve.edu.interfaces;
 import com.softserve.edu.dto.Task108dto;
 
 public interface ITask108 {
-	Task108dto enterNaturalNumber();
+	int enterNaturalNumber();
 
 	void toConsole(Task108dto d);
 

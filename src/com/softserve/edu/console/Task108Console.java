@@ -22,12 +22,12 @@ public class Task108Console extends Task108 implements ITask108 {
 
 	/***/
 	@Override
-	public Task108dto enterNaturalNumber() {
+	public int enterNaturalNumber() {
 		System.out.println("Enter a natural number n: ");
 		Scanner scanner = new Scanner(System.in);
 		int input = scanner.nextInt();
 		scanner.close();
-		return new Task108dto(input);
+		return input;
 	}
 
 	/***/

@@ -7,9 +7,7 @@ public class Task108 {
 	 * Task #108. Given a positive integer n. Get the smallest number 2 ^ r,
 	 * that is bigger than n.
 	 */
-	public Task108dto compute(Task108dto task108dto)
-			throws IsNotNaturalNumberException {
-		int number = task108dto.getNumber();
+	public Task108dto compute(int number) throws IsNotNaturalNumberException {
 		if (isNatural(number) == false) {
 			throw new IsNotNaturalNumberException();
 		}
