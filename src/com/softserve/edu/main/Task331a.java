@@ -11,7 +11,7 @@ public class Task331a {
 	 * @throws IsNotNaturalNumberException
 	 */
 	public String task331a(int number) throws IsNotNaturalNumberException {
-		if (isNatural(number) == false) {
+		if (isNatural(number) == false) { 
 			throw new IsNotNaturalNumberException();
 		}
 		List<Integer> list = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Task331a {
 						list.add(a);
 						list.add(b);
 						list.add(c);
-						return list.toString();
+						return list.toString(); 
 					}
 				}
 			}
