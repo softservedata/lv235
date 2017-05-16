@@ -1,9 +1,11 @@
 package com.softserve.edu.interfaces;
 
+import com.softserve.edu.dto.Task108dto;
+
 public interface ITask108 {
-	String enterNaturalNumber();
+	Task108dto enterNaturalNumber();
 
-	boolean isNatural(int number);
+	void toConsole(Task108dto d);
 
-	String toConsole(int number);
+	void start();
 }

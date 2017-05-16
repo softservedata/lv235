@@ -7,7 +7,7 @@ import com.softserve.edu.main.IsNotNaturalNumberException;
 import com.softserve.edu.main.Task554;
 
 public class Task554Console extends Task554 implements ITask554 {
-
+	/***/
 	public static void main(String[] args) {
 		Task554Console task554Console = new Task554Console();
 		task554Console.start();
@@ -15,6 +15,7 @@ public class Task554Console extends Task554 implements ITask554 {
 		// s = s.substring(0, s.length() - 1);
 	}
 
+	/***/
 	@Override
 	public void start() {
 		try {
@@ -24,6 +25,7 @@ public class Task554Console extends Task554 implements ITask554 {
 		}
 	}
 
+	/***/
 	@Override
 	public int enterNaturalNumber() {
 		System.out.println("Enter a natural number n: ");
@@ -32,6 +34,7 @@ public class Task554Console extends Task554 implements ITask554 {
 		return scanner.nextInt();
 	}
 
+	/***/
 	@Override
 	public void toConsole(String list) {
 		list = list.replaceAll(",", "");

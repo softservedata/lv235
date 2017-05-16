@@ -3,7 +3,7 @@ package com.softserve.edu.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.softserve.edu.console.Task108ConsoleVer2;
+import com.softserve.edu.console.Task108Console;
 import com.softserve.edu.console.Task331aConsole;
 import com.softserve.edu.console.Task554Console;
 
@@ -34,7 +34,7 @@ public class View {
 			Scanner scanner = new Scanner(System.in);
 			switch (scanner.nextInt()) {
 			case 1:
-				Task108ConsoleVer2 task108ConsoleVer2 = new Task108ConsoleVer2();
+				Task108Console task108ConsoleVer2 = new Task108Console();
 				task108ConsoleVer2.start();
 				break;
 			case 2:

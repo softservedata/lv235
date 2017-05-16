@@ -1,59 +1,40 @@
 package com.softserve.edu.console;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import com.softserve.edu.dto.Task108dto;
 import com.softserve.edu.interfaces.ITask108;
+import com.softserve.edu.main.IsNotNaturalNumberException;
 import com.softserve.edu.main.Task108;
 
+/***/
 public class Task108Console extends Task108 implements ITask108 {
-
+	/***/
+	@Override
 	public void start() {
-		Task108Console task108Console = new Task108Console();
-		task108Console.toConsole(task108Console
-				.task108(stringToInt(enterNaturalNumber())));
-	}
-
-	public int task108(int number) {
-		while (getResult() <= number) {
-			setResult((int) Math.pow(2, getPower()));
-			setPower(getPower() + 1);
+		try {
+			toConsole(compute(enterNaturalNumber()));
+		} catch (IsNotNaturalNumberException | InputMismatchException e) {
+			System.out.println("Input is not a natural number");
 		}
-		return getResult();
 	}
 
-	public int stringToInt(String str) {
-		return Integer.parseInt(str);
-	}
-
+	/***/
 	@Override
-	public String enterNaturalNumber() {
+	public Task108dto enterNaturalNumber() {
 		System.out.println("Enter a natural number n: ");
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in); // Can't close scanner here
-		String result = scanner.next();
-		setNumber(stringToInt(result));
-		if (isNatural(getNumber()) == false) {
-			return "Input isn't a natural number";
-		}
-		return result;
+		Scanner scanner = new Scanner(System.in);
+		int input = scanner.nextInt();
+		scanner.close();
+		return new Task108dto(input);
 	}
 
+	/***/
 	@Override
-	public boolean isNatural(int number) {
-		if (number < 1) {
-			return false;
-		}
-		return true;
-	}
-
-	@Override
-	public String toConsole(int number) {
-		return "The smallest number 2^r, that is bigger than n is: \n" + number;
-	}
-
-	public void toConsole2(int number) {
+	public void toConsole(Task108dto d) {
 		System.out
 				.println("The smallest number 2^r, that is bigger than n is: \n"
-						+ number);
+						+ d);
 	}
 }

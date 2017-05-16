@@ -1,46 +1,31 @@
 package com.softserve.edu.main;
 
+import com.softserve.edu.dto.Task108dto;
+
 public class Task108 {
-	int number;
-	int power;
-	int result;
-
-	public Task108() { 
+	/**
+	 * Task #108. Given a positive integer n. Get the smallest number 2 ^ r,
+	 * that is bigger than n.
+	 */
+	public Task108dto compute(Task108dto task108dto)
+			throws IsNotNaturalNumberException {
+		int number = task108dto.getNumber();
+		if (isNatural(number) == false) {
+			throw new IsNotNaturalNumberException();
+		}
+		int power = 0;
+		int result = 0;
+		while (result <= number) {
+			result = (int) Math.pow(2, power);
+			power++;
+		}
+		return new Task108dto(result);
 	}
 
-	public Task108(int number, int power, int result) {
-		this.number = number;
-		this.power = power;
-		this.result = result;
-	}
-
-	public int getNumber() {
-		return number;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
-	public int getPower() {
-		return power;
-	}
-
-	public void setPower(int power) {
-		this.power = power;
-	}
-
-	public int getResult() {
-		return result;
-	}
-
-	public void setResult(int result) {
-		this.result = result;
-	}
-
-	@Override
-	public String toString() {
-		return "Task108 [number=" + number + ", power=" + power + ", result="
-				+ result + "]";
+	public boolean isNatural(int number) {
+		if (number < 1) {
+			return false;
+		}
+		return true;
 	}
 }
