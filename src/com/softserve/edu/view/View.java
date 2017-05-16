@@ -34,8 +34,8 @@ public class View {
 			Scanner scanner = new Scanner(System.in);
 			switch (scanner.nextInt()) {
 			case 1:
-				Task108Console task108ConsoleVer2 = new Task108Console();
-				task108ConsoleVer2.start();
+				Task108Console task108Console = new Task108Console();
+				task108Console.start();
 				break;
 			case 2:
 				Task331aConsole task331aConsole = new Task331aConsole();
