@@ -6,7 +6,7 @@
    * lying in the range from 200 to 300. 
    *@author Pyrogov
    */
-package pyrogov;
+package task560;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class Task560 {
 	public final static ArrayList<Integer> allFriedlyIntegers = new ArrayList<Integer>(Arrays.asList(220, 284, 1184,
 			1210, 2620, 2924, 5020, 5564, 6232, 6368, 10744, 10856, 12285, 14595, 17296, 18416, 63020, 76084));
 
-	private static void checkFriedlyIntegers() {
+	public static int checkFriedlyIntegers() {
 
 		ArrayList<Integer> filteredFriedlyIntegers = new ArrayList<Integer>();
 		for (Integer i = startRangeValue; i <= endRangeValue; i++) {
@@ -41,16 +41,11 @@ public class Task560 {
 
 			}
 		}
+		return 0;
 
 	}
 
-	public static void main(String[] args) {
-
-		checkFriedlyIntegers();
-		// System.out.println("There are next amicable numbers in current range
-		// " + getFriedlyIntegers().toString());
-
-	}
+	
 
 	private static int getDividersSum(final int num) {
 
