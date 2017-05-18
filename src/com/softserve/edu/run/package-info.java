@@ -3,4 +3,4 @@
  * @author Volodymyr Zubchyns'kyi
  */
 
-package run;
+package com.softserve.edu.run;

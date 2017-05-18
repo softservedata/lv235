@@ -1,11 +1,12 @@
-package task2;
+package com.softserve.edu.task2;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
  * class for Task 2.
  * @author Volodymyr Zubchyns'kyi
- *
  */
 public class Task2 {
 
@@ -15,7 +16,7 @@ public class Task2 {
 	private Scanner input = new Scanner(System.in);
 
 	/**
-	 * Use this method to run Task 2.
+	 * Run Task 2.
 	 */
 	public void runTask2() {
 		System.out.println("Given a positive integer n. Specify the following numbers x,y,z,t, when n=x^2+y^2+z^2+t^2");
@@ -24,18 +25,17 @@ public class Task2 {
 	}
 
 	/**
-	 * Use this to find x^2 + y^2 + z^2 + t^2.
+	 * Find x^2 + y^2 + z^2 + t^2.
 	 * @param n - inputed by user.
 	 * @return array of  x^2; y^2; z^2; t^2.
 	 */
-	public int[] findMatch(int n) {
-
+	public List<Properties> findMatch(int n) {
+		validateNumber(n);
 		int m;
 		int x, y, z, t;
 		int counter;
-
+		List<Properties> prop = new ArrayList<>();
 		m = n;
-
 		m = (int) Math.sqrt(m);
 		x = m * m;
 		m = n - x;
@@ -50,17 +50,26 @@ public class Task2 {
 		counter = m;
 		m = (int) Math.sqrt(m);
 		t = m * m;
-
+		prop.add(new Properties(n, x, y, z, t));
 		// Bug, , х-1.
 			if (x + y + z + t != n) {
-				System.out.println("Enter another number");
-				runTask2();
+				throw new ArithmeticException("Try another n");
 			}
-		return new int[] { n, x, y, z, t };
+		return prop;
 	}
 
 	/**
-	 * Use this method to input data from console.
+	 * Validate number n as positive integer.
+	 * @param n - entered number from console.
+	 */
+	private void validateNumber(int n) {
+		if (n <= 0) {
+			throw new NumberFormatException("Try to enter a positive integer > 0");
+		}
+	}
+
+	/**
+	 * Method to input data from console.
 	 * @return entered number n.
 	 */
 	private int inputData() {
@@ -69,11 +78,11 @@ public class Task2 {
 	}
 
 	/**
-	 * Use this to output data.
-	 * @param array - array to output.
+	 * Output data.
+	 * @param properties - list to output.
 	 */
-	private void showResult(int[] array) {
-		System.out.println("n=" + array[0] + " x^2=" + array[1] + " y^2=" + array[2] + " z^2=" + array[3] + " t^2=" + array[4]);
+	private void showResult(List<Properties> properties) {
+		System.out.println(properties);
 
 	}
 }

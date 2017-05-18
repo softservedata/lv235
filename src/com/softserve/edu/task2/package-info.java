@@ -2,4 +2,4 @@
  * This package contains my hometask 332
  * @author Volodymyr Zubchyns'kyi
  */
-package task2;
+package com.softserve.edu.task2;

@@ -1,4 +1,4 @@
-package task1;
+package com.softserve.edu.task1;
 
 import java.util.Scanner;
 
@@ -14,21 +14,19 @@ public class Task1 {
 	private Scanner input = new Scanner(System.in);
 
 	/**
-	 * Use this to run first task.
+	 * Run first task.
 	 */
 	public void runTask1() {
 		System.out.println("Given a positive integer. How many digits in the number n");
-
 		int n;
 		int counter;
-
 		n = inputData();
 		counter = findDigits(n);
 		showResult(n, counter);
 	}
 
 	/**
-	 * Use this method to input data from console.
+	 * Input data from console.
 	 * @return n - entered number.
 	 */
 	private int inputData() {
@@ -36,30 +34,34 @@ public class Task1 {
 		System.out.println("Enter n.");
 		System.out.print(" n=");
 		n = input.nextInt();
-		if (n <= 0) {
-			throw new NumberFormatException("Try to enter a positive integer > 0");
-		}
+		validateNumber(n);
 		return n;
 	}
 
 	/**
-	 * Use this method to find all digits.
+	 * Find all digits.
 	 * @param n - entered number.
-	 * @param counter - count, how many digits.
-	 * @return how many digits in number.
 	 */
 	public int findDigits(int n) {
 		int m;
 		int counter = 0;
-		if (n <= 0) {
-			throw new NumberFormatException();
-		}
+		validateNumber(n);
 		m = n;
 		while (m != 0) {
 			m = m / 10;
 			counter++;
 		}
 		return counter;
+	}
+
+	/**
+	 * Validate number n as positive integer.
+	 * @param n - entered number from console.
+	 */
+	private void validateNumber(int n) {
+		if (n <= 0) {
+			throw new NumberFormatException();
+		}
 	}
 
 	/**
@@ -72,11 +74,9 @@ public class Task1 {
 		case 0:
 			System.out.println("Number 0 has 1 digit");
 			break;
-
 		case 1:
 			System.out.println("Number " + n + " has " + counter + " digit");
 			break;
-
 		default:
 			System.out.println("Number " + n + " have " + counter + " digits");
 			break;
