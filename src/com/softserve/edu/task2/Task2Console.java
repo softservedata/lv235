@@ -1,13 +1,21 @@
 package com.softserve.edu.task2;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
+
 
 /**
- * cClass for console work with class Task2.
- * @author Ivan
+ * Class for console work with class Task2.
+ * @author author IRudyk
  */
-public class Task2Console extends Task2 {
+public class Task2Console {
+
+    /**
+     *object Task2.
+     */
+    private Task2 task2 = new Task2();
 
     /**
      * main.
@@ -22,36 +30,31 @@ public class Task2Console extends Task2 {
      * Task2 start work.
      */
     public void doTask() {
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(System.in));
         int n = 0;
         int m = 0;
-        while (true) {
             try {
                 System.out.print("Input n  ");
-                n = Integer.valueOf(scanner.next());
+                n = Integer.valueOf(br.readLine());
                 System.out.print("Input m  ");
-                m = Integer.valueOf(scanner.next());
+                m = Integer.valueOf(br.readLine());
 
-                writeToConsole(compute(n, m));
+                writeToConsole(task2.getCommonMultiples(n, m));
             } catch (ArithmeticException e) {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
                 System.out.println("number n, m must be natural");
-            } finally {
-                System.out.println("For continue click 'c' else click eni key");
-                String conf = scanner.next().toUpperCase();
-                if (!conf.equals("C")) {
-                    return;
-                }
+            } catch (IOException e) {
+                System.out.println("input integer value please");
             }
-        }
     }
 
     /**
      * method for writing on Console.
      * @param result data for Write
      */
-    public void writeToConsole(final ArrayList<Integer> result) {
+    public void writeToConsole(final List<Integer> result) {
         if (result.size() > 0) {
             for (int i : result) {
                 System.out.print(i + " ");

@@ -1,15 +1,23 @@
 package com.softserve.edu.task3;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
 
 
 /**
  * Class for console work with class Task3.
- * @author Ivan
+ * @author author IRudyk
  *
  */
-public class Task3Console extends Task3 {
+public class Task3Console {
+
+    /**
+     *object Task3.
+     */
+    private Task3 task3 = new Task3();
 
     /**
      * main().
@@ -24,33 +32,27 @@ public class Task3Console extends Task3 {
      * Task3 start work.
      */
     public void doTask() {
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(System.in));
         int n = 0;
-        while (true) {
             try {
                 System.out.print("Input n  ");
-                n = Integer.valueOf(scanner.next());
-
-                writeToConsole(compute(n));
+                n = Integer.valueOf(br.readLine());
+                writeToConsole(task3.getMarsenNumbers(n));
             } catch (ArithmeticException e) {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
                 System.out.println("number n must be natural");
-            } finally {
-                System.out.println("For continue click 'c' else click eni key");
-                String conf = scanner.next().toUpperCase();
-                if (!conf.equals("C")) {
-                    return;
-                }
+            } catch (IOException e) {
+                System.out.println("input integer value please");
             }
-        }
     }
 
     /**
      * method for writing on Console.
      * @param result data for Write
      */
-    public void writeToConsole(final ArrayList<Integer> result) {
+    public void writeToConsole(final List<Integer> result) {
         if (result.size() > 0) {
             for (int i : result) {
                 System.out.print(i + " ");

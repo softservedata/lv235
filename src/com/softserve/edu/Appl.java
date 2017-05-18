@@ -2,9 +2,9 @@ package com.softserve.edu;
 
 
 /**
- * Main class Appl.
  * @version 1.0
  * @author IRudyk
+ * class Appl
  */
 public final class Appl {
 

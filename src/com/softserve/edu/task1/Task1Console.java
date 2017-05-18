@@ -1,15 +1,22 @@
 package com.softserve.edu.task1;
 
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 
 /**
  * Class for console work with class Task1.
- * @author Ivan
+ * @author author IRudyk
  *
  */
-public class Task1Console extends Task1 {
+public class Task1Console {
 
+    /**
+     *object Task1.
+     */
+    private Task1 task1 = new Task1();
     /**
      * main().
      * @param args Parameters From Console
@@ -23,29 +30,24 @@ public class Task1Console extends Task1 {
      * Task1 start work.
      */
     public void doTask() {
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(
+                      new InputStreamReader(System.in));
         int n = 0;
         int m = 0;
-        while (true) {
             try {
                 System.out.print("Input n  ");
-                n = Integer.valueOf(scanner.next());
+                n = Integer.valueOf(reader.readLine());
                 System.out.print("Input m  ");
-                m = Integer.valueOf(scanner.next());
+                m = Integer.valueOf(reader.readLine());
 
-                writeToConsole(compute(n, m));
+                writeToConsole(task1.getSumDigitsOfNumber(n, m));
             } catch (ArithmeticException e) {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
                 System.out.println("number n, m must be natural");
-            } finally {
-                System.out.println("For continue click 'c' else click eni key");
-                String conf = scanner.next().toUpperCase();
-                if (!conf.equals("C")) {
-                    return;
-                }
+            } catch (IOException e) {
+                System.out.println("input integer value please");
             }
-        }
     }
 
     /**

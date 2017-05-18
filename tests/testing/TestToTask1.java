@@ -1,16 +1,12 @@
 package testing;
 
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
-import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.softserve.edu.task1.Task1;
-
 
 
 /**
@@ -19,25 +15,11 @@ import com.softserve.edu.task1.Task1;
  *
  */
 public class TestToTask1 {
-    /**
-     *
-     */
-    private Task1 task1 = new Task1();
-    /**
-     * method setUpBeforeClass().
-     * @throws Exception execute Exception
-     */
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-    }
 
     /**
-     * method tearDownAfterClass().
-     * @throws Exception execute Exception.
+     * object Task1.
      */
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
+    private Task1 task1;
 
     /**
      *
@@ -45,6 +27,7 @@ public class TestToTask1 {
      */
     @Before
     public void setUp() throws Exception {
+        task1 = new Task1();
     }
 
     /**
@@ -53,6 +36,7 @@ public class TestToTask1 {
      */
     @After
     public void tearDown() throws Exception {
+        task1 = null;
     }
 
     /**
@@ -61,8 +45,8 @@ public class TestToTask1 {
     @Test
     public void testTrueNull() {
         int expected = 0;
-        int actual = task1.compute(0, 0);
-        assertEquals(expected, actual);
+        int actual = task1.getSumDigitsOfNumber(0, 0);
+        Assert.assertEquals(expected, actual);
     }
 
     /**
@@ -71,8 +55,8 @@ public class TestToTask1 {
     @Test
     public void testNTrueNull() {
         int expected = 0;
-        int actual = task1.compute(32273, 0);
-        assertEquals(expected, actual);
+        int actual = task1.getSumDigitsOfNumber(32273, 0);
+        Assert.assertEquals(expected, actual);
     }
 
     /**
@@ -81,8 +65,8 @@ public class TestToTask1 {
     @Test
     public void testTrue1() {
         int expected = 5;
-        int actual = task1.compute(10001005, 3);
-        assertEquals(expected, actual);
+        int actual = task1.getSumDigitsOfNumber(10001005, 3);
+        Assert.assertEquals(expected, actual);
     }
 
     /**
@@ -91,8 +75,8 @@ public class TestToTask1 {
     @Test
     public void testTrue2() {
         int expected = 14;
-        int actual = task1.compute(3227, 4);
-        assertEquals(expected, actual);
+        int actual = task1.getSumDigitsOfNumber(3227, 4);
+        Assert.assertEquals(expected, actual);
     }
 
     /**
@@ -101,8 +85,8 @@ public class TestToTask1 {
     @Test
     public void testFalse1() {
         int expected = 10;
-        int actual = task1.compute(3417, 3);
-        assertNotEquals(expected, actual);
+        int actual = task1.getSumDigitsOfNumber(3417, 3);
+        Assert.assertNotEquals(expected, actual);
     }
 
     /**
@@ -111,7 +95,23 @@ public class TestToTask1 {
     @Test
     public void testFalse2() {
         int expected = 13;
-        int actual = task1.compute(3227, 4);
-        assertNotEquals(expected, actual);
+        int actual = task1.getSumDigitsOfNumber(3227, 4);
+        Assert.assertNotEquals(expected, actual);
+    }
+
+    /**
+     * test on NumberFormatException.
+     */
+    @Test(expected = NumberFormatException.class)
+    public void firstException() {
+        task1.getSumDigitsOfNumber(-1, -2);
+    }
+
+    /**
+     * test on ArithmeticException.
+     */
+    @Test(expected = ArithmeticException.class)
+    public void secondException() {
+        task1.getSumDigitsOfNumber(548644, 8);
     }
 }
