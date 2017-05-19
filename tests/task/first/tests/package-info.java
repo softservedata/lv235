@@ -2,4 +2,4 @@
  * @author Ivan.
  *
  */
-package testing;
+package task.first.tests;

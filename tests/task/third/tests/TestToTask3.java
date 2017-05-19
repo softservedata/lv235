@@ -1,12 +1,11 @@
-/**
- * 
- */
-package testing;
+
+package task.third.tests;
 
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -29,11 +28,11 @@ public class TestToTask3 {
    @Test
    public void testNBigg() {
        int [] arr = {2, 7, 11, 13, 17, 19, 23, 29};
-       ArrayList<Integer> expected = new ArrayList();
+       List<Integer> expected = new ArrayList();
        for (int i = 0; i < arr.length; i++) {
            expected.add(arr[i]);
        }
-       ArrayList<Integer> actual = task3.getMarsenNumbers(1000000000);
+       List<Integer> actual = task3.getMarsenNumbers(1000000000);
        assertEquals(expected, actual);
    }
 
@@ -43,11 +42,11 @@ public class TestToTask3 {
   @Test
   public void testNSmall() {
       int [] arr = {2};
-      ArrayList<Integer> expected = new ArrayList();
+      List<Integer> expected = new ArrayList();
       for (int i = 0; i < arr.length; i++) {
           expected.add(arr[i]);
       }
-      ArrayList<Integer> actual = task3.getMarsenNumbers(25);
+      List<Integer> actual = task3.getMarsenNumbers(25);
       assertEquals(expected, actual);
   }
 
@@ -56,8 +55,8 @@ public class TestToTask3 {
   */
  @Test
  public void testNNull() {
-     ArrayList<Integer> expected = new ArrayList();
-     ArrayList<Integer> actual = task3.getMarsenNumbers(0);
+     List<Integer> expected = new ArrayList();
+     List<Integer> actual = task3.getMarsenNumbers(0);
      assertEquals(expected, actual);
  }
 

@@ -1,5 +1,4 @@
-
-package testing;
+package task.second.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -13,7 +12,7 @@ import com.softserve.edu.task2.Task2;
 
 
 /**
- * @author Ivan
+ * @author IRudyk
  *
  */
 public class TestToTask2 {
@@ -28,8 +27,8 @@ public class TestToTask2 {
      */
     @Test
     public void testOnNull() {
-        ArrayList<Integer> expected = new ArrayList();
-        ArrayList<Integer> actual = task2.getCommonMultiples(0, 0);
+        List<Integer> expected = new ArrayList();
+        List<Integer> actual = task2.getCommonMultiples(0, 0);
         assertEquals(expected, actual);
     }
 
