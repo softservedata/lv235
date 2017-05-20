@@ -1,11 +1,12 @@
 package com.softserve.edu.interfaces;
 
-import com.softserve.edu.dto.Task108dto;
+import com.softserve.edu.dto.Task108Dto;
+import com.softserve.edu.main.IsNotNaturalNumberException;
 
 public interface ITask108 {
-	int enterNaturalNumber();
+	int naturalNumberInput() throws IsNotNaturalNumberException;
 
-	void toConsole(Task108dto d);
+	void toConsole(Task108Dto d);
 
 	void start();
 }

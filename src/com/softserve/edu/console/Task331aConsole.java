@@ -1,38 +1,64 @@
 package com.softserve.edu.console;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+
+import com.softserve.edu.dto.Task331aDto;
 import com.softserve.edu.interfaces.ITask331a;
 import com.softserve.edu.main.IsNotNaturalNumberException;
 import com.softserve.edu.main.Task331a;
+
 /***/
 public class Task331aConsole extends Task331a implements ITask331a {
-	/***/
-	public static void main(String[] args) {
+	/**
+	 * Main method for task #331a.
+	 * @param args
+	 */
+	public static void main(final String[] args) {
 		Task331aConsole task331aConsole = new Task331aConsole();
 		task331aConsole.start();
 	}
-	/***/
+
+	/**
+	 * Start method.
+	 */
 	@Override
 	public void start() {
 		try {
-			toConsole(task331a(enterNaturalNumber()));
+			toConsole(getListOfEqualSquareTripple(naturalNumberInput()));
 		} catch (IsNotNaturalNumberException | InputMismatchException e) {
-			System.out.println("Input is not a natural number");
+			System.out.println("No results");
 		}
 	}
-	/***/
+
+	/**
+	 * NaturalNumberInput method.
+	 * @throws IsNotNaturalNumberException
+	 */
 	@Override
-	public int enterNaturalNumber() {
+	public int naturalNumberInput() throws IsNotNaturalNumberException {
 		System.out.println("Enter a natural number n: ");
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in); // Can't close scanner here
-		return scanner.nextInt();
+		Scanner scanner = new Scanner(System.in);
+		int input = scanner.nextInt();
+		scanner.close();
+		if (isNatural(input) == false) {
+			throw new IsNotNaturalNumberException();
+		}
+		return input;
 	}
-	/***/
+
+	/**
+	 * @throws IsNotNaturalNumberException
+	 */
 	@Override
-	public void toConsole(String list) {
-		System.out
-				.println("n is equal to sum of this tripple squares: " + list);
+	public void toConsole(final List<Task331aDto> list)
+			throws IsNotNaturalNumberException {
+		if (list.isEmpty() == true) {
+			throw new IsNotNaturalNumberException();
+		} else {
+			System.out.println("n is equal to sum of these tripple squares: "
+					+ list);
+		}
 	}
 }

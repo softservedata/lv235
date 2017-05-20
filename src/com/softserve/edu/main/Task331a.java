@@ -2,40 +2,43 @@ package com.softserve.edu.main;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.softserve.edu.dto.Task331aDto;
 
+/**
+ * Class for task #331a.
+ */
 public class Task331a {
 	/**
 	 * Task #331a. Given a positive integer n. Is it possible to represent a
 	 * number in the form of a sum of three squares of natural numbers? Show
 	 * them if it's possible.
-	 * @throws IsNotNaturalNumberException
+	 * @throws IsNotNaturalNumberException.
+	 * @return list.
+	 * @param number
 	 */
-	public String task331a(int number) throws IsNotNaturalNumberException {
-		if (isNatural(number) == false) { 
-			throw new IsNotNaturalNumberException();
-		}
-		List<Integer> list = new ArrayList<>();
+	public List<Task331aDto> getListOfEqualSquareTripple(final int number) {
+		List<Task331aDto> list = new ArrayList<>();
 		for (int a = 1; a < number; a++) {
 			for (int b = 1; b < number; b++) {
 				for (int c = 1; c < number; c++) {
 					int res = (int) (Math.pow(a, 2) + Math.pow(b, 2) + Math
 							.pow(c, 2));
 					if (res == number) {
-						list.add(a);
-						list.add(b);
-						list.add(c);
-						return list.toString(); 
+						list.add(new Task331aDto(a, b, c));
+						return list;
 					}
 				}
 			}
-			if (a == number - 1 || number < 3) {
-				return "Impossible to represent a number\n";
-			}
 		}
-		return "Impossible to represent a number\n";
+		return list;
 	}
 
-	public boolean isNatural(int number) {
+	/**
+	 * Boolean method to check if number is natural.
+	 * @param number
+	 * @return boolean
+	 */
+	public boolean isNatural(final int number) {
 		if (number < 1) {
 			return false;
 		}

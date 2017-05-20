@@ -4,22 +4,13 @@ package com.softserve.edu.dto;
  * Task #108. Given a positive integer n. Get the smallest number 2 ^ r, that is
  * bigger than n.
  */
-public class Task108dto {
+public class Task108Dto {
 	int number;
 
-	public Task108dto() {
+	public Task108Dto() {
 	}
 
-	public Task108dto(int number) {
-		super();
-		this.number = number;
-	}
-
-	public int getNumber() {
-		return number;
-	}
-
-	public void setNumber(int number) {
+	public Task108Dto(int number) {
 		this.number = number;
 	}
 
@@ -39,7 +30,7 @@ public class Task108dto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Task108dto other = (Task108dto) obj;
+		Task108Dto other = (Task108Dto) obj;
 		if (number != other.number)
 			return false;
 		return true;

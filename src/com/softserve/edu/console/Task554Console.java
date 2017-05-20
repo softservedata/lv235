@@ -1,7 +1,10 @@
 package com.softserve.edu.console;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+
+import com.softserve.edu.dto.Task554Dto;
 import com.softserve.edu.interfaces.ITask554;
 import com.softserve.edu.main.IsNotNaturalNumberException;
 import com.softserve.edu.main.Task554;
@@ -11,15 +14,13 @@ public class Task554Console extends Task554 implements ITask554 {
 	public static void main(String[] args) {
 		Task554Console task554Console = new Task554Console();
 		task554Console.start();
-		// String s = "abcd";
-		// s = s.substring(0, s.length() - 1);
 	}
 
 	/***/
 	@Override
 	public void start() {
 		try {
-			toConsole(task554(enterNaturalNumber()));
+			toConsole(compute(naturalNumberInput()));
 		} catch (IsNotNaturalNumberException | InputMismatchException e) {
 			System.out.println("Input is not a natural number");
 		}
@@ -27,20 +28,26 @@ public class Task554Console extends Task554 implements ITask554 {
 
 	/***/
 	@Override
-	public int enterNaturalNumber() {
+	public int naturalNumberInput() throws IsNotNaturalNumberException {
 		System.out.println("Enter a natural number n: ");
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in); // Can't close scanner here
-		return scanner.nextInt();
+		Scanner scanner = new Scanner(System.in);
+		int input = scanner.nextInt();
+		scanner.close();
+		if (isNatural(input) == false) {
+			throw new IsNotNaturalNumberException();
+		}
+		return input;
 	}
 
 	/***/
 	@Override
-	public void toConsole(String list) {
-		list = list.replaceAll(",", "");
-		list = list.substring(1, list.length() - 1);
-		System.out
-				.println("Triples of numbers, each of which doesn't exceed n. a^2+b^2=c^2\n"
-						+ list);
+	public void toConsole(List<Task554Dto> list)
+			throws IsNotNaturalNumberException {
+		if (list.isEmpty() == true) {
+			throw new IsNotNaturalNumberException();
+		}
+		// else
+		// System.out.println("n is equal to sum of these tripple squares: "
+		// + list);
 	}
 }
