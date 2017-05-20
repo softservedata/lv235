@@ -11,9 +11,14 @@ import java.util.List;
 public class Task3 {
 
     /**
-     * VALUE_FOR_AUDIT.
+     * number 3.
      */
-    private static final int[]  VALUE_FOR_AUDIT = {2, 3, 5};
+    private static final int  NUMBER_THREE = 3;
+
+    /**
+     * number 5.
+     */
+    private static final int  NUMBER_FIVE = 5;
 
     /**
      * method compute.
@@ -29,35 +34,36 @@ public class Task3 {
             throw new NumberFormatException();
         } else {
             for (int i = 2;; i++) {
-                if (isSmallNumber(i)
-                        && isSmallNumber((int) Math.pow(2, i) - 1)) {
+                if ((Math.pow(2, i) - 1) >= number) {
+                    break;
+                } else if (isSimpleNumber(i)
+                        && isSimpleNumber((int) Math.pow(2, i) - 1)) {
                    rsesultMass.add((int) Math.pow(2, i) - 1);
-                   if ((Math.pow(2, i) - 1) > number) {
-                       break;
-                   }
                 }
             }
         }
         return rsesultMass;
     }
 
-/**
- * Is number simple.
- * @param number natural number.
- * @return true if n is simple number.
- */
-    public boolean isSmallNumber(final int number) {
+    /**
+     * Is number simple.
+     * @param number natural number.
+     * @return true if n is simple number.
+     */
+    public boolean isSimpleNumber(final int number) {
         boolean result = false;
         if (number < 0) {
             throw new NumberFormatException();
-        } else {
-            if (number <= 2) {
+        } else if (number >= 2) {
+            if (number == 2) {
                 result = true;
-            } else if (number <= VALUE_FOR_AUDIT[2] && number % 2 != 0) {
-                result = true;
-            } else if ((number % 2 != 0) && ((number % VALUE_FOR_AUDIT[1]) != 0)
-                    && ((number % VALUE_FOR_AUDIT[2]) != 0)) {
-                result = true;
+            } else {
+                if (number <= NUMBER_FIVE && number % 2 != 0) {
+                    result = true;
+                } else if (number % 2 != 0 && number % NUMBER_THREE != 0
+                        && number % NUMBER_FIVE != 0) {
+                    result = true;
+                }
             }
         }
         return result;

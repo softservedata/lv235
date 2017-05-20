@@ -1,6 +1,5 @@
 package com.softserve.edu.task3;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -35,17 +34,17 @@ public class Task3Console {
         BufferedReader br = new BufferedReader(
                 new InputStreamReader(System.in));
         int n = 0;
-            try {
-                System.out.print("Input n  ");
-                n = Integer.valueOf(br.readLine());
-                writeToConsole(task3.getMarsenNumbers(n));
-            } catch (ArithmeticException e) {
-                System.out.println(e.getMessage());
-            } catch (NumberFormatException e) {
-                System.out.println("number n must be natural");
-            } catch (IOException e) {
-                System.out.println("input integer value please");
-            }
+        try {
+            System.out.print("Input n  ");
+            n = Integer.valueOf(br.readLine());
+            writeToConsole(task3.getMarsenNumbers(n));
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("number n must be natural");
+        } catch (IOException e) {
+            System.out.println("input integer value please");
+        }
     }
 
     /**

@@ -10,6 +10,7 @@ import java.util.List;
  * Class Task2.
  */
 public class Task2 {
+
     /**
      * method compute.
      * Task #226
@@ -30,5 +31,4 @@ public class Task2 {
         }
         return array;
     }
-
 }
