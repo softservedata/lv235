@@ -42,9 +42,6 @@ public final class Triplet {
         this.x = list.get(0);
         this.y = list.get(1);
         this.z = list.get(2);
-/*        this.x = x;
-        this.y = y;
-        this.z = z;*/
     }
 
     /** default x number. */
