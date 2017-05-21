@@ -4,9 +4,10 @@
  *
  * This software is the confidential and proprietary information of Softserve.
  */
-
 /**
  * @author Nazar
- * This Package for training and contains some logic tasks.
+ *
+ * This Package for training and contains some logic tasks..
  */
-package com.softserve.edu.logicTask.task243A;
+package com.softserve.edu.logicTask.test;
+

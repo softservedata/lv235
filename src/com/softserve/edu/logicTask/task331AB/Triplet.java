@@ -10,6 +10,10 @@
  */
 package com.softserve.edu.logicTask.task331AB;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Class solves the problem task 331A and 331B.
  *
@@ -17,78 +21,83 @@ package com.softserve.edu.logicTask.task331AB;
  * @author Nazar
  *
  */
-public class Triplet {
+public final class Triplet {
+
+    /**
+     * Ststic class field - counter Triplets.
+     */
+    private static int count  = 0;
 
 /**
- * @param x first number of triplet.
- * @param y first number of triplet.
- * @param z first number of triplet.
+ * @param x number of triplet.
+ * @param y number of triplet.
+ * @param z number of triplet.
  */
     public Triplet(final int x, final int y, final int z) {
-        this.x = x;
+        List<Integer> list = new ArrayList<>();
+        list.add(x);
+        list.add(y);
+        list.add(z);
+        Collections.sort(list, Collections.reverseOrder());
+        this.x = list.get(0);
+        this.y = list.get(1);
+        this.z = list.get(2);
+/*        this.x = x;
         this.y = y;
-        this.z = z;
+        this.z = z;*/
     }
 
     /** default x number. */
-    private int x = 1;
+    private int x;
+
     /** default y number. */
-    private int y = 1;
+    private int y;
+
     /** default y number. */
-    private int z = 1;
+    private int z;
 
     /**
-     *
      * @return part of triplet(x, y, z).
      */
     public int getX() {
         return x;
     }
-
     /**
-     *
      * @return part of triplet(x, y, z).
      */
     public int getY() {
         return y;
     }
-
     /**
-     *
      * @return part of triplet(x, y, z).
      */
     public int getZ() {
         return z;
     }
-
     /**
-     *
      * @param x
      *            part of triplet(x, y, z).
      */
     public void setX(final int x) {
         this.x = x;
     }
-
     /**
-     *
      * @param y
      *            part of triplet(x, y, z).
      */
     public void setY(final int y) {
         this.y = y;
     }
-
     /**
-     *
      * @param z
      *            part of triplet(x, y, z).
      */
     public void setZ(final int z) {
         this.z = z;
     }
-
-    
+    /**
+     * To compare of Triplet objects.
+     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -98,7 +107,9 @@ public class Triplet {
         result = prime * result + z;
         return result;
     }
-
+    /**
+     * To compare of Triplet objects.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -118,10 +129,11 @@ public class Triplet {
     }
 
     /**
-     * I need Override to String.
+     * Triplet  parse to String.
      */
     @Override
     public String toString() {
-        return "Tiplet x=" + x + ", y=" + y + ", z=" + z + ";";
+        count++;
+        return  count + ")" + " Tiplet: x=" + x + ", y=" + y + ", z=" + z + ";";
     }
 }

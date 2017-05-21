@@ -12,61 +12,69 @@ package com.softserve.edu.logicTask.task243A;
 
 /**
  * Class solves the problem task 243A.
- *
  * @version 1.1 24.04.2017
  * @author Nazar
- *
  */
 public class Couple {
-
+    /**
+     * Constructor without parameters.
+     */
+    Couple() {
+    }
 /**
- * @param x first number of couple.
- * @param y first number of couple.
+ * @param x number of couple.
+ * @param y number of couple.
  */
-    public Couple(final int x, final int y) {
+    public Couple(int x, int y) {
+        if (x < y) {
+            int tmp = x;
+            x = y;
+            y = tmp;
+        }
         this.x = x;
         this.y = y;
     }
 
     /** default x number. */
-    private int x = 1;
+    private int x;
     /** default y number. */
-    private int y = 1;
-
+    private int y;
     /**
-     *
      * @return part of couple(x, y).
      */
     public int getX() {
         return x;
     }
-
     /**
-     *
      * @return part of couple(x, y).
      */
     public int getY() {
         return y;
     }
-
     /**
-     *
      * @param x
      *            part of couple(x, y).
      */
     public void setX(final int x) {
         this.x = x;
     }
-
     /**
-     *
      * @param y
      *            part of couple(x, y).
      */
     public void setY(final int y) {
         this.y = y;
     }
-
+    /**
+     * @return
+     *          return true if Couple is empty.
+     */
+    public boolean isEmpty() {
+        if (x == 0 && y == 0) {
+            return true;
+        }
+        return false;
+    }
     /**
      * I need Override to equals.
      */
@@ -78,7 +86,6 @@ public class Couple {
         result = prime * result + y;
         return result;
     }
-
     /**
      * I need Override to equals.
      */
@@ -97,12 +104,11 @@ public class Couple {
             return false;
         return true;
     }
-
     /**
      * I need Override to String.
      */
     @Override
     public String toString() {
-        return "Couple x=" + x + ", y=" + y + ";";
+        return "Couple: x=" + x + ", y=" + y + ";";
     }
 }
