@@ -48,17 +48,11 @@ public class Task325 {
      * @return list of simple divisors.
      */
     public List<Integer> calculate(final int number) {
-        boolean isSimple = true;
-        for (int i = 1; i <= number; i++) {
-            if ((number % i) == 0) {
-                for (int j = 2; j <= (i - 1); j++) {
-                    if (i % j == 0) {
-                        isSimple = false;
-                    }
-                }
-                if (isSimple) {
-                    listOfDivisors.add(i);
-                }
+        int n = number;
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                listOfDivisors.add(i);
+                n /= i;
             }
         }
         return getListOfDivisors();
