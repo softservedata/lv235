@@ -27,10 +27,13 @@ public class Task561Console extends Task561 {
         System.out.println("Enter natural number: ");
         int n = sc.nextInt();
         Task561 number = new Task561();
-        number.calculate(n);
+        try {
+            number.doTask561(n);
+        } catch (NumberFormatException e) {
+            System.out.println("You have entered non-natural number.");
+        }
         for (Integer i : number.getListOfNumbers()) {
             System.out.println(i);
         }
-        
     }
 }

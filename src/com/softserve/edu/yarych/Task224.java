@@ -6,24 +6,23 @@ import java.util.List;
 
 /**
  * Task #224: a natural number n is given.
- * Find all natural dividers of n.
+ * Find all natural divisors of n.
  * @author Андрій
  */
 
 public class Task224 {
     /**
-     * Blah.
+     * List for containing all natural divisors.
      */
     private List<Integer> listOfDivisors = new LinkedList<Integer>();
 
      /**
-     * Constructor with perameter.
-     * @param n is natural number.
+     * Default constructor.
      */
     public Task224() {
     }
 
-       /**
+     /**
      * @return current list of divisors
      */
     public List<Integer> getListOfDivisors() {
@@ -38,24 +37,38 @@ public class Task224 {
     }
 
     /**
-     * Method for finding all natural divisors of n.
-     * @return list on natural divisors.
+     * Method for cheсking whether number is natural.
+     * @param number is an integer number, entered by the user.
+     * @return true if number is natural, false if not.
+     */
+    public boolean isNatural(final int number) {
+        return number > 0;
+    }
+
+    /**
+     * Method for finding all natural divisors of number.
+     * @param number is an integer number, entered by the user.
+     * @return list of all natural divisors.
      */
     public List<Integer> calculate(final int number) {
-        if (number > 0) {
-            for (int i = 1; i <= number; i++) {
-                if ((number % i) == 0) {
-                    listOfDivisors.add(i);
-                }
-            }
-        } else {
-            try {
-                throw new NonNaturalNumberException("You have entered"
-                        + " non-natural number.");
-            } catch (NonNaturalNumberException e) {
-                e.printStackTrace();
+        for (int i = 1; i <= number; i++) {
+            if ((number % i) == 0) {
+                listOfDivisors.add(i);
             }
         }
         return getListOfDivisors();
+    }
+
+    /**
+     * Method for executing this task.
+     * @param number is an integer number, entered by the user.
+     * @return calculate() method.
+     */
+    public List<Integer> doTask224(final int number) {
+        if (isNatural(number)) {
+            return calculate(number);
+        } else {
+            throw new NumberFormatException();
+        }
     }
 }

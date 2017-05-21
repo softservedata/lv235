@@ -5,25 +5,21 @@ import java.util.List;
 
 /**
  * Task #325: a natural number n is given.
- * Find all simple dividers of n.
+ * Find all prime dividers of n.
  * @author Андрій
  */
 public class Task325 {
     /**
-     * Blah.
+     * List for containing all natural divisors.
      */
     private List<Integer> listOfDivisors = new LinkedList<Integer>();
-    /**
-     * Variable for checking if number is simple.
-     */
-    private boolean isSimple = true;
 
     /**
      * Puublic constructor.
      */
     public Task325() {
     }
-    
+
     /**
      * @return current list of divisors
      */
@@ -37,18 +33,14 @@ public class Task325 {
     public void setListOfDivisors(final List<Integer> listOfDivs) {
         this.listOfDivisors = listOfDivs;
     }
-    /**
-     * @return true if number is simple.
-     */
-    public boolean isSimple() {
-        return isSimple;
-    }
 
     /**
-     * @param isSimpl value to set.
+     * Method for cheсking whether number is natural.
+     * @param number is an integer number, entered by the user.
+     * @return true if number is natural, false if not.
      */
-    public void setSimple(final boolean isSimpl) {
-        this.isSimple = isSimpl;
+    public boolean isNatural(final int number) {
+        return number > 0;
     }
 
     /**
@@ -56,27 +48,32 @@ public class Task325 {
      * @return list of simple divisors.
      */
     public List<Integer> calculate(final int number) {
-        if (number > 0) {
-            for (int i = 1; i <= number; i++) {
-                if ((number % i) == 0) {
-                    for (int j = 2; j <= (i - 1); j++) {
-                        if (i % j == 0) {
-                            isSimple = false;
-                        }
-                    }
-                    if (isSimple) {
-                        listOfDivisors.add(i);
+        boolean isSimple = true;
+        for (int i = 1; i <= number; i++) {
+            if ((number % i) == 0) {
+                for (int j = 2; j <= (i - 1); j++) {
+                    if (i % j == 0) {
+                        isSimple = false;
                     }
                 }
-            }          
-        } else {
-            try {
-                throw new NonNaturalNumberException("You have entered"
-                        + " non-natural number.");
-            } catch (NonNaturalNumberException e) {
-                e.printStackTrace();
+                if (isSimple) {
+                    listOfDivisors.add(i);
+                }
             }
         }
         return getListOfDivisors();
+    }
+
+    /**
+     * Method for executing this task.
+     * @param number is an integer number, entered by the user.
+     * @return calculate() method.
+     */
+    public List<Integer> doTask325(final int number) {
+        if (isNatural(number)) {
+            return calculate(number);
+        } else {
+            throw new NumberFormatException();
+        }
     }
 }

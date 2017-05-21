@@ -40,31 +40,44 @@ public class Task561 {
     }
 
     /**
+     * Method for cheсking whether number is natural.
+     * @param number is an integer number, entered by the user.
+     * @return true if number is natural, false if not.
+     */
+    public boolean isNatural(final int number) {
+        return number > 0;
+    }
+
+    /**
      * Method for calculating the task.
      * @param number is a natural number from user.
      * @return list of calculated numbers.
      */
     public List<Integer> calculate(final int number) {
         int decimal = MAXIMUM_REMAINDER;
-
-        if (number > 0) {
-            for (int i = 1; i < number; i++) {
-                int square = (int) Math.pow(i, 2);
-                if (i == decimal) {
-                    decimal *= MAXIMUM_REMAINDER;
-                }
-                if (i == square % decimal) {
-                    listOfNumbers.add(i);
-                }
-            }            
-        } else {
-            try {
-                throw new NonNaturalNumberException("You have entered"
-                        + " non-natural number.");
-            } catch (NonNaturalNumberException e) {
-                e.printStackTrace();
+        for (int i = 1; i <= number; i++) {
+            int square = (int) Math.pow(i, 2);
+            if (i == decimal) {
+                decimal *= MAXIMUM_REMAINDER;
+            }
+            if (i == square % decimal) {
+                listOfNumbers.add(i);
             }
         }
         return getListOfNumbers();
     }
+
+    /**
+     * Method for executing this task.
+     * @param number is an integer number, entered by the user.
+     * @return calculate() method.
+     */
+    public List<Integer> doTask561(final int number) {
+        if (isNatural(number)) {
+            return calculate(number);
+        } else {
+            throw new NumberFormatException();
+        }
+    }
 }
+

@@ -21,13 +21,13 @@ public class Task325Console extends Task325 {
         System.out.println("Enter natural number: ");
         int n = sc.nextInt();
         Task325 number = new Task325();
-        if (n <= 0) {
+        try {
+            number.doTask325(n);
+        } catch (NumberFormatException e) {
             System.out.println("You have entered non-natural number.");
-        } else {
-            number.calculate(n);
-            for (Integer i : number.getListOfDivisors()) {
+        }
+        for (Integer i : number.getListOfDivisors()) {
                 System.out.println(i);
-            }
         }
     }
 }
