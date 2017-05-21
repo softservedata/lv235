@@ -14,9 +14,9 @@ public class Task182Main {
 		Task182 task182 = new Task182();
 
 		try {
-			System.out.println(Arrays.toString(task182.printCalculatedValues(arrayLength,leftArrayBorder)));
+			System.out.println(task182.getNumberAmountOfMemberSequence(arrayLength, leftArrayBorder));
 		} catch (Exception e) {
-			System.out.println("No correct result");
+			System.out.println("No correct result, numbers are not natural");
 			
 		}
 	}
