@@ -52,11 +52,11 @@ public class Task2Console {
 
     /**
      * method for writing on Console.
-     * @param result data for Write
+     * @param listResult data for Write
      */
-    public void writeToConsole(final List<Integer> result) {
-        if (result.size() > 0) {
-            for (int i : result) {
+    public void writeToConsole(final List<Integer> listResult) {
+        if (listResult.size() > 0) {
+            for (int i : listResult) {
                 System.out.print(i + " ");
             }
         } else {

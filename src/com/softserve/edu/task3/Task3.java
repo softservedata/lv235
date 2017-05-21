@@ -29,20 +29,18 @@ public class Task3 {
      * @return numbers of Mersen
      */
     public List<Integer> getMarsenNumbers(final int number) {
-        List<Integer> rsesultMass = new ArrayList<>();
+        List<Integer> listResults = new ArrayList<>();
         if (number < 0) {
             throw new NumberFormatException();
         } else {
-            for (int i = 2;; i++) {
-                if ((Math.pow(2, i) - 1) >= number) {
-                    break;
-                } else if (isSimpleNumber(i)
+            for (int i = 2; (Math.pow(2, i) - 1) < number; i++) {
+                if (isSimpleNumber(i)
                         && isSimpleNumber((int) Math.pow(2, i) - 1)) {
-                   rsesultMass.add((int) Math.pow(2, i) - 1);
+                   listResults.add((int) Math.pow(2, i) - 1);
                 }
             }
         }
-        return rsesultMass;
+        return listResults;
     }
 
     /**

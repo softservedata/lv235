@@ -49,11 +49,11 @@ public class Task3Console {
 
     /**
      * method for writing on Console.
-     * @param result data for Write
+     * @param listResults data for Write
      */
-    public void writeToConsole(final List<Integer> result) {
-        if (result.size() > 0) {
-            for (int i : result) {
+    public void writeToConsole(final List<Integer> listResults) {
+        if (listResults.size() > 0) {
+            for (int i : listResults) {
                 System.out.print(i + " ");
             }
         } else {

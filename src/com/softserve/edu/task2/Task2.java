@@ -19,16 +19,16 @@ public class Task2 {
      * @return Get all natural common multiples, smaller m*n
      */
     public List<Integer> getCommonMultiples(final int n, final int m) {
-        List<Integer> array = new ArrayList<>();
+        List<Integer> listResults = new ArrayList<>();
         if (n < 0 || m < 0) {
             throw new NumberFormatException();
         } else {
             for (int i = Math.max(n, m); i < n * m; i++) {
                 if (i % n == 0 && i % m == 0) {
-                    array.add(i);
+                    listResults.add(i);
                 }
             }
         }
-        return array;
+        return listResults;
     }
 }
