@@ -21,6 +21,7 @@ import com.softserve.edu.logicTask.ScannerSingleton;
  *
  * @version 1.1 24.04.2017
  * @author Nazar
+ * 
  * @see com.softserve.edu.logicTask.ScannerSingleton
  * @see com.softserve.edu.logicTask.task331AB.Triplet
  */
@@ -130,12 +131,7 @@ public class TaskStarter {
      * Method to start TaskStarter.
      */
     private void start() {
-
         List<Triplet> results = new ArrayList<>();
-        // boolean isRun = true;
-        // while (isRun) {
-        // print("");
-        // print("Enter integer: __ or 0 for STOPPING.");
         print(ENTER);
         try {
             int incomingNumber = read(); /* incoming number */
@@ -143,16 +139,9 @@ public class TaskStarter {
                 printRed(ATTENTION);
                 return;
             }
-            // if (incomingNumber == 0) {
-            // print("You are stopped the program.");
-            // isRun = false;
-            // if (incomingNumber < 1) {
-            // print(ATTENTION);
-            // } else {
-            print(ACTION, incomingNumber);
+            print(ACTION);
             print(FINDONE, incomingNumber);
             print(FINDALL, incomingNumber);
-            // System.out.println("0. To EXIT.");
 
             int chooseMethod = read();  /* Enter number method; */
             switch (chooseMethod) {
@@ -160,18 +149,12 @@ public class TaskStarter {
                 oneTriplet = new OneTiplet();
                 results = oneTriplet.find(incomingNumber);
                 print(results, incomingNumber);
-                // list.clear();
                 break;
             case 2:
                 allTriplets = new AllTriplets();
                 results = allTriplets.find(incomingNumber);
                 print(results, incomingNumber);
-                // list.clear();
                 break;
-            // case 0:
-            // isRun = false;
-            // print("You are stopped the program.");
-            // break;
             default:
                 print(FROMLIST);
                 break;
@@ -180,6 +163,5 @@ public class TaskStarter {
             printRed(ATTENTION);
             return;
         }
-        // }
     }
 }

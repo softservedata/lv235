@@ -23,12 +23,11 @@ public class OneCouple {
      * integers x, y for n = x^2 + y^2 .
      *
      * @param incomingNumber
-     *            Integer entered in console.
+     *            integer entered in console.
      * @return List<Couple> list of Couple.
      *
      * @throws NumberFormatException
      *            if entered not integer number or less then 1.
-
      */
     public Couple find(final int incomingNumber) {
         int x = 1; /* default x number */

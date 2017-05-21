@@ -18,6 +18,9 @@ import java.util.List;
  *
  * @version 1.1 24.04.2017
  * @author Nazar
+ * 
+ * @see com.softserve.edu.logicTask.ScannerSingleton
+ * @see com.softserve.edu.logicTask.task331AB.Triplet;
  */
 public class OneTiplet {
 
