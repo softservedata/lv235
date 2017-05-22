@@ -1,13 +1,13 @@
-package task.third.tests;
+package tests.task2;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Ivan
- * Clas model data for TestToTask3
+ * Clas model data for TestToTask2
  */
-public final class DataModelForTestToTask3 {
+public final class DataModelForTestToTask2 {
     /**
      * field for expected result.
      */
@@ -19,24 +19,35 @@ public final class DataModelForTestToTask3 {
     private int parameterN;
 
     /**
+     * field parametr m.
+     */
+    private int parameterM;
+
+
+    /**
      * Constructor with three parameters.
      * @param expected Result.
      * @param n natural number.
+     * @param m natural number.
      */
-    public DataModelForTestToTask3(final List<Integer> expected, final int n) {
+    public DataModelForTestToTask2(final List<Integer> expected,
+                                  final int n, final int m) {
         super();
         this.expectedResult = expected;
         this.parameterN = n;
+        this.parameterM = m;
     }
 
     /**
      * Constructor with two parameters.
      * @param n natural number.
+     * @param m natural number.
      */
-    public DataModelForTestToTask3(final int n) {
+    public DataModelForTestToTask2(final int n, final int m) {
         super();
         expectedResult = new ArrayList<Integer>();
         this.parameterN = n;
+        this.parameterM = m;
     }
 
     /**
@@ -52,4 +63,12 @@ public final class DataModelForTestToTask3 {
     public int getParameterN() {
         return parameterN;
     }
+
+    /**
+     * @return parameter m.
+     */
+    public int getParameterM() {
+        return parameterM;
+    }
+
 }

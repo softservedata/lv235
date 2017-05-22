@@ -1,4 +1,4 @@
-package task.third.tests;
+package tests.task3;
 
 import org.junit.Assert;
 import org.junit.Test;

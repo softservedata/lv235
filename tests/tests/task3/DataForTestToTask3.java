@@ -1,4 +1,4 @@
-package task.third.tests;
+package tests.task3;
 
 import java.util.Arrays;
 

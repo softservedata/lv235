@@ -1,4 +1,4 @@
-package task.first.tests;
+package tests.task1;
 
 /**
  * Class contain data for TestToTask1.

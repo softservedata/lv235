@@ -1,4 +1,4 @@
-package task.second.tests;
+package tests.task2;
 
 import static org.junit.Assert.assertEquals;
 import java.util.List;
