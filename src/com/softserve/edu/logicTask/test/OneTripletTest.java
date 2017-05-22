@@ -27,7 +27,7 @@ import com.softserve.edu.logicTask.task331AB.Triplet;
  * @author Nazar
  *
  * @see com.softserve.edu.logicTask.task331A.OneTriplet
- * @see com.softserve.edu.logicTask.task331A.AllTriplets
+ * @see com.softserve.edu.logicTask.AllTripletsTest.AllTriplets
  *      Testing OneTriplet (task 331a).
  */
 public class OneTripletTest {

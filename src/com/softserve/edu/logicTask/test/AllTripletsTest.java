@@ -27,16 +27,14 @@ import com.softserve.edu.logicTask.task331AB.Triplet;
  * @author Nazar
  *
  * @see com.softserve.edu.logicTask.task331A.OneTriplet
- * @see com.softserve.edu.logicTask.task331A.AllTriplets
+ * @see com.softserve.edu.logicTask.AllTripletsTest.AllTriplets
  *      Testing AllTriplets (task 331b).
  */
-public class Task331BTest {
-
+public class AllTripletsTest {
     /**
      * Initialise instance FindCoupleTest class.
      */
     AllTriplets allTriplets = new AllTriplets();
-
 
     /**
      * positive test BVA tech test.
