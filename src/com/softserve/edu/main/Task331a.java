@@ -18,7 +18,7 @@ public class Task331a {
 	 */
 	public List<Task331aDto> getListOfEqualSquareTripple(final int number) {
 		List<Task331aDto> list = new ArrayList<>();
-		for (int a = 1; a < number; a++) {
+		for (int a = 1; a < number; a++) { 
 			for (int b = 1; b < number; b++) {
 				for (int c = 1; c < number; c++) {
 					int res = (int) (Math.pow(a, 2) + Math.pow(b, 2) + Math

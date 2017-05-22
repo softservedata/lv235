@@ -96,4 +96,12 @@ public class Task331aTest {
 		Assert.assertEquals(expected, actual);
 	}
 
+	@Test
+	public void getListOfEqualSquareTrippleTest8() {
+		List<Task331aDto> expected = new ArrayList<>();
+		expected.add(new Task331aDto(4, 77, 80));
+		List<Task331aDto> actual = task331a.getListOfEqualSquareTripple(12345);
+		Assert.assertEquals(expected, actual);
+	}
+
 }

@@ -37,10 +37,12 @@ public class Task554Test {
 		List<Task554Dto> actual = task554.compute(0);
 		assertEquals(Collections.emptyList(), actual);
 	}
-
+ 
 	@Test
 	public void task554Test4() {
-		int notNatural = 0;
+		int notNatural = -1;
+		List<Task554Dto> actual = task554.compute(notNatural);
+		assertEquals(Collections.emptyList(), actual);
 	}
 
 }

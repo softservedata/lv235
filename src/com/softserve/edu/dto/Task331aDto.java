@@ -13,7 +13,7 @@ public class Task331aDto {
 	 */
 	private int b;
 	/**
-	 * Variable b for task #331a.
+	 * Variable ñ for task #331a.
 	 */
 	private int c;
 
