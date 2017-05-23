@@ -7,7 +7,7 @@
 /**
  *  Package for training.
  */
-package com.softserve.edu.logicTask.test;
+package com.softserve.edu.logicTask.task107;
 
 import static org.junit.Assert.assertEquals;
 
