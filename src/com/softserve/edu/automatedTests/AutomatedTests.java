@@ -34,9 +34,9 @@ public class AutomatedTests {
 		driver.findElement(By.cssSelector(".btn.btn-primary")).click();
 		Thread.sleep(1000);
 		// Subclass
-		driver.findElement(By.linkText("Підкласи об'єктів")).click();
+		driver.findElement(By.xpath("//*[@id='navigationbar']/ul/li[3]/a")).click(); // Subclass of objects
 		Thread.sleep(1000);
-		driver.findElement(By.linkText("Додати новий підклас")).click();
+		driver.findElement(By.xpath("//*[@id='body']/p/a")).click(); // Add new subclass
 		Thread.sleep(1000);
 		driver.findElement(By.name("typeName")).click();
 		driver.findElement(By.name("typeName")).sendKeys("Wifi");
@@ -100,7 +100,7 @@ public class AutomatedTests {
 		driver.findElement(By.cssSelector(".btn.btn-primary")).click();
 		Thread.sleep(1000);
 		//Delete
-		driver.findElement(By.linkText("Підкласи об'єктів")).click();
+		driver.findElement(By.xpath("//*[@id='navigationbar']/ul/li[3]/a")).click(); // Subclass of objects
 		Thread.sleep(1000);
 		Assert.assertNotNull(driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'Wifi')]")).getText());
 		driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'Wifi')]/../td[6]/div/a")).click();
