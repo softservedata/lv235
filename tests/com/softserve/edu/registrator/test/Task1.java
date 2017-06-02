@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -25,6 +26,7 @@ public class Task1 {
 	private static ChromeDriverService service;
 	private static WebDriver driver;
 	private static WebElement element;
+	private static final Logger LOG = Logger.getLogger(Task1.class);
 
 	@BeforeClass
 	public static void createService() throws IOException {
@@ -33,7 +35,7 @@ public class Task1 {
 				.usingAnyFreePort().build();
 		// .usingPort(8888).build();
 		service.start();
-		System.out.println("\t+++Service Start");
+		LOG.debug("+++Service Start");
 	}
 
 	@Before
@@ -162,7 +164,7 @@ public class Task1 {
 	public static void stopService() {
 		if (service != null) {
 			service.stop();
-			System.out.println("\t+++RemoteWebDriver Stop");
+			LOG.debug("+++RemoteWebDriver Stop");
 		}
 	}
 }
