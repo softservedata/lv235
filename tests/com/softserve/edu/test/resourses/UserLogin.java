@@ -37,6 +37,7 @@ public class UserLogin {
     }
     
     public void quit() {
+        SleepThread.sleep(2);
         driver.findElement(By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle")).click();
         driver.findElement(By.xpath("//a[contains(@href,'/logout')]")).click();
     }

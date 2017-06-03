@@ -1,13 +1,9 @@
 package com.softserve.edu.test.resourses;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -20,26 +16,20 @@ public class FileHelper {
     
     private FileHelper() { }    
     
-    public static BufferedImage takeScreenShot(WebDriver driver) {
-        byte[] img = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-        BufferedImage brImage = null;
-        try {
-            brImage = ImageIO.read(new ByteArrayInputStream(img));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return brImage;
+    public static void saveBugAttachments(String path, File screenShot, WebDriver driver) {
+        FileHelper.saveScreenShot(screenShot, path, "beforeTest");
+        FileHelper.saveScreenShot(
+                   ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE),
+                   path, "actualResalt");
     }
     
     public static void saveScreenShot(File outputFile, String path, String name) {
         try {
-            FileUtils.copyFile(outputFile, new File("./TestResults/" + path + "_screenshot.png"));
+            FileUtils.copyFile(outputFile, new File("./TestResults/" + path +"/"+ name +"_screenshot.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-
     
     public static String createDerectory(String testCaseName) {
         String nameDir = testCaseName + new SimpleDateFormat(TIME_TEMPLATE)
@@ -56,16 +46,4 @@ public class FileHelper {
         return nameDir;
     }
 
-    public static void takeAndSaveScreenShot(WebDriver driver, String folderName, String name) {
-        File outputfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(outputfile, new File("./TestResults/" + folderName 
-                    +"/"+ name + "_screenshot.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    
-    
 }

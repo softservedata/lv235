@@ -23,17 +23,38 @@ public class DeletingComunity {
     
     public void deleteComunityOK(String text) {
         driver.findElement(By.xpath("//a[contains(@href,'/show-all-communities')]")).click();
-        SleepThread.sleep(2);
+        SleepThread.sleep(1);
         
-        driver.findElement(By
-                .xpath("//a[text() = '"+ text +"']/../..//a[contains(@href,'deleteCommunity/')]"))
-                .click();
+        if(!driver.findElements(By.xpath("//a[text() = '"+ text
+                +"']/../..//a[contains(@href,'deleteCommunity/')]")).isEmpty()) {
+            
+            driver.findElement(By.xpath("//a[text() = '"+ text
+                    +"']/../..//a[contains(@href,'deleteCommunity/')]")).click();
         
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOf(driver
-                .findElement(By.xpath("//button[@class='btn btn-primary']"))));
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.visibilityOf(driver
+                 .findElement(By.cssSelector("button[class='btn btn-primary']"))));
         
-        driver.findElement(By.xpath("//button[@class='btn btn-primary']")).click();
-        SleepThread.sleep(2); 
+            driver.findElement(By.xpath("//button[@class='btn btn-primary']")).click();
+        }
+    }
+    
+    public void deleteComunityCancel(String text) {
+        driver.findElement(By.xpath("//a[contains(@href,'/show-all-communities')]")).click();
+        SleepThread.sleep(1);
+        
+        if(!driver.findElements(By.xpath("//a[text() = '"+ text
+                +"']/../..//a[contains(@href,'deleteCommunity/')]")).isEmpty()) {
+            
+            driver.findElement(By.xpath("//a[text() = '"+ text
+                    +"']/../..//a[contains(@href,'deleteCommunity/')]")).click();
+        
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.visibilityOf(driver
+                 .findElement(By.cssSelector("button[class='btn btn-primary']"))));
+        
+            driver.findElement(By.xpath("//button[@class='btn btn-default']")).click();
+            SleepThread.sleep(1);
+        }
     }
 }

@@ -15,6 +15,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddComunityTests {
 
@@ -23,116 +25,186 @@ public class AddComunityTests {
 	private static String folderName;
 	
 	@BeforeClass
-	public static void before(){
+	public static void beforeClass(){
 		System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--lang=en-US");
+		options.addArguments("--start-maximized");
 		Map<String, Object> prefs = new HashMap<String, Object>();
 	    prefs.put("credentials_enable_service", false);
 		prefs.put("profile.password_manager_enabled", false);
 	    options.setExperimentalOption("prefs", prefs);
 		driver = new ChromeDriver(options);
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		userLogin = UserLogin.getUserLogin(driver);
 		userLogin.login();
 		folderName = FileHelper.createDerectory("AddNewComunity");
-	}
-	
-	@AfterClass
-	public static void after(){
-	    userLogin.quit();
-		driver.quit();
 	}
 	
 	//@Test 
 	public void createComunityWithValidData() {
 	    String name = "Ternopil";
         String number = "214:35:09:346:45789";
-        addComunity(name, number);
-        Assert.assertTrue(isPresentComunity(name));
-        SleepThread.sleep(2);
+        File screenShot = addComunity(name, number);
+        if(!isPresentComunity(name)) {
+            String nameFolder = "TestValidData";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+            Assert.fail();
+        }
         DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+        SleepThread.sleep(2);
 	}
 	
-    //Test 
-    public void createComunityWithEmptyNumber() {
+   // @Test 
+    public void createComunityWithValidNameEmptyNumber() {
         String name = "Kyiv";
         String number = "";
-        addComunity(name, number);
-        Assert.assertTrue(isPresentComunity(name));
-        SleepThread.sleep(2);
+        File screenShot = addComunity(name, number);
+        if(!isPresentComunity(name)) {
+            String nameFolder = "TestValidNameEmptyNumber";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+            Assert.fail();
+        }
         DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
     }
     
     //@Test 
-    public void createComunityWithInvalidNumber() {
+    public void createComunityWithValidNameInvalidNumber() {
         String name = "Odessa";
         String number = "123";
-        addComunity(name, number);
-        Assert.assertTrue(isPresentErrorLabel("Невірний формат"));
-        SleepThread.sleep(2);
+        File screenShot = addComunity(name, number);
+        if(!isPresentErrorLabel("Невірний формат")) {
+            String nameFolder = "TestValidNameInvalidNumber";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+            Assert.fail();
+        }
+        DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+    }
+    
+    //@Test 
+    public void createComunityWithValidNameUsedNumber() {
+        String name = "Ivano-Frankivsk";
+        String number = "000:25:09:376:40009";
+        File screenShot = addComunity(name, number);
+        if(driver.findElements(By.xpath("//form//span")).size() != 1) {
+            String nameFolder = "TestValidNameUsedNumber";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+            Assert.fail();
+        }
+        DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
     }
     
     //@Test 
     public void createComunityWithUsedNameEmptyNumber() {
         String name = "Lviv";
         String number = "";
-        addComunity(name, number);
-        Assert.assertTrue(isPresentErrorLabel("Підклас з вказаним іменем вже існує"));
-        SleepThread.sleep(2);
-    }
-    
-    //@Test 
-    public void createComunityWithUsedNameValidNumber() {
-        String name = "Lviv";
-        String number = "000:25:09:376:40009";
-        addComunity(name, number);
-        Assert.assertTrue(isPresentErrorLabel("Підклас з вказаним іменем вже існує"));
-        SleepThread.sleep(2);
+        File screenShot = addComunity(name, number);
+        if(!isPresentErrorLabel("Підклас з вказаним іменем вже існує")) {
+            String nameFolder = "TestUsedNameEmptyNumber";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            Assert.fail();
+        }
     }
     
     //@Test 
     public void createComunityWithUsedNameInvalidNumber() {
         String name = "Lviv";
         String number = "123";
-        addComunity(name, number);
-        Assert.assertTrue(isPresentErrorLabel("Підклас з вказаним іменем вже існує") &&
-                isPresentErrorLabel("Невірний формат"));
-        SleepThread.sleep(2);
+        File screenShot = addComunity(name, number);
+        if(!isPresentErrorLabel("Підклас з вказаним іменем вже існує") ||
+                !isPresentErrorLabel("Невірний формат")) {
+            String nameFolder = "TestUsedNameInvalidNumber";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            Assert.fail();
+        }
     }
     
     //@Test 
-    public void IsPresentErrorMessageNameIsEmpty() {
+    public void createComunityWithUsedNameUsedNumber() {
+        String name = "Lviv";
+        String number = "000:25:09:376:40009";
+        File screenShot = addComunity(name, number);
+        if(driver.findElements(By.cssSelector("#body span")).size() != 2) {
+            String nameFolder = "TestUsedNumberUsedNumber";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            Assert.fail();
+        }
+    }
+    
+    //@Test 
+    public void createComunityWithEmptyName() {
         String name = "";
         String number = "123";
-        addComunity(name, number);
-        Assert.assertEquals("Please fill out this field.",
-                driver.switchTo().activeElement().getAttribute("validationMessage"));
-        SleepThread.sleep(2);
+        File screenShot = addComunity(name, number);
+        if(!driver.switchTo().activeElement().getAttribute("validationMessage")
+                .equals("Заповніть це поле.")) {
+            FileHelper.saveBugAttachments(folderName+"/TestEmptyName", screenShot, driver);
+            DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+            Assert.fail();
+        }
     }
     
     
-    @Test 
-    public void IsPresentErrorMessageNameInvalidNumberEmpty() {
+    //@Test 
+    public void createComunityWithInvalidNameEmptyNumber() {
         String name = "/.";
         String number = "";
-        File imageFile = addComunity(name, number);
-        if(driver.findElements(By.xpath("//form//span")).size()>0){
-            Assert.assertTrue(true); 
-        } else {
-            FileHelper.saveScreenShot(imageFile, folderName, "beforeTest");
-            FileHelper.takeAndSaveScreenShot(driver, folderName, "actualResalt");
-            Assert.assertTrue(false); 
+        File screenShot = addComunity(name, number);
+        if(driver.findElements(By.cssSelector("#body span")).size() != 1) {
+            String nameFolder = "TestInvalidNameEmptyNumber";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+            Assert.fail();
         }
-        SleepThread.sleep(2);
+    }
+    
+    //@Test 
+    public void createComunityWithInvalidNameInvalidNumber() {
+        String name = "/.";
+        String number = "123";
+        File screenShot = addComunity(name, number);
+        if(driver.findElements(By.cssSelector("#body span")).size() != 2) {
+            String nameFolder = "TestInvalidNameInvalidNumber";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+            Assert.fail();
+        }
+    }
+    
+    @Test 
+    public void createComunityWithInvalidNameUsedNumber() {
+        String name = "#4/^";
+        String number = "123:54:67:123:98734";
+        File screenShot = addComunity(name, number);
+        if(driver.findElements(By.cssSelector("#body span")).size() != 1) {
+            String nameFolder = "TestInvalidNameUsedNamber";
+            FileHelper.saveBugAttachments(folderName+"/"+nameFolder, screenShot, driver);
+            DeletingComunity.getDeletingComunity(driver).deleteComunityOK(name);
+            Assert.fail();
+        }
+    }
+    
+    @AfterClass
+    public static void afterClass(){
+        userLogin.quit();
+        driver.quit();
     }
     
     public File addComunity(String name, String number) {
-        driver.findElement(By.xpath("//a[contains(@href,'/show-all-communities')]")).click();
-        SleepThread.sleep(2);
         
-        driver.findElement(By.xpath("//a[contains(@href,'addCommunity')]")).click();
-        SleepThread.sleep(2);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(driver
+             .findElement(By.xpath("//a[contains(@href,'/show-all-communities')]"))));
+        
+        SleepThread.sleep(1);
+        driver.findElement(By.xpath("//a[contains(@href,'/show-all-communities')]")).click();
+        
+        
+        driver.findElement(By.cssSelector("a[href= 'addCommunity']")).click();
+        SleepThread.sleep(1);
         
         driver.findElement(By.name("name")).click();
         driver.findElement(By.name("name")).clear();
@@ -143,10 +215,10 @@ public class AddComunityTests {
         driver.findElement(By.name("registrationNumber")).clear();
         driver.findElement(By.name("registrationNumber")).sendKeys(number);
         SleepThread.sleep(1);
-        File outputfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        driver.findElement(By.xpath("//input[contains(@type,'submit')]")).click();
+        File viewBeforeTestExecute = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        driver.findElement(By.cssSelector("input[type = 'submit']")).click();
         SleepThread.sleep(1);
-        return outputfile;
+        return viewBeforeTestExecute;
     }
     
     public boolean isPresentErrorLabel(String message) {
