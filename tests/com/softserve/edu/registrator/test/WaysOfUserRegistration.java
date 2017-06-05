@@ -142,6 +142,7 @@ public class WaysOfUserRegistration { // TODO add JAVADOCs
 		Assert.assertFalse(driver.findElements(By.cssSelector("#navigationbar > ul > li:nth-child(3) > a")).size() > 0);
 		logOff();
 	}
+	// comment TODO test
 
 	@AfterClass
 	public static void stopService() {
