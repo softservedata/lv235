@@ -71,6 +71,9 @@ hs_err_pid*
 # Ignore .pfd
 *.pdf
 
+# Ignore .properties
+*.properties
+
 # bower
 /bower_components/
 
