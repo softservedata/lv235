@@ -18,16 +18,19 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class Task1 {
+public class WaysOfUserRegistration {
 	private static ChromeDriverService service;
 	private static WebDriver driver;
-	private static final Logger LOG = Logger.getLogger(Task1.class);
+	private static final Logger LOG = Logger.getLogger(WaysOfUserRegistration.class);
+	private static final String ADMIN_LOGIN = "admin";
+	private static final String ADMIN_PASSWORD = "admin";
+	private static final String COMMISSIONER_LOGIN = "NazarComis";
+	private static final String COMMISSIONER_PASSWORD = "qwerty";
 
 	@BeforeClass
 	public static void createService() throws IOException {
 		service = new ChromeDriverService.Builder().usingDriverExecutable(new File("resources/chromedriver.exe"))
 				.usingAnyFreePort().build();
-		// .usingPort(8888).build();
 		service.start();
 		LOG.debug("+++Service Start");
 		System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
@@ -52,14 +55,14 @@ public class Task1 {
 	}
 
 	private void logAsAdmin() {
-		driver.findElement(By.name("login")).sendKeys("tomtom");
-		driver.findElement(By.name("password")).sendKeys("qwerty");
+		driver.findElement(By.name("login")).sendKeys(ADMIN_LOGIN);
+		driver.findElement(By.name("password")).sendKeys(ADMIN_PASSWORD);
 		driver.findElement(By.xpath("//*[@id='loginForm']/div[5]/button")).click();
 	}
 
 	private void logAsCommissioner() {
-		driver.findElement(By.name("login")).sendKeys("tomutomu");
-		driver.findElement(By.name("password")).sendKeys("qwerty");
+		driver.findElement(By.name("login")).sendKeys(COMMISSIONER_LOGIN);
+		driver.findElement(By.name("password")).sendKeys(COMMISSIONER_PASSWORD);
 		driver.findElement(By.xpath("//*[@id='loginForm']/div[5]/button")).click();
 	}
 
