@@ -3,6 +3,7 @@ package com.softserve.edu.automatedTests;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -77,7 +78,7 @@ public class AutomatedTests {
 	//@Test
 	public void testCreateSubclass() throws Exception {
 		WebDriver driver = init();
-		login("regist", "111111", driver);
+		login("registrator", "registrator", driver);
 		driver.findElement(By.xpath("//*[@id='navigationbar']/ul/li[3]/a")).click(); // Subclass of objects
 		Thread.sleep(DELAY_FOR_DEMO);
 		driver.findElement(By.xpath("//*[@id='body']/p/a")).click(); // Add new subclass
@@ -121,7 +122,7 @@ public class AutomatedTests {
 	//@Test
 	public void testzAddResource() throws Exception {
 		WebDriver driver = init();
-		login("regist", "111111", driver);
+		login("registrator", "registrator", driver);
 		Thread.sleep(DELAY_FOR_DEMO);
 		driver.findElement(By.cssSelector("#navigationbar > ul > li:nth-child(5) > a")).click();
 		Thread.sleep(DELAY_FOR_DEMO);
@@ -225,7 +226,7 @@ public class AutomatedTests {
 		driver.findElement(By.id("linearBegin")).sendKeys("2000");
 		Thread.sleep(DELAY_FOR_DEMO);
 		driver.findElement(By.id("linearEnd")).click();
-		driver.findElement(By.id("linearEnd")).sendKeys("Hello, I am writting this test for free!");
+		driver.findElement(By.id("linearEnd")).sendKeys("Hello, ");
 		Thread.sleep(DELAY_FOR_DEMO);
 		driver.findElement(By.xpath("//*[@id='coordinates']/li/a[@data-target='#map']")).click();
 		Thread.sleep(DELAY_FOR_DEMO);
@@ -255,10 +256,10 @@ public class AutomatedTests {
 	 * Thread.sleep() Use only for DEMO!
 	 * @throws Exception - use for Thread.Sleep().
 	 */
-	//@Test
+	@Test
 	public void testDeleteSubclass() throws Exception {
 		WebDriver driver = init();
-		login("regist", "111111", driver);
+		login("registrator", "registrator", driver);
 		driver.findElement(By.xpath("//*[@id='navigationbar']/ul/li[3]/a")).click(); // Subclass of objects
 		Thread.sleep(DELAY_FOR_DEMO);
 		Assert.assertNotNull(driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'TestName')]")).getText());
