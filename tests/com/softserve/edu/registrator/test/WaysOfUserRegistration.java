@@ -28,11 +28,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 /**
  * Class created to test the functionality of "Ways Of User Registration".
  */
-// TODO change all xPath !!!!!DONE!!!!!
-// TODO change all cssSelectors !!!!!DONE!!!!!
-// TODO add smoke tests !!!!!DONE!!!!!
+
 // TODO take screenshot when failure
-// TODO add JAVADOCs
+
 public class WaysOfUserRegistration {
 	/**
 	 * ChromeDriverService instance.
