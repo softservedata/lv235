@@ -31,17 +31,61 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 // TODO change all xPath
 // TODO change all cssSelectors
 // TODO add smoke tests
+<<<<<<< HEAD
 public class WaysOfUserRegistrationPageLocalization { // TODO add JAVADOCs
+=======
+// TODO take screenshot when failure
+// TODO logOff in @After
+// TODO add JAVADOCs
+// TODO apostrophe $x("//label[contains(text(), \"Ім'я користувача\")]")
+
+public class WaysOfUserRegistrationPageLocalization {
+	/**
+	 * ChromeDriverService instance.
+	 * */
+>>>>>>> fca1af65acbef05f4b3dcc72bb3a59fbb73e9833
 	private static ChromeDriverService service;
+	/**
+	 * WebDriver instance.
+	 * */
 	private static WebDriver driver;
+<<<<<<< HEAD
 	private static final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
 	private static final Logger LOG = Logger.getLogger(WaysOfUserRegistration.class);
+=======
+	/**
+	 * Constant for Logger.
+	 * */
+	private static final Logger LOG = Logger
+			.getLogger(WaysOfUserRegistrationPageLocalization.class);
+	/**
+	 * Constant refers to administrator login credential.
+	 * */
+>>>>>>> fca1af65acbef05f4b3dcc72bb3a59fbb73e9833
 	private static final String ADMIN_LOGIN = "admin";
+	/**
+	 * Constant refers to administrator password credential.
+	 * */
 	private static final String ADMIN_PASSWORD = "admin";
+	/**
+	 * SmokeTest instance.
+	 * */
+	private static SmokeTest smokeTest = new SmokeTest();
 
+	/**
+	 * Methods creates ChromeDriverService, ChromeOptions, DesiredCapabilities,
+	 * ChromeDriver.
+	 * */
 	@BeforeClass
+<<<<<<< HEAD
 	public static void createService() throws IOException {
 		service = new ChromeDriverService.Builder().usingDriverExecutable(new File("resources/chromedriver.exe"))
+=======
+	public static void createService() throws IOException, InterruptedException {
+		smokeTest.smokeTest();
+		service = new ChromeDriverService.Builder()
+				.usingDriverExecutable(new File("resources/chromedriver.exe"))
+>>>>>>> fca1af65acbef05f4b3dcc72bb3a59fbb73e9833
 				.usingAnyFreePort().build();
 		service.start();
 		LOG.debug("+++Service Start");
@@ -62,6 +106,7 @@ public class WaysOfUserRegistrationPageLocalization { // TODO add JAVADOCs
 		driver.get("http://java.training.local:8080/registrator/login");
 	}
 
+<<<<<<< HEAD
 	@Before
 	public void logAsAdmin() throws InterruptedException {
 		driver.findElement(By.name("login")).sendKeys(ADMIN_LOGIN);
@@ -76,9 +121,109 @@ public class WaysOfUserRegistrationPageLocalization { // TODO add JAVADOCs
 		String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(scrFile, new File("screenshots/" + currentTime + "_screenshot.png"));
+=======
+	/**
+	 * Method does sing in actions as administrator.
+	 * */
+	@Before
+	public void logAsAdmin() throws InterruptedException {
+		driver.findElement(By.id("login")).sendKeys(ADMIN_LOGIN);
+		driver.findElement(By.id("password")).sendKeys(ADMIN_PASSWORD);
+		driver.findElement(By.cssSelector((".btn.btn-primary"))).click();
 	}
 
+	/**
+	 * Method check the Ukrainian localization.
+	 * */
 	@Test
+	// TODO ask if we need this step
+	public void ukrainianLocalizationTest() throws InterruptedException {
+		driver.findElement(By.id("changeLanguage")).click();
+		driver.findElement(
+				By.cssSelector("#changeLanguage > option[value='uk']")).click();
+		driver.findElement(
+				By.xpath("//a[@href='/registrator/administrator/settings']"))
+				.click();
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Децентралізований майновий реєстр')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'природних ресурсів України')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Співвласники')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Налаштування')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Громади')]")).size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//a[contains(text(), 'Зареєструвати співвласника')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//a[contains(text(), 'Розблокувати всіх співвласників')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Спосіб реєстрації нових співвласників')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//p[contains(text(), 'Виберіть одну з опцій')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Особиста реєстрація')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Реєстрація нового співвласника здійснюється виключно уповноваженим')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Обидва способи реєстрації доступні')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Часовий пояс для розрахунку поточного часу')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//p[contains(text(), 'Введіть місто або часовий пояс')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Налаштування надсилання електронної пошти')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Адреса сервера')]")).size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Ім') and contains(text(), 'я користувача')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Порт TCP')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Протокол')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Пароль')]")).size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Захищене з') and contains(text(), 'єднання TLS')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//button[contains(text(), 'Перевірити')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//input[@value = 'Підтвердити зміни']")).size() > 0);
+>>>>>>> fca1af65acbef05f4b3dcc72bb3a59fbb73e9833
+	}
+
+	/**
+	 * Method check the Russian localization.
+	 * */
+	@Test
+<<<<<<< HEAD
 	public void ukrainianLocalizationTest() throws InterruptedException {
 		driver.findElement(By.id("changeLanguage")).click();
 		Thread.sleep(1000);
@@ -230,10 +375,183 @@ public class WaysOfUserRegistrationPageLocalization { // TODO add JAVADOCs
 		Thread.sleep(500);
 		driver.findElement(By.xpath("//*[@id='header']/div[2]/div[1]/div/ul/li[4]/a")).click();
 		Thread.sleep(500);
+=======
+	public void russianLocalizationTest() throws InterruptedException {
+		driver.findElement(By.id("changeLanguage")).click();
+		driver.findElement(
+				By.cssSelector("#changeLanguage > option[value='ru']")).click();
+		driver.findElement(
+				By.xpath("//a[@href='/registrator/administrator/settings']"))
+				.click();
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Децентрализированный имущественный реестр')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'природных ресурсов Украины')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Совладельцы')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Настройки')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Общины')]")).size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//a[contains(text(), 'Зарегистрировать пользователя')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//a[contains(text(), 'Разблокивать всех совладельцев')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Способ регистрации новых пользователей')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//p[contains(text(), 'Выберите одну из опций')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Персональная регистрация')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Регистрация нового совладельца осуществляется исключительно уполномоченым')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Доступны два способа регистрации')]"))
+				.size() > 0);
+
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Часовой пояс для расчета текущего времени')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//p[contains(text(), 'Введите город или часовой пояс')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Настройки отправки электронной почты')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Адрес сервера')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Имя пользователя')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Порт TCP')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Протокол')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Пароль')]")).size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Защищенное соединение TLS')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//button[contains(text(), 'Проверить')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//input[@value = 'Подтвердить изменения']")).size() > 0);
 	}
 
+	/**
+	 * Method check the English localization.
+	 * */
+	@Test
+	public void englishLocalizationTest() throws InterruptedException {
+		driver.findElement(By.id("changeLanguage")).click();
+		driver.findElement(
+				By.cssSelector("#changeLanguage > option[value='en']")).click();
+		driver.findElement(
+				By.xpath("//a[@href='/registrator/administrator/settings']"))
+				.click();
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Decentralized registry of')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Ukrainian natural resources')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Coowners')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Settings')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Communities')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Register new user')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//a[contains(text(), 'Unblock all coowners')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//h3[contains(text(), 'Method of registering new users')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//p[contains(text(), 'Select one of the options')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Personal registration')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Only commissioner can register new co-owner')]"))
+				.size() > 0);
+		Assert.assertTrue(driver
+				.findElements(
+						By.xpath("//label[contains(text(), 'Both registration method are available')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//h3[contains(text(), 'Default time zone')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//p[contains(text(), 'Enter city or time zone')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//h3[contains(text(), 'System email account')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Email server address')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'User name')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'TCP port')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Protocol')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'Password')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), 'TLS secure connection')]"))
+				.size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//button[contains(text(), 'Check')]")).size() > 0);
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//input[@value = 'Confirm changes']")).size() > 0);
+	}
+
+	/**
+	 * Method does sign off actions.
+	 * */
+	@After
+	public void logOff() throws InterruptedException {
+		driver.findElement(
+				By.xpath("//button[@class = 'btn btn-primary btn-sm dropdown-toggle']"))
+				.click();
+		driver.findElement(By.xpath("//a[@href='/registrator/logout']"))
+				.click();
+>>>>>>> fca1af65acbef05f4b3dcc72bb3a59fbb73e9833
+	}
+
+	/**
+	 * Method quits the driver and stops ChromeDriverService.
+	 * */
 	@AfterClass
-	public static void stopService() {
+	public static void stopServiceAndQuit() {
 		driver.quit();
 		if (service != null) {
 			service.stop();
