@@ -37,7 +37,7 @@ public class DeleteComunityTests {
     @Test
     public void deleteComunityOK() {
         String nameComunity = "Uzhgorod";
-        DeletingComunity.getDeletingComunity(driver).deleteComunityOK(nameComunity);
+        DeletingComunity.getDeletingComunity(driver).deleteComunityIfExistOk(nameComunity);
         SleepThread.sleep(2);  
         Assert.assertTrue(driver.findElements(By.xpath("//a[text() = '"+ nameComunity
                 +"']/../..//a[contains(@href,'deleteCommunity/')]")).isEmpty());
@@ -46,7 +46,7 @@ public class DeleteComunityTests {
     @Test
     public void deleteComunityCancel() {
         String nameComunity = "Lviv";
-        DeletingComunity.getDeletingComunity(driver).deleteComunityCancel("Lviv");
+        DeletingComunity.getDeletingComunity(driver).deleteComunityIfExistCancel("Lviv");
         SleepThread.sleep(2);  
         Assert.assertTrue(!driver.findElements(By.xpath("//a[text() = '"+ nameComunity
                 +"']/../..//a[contains(@href,'deleteCommunity/')]")).isEmpty());        

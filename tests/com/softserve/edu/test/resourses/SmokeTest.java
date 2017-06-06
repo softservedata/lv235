@@ -40,7 +40,7 @@ public class SmokeTest {
     @After
     public void afterTest(){
         userLogin.quit();
-        driver.close();
+        driver.quit();
     }
     
     public void initsializeWebDriver(){
