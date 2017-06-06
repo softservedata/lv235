@@ -34,56 +34,53 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class WaysOfUserRegistration {
 	/**
 	 * ChromeDriverService instance.
-	 * */
+	 */
 	private static ChromeDriverService service;
 	/**
 	 * WebDriver instance.
-	 * */
+	 */
 	private static WebDriver driver;
 	/**
 	 * Constant for time pattern.
-	 * */
+	 */
 	private static final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
 	/**
 	 * Constant for Logger.
-	 * */
-	private static final Logger LOG = Logger
-			.getLogger(WaysOfUserRegistration.class);
+	 */
+	private static final Logger LOG = Logger.getLogger(WaysOfUserRegistration.class);
 	/**
 	 * Constant refers to administrator login credential.
-	 * */
+	 */
 	private static final String ADMIN_LOGIN = "admin";
 	/**
 	 * Constant refers to administrator password credential.
-	 * */
+	 */
 	private static final String ADMIN_PASSWORD = "admin";
 	/**
 	 * Constant refers to commissioner login credential.
-	 * */
+	 */
 	private static final String COMMISSIONER_LOGIN = "NazarComis";
 	/**
 	 * Constant refers to commissioner password credential.
-	 * */
+	 */
 	private static final String COMMISSIONER_PASSWORD = "qwerty";
 	/**
 	 * SmokeTest instance.
-	 * */
+	 */
 	private static SmokeTest smokeTest = new SmokeTest();
 
 	/**
 	 * Methods creates ChromeDriverService, ChromeOptions, DesiredCapabilities,
 	 * ChromeDriver.
-	 * */
+	 */
 	@BeforeClass
 	public static void createService() throws IOException {
 		smokeTest.smokeTest();
-		service = new ChromeDriverService.Builder()
-				.usingDriverExecutable(new File("resources/chromedriver.exe"))
+		service = new ChromeDriverService.Builder().usingDriverExecutable(new File("resources/chromedriver.exe"))
 				.usingAnyFreePort().build();
 		service.start();
 		LOG.debug("+++Service Start");
-		System.setProperty("webdriver.chrome.driver",
-				"resources/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--start-maximized");
 		options.addArguments("--disable-web-security");
@@ -102,20 +99,17 @@ public class WaysOfUserRegistration {
 
 	/**
 	 * Method takes screenshot.
-	 * */
+	 */
 	@SuppressWarnings("unused")
 	private void takeScreenShot(final WebDriver driver) throws IOException {
-		String currentTime = new SimpleDateFormat(TIME_TEMPLATE)
-				.format(new Date());
-		File scrFile = ((TakesScreenshot) driver)
-				.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("screenshots/" + currentTime
-				+ "_screenshot.png"));
+		String currentTime = new SimpleDateFormat(TIME_TEMPLATE).format(new Date());
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File("screenshots/" + currentTime + "_screenshot.png"));
 	}
 
 	/**
 	 * Method does sing in actions as administrator.
-	 * */
+	 */
 	@Before
 	public void logAsAdmin() throws InterruptedException {
 		driver.findElement(By.id("login")).sendKeys(ADMIN_LOGIN);
@@ -125,7 +119,7 @@ public class WaysOfUserRegistration {
 
 	/**
 	 * Method does sing in actions as commissioner.
-	 * */
+	 */
 	private void logAsCommissioner() throws InterruptedException {
 		driver.findElement(By.id("login")).sendKeys(COMMISSIONER_LOGIN);
 		driver.findElement(By.id("password")).sendKeys(COMMISSIONER_PASSWORD);
@@ -135,83 +129,59 @@ public class WaysOfUserRegistration {
 	/**
 	 * Method checks the functionality of "Both Registration Methods Are
 	 * Available".
-	 * */
+	 */
 	@Test
-	public void bothRegistrationMethodsAreAvailableTest()
-			throws InterruptedException {
-		driver.findElement(
-				By.xpath("//a[@href='/registrator/administrator/settings']"))
-				.click();
-		driver.findElement(
-				By.xpath("//*[@type = 'radio' and @value = 'MIXED']")).click();
+	public void bothRegistrationMethodsAreAvailableTest() throws InterruptedException {
+		driver.findElement(By.xpath("//a[@href='/registrator/administrator/settings']")).click();
+		driver.findElement(By.xpath("//*[@type = 'radio' and @value = 'MIXED']")).click();
 		driver.findElement(By.id("confirmRegistrationMethod")).click();
 		logOff();
-		Assert.assertTrue(driver.findElements(
-				By.cssSelector((".btn.btn-success"))).size() > 0);
+		Assert.assertTrue(driver.findElements(By.cssSelector((".btn.btn-success"))).size() > 0);
 		logAsCommissioner();
-		Assert.assertTrue(driver.findElements(
-				By.xpath("//a[@href='/registrator/manualregistration']"))
-				.size() > 0);
+		Assert.assertTrue(driver.findElements(By.xpath("//a[@href='/registrator/manualregistration']")).size() > 0);
 	}
 
 	/**
-	 * Method checks the functionality of
-	 * "Only Commissioner CanRegister New User".
-	 * */
+	 * Method checks the functionality of "Only Commissioner CanRegister New
+	 * User".
+	 */
 	@Test
-	public void onlyCommissionerCanRegisterNewUserTest()
-			throws InterruptedException {
-		driver.findElement(
-				By.xpath("//a[@href='/registrator/administrator/settings']"))
-				.click();
-		driver.findElement(
-				By.xpath("//*[@type = 'radio' and @value = 'MANUAL']")).click();
+	public void onlyCommissionerCanRegisterNewUserTest() throws InterruptedException {
+		driver.findElement(By.xpath("//a[@href='/registrator/administrator/settings']")).click();
+		driver.findElement(By.xpath("//*[@type = 'radio' and @value = 'MANUAL']")).click();
 		driver.findElement(By.id("confirmRegistrationMethod")).click();
 		logOff();
-		Assert.assertFalse(driver.findElements(
-				By.cssSelector((".btn.btn-success"))).size() > 0);
+		Assert.assertFalse(driver.findElements(By.cssSelector((".btn.btn-success"))).size() > 0);
 		logAsCommissioner();
-		Assert.assertTrue(driver.findElements(
-				By.xpath("//a[@href='/registrator/manualregistration']"))
-				.size() > 0);
+		Assert.assertTrue(driver.findElements(By.xpath("//a[@href='/registrator/manualregistration']")).size() > 0);
 	}
 
 	/**
 	 * Method checks the functionality of "Only Personal Registration".
-	 * */
+	 */
 	@Test
 	public void onlyPersonalRegistrationTest() throws InterruptedException {
-		driver.findElement(
-				By.xpath("//a[@href='/registrator/administrator/settings']"))
-				.click();
-		driver.findElement(
-				By.xpath("//*[@type = 'radio' and @value = 'PERSONAL']"))
-				.click();
+		driver.findElement(By.xpath("//a[@href='/registrator/administrator/settings']")).click();
+		driver.findElement(By.xpath("//*[@type = 'radio' and @value = 'PERSONAL']")).click();
 		driver.findElement(By.id("confirmRegistrationMethod")).click();
 		logOff();
-		Assert.assertTrue(driver.findElements(
-				By.cssSelector((".btn.btn-success"))).size() > 0);
+		Assert.assertTrue(driver.findElements(By.cssSelector((".btn.btn-success"))).size() > 0);
 		logAsCommissioner();
-		Assert.assertFalse(driver.findElements(
-				By.xpath("//a[@href='/registrator/manualregistration']"))
-				.size() > 0);
+		Assert.assertFalse(driver.findElements(By.xpath("//a[@href='/registrator/manualregistration']")).size() > 0);
 	}
 
 	/**
 	 * Method does sign off actions.
-	 * */
+	 */
 	@After
 	public void logOff() throws InterruptedException {
-		driver.findElement(
-				By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle"))
-				.click();
-		driver.findElement(By.xpath("//a[@href='/registrator/logout']"))
-				.click();
+		driver.findElement(By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle")).click();
+		driver.findElement(By.xpath("//a[@href='/registrator/logout']")).click();
 	}
 
 	/**
 	 * Method quits the driver and stops ChromeDriverService
-	 * */
+	 */
 	@AfterClass
 	public static void stopServiceAndQuit() {
 		driver.quit();
