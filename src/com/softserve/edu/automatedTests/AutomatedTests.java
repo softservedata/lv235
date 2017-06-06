@@ -3,6 +3,7 @@ package com.softserve.edu.automatedTests;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +14,7 @@ public class AutomatedTests {
 	/**
 	 * Delay for Thread.Sleep().
 	 */
-	private final int DELAY_FOR_DEMO = 1000;
+	private final int DELAY_FOR_DEMO = 0;
 
 	/**
 	 * This method initialize driver with settings.
@@ -40,15 +41,15 @@ public class AutomatedTests {
 	 * @param driver - driver.
 	 * @throws Exception - use for Thread.Sleep().
 	 */
-	private void login(String user, String password, WebDriver driver) throws Exception {
+	private void loginAsRegistrator(WebDriver driver) throws Exception {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.getLoginField().clear();
 		loginPage.getLoginField().click();
-		loginPage.getLoginField().sendKeys(user);
+		loginPage.getLoginField().sendKeys("registrator");
 		Thread.sleep(DELAY_FOR_DEMO);
 		loginPage.getLoginPassword().clear();
 		loginPage.getLoginPassword().click();
-		loginPage.getLoginPassword().sendKeys(password);
+		loginPage.getLoginPassword().sendKeys("registrator");
 		Thread.sleep(DELAY_FOR_DEMO);
 		loginPage.getLoginButton().click();
 		Thread.sleep(DELAY_FOR_DEMO);
@@ -74,10 +75,10 @@ public class AutomatedTests {
 	 * Thread.sleep() Use only for DEMO!
 	 * @throws Exception - use for Thread.Sleep().
 	 */
-	//@Test
+	@Test
 	public void testCreateSubclass() throws Exception {
 		WebDriver driver = init();
-		login("regist", "111111", driver);
+		loginAsRegistrator(driver);
 		driver.findElement(By.xpath("//*[@id='navigationbar']/ul/li[3]/a")).click(); // Subclass of objects
 		Thread.sleep(DELAY_FOR_DEMO);
 		driver.findElement(By.xpath("//*[@id='body']/p/a")).click(); // Add new subclass
@@ -93,7 +94,6 @@ public class AutomatedTests {
 		driver.findElement(By.name("parameters[0].unitName")).click();
 		driver.findElement(By.name("parameters[0].unitName")).sendKeys("points");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.name("parameters[0].parametersType")).click();
 		driver.findElement(By.cssSelector("*[value='discreteParameters']")).click();
 		driver.findElement(By.id("btnAdd")).click();
 		Thread.sleep(DELAY_FOR_DEMO);
@@ -103,9 +103,8 @@ public class AutomatedTests {
 		driver.findElement(By.name("parameters[1].unitName")).click();
 		driver.findElement(By.name("parameters[1].unitName")).sendKeys("count");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.name("parameters[1].parametersType")).click();
-		driver.findElement(By.cssSelector("#input2 #myparam2"))
-		.findElement(By.cssSelector("*[value='linearParameters']")).click();
+		driver.findElement(By.cssSelector("#input2 #myparam2 [value='linearParameters']")).click();
+		//.findElement(By.cssSelector("*")).click();
 		driver.findElement(By.id("valid")).click();
 		Thread.sleep(DELAY_FOR_DEMO);
 		Assert.assertNotNull(driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'TestName')]")).getText());
@@ -121,7 +120,7 @@ public class AutomatedTests {
 	//@Test
 	public void testzAddResource() throws Exception {
 		WebDriver driver = init();
-		login("regist", "111111", driver);
+		loginAsRegistrator(driver);
 		Thread.sleep(DELAY_FOR_DEMO);
 		driver.findElement(By.cssSelector("#navigationbar > ul > li:nth-child(5) > a")).click();
 		Thread.sleep(DELAY_FOR_DEMO);
@@ -225,7 +224,7 @@ public class AutomatedTests {
 		driver.findElement(By.id("linearBegin")).sendKeys("2000");
 		Thread.sleep(DELAY_FOR_DEMO);
 		driver.findElement(By.id("linearEnd")).click();
-		driver.findElement(By.id("linearEnd")).sendKeys("Hello, I am writting this test for free!");
+		driver.findElement(By.id("linearEnd")).sendKeys("Second Great comment!");
 		Thread.sleep(DELAY_FOR_DEMO);
 		driver.findElement(By.xpath("//*[@id='coordinates']/li/a[@data-target='#map']")).click();
 		Thread.sleep(DELAY_FOR_DEMO);
@@ -249,7 +248,6 @@ public class AutomatedTests {
 		logout(driver);
 	}
 
-
 	/**
 	 * This test DELETE a new subclass.
 	 * Thread.sleep() Use only for DEMO!
@@ -258,7 +256,7 @@ public class AutomatedTests {
 	//@Test
 	public void testDeleteSubclass() throws Exception {
 		WebDriver driver = init();
-		login("regist", "111111", driver);
+		loginAsRegistrator(driver);
 		driver.findElement(By.xpath("//*[@id='navigationbar']/ul/li[3]/a")).click(); // Subclass of objects
 		Thread.sleep(DELAY_FOR_DEMO);
 		Assert.assertNotNull(driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'TestName')]")).getText());
@@ -269,24 +267,4 @@ public class AutomatedTests {
 		Assert.assertTrue(driver.findElements(By.xpath("*[@id='datatable']//td[contains(text(),'TestName')]")).size() == 0);
 		logout(driver);
 	}
-
-
-
-
-
-	// DeadCode
-
-	// login
-		/*	driver.findElement(By.id("login")).click();
-			driver.findElement(By.id("login")).clear();
-			driver.findElement(By.id("login")).sendKeys("regist");
-			Thread.sleep(DELAY_FOR_DEMO);
-			driver.findElement(By.id("password")).click();
-			driver.findElement(By.id("password")).clear();
-			driver.findElement(By.id("password")).sendKeys("111111");
-			Thread.sleep(DELAY_FOR_DEMO);
-			driver.findElement(By.cssSelector(".btn.btn-primary")).click();
-			Thread.sleep(DELAY_FOR_DEMO);
-*/
-
 }
