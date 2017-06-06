@@ -2,13 +2,10 @@ package com.softserve.edu.registrator.test;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,8 +14,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -31,17 +26,45 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 // TODO change all xPath
 // TODO change all cssSelectors
 // TODO add smoke tests
-public class WaysOfUserRegistrationPageLocalization { // TODO add JAVADOCs
-	private static ChromeDriverService service;
-	private static WebDriver driver;
-	private static final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss";
-	private static final Logger LOG = Logger
-			.getLogger(WaysOfUserRegistration.class);
-	private static final String ADMIN_LOGIN = "admin";
-	private static final String ADMIN_PASSWORD = "admin";
+// TODO take screenshot when failure
+// TODO logOff in @After
+// TODO add JAVADOCs
+// TODO apostrophe $x("//label[contains(text(), \"Ім'я користувача\")]")
 
+public class WaysOfUserRegistrationPageLocalization {
+	/**
+	 * ChromeDriverService instance.
+	 * */
+	private static ChromeDriverService service;
+	/**
+	 * WebDriver instance.
+	 * */
+	private static WebDriver driver;
+	/**
+	 * Constant for Logger.
+	 * */
+	private static final Logger LOG = Logger
+			.getLogger(WaysOfUserRegistrationPageLocalization.class);
+	/**
+	 * Constant refers to administrator login credential.
+	 * */
+	private static final String ADMIN_LOGIN = "admin";
+	/**
+	 * Constant refers to administrator password credential.
+	 * */
+	private static final String ADMIN_PASSWORD = "admin";
+	/**
+	 * SmokeTest instance.
+	 * */
+	private static SmokeTest smokeTest = new SmokeTest();
+
+	/**
+	 * Methods creates ChromeDriverService, ChromeOptions, DesiredCapabilities,
+	 * ChromeDriver.
+	 * */
 	@BeforeClass
-	public static void createService() throws IOException {
+	public static void createService() throws IOException, InterruptedException {
+		smokeTest.smokeTest();
 		service = new ChromeDriverService.Builder()
 				.usingDriverExecutable(new File("resources/chromedriver.exe"))
 				.usingAnyFreePort().build();
@@ -65,27 +88,19 @@ public class WaysOfUserRegistrationPageLocalization { // TODO add JAVADOCs
 		driver.get("http://java.training.local:8080/registrator/login");
 	}
 
+	/**
+	 * Method does sing in actions as administrator.
+	 * */
 	@Before
 	public void logAsAdmin() throws InterruptedException {
-		driver.findElement(By.name("login")).sendKeys(ADMIN_LOGIN);
-		Thread.sleep(500);
-		driver.findElement(By.name("password")).sendKeys(ADMIN_PASSWORD);
-		Thread.sleep(500);
-		driver.findElement(By.xpath("//*[@id='loginForm']/div[5]/button"))
-				.click();
+		driver.findElement(By.id("login")).sendKeys(ADMIN_LOGIN);
+		driver.findElement(By.id("password")).sendKeys(ADMIN_PASSWORD);
+		driver.findElement(By.cssSelector((".btn.btn-primary"))).click();
 	}
 
-	@SuppressWarnings("unused")
-	// TODO take screenshot when failure
-	private void takeScreenShot(WebDriver driver) throws IOException {
-		String currentTime = new SimpleDateFormat(TIME_TEMPLATE)
-				.format(new Date());
-		File scrFile = ((TakesScreenshot) driver)
-				.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("screenshots/" + currentTime
-				+ "_screenshot.png"));
-	}
-
+	/**
+	 * Method check the Ukrainian localization.
+	 * */
 	@Test
 	public void ukrainianLocalizationTest() throws InterruptedException {
 		driver.findElement(By.id("changeLanguage")).click();
@@ -172,7 +187,9 @@ public class WaysOfUserRegistrationPageLocalization { // TODO add JAVADOCs
 				By.xpath("//input[@value = 'Підтвердити зміни']")).size() > 0);
 	}
 
-	// TODO logOff in @After
+	/**
+	 * Method check the Russian localization.
+	 * */
 	@Test
 	public void russianLocalizationTest() throws InterruptedException {
 		driver.findElement(By.id("changeLanguage")).click();
@@ -259,8 +276,9 @@ public class WaysOfUserRegistrationPageLocalization { // TODO add JAVADOCs
 				By.xpath("//input[@value = 'Подтвердить изменения']")).size() > 0);
 	}
 
-	// TODO apostrophe $x("//label[contains(text(), \"Ім'я користувача\")]")
-
+	/**
+	 * Method check the English localization.
+	 * */
 	@Test
 	public void englishLocalizationTest() throws InterruptedException {
 		driver.findElement(By.id("changeLanguage")).click();
@@ -337,20 +355,23 @@ public class WaysOfUserRegistrationPageLocalization { // TODO add JAVADOCs
 				By.xpath("//input[@value = 'Confirm changes']")).size() > 0);
 	}
 
+	/**
+	 * Method does sign off actions.
+	 * */
 	@After
 	public void logOff() throws InterruptedException {
 		driver.findElement(
-				By.xpath("//*[@id='header']/div[2]/div[1]/div/button[2]/span"))
+				By.xpath("//button[@class = 'btn btn-primary btn-sm dropdown-toggle']"))
 				.click();
-		Thread.sleep(500);
-		driver.findElement(
-				By.xpath("//*[@id='header']/div[2]/div[1]/div/ul/li[4]/a"))
+		driver.findElement(By.xpath("//a[@href='/registrator/logout']"))
 				.click();
-		Thread.sleep(500);
 	}
 
+	/**
+	 * Method quits the driver and stops ChromeDriverService.
+	 * */
 	@AfterClass
-	public static void stopService() {
+	public static void stopServiceAndQuit() {
 		driver.quit();
 		if (service != null) {
 			service.stop();
