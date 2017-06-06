@@ -102,17 +102,14 @@ public class WaysOfUserRegistrationPageLocalization {
 	 * Method check the Ukrainian localization.
 	 * */
 	@Test
+	// TODO ask if we need this step
 	public void ukrainianLocalizationTest() throws InterruptedException {
 		driver.findElement(By.id("changeLanguage")).click();
-		Thread.sleep(1000);
 		driver.findElement(
-				By.cssSelector("#changeLanguage > option:nth-child(1)"))
-				.click();
-		Thread.sleep(1000);
+				By.cssSelector("#changeLanguage > option[value='uk']")).click();
 		driver.findElement(
-				By.cssSelector("#navigationbar > ul > li:nth-child(3) > a"))
+				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
-		Thread.sleep(1000);
 		Assert.assertTrue(driver
 				.findElements(
 						By.xpath("//h3[contains(text(), 'Децентралізований майновий реєстр')]"))
@@ -193,13 +190,10 @@ public class WaysOfUserRegistrationPageLocalization {
 	@Test
 	public void russianLocalizationTest() throws InterruptedException {
 		driver.findElement(By.id("changeLanguage")).click();
-		Thread.sleep(1000);
 		driver.findElement(
-				By.cssSelector("#changeLanguage > option:nth-child(2)"))
-				.click();
-		Thread.sleep(1000);
+				By.cssSelector("#changeLanguage > option[value='ru']")).click();
 		driver.findElement(
-				By.cssSelector("#navigationbar > ul > li:nth-child(3) > a"))
+				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
 		Assert.assertTrue(driver
 				.findElements(
@@ -282,13 +276,10 @@ public class WaysOfUserRegistrationPageLocalization {
 	@Test
 	public void englishLocalizationTest() throws InterruptedException {
 		driver.findElement(By.id("changeLanguage")).click();
-		Thread.sleep(1000);
 		driver.findElement(
-				By.cssSelector("#changeLanguage > option:nth-child(3)"))
-				.click();
-		Thread.sleep(1000);
+				By.cssSelector("#changeLanguage > option[value='en']")).click();
 		driver.findElement(
-				By.cssSelector("#navigationbar > ul > li:nth-child(3) > a"))
+				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
 		Assert.assertTrue(driver
 				.findElements(
