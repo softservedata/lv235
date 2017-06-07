@@ -28,7 +28,6 @@ public class SmokeTest {
 	/**
 	 * Method does sign in and sign off actions to the system.
 	 * */
-
 	@Test
 	public void smokeTest() {
 		System.setProperty("webdriver.chrome.driver",

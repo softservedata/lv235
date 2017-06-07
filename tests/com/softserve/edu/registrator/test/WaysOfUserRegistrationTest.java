@@ -12,6 +12,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,9 +24,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 /**
  * Class created to test the functionality of "Ways Of User Registration".
  */
-
-// TODO take screenshot when failure
-
 public class WaysOfUserRegistrationTest {
 	/**
 	 * ChromeDriverService instance.
@@ -56,10 +54,12 @@ public class WaysOfUserRegistrationTest {
 	 * Constant refers to commissioner password credential.
 	 */
 	private static final String COMMISSIONER_PASSWORD = "qwerty";
+
 	/**
-	 * SmokeTest instance.
-	 */
-	private static SmokeTest smokeTest = new SmokeTest();
+	 * Rule to take screenshot when test fails.
+	 * */
+	@Rule
+	public ScreenShotOnFailure failure = new ScreenShotOnFailure(driver);
 
 	/**
 	 * Methods creates ChromeDriverService, ChromeOptions, DesiredCapabilities,
@@ -67,7 +67,6 @@ public class WaysOfUserRegistrationTest {
 	 */
 	@BeforeClass
 	public static void createService() throws IOException {
-		smokeTest.smokeTest();
 		service = new ChromeDriverService.Builder()
 				.usingDriverExecutable(new File("resources/chromedriver.exe"))
 				.usingAnyFreePort().build();

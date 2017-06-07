@@ -12,6 +12,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,14 +24,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 /**
  * Class created to test localization on "Ways Of User Registration" page.
  */
-// TODO change all xPath
-// TODO change all cssSelectors
-// TODO add smoke tests
-// TODO take screenshot when failure
-// TODO logOff in @After
-// TODO add JAVADOCs
-// TODO apostrophe $x("//label[contains(text(), \"Ім'я користувача\")]")
-
 public class WaysOfUserRegistrationPageLocalizationTest {
 	/**
 	 * ChromeDriverService instance.
@@ -53,10 +46,12 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	 * Constant refers to administrator password credential.
 	 */
 	private static final String ADMIN_PASSWORD = "admin";
+
 	/**
-	 * SmokeTest instance.
-	 */
-	private static SmokeTest smokeTest = new SmokeTest();
+	 * Rule to take screenshot when test fails.
+	 * */
+	@Rule
+	public ScreenShotOnFailure failure = new ScreenShotOnFailure(driver);
 
 	/**
 	 * Methods creates ChromeDriverService, ChromeOptions, DesiredCapabilities,
@@ -64,7 +59,6 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	 */
 	@BeforeClass
 	public static void createService() throws IOException, InterruptedException {
-		smokeTest.smokeTest();
 		service = new ChromeDriverService.Builder()
 				.usingDriverExecutable(new File("resources/chromedriver.exe"))
 				.usingAnyFreePort().build();
@@ -105,7 +99,6 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	 * 
 	 * @throws IOException
 	 */
-
 	@Test
 	public void ukrainianLocalizationTest() throws InterruptedException {
 		driver.findElement(By.id("changeLanguage")).click();
@@ -116,7 +109,7 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 				.click();
 		Assert.assertTrue(driver
 				.findElements(
-						By.xpath("//h3[contains(text(), 'Децентралізований майновий реєстр')]"))
+						By.xpath("//h3[contains(text(), 'Ддецентралізований майновий реєстр')]"))
 				.size() > 0);
 		Assert.assertTrue(driver
 				.findElements(
@@ -168,9 +161,8 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 				.size() > 0);
 		Assert.assertTrue(driver.findElements(
 				By.xpath("//label[contains(text(), 'Адреса сервера')]")).size() > 0);
-		Assert.assertTrue(driver
-				.findElements(
-						By.xpath("//label[contains(text(), 'Ім') and contains(text(), 'я користувача')]"))
+		Assert.assertTrue(driver.findElements(
+				By.xpath("//label[contains(text(), \"Ім'я користувача\")]"))
 				.size() > 0);
 		Assert.assertTrue(driver.findElements(
 				By.xpath("//label[contains(text(), 'Порт TCP')]")).size() > 0);
@@ -180,7 +172,7 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 				By.xpath("//label[contains(text(), 'Пароль')]")).size() > 0);
 		Assert.assertTrue(driver
 				.findElements(
-						By.xpath("//label[contains(text(), 'Захищене з') and contains(text(), 'єднання TLS')]"))
+						By.xpath("//label[contains(text(), \"Захищене з'єднання TLS\")]"))
 				.size() > 0);
 		Assert.assertTrue(driver.findElements(
 				By.xpath("//button[contains(text(), 'Перевірити')]")).size() > 0);
@@ -356,7 +348,7 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	@After
 	public void logOff() throws InterruptedException {
 		driver.findElement(
-				By.xpath("//button[@class = 'btn btn-primary btn-sm dropdown-toggle']"))
+				By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle"))
 				.click();
 		driver.findElement(By.xpath("//a[@href='/registrator/logout']"))
 				.click();
