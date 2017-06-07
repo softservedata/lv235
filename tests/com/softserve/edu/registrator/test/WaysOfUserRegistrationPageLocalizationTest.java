@@ -46,6 +46,10 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	 * Constant refers to administrator password credential.
 	 */
 	private static final String ADMIN_PASSWORD = "admin";
+	/**
+	 * Constant for Thread.sleep().
+	 */
+	private static final int PAUSE_MILLS = 1200;
 
 	/**
 	 * Rule to take screenshot when test fails.
@@ -89,8 +93,10 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	public void logAsAdmin() throws InterruptedException {
 		driver.findElement(By.id("login")).clear();
 		driver.findElement(By.id("login")).sendKeys(ADMIN_LOGIN);
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.id("password")).clear();
 		driver.findElement(By.id("password")).sendKeys(ADMIN_PASSWORD);
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.cssSelector((".btn.btn-primary"))).click();
 	}
 
@@ -101,15 +107,19 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	 */
 	@Test
 	public void ukrainianLocalizationTest() throws InterruptedException {
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.id("changeLanguage")).click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.cssSelector("#changeLanguage > option[value='uk']")).click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
+		Thread.sleep(PAUSE_MILLS);
 		Assert.assertTrue(driver
 				.findElements(
-						By.xpath("//h3[contains(text(), 'Ддецентралізований майновий реєстр')]"))
+						By.xpath("//h3[contains(text(), 'Децентралізований майновий реєстр')]"))
 				.size() > 0);
 		Assert.assertTrue(driver
 				.findElements(
@@ -185,12 +195,16 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	 */
 	@Test
 	public void russianLocalizationTest() throws InterruptedException {
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.id("changeLanguage")).click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.cssSelector("#changeLanguage > option[value='ru']")).click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
+		Thread.sleep(PAUSE_MILLS);
 		Assert.assertTrue(driver
 				.findElements(
 						By.xpath("//h3[contains(text(), 'Децентрализированный имущественный реестр')]"))
@@ -271,12 +285,16 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	 */
 	@Test
 	public void englishLocalizationTest() throws InterruptedException {
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.id("changeLanguage")).click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.cssSelector("#changeLanguage > option[value='en']")).click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
+		Thread.sleep(PAUSE_MILLS);
 		Assert.assertTrue(driver
 				.findElements(
 						By.xpath("//h3[contains(text(), 'Decentralized registry of')]"))
@@ -350,6 +368,7 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 		driver.findElement(
 				By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle"))
 				.click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.xpath("//a[@href='/registrator/logout']"))
 				.click();
 	}

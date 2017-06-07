@@ -54,7 +54,10 @@ public class WaysOfUserRegistrationTest {
 	 * Constant refers to commissioner password credential.
 	 */
 	private static final String COMMISSIONER_PASSWORD = "qwerty";
-
+	/**
+	 * Constant for Thread.sleep().
+	 */
+	private static final int PAUSE_MILLS = 1300;
 	/**
 	 * Rule to take screenshot when test fails.
 	 * */
@@ -97,8 +100,10 @@ public class WaysOfUserRegistrationTest {
 	public void logAsAdmin() throws InterruptedException {
 		driver.findElement(By.id("login")).clear();
 		driver.findElement(By.id("login")).sendKeys(ADMIN_LOGIN);
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.id("password")).clear();
 		driver.findElement(By.id("password")).sendKeys(ADMIN_PASSWORD);
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.cssSelector((".btn.btn-primary"))).click();
 	}
 
@@ -108,31 +113,40 @@ public class WaysOfUserRegistrationTest {
 	private void logAsCommissioner() throws InterruptedException {
 		driver.findElement(By.id("login")).clear();
 		driver.findElement(By.id("login")).sendKeys(COMMISSIONER_LOGIN);
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.id("password")).clear();
 		driver.findElement(By.id("password")).sendKeys(COMMISSIONER_PASSWORD);
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.cssSelector((".btn.btn-primary"))).click();
 	}
 
 	/**
-	 * Method checks the functionality of "Both Registration Methods Are
-	 * Available".
+	 * Method checks the functionality of "Only Personal Registration".
 	 */
 	@Test
-	public void bothRegistrationMethodsAreAvailableTest()
-			throws InterruptedException {
+	public void onlyPersonalRegistrationTest() throws InterruptedException {
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
-				By.xpath("//*[@type = 'radio' and @value = 'MIXED']")).click();
+				By.xpath("//*[@type = 'radio' and @value = 'PERSONAL']"))
+				.click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.id("confirmRegistrationMethod")).click();
+		Thread.sleep(PAUSE_MILLS);
 		logOff();
+		Thread.sleep(PAUSE_MILLS);
 		Assert.assertTrue(driver.findElements(
 				By.cssSelector((".btn.btn-success"))).size() > 0);
+		Thread.sleep(PAUSE_MILLS);
 		logAsCommissioner();
-		Assert.assertTrue(driver.findElements(
+		Thread.sleep(PAUSE_MILLS);
+		Assert.assertFalse(driver.findElements(
 				By.xpath("//a[@href='/registrator/manualregistration']"))
 				.size() > 0);
+		Thread.sleep(PAUSE_MILLS);
 	}
 
 	/**
@@ -142,40 +156,56 @@ public class WaysOfUserRegistrationTest {
 	@Test
 	public void onlyCommissionerCanRegisterNewUserTest()
 			throws InterruptedException {
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.xpath("//*[@type = 'radio' and @value = 'MANUAL']")).click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.id("confirmRegistrationMethod")).click();
+		Thread.sleep(PAUSE_MILLS);
 		logOff();
+		Thread.sleep(PAUSE_MILLS);
 		Assert.assertFalse(driver.findElements(
 				By.cssSelector((".btn.btn-success"))).size() > 0);
+		Thread.sleep(PAUSE_MILLS);
 		logAsCommissioner();
+		Thread.sleep(PAUSE_MILLS);
 		Assert.assertTrue(driver.findElements(
 				By.xpath("//a[@href='/registrator/manualregistration']"))
 				.size() > 0);
+		Thread.sleep(2000);
 	}
 
 	/**
-	 * Method checks the functionality of "Only Personal Registration".
+	 * Method checks the functionality of "Both Registration Methods Are
+	 * Available".
 	 */
 	@Test
-	public void onlyPersonalRegistrationTest() throws InterruptedException {
+	public void bothRegistrationMethodsAreAvailableTest()
+			throws InterruptedException {
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
 				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(
-				By.xpath("//*[@type = 'radio' and @value = 'PERSONAL']"))
-				.click();
+				By.xpath("//*[@type = 'radio' and @value = 'MIXED']")).click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.id("confirmRegistrationMethod")).click();
+		Thread.sleep(PAUSE_MILLS);
 		logOff();
+		Thread.sleep(PAUSE_MILLS);
 		Assert.assertTrue(driver.findElements(
 				By.cssSelector((".btn.btn-success"))).size() > 0);
 		logAsCommissioner();
-		Assert.assertFalse(driver.findElements(
+		Thread.sleep(PAUSE_MILLS);
+		Assert.assertTrue(driver.findElements(
 				By.xpath("//a[@href='/registrator/manualregistration']"))
 				.size() > 0);
+		Thread.sleep(PAUSE_MILLS);
 	}
 
 	/**
@@ -186,6 +216,7 @@ public class WaysOfUserRegistrationTest {
 		driver.findElement(
 				By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle"))
 				.click();
+		Thread.sleep(PAUSE_MILLS);
 		driver.findElement(By.xpath("//a[@href='/registrator/logout']"))
 				.click();
 	}
