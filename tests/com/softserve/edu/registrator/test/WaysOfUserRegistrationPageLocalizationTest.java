@@ -78,7 +78,7 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 		Map<String, Object> preferences = new HashMap<String, Object>();
 		preferences.put("credentials_enable_service", false);
 		preferences.put("profile.password_manager_enabled", false);
-		options.setExperimentalOption("prefs", preferences);
+		options.setExperimentalOption("preferences", preferences);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new ChromeDriver(capabilities);
@@ -101,7 +101,7 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	}
 
 	/**
-	 * Method check the Ukrainian localization.
+	 * Method checks Ukrainian localization.
 	 * 
 	 * @throws IOException
 	 */
@@ -191,7 +191,7 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	}
 
 	/**
-	 * Method check the Russian localization.
+	 * Method checks Russian localization.
 	 */
 	@Test
 	public void russianLocalizationTest() throws InterruptedException {
@@ -281,7 +281,7 @@ public class WaysOfUserRegistrationPageLocalizationTest {
 	}
 
 	/**
-	 * Method check the English localization.
+	 * Method checks English localization.
 	 */
 	@Test
 	public void englishLocalizationTest() throws InterruptedException {

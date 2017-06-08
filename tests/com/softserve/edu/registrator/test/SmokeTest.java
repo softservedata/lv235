@@ -17,11 +17,11 @@ public class SmokeTest {
 	 * */
 	private static WebDriver driver;
 	/**
-	 * Constant refers to administrator login credential.
+	 * Constant refers to administrator's login credential.
 	 * */
 	private static final String ADMIN_LOGIN = "admin";
 	/**
-	 * Constant refers to administrator password credential.
+	 * Constant refers to administrator's password credential.
 	 * */
 	private static final String ADMIN_PASSWORD = "admin";
 

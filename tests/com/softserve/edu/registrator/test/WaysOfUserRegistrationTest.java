@@ -39,25 +39,25 @@ public class WaysOfUserRegistrationTest {
 	private static final Logger LOG = Logger
 			.getLogger(WaysOfUserRegistrationTest.class);
 	/**
-	 * Constant refers to administrator login credential.
+	 * Constant refers to administrator's login credential.
 	 */
 	private static final String ADMIN_LOGIN = "admin";
 	/**
-	 * Constant refers to administrator password credential.
+	 * Constant refers to administrator's password credential.
 	 */
 	private static final String ADMIN_PASSWORD = "admin";
 	/**
-	 * Constant refers to commissioner login credential.
+	 * Constant refers to commissioner's login credential.
 	 */
 	private static final String COMMISSIONER_LOGIN = "NazarComis";
 	/**
-	 * Constant refers to commissioner password credential.
+	 * Constant refers to commissioner's password credential.
 	 */
 	private static final String COMMISSIONER_PASSWORD = "qwerty";
 	/**
 	 * Constant for Thread.sleep().
 	 */
-	private static final int PAUSE_MILLS = 1300;
+	private static final int PAUSE_MILLS = 1200;
 	/**
 	 * Rule to take screenshot when test fails.
 	 * */
@@ -85,7 +85,7 @@ public class WaysOfUserRegistrationTest {
 		Map<String, Object> preferences = new HashMap<String, Object>();
 		preferences.put("credentials_enable_service", false);
 		preferences.put("profile.password_manager_enabled", false);
-		options.setExperimentalOption("prefs", preferences);
+		options.setExperimentalOption("preferences", preferences);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new ChromeDriver(capabilities);
