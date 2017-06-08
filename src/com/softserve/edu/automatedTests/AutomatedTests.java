@@ -14,7 +14,7 @@ public class AutomatedTests {
 	/**
 	 * Delay for Thread.Sleep().
 	 */
-	private final int DELAY_FOR_DEMO = 0;
+	private final int DELAY_FOR_DEMO = 1000;
 
 	/**
 	 * This method initialize driver with settings.
