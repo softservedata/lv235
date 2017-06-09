@@ -4,41 +4,73 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class UserLogin {
+/**
+ * Class for login user.
+ * @author Ivan
+ */
+public final class UserLogin {
+
+    /**
+     * Emplicid wait time.
+     */
+    private static final int TIME_FOR_WAIT = 5;
+
+    /**
+     * instanse.
+     */
     private static  UserLogin userLogin;
-    
-    private WebDriver driver;
-    
-    private UserLogin(WebDriver driver) {
-        this.driver = driver;
+
+    /**
+     * Web Driver.
+     */
+    private WebDriver webDriver;
+
+    /**
+     * private constructor.
+     * @param driver Web Driver.
+     */
+    private UserLogin(final WebDriver driver) {
+        this.webDriver = driver;
     }
-    
-    
-    public static UserLogin getUserLogin(WebDriver driver)
-    {
-        if ((userLogin) == null)
+
+    /**
+     * getting object UserLogin.
+     * @param driver Web Driver.
+     * @return object this class.
+     */
+    public static UserLogin getUserLogin(final WebDriver driver) {
+        if ((userLogin) == null) {
             userLogin = new UserLogin(driver);
+        }
         return userLogin;
     }
-    
-    
+
+    /**
+     * Logining user.
+     */
     public void login()  {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get("http://java.training.local:8080/registrator/login");
-       
-        driver.findElement(By.id("login")).click();
-        driver.findElement(By.id("login")).clear();
-        driver.findElement(By.id("login")).sendKeys("admin");
-        
-        driver.findElement(By.id("password")).click();
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("admin");
-        driver.findElement(By.cssSelector(".btn.btn-primary")).submit();
+        webDriver.manage().timeouts()
+                .implicitlyWait(TIME_FOR_WAIT, TimeUnit.SECONDS);
+        webDriver.get("http://java.training.local:8080/registrator/login");
+        webDriver.findElement(By.id("login")).click();
+        webDriver.findElement(By.id("login")).clear();
+        webDriver.findElement(By.id("login")).sendKeys("admin");
+        webDriver.findElement(By.id("password")).click();
+        webDriver.findElement(By.id("password")).clear();
+        webDriver.findElement(By.id("password")).sendKeys("admin");
+        webDriver.findElement(By.cssSelector(".btn.btn-primary")).submit();
     }
-    
+
+    /**
+     * logout user.
+     */
     public void quit() {
         SleepThread.sleep(2);
-        driver.findElement(By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle")).click();
-        driver.findElement(By.xpath("//a[contains(@href,'/logout')]")).click();
+        webDriver.findElement(
+                By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle"))
+                .click();
+        webDriver.findElement(
+                By.xpath("//a[contains(@href,'/logout')]"))
+                .click();
     }
 }

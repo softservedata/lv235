@@ -58,18 +58,17 @@ public final class FileHelper {
 
     /**
      * method create new derectory.
-     * @param testCaseName
-     * @return
+     * @param testCaseName name testCase.
+     * @return name created directory.
      */
-    public static String createDerectory(String testCaseName) {
+    public static String createDerectory(final String testCaseName) {
         String nameDir = testCaseName + new SimpleDateFormat(TIME_TEMPLATE)
                 .format(new Date());
-        File theDir = new File("./TestResults/"+nameDir);
+        File theDir = new File("./TestResults/" + nameDir);
         if (!theDir.exists()) {
             try {
                 theDir.mkdir();
-            } 
-            catch(SecurityException se){
+            } catch (SecurityException se) {
                 System.out.println("folder is not created");
             }
         }

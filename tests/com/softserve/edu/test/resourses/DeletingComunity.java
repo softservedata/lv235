@@ -55,7 +55,7 @@ public final class DeletingComunity {
     public void deleteComunityIfExistOk(final String nameComunity) {
         webDriver.findElement(By.xpath(
                 "//a[contains(@href,'/show-all-communities')]")).click();
-        SleepThread.sleep(1);
+        SleepThread.sleep(1); // mus be deleted
         if (isExistComunity(nameComunity)) {
             webDriver.findElement(By.xpath("//a[text() = '" + nameComunity
                     + "']/../..//a[contains(@href,'deleteCommunity/')]"))
@@ -86,7 +86,7 @@ public final class DeletingComunity {
     public void deleteComunityIfExistCancel(final String nameComunity) {
         webDriver.findElement(By.xpath(
                 "//a[contains(@href,'/show-all-communities')]")).click();
-        SleepThread.sleep(1);
+        SleepThread.sleep(1); // mus be deleted
         if (isExistComunity(nameComunity)) {
             webDriver.findElement(By.xpath("//a[text() = '" + nameComunity
                     + "']/../..//a[contains(@href,'deleteCommunity/')]"))
@@ -96,7 +96,7 @@ public final class DeletingComunity {
                     By.cssSelector("button[class='btn btn-primary']"))));
             webDriver.findElement(
                     By.xpath("//button[@class='btn btn-default']")).click();
-            SleepThread.sleep(1);
+            SleepThread.sleep(1); // mus be deleted
         }
     }
 }
