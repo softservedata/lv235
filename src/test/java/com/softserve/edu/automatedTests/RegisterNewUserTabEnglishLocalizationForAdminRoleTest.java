@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 /**
  * Testing "Register new user tab" admin main
@@ -42,7 +43,10 @@ public class RegisterNewUserTabEnglishLocalizationForAdminRoleTest {
     public static void loginAsAdmin() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver",
                 "C:/Program Files/Java/Selenium_3.40/chromedriver_2.29.exe");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        options.addArguments("--no-proxy-server");
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get(URL);
 
@@ -53,7 +57,7 @@ public class RegisterNewUserTabEnglishLocalizationForAdminRoleTest {
             Thread.sleep(3000);
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         if (isRunDemoMode)
-            Thread.sleep(4000);
+            Thread.sleep(2000);
         driver.findElement(By.cssSelector("button.btn.btn-primary.btn-sm:not(.dropdown-toggle)")).click();
         driver.findElement(By.xpath("//a[contains(@href, '/manualregistration')]")).click();
     }
@@ -72,7 +76,7 @@ public class RegisterNewUserTabEnglishLocalizationForAdminRoleTest {
         // Change language
         driver.findElement(By.id("changeLanguage")).click();
         if (isRunDemoMode)
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         driver.findElement(By.id("changeLanguage")).findElement(By.xpath(".//option[@value='en']")).click();
         // Confirm change language
         Assert.assertTrue(
