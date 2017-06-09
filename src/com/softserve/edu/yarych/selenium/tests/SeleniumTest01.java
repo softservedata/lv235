@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 /**
  * @author Andriy
@@ -20,6 +21,12 @@ public class SeleniumTest01 {
      * Number 5.
      */
     public static final int FIVE = 5;
+
+
+    /**
+     * Number ONE_THOUSAND for Thread.sleep() ONLY.
+     */
+    public static final int ONE_THOUSAND = 1000;
 
     /**
      * Number THREE_THOUSAND for Thread.sleep() ONLY.
@@ -63,6 +70,7 @@ public class SeleniumTest01 {
     @Test
     public void testRegistration() throws Exception {
 
+        //Check if we really logged in as administrator
         Assert.assertEquals("Розблокувати всіх співвласників",
                 driver.findElement(By.partialLinkText(
                         "Розблокувати всіх співвласників")).getText());
@@ -72,10 +80,13 @@ public class SeleniumTest01 {
                 + "'manualregistration')]")).click();
 
         //Check if "Cancel" button works properly
-        driver.findElement(By.xpath("//*[@class = 'btn btn-primary']")).click();
         Thread.sleep(THREE_THOUSAND);
+        driver.findElement(By.xpath("//*[@class = 'btn btn-primary']")).click();
         Assert.assertTrue(driver.getCurrentUrl()
                 .equals("http://java.training.local:8080/registrator/"));
+        Thread.sleep(ONE_THOUSAND);
+
+        //clicking on manual registration button
         driver.findElement(By
                 .xpath("//a[contains(@href, 'manualregistration')]")).click();
 
