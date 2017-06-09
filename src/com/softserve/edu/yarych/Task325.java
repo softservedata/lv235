@@ -15,7 +15,7 @@ public class Task325 {
     private List<Integer> listOfDivisors = new LinkedList<Integer>();
 
     /**
-     * Puublic constructor.
+     * Public constructor.
      */
     public Task325() {
     }
