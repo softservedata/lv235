@@ -14,7 +14,7 @@
 	<properties>
 		<!-- - - - - - Encoding - - - - - -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.resources.plugin.version>2.7</maven.resources.plugin.version>
+		<maven.resources.plugin.version>2.4</maven.resources.plugin.version>
 		<!-- - - - - - Java - - - - - -->
 		<jdk.source.version>1.8</jdk.source.version>
 		<jdk.compiler.version>1.8</jdk.compiler.version>
