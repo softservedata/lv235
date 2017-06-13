@@ -135,8 +135,8 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration>
-					<!-- <argLine>-Xms512m -Xmx1024m</argLine> -->
-					<argLine>-Xms256m -Xmx512m</argLine>
+					<argLine>-Xms512m -Xmx1024m</argLine>
+					<!-- <argLine>-Xms256m -Xmx512m</argLine> -->
 					<systemPropertyVariables>
 						<surefire.reports.directory>
 							${testng.reports.directory}

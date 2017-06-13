@@ -13,6 +13,7 @@
 					<include name="testApp" />
 				</methods>
 			</class>
+			<class name="com.softserve.edu.registrator.Browsers" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
