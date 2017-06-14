@@ -85,7 +85,7 @@ public class WaysOfUserRegistrationTest {
 		Map<String, Object> preferences = new HashMap<String, Object>();
 		preferences.put("credentials_enable_service", false);
 		preferences.put("profile.password_manager_enabled", false);
-		options.setExperimentalOption("preferences", preferences);
+		options.setExperimentalOption("prefs", preferences);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		driver = new ChromeDriver(capabilities);
