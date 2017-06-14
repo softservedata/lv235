@@ -61,6 +61,7 @@ hs_err_pid*
 
 # Ignore Picture
 *.bmp
+*.png
 
 # Ignore doc/notes.txt, but not doc/info/arch.txt
 # doc/*.txt
@@ -68,11 +69,10 @@ hs_err_pid*
 # Ignore all .txt files in the directory doc/
 # doc/**/*.txt
 
-# Ignore .pfd
+# Ignore .doc .pfd .docx
+*.doc
+*.docx
 *.pdf
-
-# Ignore .properties
-*.properties
 
 # bower
 /bower_components/
