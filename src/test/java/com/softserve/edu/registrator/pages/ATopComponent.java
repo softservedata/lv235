@@ -85,4 +85,6 @@ public abstract class ATopComponent {
         getChangeLanguage().selectByVisibleText(language.toString());
     }
 
+    // Business Logic
+
 }

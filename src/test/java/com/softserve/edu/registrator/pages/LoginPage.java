@@ -29,7 +29,7 @@ public class LoginPage extends ATopComponent {
         }
     }
     
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     //public static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
     public static final String SRC_ATTRIBUTE = "src"; 
@@ -214,16 +214,18 @@ public class LoginPage extends ATopComponent {
 		//logger.debug("Done");
 	}
 
-//    public HomePage successUserLogin(IUser user) {
-//        setLoginData(user);
-//        // Return a new page object representing the destination.
-//        return new HomePage(driver);
-//    }
+    //public CommonPage successLogin(IUser user) {
+    public CommonPage successLogin(String login, String password) { // Code Smell
+        //setLoginData(user);
+        setLoginData(login, password); // Code Smell
+        // Return a new page object representing the destination.
+        return new CommonPage(driver);
+    }
 
     //public AdminHomePage successAdminLogin(IUser admin) {
     public AdminHomePage successAdminLogin(String login, String password) { // Code Smell
 		//setLoginData(admin);
-		setLoginData(login, password);
+		setLoginData(login, password); // Code Smell
 		// Return a new page object representing the destination.
 		return new AdminHomePage(driver);
 	}
