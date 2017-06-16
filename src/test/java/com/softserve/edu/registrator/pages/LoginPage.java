@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.registrator.data.users.IUser;
+
 public class LoginPage extends ATopComponent {
 	
     public static enum LoginPageL10n {
@@ -199,33 +201,34 @@ public class LoginPage extends ATopComponent {
         return new LoginPage(driver);
     }
 
-    // TODO Develop User class
-    //private void setLoginData(IUser user) {
-    private void setLoginData(String login, String password) { // Code Smell
+    // TODO(done) Develop User class
+    private void setLoginData(IUser user) {
+    //private void setLoginData(String login, String password) { // Code Smell
 		//logger.debug("Start");
-		//setLoginInputClear(user.getLogin());
+		setLoginInputClear(user.getAccount().getLogin());
 		//logger.trace("setLoginInputClear() Done, User Login = " + user.getLogin());
-		//setPasswordInputClear(user.getPassword());
+		setPasswordInputClear(user.getAccount().getPassword());
 		//logger.trace("setPasswordInputClear() Done, User Password = " + user.getPassword());
-		setLoginInputClear(login);
-		setPasswordInputClear(password);
+		//
+		//setLoginInputClear(login);
+		//setPasswordInputClear(password);
 		clickSignin();
 		//logger.trace("clickSignin() Done");
 		//logger.debug("Done");
 	}
 
-    //public CommonPage successLogin(IUser user) {
-    public CommonPage successLogin(String login, String password) { // Code Smell
-        //setLoginData(user);
-        setLoginData(login, password); // Code Smell
+    public CommonPage successLogin(IUser user) {
+    //public CommonPage successLogin(String login, String password) { // Code Smell
+        setLoginData(user);
+        //setLoginData(login, password); // Code Smell
         // Return a new page object representing the destination.
         return new CommonPage(driver);
     }
 
-    //public AdminHomePage successAdminLogin(IUser admin) {
-    public AdminHomePage successAdminLogin(String login, String password) { // Code Smell
-		//setLoginData(admin);
-		setLoginData(login, password); // Code Smell
+    public AdminHomePage successAdminLogin(IUser admin) {
+    //public AdminHomePage successAdminLogin(String login, String password) { // Code Smell
+		setLoginData(admin);
+		//setLoginData(login, password); // Code Smell
 		// Return a new page object representing the destination.
 		return new AdminHomePage(driver);
 	}

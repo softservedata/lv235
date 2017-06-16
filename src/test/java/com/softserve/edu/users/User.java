@@ -1,4 +1,4 @@
-package com.softserve.edu.registrator.data;
+package com.softserve.edu.users;
 
 interface ILogin {
     IPassword setLogin(String login);
@@ -17,11 +17,12 @@ interface ILastname {
 }
 
 interface IBuild {
-    User build();
+	IBuild setEmail(String email);
+    IUser build();
 }
 
 // POJO
-public class User implements ILogin, IPassword, IFirstname, ILastname, IBuild {
+public class User implements ILogin, IPassword, IFirstname, ILastname, IBuild, IUser {
     private String login;
     private String password;
     private String firstname;
@@ -66,11 +67,11 @@ public class User implements ILogin, IPassword, IFirstname, ILastname, IBuild {
         return this;
     }
 
-    public User build() {
+    public IUser build() {
         return this;
     }
 
-    public User setEmail(String email) {
+    public IBuild setEmail(String email) {
         this.email = email;
         return this;
     }

@@ -1,4 +1,4 @@
-package com.softserve.edu.registrator.data;
+package com.softserve.edu.users;
 
 public class Appl {
     public static void main(String[] args) {
@@ -26,13 +26,32 @@ public class Appl {
 //                .setLastname("dd")
 //                .setEmail("ee");
         // 5 Create by Builder
-        User user = User.get()
-                .setLogin("aa")
-                .setPassword("bb")
-                .setFirstname("ccc")
-                .setLastname("dd")
-                .build();
-        //
+//        User user = User.get()
+//                .setLogin("aa")
+//                .setPassword("bb")
+//                .setFirstname("ccc")
+//                .setLastname("dd")
+//                .build();
+//        System.out.println(user.setFirstname(""));
+//        user.setFirstname("asdas");
+        // 6 Dependency Inversion
+//        IUser user = User.get()
+//                .setLogin("aa")
+//                .setPassword("bb")
+//                .setFirstname("ccc")
+//                .setLastname("dd")
+//                .build();
+        //user.setFirstname("asdas"); // ERROR
+        // 7 Add Optional setters
+//        IUser user = User.get()
+//                .setLogin("aa")
+//                .setPassword("bb")
+//                .setFirstname("ccc")
+//                .setLastname("dd")
+//                .setEmail("ee")
+//                .build();
+        // 8,9 Get user from Repository (as Singleton)
+    	IUser user = UserRepository.get().admin();
         System.out.println("user.firstname = " + user.getFirstname());
     }
 }
