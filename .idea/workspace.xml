@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4a496ea-5417-4921-b304-45a745acd5d2" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/AppTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/softserve/edu/registrator/App.java" afterPath="$PROJECT_DIR$/src/main/java/com/softserve/edu/registrator/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/AppTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/AppTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java" afterPath="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/SimpleTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/SimpleTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,6 +19,11 @@
   <component name="CompilerWorkspaceConfiguration">
     <option name="CLEAR_OUTPUT_DIRECTORY" value="false" />
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/lv235$AppTest_testApp.coverage" NAME="AppTest.testApp Coverage Results" MODIFIED="1497713666896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.softserve.edu.registrator.*</FILTER>
+    </SUITE>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -36,103 +41,87 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/softserve/edu/registrator/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="153">
               <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1497686973585" expanded="true" signature="54828:54870" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="54828:54888" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="54828:54901" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="54828:54916" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="54951:57821" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="54964:57806" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55018:55313" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55037:55298" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55100:55278" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55140:55244" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55161:55222" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55363:55690" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55382:55675" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55477:55655" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55517:55621" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55538:55599" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55741:56006" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55760:55991" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55793:55971" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55833:55937" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="55854:55915" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56049:56355" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56068:56340" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56142:56320" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56182:56286" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56203:56264" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56406:56753" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56425:56738" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56501:56718" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56541:56684" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56562:56662" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56788:57094" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56807:57079" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56881:57059" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56921:57025" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="56942:57003" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57146:57479" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57165:57464" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57266:57444" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57306:57410" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57327:57388" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57527:57792" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57546:57777" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57579:57757" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57619:57723" ph="..." />
-                <marker date="1497686973585" expanded="true" signature="57640:57701" ph="..." />
+                <element signature="e#126#127#0" expanded="false" />
+                <element signature="e#176#177#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/AppTest.java">
+      <file leaf-file-name="AdminHomePage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/AdminHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+            <state relative-caret-position="247">
+              <caret line="207" column="16" lean-forward="true" selection-start-line="207" selection-start-column="16" selection-end-line="207" selection-end-column="16" />
+              <folding>
+                <element signature="e#1302#1303#0" expanded="true" />
+                <element signature="e#1346#1347#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ATopComponent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/ATopComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginPage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/LoginPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2073">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActiveCoownersPage.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/ActiveCoownersPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="146" column="1" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4652#4653#0" expanded="true" />
+                <element signature="e#4692#4693#0" expanded="true" />
+                <element signature="e#4748#4749#0" expanded="true" />
+                <element signature="e#4803#4804#0" expanded="true" />
+                <element signature="e#4844#4845#0" expanded="true" />
+                <element signature="e#4884#4885#0" expanded="true" />
+                <element signature="e#4924#4925#0" expanded="true" />
+                <element signature="e#4963#4964#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/SimpleTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="360">
+              <caret line="85" column="45" lean-forward="false" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Browsers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -149,6 +138,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/softserve/edu/registrator/App.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/AppTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/AdminHomePage.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/ActiveUserPage.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/ActiveCoownersPage.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/SimpleTest.java" />
       </list>
     </option>
   </component>
@@ -173,7 +166,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -182,6 +174,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lv235" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lv235" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -209,6 +211,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="edu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -272,7 +278,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
+              <option name="myItemId" value="pages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,13 +302,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/GitProject/lv235" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -325,7 +332,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.AppTest.testApp">
+  <component name="RunManager" selected="TestNG.SimpleTest.setNameTest">
     <configuration default="false" name="AppTest.testApp" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -340,6 +347,72 @@
       <option name="PACKAGE_NAME" value="com.softserve.edu.registrator" />
       <option name="MAIN_CLASS_NAME" value="com.softserve.edu.registrator.AppTest" />
       <option name="METHOD_NAME" value="testApp" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" value="" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="SimpleTest.setNameTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.softserve.edu.registrator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="lv235" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="SUITE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="com.softserve.edu.registrator" />
+      <option name="MAIN_CLASS_NAME" value="com.softserve.edu.registrator.SimpleTest" />
+      <option name="METHOD_NAME" value="setNameTest" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" value="" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="SimpleTest.adminLogin" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.softserve.edu.registrator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="lv235" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="SUITE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="com.softserve.edu.registrator" />
+      <option name="MAIN_CLASS_NAME" value="com.softserve.edu.registrator.SimpleTest" />
+      <option name="METHOD_NAME" value="adminLogin" />
       <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -563,12 +636,16 @@
       <listeners />
       <method />
     </configuration>
-    <list size="1">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="TestNG.AppTest.testApp" />
+      <item index="1" class="java.lang.String" itemvalue="TestNG.SimpleTest.setNameTest" />
+      <item index="2" class="java.lang.String" itemvalue="TestNG.SimpleTest.adminLogin" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="TestNG.AppTest.testApp" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="TestNG.SimpleTest.setNameTest" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.SimpleTest.adminLogin" />
+        <item index="2" class="java.lang.String" itemvalue="TestNG.AppTest.testApp" />
       </list>
     </recent_temporary>
   </component>
@@ -588,6 +665,24 @@
   <component name="TestHistory">
     <history-entry file="AppTest_testApp - 2017.06.17 at 11h 47m 55s.xml">
       <configuration name="AppTest.testApp" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="AppTest_testApp - 2017.06.17 at 19h 34m 29s.xml">
+      <configuration name="AppTest.testApp" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SimpleTest_adminLogin - 2017.06.17 at 20h 40m 17s.xml">
+      <configuration name="SimpleTest.adminLogin" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SimpleTest_setNameTest - 2017.06.17 at 20h 36m 14s.xml">
+      <configuration name="SimpleTest.setNameTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SimpleTest_setNameTest - 2017.06.17 at 20h 38m 49s.xml">
+      <configuration name="SimpleTest.setNameTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SimpleTest_setNameTest - 2017.06.17 at 20h 39m 14s.xml">
+      <configuration name="SimpleTest.setNameTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SimpleTest_setNameTest - 2017.06.17 at 20h 41m 30s.xml">
+      <configuration name="SimpleTest.setNameTest" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -614,17 +709,17 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26479515" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2723824" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -632,6 +727,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -663,6 +759,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="C:\Users\User\Desktop\Git Project\lv235\\lv235" />
+    </ignored-roots>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="1" />
@@ -684,18 +785,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/softserve/edu/registrator/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#126#127#0" expanded="false" />
+            <element signature="e#176#177#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/AdminHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="56" column="31" lean-forward="true" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding>
+            <element signature="e#1302#1303#0" expanded="true" />
+            <element signature="e#1346#1347#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/SimpleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/ActiveCoownersPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        <state relative-caret-position="1632">
+          <caret line="137" column="32" lean-forward="false" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4652#4653#0" expanded="true" />
+            <element signature="e#4692#4693#0" expanded="true" />
+            <element signature="e#4748#4749#0" expanded="true" />
+            <element signature="e#4803#4804#0" expanded="true" />
+            <element signature="e#4844#4845#0" expanded="true" />
+            <element signature="e#4884#4885#0" expanded="true" />
+            <element signature="e#4924#4925#0" expanded="true" />
+            <element signature="e#4963#4964#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/softserve/edu/registrator/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#126#127#0" expanded="false" />
+            <element signature="e#176#177#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -704,54 +854,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1497686973585" expanded="true" signature="54828:54870" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54828:54888" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54828:54901" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54828:54916" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54951:57821" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54964:57806" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55018:55313" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55037:55298" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55100:55278" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55140:55244" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55161:55222" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55363:55690" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55382:55675" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55477:55655" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55517:55621" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55538:55599" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55741:56006" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55760:55991" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55793:55971" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55833:55937" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55854:55915" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56049:56355" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56068:56340" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56142:56320" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56182:56286" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56203:56264" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56406:56753" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56425:56738" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56501:56718" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56541:56684" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56562:56662" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56788:57094" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56807:57079" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56881:57059" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56921:57025" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56942:57003" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57146:57479" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57165:57464" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57266:57444" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57306:57410" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57327:57388" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57527:57792" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57546:57777" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57579:57757" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57619:57723" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57640:57701" ph="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/AppTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/SimpleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -767,20 +879,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#126#127#0" expanded="false" />
+            <element signature="e#176#177#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java" />
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/softserve/edu/registrator/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#126#127#0" expanded="false" />
+            <element signature="e#176#177#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -793,7 +926,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#126#127#0" expanded="false" />
+            <element signature="e#176#177#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -812,21 +948,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/Browsers.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/softserve/edu/registrator/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="153">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#126#127#0" expanded="false" />
+            <element signature="e#176#177#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -834,70 +964,95 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/AppTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/users/Appl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/users/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/users/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/LoginPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2073">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/ATopComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/ACommonComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-655">
+          <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
           <folding>
-            <marker date="1497686973585" expanded="true" signature="54828:54870" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54828:54888" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54828:54901" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54828:54916" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54951:57821" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="54964:57806" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55018:55313" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55037:55298" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55100:55278" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55140:55244" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55161:55222" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55363:55690" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55382:55675" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55477:55655" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55517:55621" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55538:55599" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55741:56006" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55760:55991" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55793:55971" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55833:55937" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="55854:55915" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56049:56355" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56068:56340" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56142:56320" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56182:56286" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56203:56264" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56406:56753" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56425:56738" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56501:56718" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56541:56684" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56562:56662" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56788:57094" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56807:57079" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56881:57059" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56921:57025" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="56942:57003" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57146:57479" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57165:57464" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57266:57444" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57306:57410" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57327:57388" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57527:57792" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57546:57777" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57579:57757" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57619:57723" ph="..." />
-            <marker date="1497686973585" expanded="true" signature="57640:57701" ph="..." />
+            <element signature="e#2817#2818#0" expanded="false" />
+            <element signature="e#2858#2859#0" expanded="false" />
+            <element signature="e#3255#3256#0" expanded="false" />
+            <element signature="e#3290#3291#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/AppTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/AdminHomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="247">
+          <caret line="207" column="16" lean-forward="true" selection-start-line="207" selection-start-column="16" selection-end-line="207" selection-end-column="16" />
+          <folding>
+            <element signature="e#1302#1303#0" expanded="true" />
+            <element signature="e#1346#1347#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/SimpleTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="360">
+          <caret line="85" column="45" lean-forward="false" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/softserve/edu/registrator/pages/ActiveCoownersPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="146" column="1" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4652#4653#0" expanded="true" />
+            <element signature="e#4692#4693#0" expanded="true" />
+            <element signature="e#4748#4749#0" expanded="true" />
+            <element signature="e#4803#4804#0" expanded="true" />
+            <element signature="e#4844#4845#0" expanded="true" />
+            <element signature="e#4884#4885#0" expanded="true" />
+            <element signature="e#4924#4925#0" expanded="true" />
+            <element signature="e#4963#4964#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
