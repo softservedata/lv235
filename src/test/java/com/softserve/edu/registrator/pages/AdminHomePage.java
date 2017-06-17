@@ -56,6 +56,7 @@ public class AdminHomePage extends ACommonComponent {
     private WebElement communities;
     private WebElement newUser;
     private WebElement unblockAll;
+    
     private CoownersOptions coownersOptions;
 
     public AdminHomePage(WebDriver driver) {
