@@ -56,7 +56,7 @@ public class Browsers {
     }
 
     // Use Selenium 3.x.x
-    // @Test
+    @Test
     public void testFirefox1_3xx() throws Exception {
         System.setProperty("webdriver.gecko.driver", "./lib/geckodriver0.16.1.exe");
         WebDriver driver = new FirefoxDriver();
@@ -398,7 +398,7 @@ public class Browsers {
         System.out.println("\t+++Service Start");
     }
 
-    @Test
+    //@Test
     public void testRemout() throws Exception {
         //
         ChromeOptions options = new ChromeOptions();

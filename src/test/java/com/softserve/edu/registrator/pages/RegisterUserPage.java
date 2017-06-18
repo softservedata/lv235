@@ -1,11 +1,13 @@
 package com.softserve.edu.registrator.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import com.softserve.edu.registrator.data.users.User;
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 
 public class RegisterUserPage extends AdminHomePage {
     
@@ -16,7 +18,14 @@ public class RegisterUserPage extends AdminHomePage {
     private WebElement submit;
     private WebElement clearForm;
     private WebElement cancel;
-
+    
+    /*
+     * TODO make Lists of WebElements for fields of registration page
+     * - - - - - - - - - - - - - Example: - - - - - - - - - - - - -
+     * List<WebElement> mainInfo = driver.findElements(By.cssSelector(".personal_header.col-lg-4"));
+     * This list must contain info from firstName to confirmPassword fields
+     */
+        
     private WebElement firstName;
     private WebElement lastName;
     private WebElement middleName;
@@ -40,6 +49,10 @@ public class RegisterUserPage extends AdminHomePage {
     private WebElement phoneNumber;
     private WebElement community;
     private WebElement date;
+    
+    public List<WebElement> communitiesOptions; 
+    // TODO List of community options from community dropdown
+    // this.communitiesOptions = driver.findElements(By.xpath("//*[@id='territorial_Community']/option"));  
     
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     
@@ -74,6 +87,8 @@ public class RegisterUserPage extends AdminHomePage {
         this.phoneNumber = driver.findElement(By.id("phone_number"));
         this.community = driver.findElement(By.id("territorial_Community"));
         this.date = driver.findElement(By.id("datepicker"));
+        
+        
     }
 
     // Page object
@@ -183,7 +198,7 @@ public class RegisterUserPage extends AdminHomePage {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     
     // Functional
-    
+        
     public String getSubmitText() {
         return getSubmit().getText();
     }
@@ -199,7 +214,7 @@ public class RegisterUserPage extends AdminHomePage {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // set Data
-    //TODO setters for input fields
+    //TODO add setters for input fields
     
     public void clickSubmit() {
         getSubmit().click();
@@ -220,5 +235,35 @@ public class RegisterUserPage extends AdminHomePage {
     public RegisterUserPage changeLanguage(ChangeLanguageFields language) {
         setChangeLanguage(language);
         return new RegisterUserPage(driver);
+    }
+    
+    //TODO finish this method
+    public void registerNewUser(User user) {
+        getFirstName().sendKeys(user.getPerson().getFirstname());
+        getLastName().sendKeys(user.getPerson().getLastname());
+        getEmail().sendKeys(user.getPerson().getEmail());
+        getLogin().sendKeys(user.getAccount().getLogin());
+        getPassword().sendKeys(user.getAccount().getPassword());
+        getConfirmPassword().sendKeys(user.getAccount().getPassword());
+        getDate().sendKeys(user.getAccount().getData());
+        //TODO add getCommunity and unnecessary fields
+    }
+        
+    public NonConfirmedCoownersPage successfulRegistration(User user) {
+        registerNewUser(user);
+        return new NonConfirmedCoownersPage(driver);
+    }
+    
+    public RegisterUserPage unsuccessfulReristration(User user) {
+        // registerNewUser(user); // Is it needed???
+        return new RegisterUserPage(driver);
+    }
+    
+    public RegisterUserPage clearForm() {
+        return new RegisterUserPage(driver);
+    }
+    
+    public AdminHomePage cancelRegistration() {
+        return new AdminHomePage(driver);
     }
 }
