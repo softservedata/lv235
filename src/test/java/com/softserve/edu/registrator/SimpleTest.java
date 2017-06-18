@@ -81,21 +81,5 @@ public class SimpleTest {
         //
         driver.quit();
     }
-    @Test
-    public void setNameTest()throws Exception{
-        WebDriver driver=new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        //driver.get("http://regres.herokuapp.com/login");
-        driver.get("http://java.training.local:8080/registrator/login");
-        driver.findElement(By.id("login")).sendKeys("admin");
-        driver.findElement(By.id("password")).sendKeys("admin");
-        driver.findElement(By.cssSelector((".btn.btn-primary"))).click();
-        //driver.get("http://regres.herokuapp.com/login");
-        driver.get("http://java.training.local:8080/registrator/login");
-        driver.findElement(By.linkText(("Співвласники"))).click();
-        driver.findElement(By.linkText(("Активні"))).click();
-        ActiveCoownersPage user=new ActiveCoownersPage(driver);
-        user.setFirstNameField("ihor");
-        driver.quit();
-    }
+
 }
