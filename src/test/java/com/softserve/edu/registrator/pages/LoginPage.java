@@ -61,6 +61,7 @@ public class LoginPage extends ATopComponent {
 		super(driver);
 		// this.driver = driver;
 		//
+		//this.loginLabel = Application.get().getBrowser().findElement(By.xpath(LOGIN_LABEL_XPATH));
 		this.loginLabel = driver.findElement(By.xpath(LOGIN_LABEL_XPATH));
 		this.loginInput = driver.findElement(By.id(LOGIN_INPUT_ID));
 		this.passwordLabel = driver.findElement(By.xpath(PASSWORD_LABEL_XPATH));

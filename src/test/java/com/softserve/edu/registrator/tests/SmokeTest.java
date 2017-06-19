@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.softserve.edu.registrator.data.apps.ApplicationSourcesRepository;
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.CommonPage;
@@ -34,7 +35,12 @@ public class SmokeTest {
         // Precondition
         //
         // TODO Remove from test
-        System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver",
+        //        "./lib/chromedriver.exe");
+        System.out.println("Path to driver: "
+                + SmokeTest.class.getResource("/lib/chromedriver.exe").getPath());
+        System.setProperty("webdriver.chrome.driver",
+                SmokeTest.class.getResource("/lib/chromedriver.exe").getPath().substring(1));
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         // driver.get("http://regres.herokuapp.com/login");
@@ -63,4 +69,5 @@ public class SmokeTest {
         Thread.sleep(2000);
         driver.quit();
     }
+
 }
