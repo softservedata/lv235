@@ -29,11 +29,10 @@ public class UserRegistrationOptionsTest {
 				.click();
 		SettingsPage s = new SettingsPage(driver);
 		s.getUserRegistrationOptionsComponent().manualRegistrationClick();
-		s.confirmChangesButton();
+		s.confirmChangesButtonClick();
 		Thread.sleep(1000);
 		Assert.assertTrue(driver.findElements(
 				By.cssSelector("alert.alert-success.span")).size() > 0);
 		driver.quit();
-
 	}
 }

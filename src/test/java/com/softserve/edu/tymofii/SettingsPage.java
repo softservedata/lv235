@@ -18,7 +18,7 @@ public class SettingsPage extends AdminHomePage {
 				.cssSelector((".btn.btn-primary")));
 	}
 
-	public void confirmChangesButton() {
+	public void confirmChangesButtonClick() {
 		getConfirmChangesButton().click();
 	}
 

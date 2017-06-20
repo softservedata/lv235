@@ -14,8 +14,10 @@ public class UserRegistrationOptionsComponent {
 
 	public UserRegistrationOptionsComponent(WebDriver driver) {
 		this.componentLabel = driver.findElement(By
-				.cssSelector("id.changeReg.h3"));
-		this.optionLabel = driver.findElement(By.cssSelector("id.changeReg.p"));
+				.cssSelector("form div:nth-child(1) div.panel-heading h3"));
+
+		this.optionLabel = driver.findElement(By
+				.cssSelector("form div:nth-child(1) div.panel-body.panel30 p"));
 		this.personalRegistration = driver.findElement(By
 				.xpath("//*[@type = 'radio' and @value = 'PERSONAL']"));
 		this.manualRegistration = driver.findElement(By
