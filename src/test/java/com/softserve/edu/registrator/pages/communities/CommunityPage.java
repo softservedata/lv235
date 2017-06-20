@@ -1,4 +1,6 @@
-package com.softserve.edu.registrator.communities;
+package com.softserve.edu.registrator.pages.communities;
+
+import java.util.HashMap;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +14,6 @@ import com.softserve.edu.registrator.pages.AdminHomePage;
 public class CommunityPage extends AdminHomePage {
 	
 	private class CommunityTableRow {
-		
 		
 		private WebElement nameCommunityLable;
 		private WebElement registrationNumberLable;
@@ -89,6 +90,36 @@ public class CommunityPage extends AdminHomePage {
 		}
 	}
 	
+	public static enum CommunityPageL10n {
+    	COMMUNITY_LABEL("Громади","Общины","Communities"),
+    	ADD_COMMUNITY_BUTTON("Додати нову територіальну громаду",
+    			"Добавить новую общину",
+    			"Add new territorial community"),
+    	SHOW_NONE_ACTIVE_CBOX("Показати неактивні", "Показать неактивные",
+    			"Show inactive"),
+    	TERETORIAL_COMMUNITY_COLUMN_NAME("Територіальна громада","Территоральная община",
+    			"Territorial community"),
+    	REGISTRATION_NUMBER_COLUMN_NAME("Реєстраційний номер","Регистрационный номер",
+    			"Registration number"),
+    	ACTIONS_COMMUNITY_COLUMN_NAME("Дії", "Действия", "Actions"),
+		EDIT_BUTTON("Редагувати", "Изменить ", "Edit"),
+		DELETE_BUTTON("Видалити ", "Удалить", "Delete");
+
+        private HashMap<ChangeLanguageFields, String> field;
+
+        private CommunityPageL10n(String... localization) {
+        	this.field = new HashMap<ChangeLanguageFields, String>();
+        	int i = 0;
+        	for (ChangeLanguageFields language : ChangeLanguageFields.values()) {
+        		this.field.put(language, localization[i]);
+        		i++;
+        	}
+        }
+
+        public String getLocalization(ChangeLanguageFields language) {
+            return this.field.get(language).trim();
+        }
+    }
 
 	private WebElement communityLable;
 	private WebElement addNewCommunityButton;
