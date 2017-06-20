@@ -23,10 +23,6 @@ public class DefaultTimeZoneComponent {
 		getCityOrTimeZoneInputField().sendKeys(text);
 	}
 
-	public void setCityOrTimeZoneInputField(WebElement cityOrTimeZoneInputField) {
-		this.cityOrTimeZoneInputField = cityOrTimeZoneInputField;
-	}
-
 	public WebElement getComponentLabel() {
 		return componentLabel;
 	}
