@@ -13,11 +13,9 @@ public class UserRegistrationOptionsComponent {
 	private WebElement mixedRegistration;
 
 	public UserRegistrationOptionsComponent(WebDriver driver) {
-		// this.componentLabel = driver
-		// .findElement(By
-		//				.xpath("//h3[contains(text(), 'Method of registering new users')]"));
-		// this.optionLabel = driver.findElement(By
-		//		.xpath("//p[contains(text(),'Select one of the options')]"));
+		this.componentLabel = driver.findElement(By
+				.cssSelector("id.changeReg.h3"));
+		this.optionLabel = driver.findElement(By.cssSelector("id.changeReg.p"));
 		this.personalRegistration = driver.findElement(By
 				.xpath("//*[@type = 'radio' and @value = 'PERSONAL']"));
 		this.manualRegistration = driver.findElement(By
@@ -26,15 +24,15 @@ public class UserRegistrationOptionsComponent {
 				.xpath("//*[@type = 'radio' and @value = 'MIXED']"));
 	}
 
-	public void setPersonalRegistration() {
+	public void personalRegistrationClick() {
 		personalRegistration.click();
 	}
 
-	public void setManualRegistration() {
+	public void manualRegistrationClick() {
 		getManualRegistration().click();
 	}
 
-	public void setMixedRegistration() {
+	public void mixedRegistrationClick() {
 		mixedRegistration.click();
 	}
 
@@ -42,8 +40,16 @@ public class UserRegistrationOptionsComponent {
 		return componentLabel;
 	}
 
+	public String getComponentLabelText() {
+		return componentLabel.getText();
+	}
+
 	public WebElement getOptionLabel() {
 		return optionLabel;
+	}
+
+	public String getOptionLabelText() {
+		return optionLabel.getText();
 	}
 
 	public WebElement getPersonalRegistration() {
