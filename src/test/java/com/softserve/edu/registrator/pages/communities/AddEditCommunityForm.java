@@ -1,11 +1,12 @@
 package com.softserve.edu.registrator.pages.communities;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AddEditCommunityForm {
-
+	
 	private WebElement nameFormLable;
 	private WebElement communityNameLable;
 	private WebElement communityNameInput;

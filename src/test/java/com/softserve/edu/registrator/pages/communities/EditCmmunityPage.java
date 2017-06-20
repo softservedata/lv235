@@ -1,5 +1,7 @@
 package com.softserve.edu.registrator.pages.communities;
 
+import java.util.HashMap;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,8 +11,36 @@ import com.softserve.edu.registrator.pages.AdminHomePage;
 
 public class EditCmmunityPage extends AdminHomePage {
 
+	public static enum AddCommunityPageL10n {
+    	EDIT_COMMUNITY_LABEL(
+    			"Редагування територіальної громади",
+    			"Изменить общину", "Edit territorial community"),
+        COMMUNITY_NAME_LABEL("Найменування громади:",
+        		"Найменование общины:","Community name:"),
+        COMMUNITY_NAME_INPUT("Введіть", "Введите","Enter"),
+		REGISTER_NUMBER_LABEL("Реєстраційний номер:",
+				"Регистрационный номер:","Registration number:"),
+		SAVE_BUTTON("Зберегти","Сохранить","Save");
+		
+        private HashMap<ChangeLanguageFields, String> field;
+
+        private AddCommunityPageL10n(String... localization) {
+        	this.field = new HashMap<ChangeLanguageFields, String>();
+        	int i = 0;
+        	for (ChangeLanguageFields language : ChangeLanguageFields.values()) {
+        		this.field.put(language, localization[i]);
+        		i++;
+        	}
+        }
+
+        public String getLocalization(ChangeLanguageFields language) {
+            return this.field.get(language).trim();
+        }
+    }
+	
 	public static final String VALUE_ATTRIBUTE = "value"; 
 	public static final String VALIDATION_MESSAGE_ATTRIBUTE = "alidationMessage";
+	public static final String VALUE_PLACEHOLDER = "value placeholder";
 	
 	private AddEditCommunityForm addEditCommunityForm;
 	private WebElement saveButton;
@@ -31,6 +61,10 @@ public class EditCmmunityPage extends AdminHomePage {
 
 	public WebElement getCommunityNameInput() {
 		return addEditCommunityForm.getCommunityNameInput();
+	}
+	
+	public String getCommunityNameInputPlaceholderText() {
+		return  getCommunityNameAttributeText(VALUE_PLACEHOLDER);
 	}
 
 	public WebElement getRegistrationNumberLable() {
