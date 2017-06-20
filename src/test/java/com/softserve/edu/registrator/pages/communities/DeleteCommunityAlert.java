@@ -1,11 +1,37 @@
 package com.softserve.edu.registrator.pages.communities;
 
+import java.util.HashMap;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
+
 public class DeleteCommunityAlert {
 	
+	public static enum DeleteCommunityAlertL10n {
+		ALERT_LABEL("Ви впевнені, що хочете видалити цю громаду?",
+				"Вы уверены, что хотите удалить эту общину?",
+				"Do you really want to delete this community?"),
+		OK_BUTTON("Так","Да","OK"),
+		CANCEL_BUTTON("Відмінити","Отменить","Cancel");
+
+        private HashMap<ChangeLanguageFields, String> field;
+
+        private DeleteCommunityAlertL10n(String... localization) {
+        	this.field = new HashMap<ChangeLanguageFields, String>();
+        	int i = 0;
+        	for (ChangeLanguageFields language : ChangeLanguageFields.values()) {
+        		this.field.put(language, localization[i]);
+        		i++;
+        	}
+        }
+
+        public String getLocalization(ChangeLanguageFields language) {
+            return this.field.get(language).trim();
+        }
+    }
 	
 	private CommunityPage communityPage;
 	private WebElement alertLabel;

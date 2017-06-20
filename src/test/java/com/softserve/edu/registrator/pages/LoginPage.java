@@ -14,7 +14,7 @@ public class LoginPage extends ATopComponent {
     	LOGIN_LABEL("Логін","Логин","Login"),
         PASSWORD_LABEL("Пароль","Пароль","Password"),
 		SUBMIT_BUTTON("Увійти","Войти","Sign in");
-        //
+
         private HashMap<ChangeLanguageFields, String> field;
 
         private LoginPageL10n(String... localization) {
