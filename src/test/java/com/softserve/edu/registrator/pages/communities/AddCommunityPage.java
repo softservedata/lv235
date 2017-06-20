@@ -1,4 +1,4 @@
-package com.softserve.edu.registrator.communities;
+package com.softserve.edu.registrator.pages.communities;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
