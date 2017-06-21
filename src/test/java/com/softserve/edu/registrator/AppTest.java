@@ -15,7 +15,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.registrator.data.users.UserRepository;
 
 public class AppTest {
     

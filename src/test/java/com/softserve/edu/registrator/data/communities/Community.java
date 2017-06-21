@@ -1,6 +1,6 @@
 package com.softserve.edu.registrator.data.communities;
 
-public class Community {
+public class Community implements ICommunity {
 	
 	private String nameCommunity;
 	private String registrationNumber;

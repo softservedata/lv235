@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.communities.Community;
+import com.softserve.edu.registrator.data.communities.ICommunity;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 
 
@@ -20,17 +21,16 @@ public class CommunityPage extends AdminHomePage {
 		private WebElement editButton;
 		private WebElement deleteButton;
 		
-		public CommunityTableRow(Community community){
+		public CommunityTableRow(ICommunity community){
 			nameCommunityLable = driver.findElement(
 					By.linkText(community.getNameCommunity()));
 			registrationNumberLable = driver.findElement(By.xpath("//a[text()='"
-					+ community.getNameCommunity() + "']/../../td[text()='"
-					+ community.getRegistrationNumber() +"']"));
+					+ community.getNameCommunity() + "']/../../td[2]"));
 			editButton = driver.findElement(By.xpath("//a[text()='"
-					+ community.getNameCommunity() +"']/../..//a["
+					+ community.getNameCommunity().trim() +"']/../..//a["
 					+ "contains(@href,  'editCommunity')]"));
 			deleteButton = driver.findElement(By.xpath("//a[text()='"
-					+ community.getNameCommunity() +"']/../..//a["
+					+ community.getNameCommunity().trim() +"']/../..//a["
 					+ "contains(@href,  'deleteCommunity')]"));
 		}
 		
@@ -218,7 +218,7 @@ public class CommunityPage extends AdminHomePage {
 		new CommunityTableRow(community).clickEditButton();;
 	}
 	
-	public void clickDeleteButton(Community community) {
+	public void clickDeleteButton(ICommunity community) {
 		new CommunityTableRow(community).clickDeleteButton();
 	}
 	
@@ -252,7 +252,7 @@ public class CommunityPage extends AdminHomePage {
     	return new EditCmmunityPage(driver);
     }
     
-    public DeleteCommunityAlert deleteCommunity(Community community) {
+    public DeleteCommunityAlert deleteCommunity(ICommunity community) {
     	clickDeleteButton(community);
     	return new DeleteCommunityAlert(driver, this);
     }
