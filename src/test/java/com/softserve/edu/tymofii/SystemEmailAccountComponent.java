@@ -9,6 +9,11 @@ public class SystemEmailAccountComponent {
 	private class ErrorMessageAfterCheckButtonApplied {
 		private WebElement errorMessage;
 
+		public ErrorMessageAfterCheckButtonApplied(WebElement errorMessage) {
+			super();
+			this.errorMessage = errorMessage;
+		}
+
 		public WebElement getErrorMessage() {
 			return errorMessage;
 		}
