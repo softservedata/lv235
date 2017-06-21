@@ -60,24 +60,33 @@ public final class ApplicationUtils {
     }
 
     public static ApplicationSources updateFromSuite(ApplicationSources applicationSources, ITestContext context) {
-        HashMap<String, String> suiteParameters = new HashMap<String, String>(
-                context.getCurrentXmlTest().getSuite().getParameters());
-        return updateApplicationSources(applicationSources, suiteParameters);
+        //HashMap<String, String> suiteParameters = new HashMap<String, String>(
+        //        context.getCurrentXmlTest().getSuite().getParameters());
+        //return updateApplicationSources(applicationSources, suiteParameters);
+        return updateApplicationSources(applicationSources,
+                new HashMap<String, String>(context
+                        .getCurrentXmlTest().getSuite().getParameters()));
     }
 
     public static ApplicationSources updateFromTest(ApplicationSources applicationSources, ITestContext context) {
-        HashMap<String, String> testParameters = new HashMap<String, String>(
-                context.getCurrentXmlTest().getLocalParameters());
-        return updateApplicationSources(applicationSources, testParameters);
+        //HashMap<String, String> testParameters = new HashMap<String, String>(
+        //        context.getCurrentXmlTest().getLocalParameters());
+        //return updateApplicationSources(applicationSources, testParameters);
+        return updateApplicationSources(applicationSources, 
+                new HashMap<String, String>(context
+                        .getCurrentXmlTest().getLocalParameters()));
     }
 
     public static ApplicationSources updateFromTestNgXML(ApplicationSources applicationSources, ITestContext context) {
         // updateSuiteApplicationSources(applicationSources, context);
         // updateTestApplicationSources(applicationSources, context);
         // return applicationSources;
-        HashMap<String, String> allParameters = new HashMap<String, String>(
-                context.getCurrentXmlTest().getAllParameters());
-        return updateApplicationSources(applicationSources, allParameters);
+        //HashMap<String, String> allParameters = new HashMap<String, String>(
+        //        context.getCurrentXmlTest().getAllParameters());
+        //return updateApplicationSources(applicationSources, allParameters);
+        return updateApplicationSources(applicationSources, 
+                new HashMap<String, String>(context
+                        .getCurrentXmlTest().getAllParameters()));
     }
 
     public static ApplicationSources updateBrowserFromPOM(ApplicationSources applicationSources) {
