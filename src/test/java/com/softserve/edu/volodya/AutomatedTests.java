@@ -45,15 +45,13 @@ public class AutomatedTests {
 	 */
 	private void loginAsRegistrator(WebDriver driver) throws Exception {
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.getLoginInput().clear();
-		loginPage.getLoginInput().click();
+		loginPage.clickLogin();
 		loginPage.getLoginInput().sendKeys("registrator");
 		Thread.sleep(DELAY_FOR_DEMO);
-		loginPage.getPasswordInput().clear();
-		loginPage.getPasswordInput().click();
+		loginPage.clickPassword();
 		loginPage.getPasswordInput().sendKeys("registrator");
 		Thread.sleep(DELAY_FOR_DEMO);
-		loginPage.getSignin().click();
+		loginPage.clickSignin();
 		Thread.sleep(DELAY_FOR_DEMO);
 	}
 
