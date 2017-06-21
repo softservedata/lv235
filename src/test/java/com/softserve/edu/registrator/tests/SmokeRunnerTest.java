@@ -16,8 +16,9 @@ public class SmokeRunnerTest extends TestRunner {
         // Read from ...
         return new Object[][] {
                 { UserRepository.get().admin() },
-                { UserRepository.get().commissioner() },
-                { UserRepository.get().registrator() }, };
+                //{ UserRepository.get().commissioner() },
+                //{ UserRepository.get().registrator() },
+                };
     }
 
     @Test(dataProvider = "credentials")

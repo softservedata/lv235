@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-
+import com.softserve.edu.registrator.data.apps.ApplicationSourcesRepository;
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.CommonPage;

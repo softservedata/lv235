@@ -5,6 +5,14 @@ public final class ApplicationSourcesRepository {
     private ApplicationSourcesRepository() {
     }
 
+    public static String getGeckoDriverPath() {
+        return ApplicationSourcesRepository.class.getResource("/lib/geckodriver.exe").getPath().substring(1);
+    }
+
+    public static String getChromeDriverPath() {
+        return ApplicationSourcesRepository.class.getResource("/lib/chromedriver.exe").getPath().substring(1);
+    }
+
     public static ApplicationSources getDefault() {
         return getChromeTraining();
     }
@@ -26,7 +34,7 @@ public final class ApplicationSourcesRepository {
         // +
         // ApplicationSourcesRepository.class.getResource("/lib/geckodriver.exe").getPath().substring(1));
         return new ApplicationSources("FireFox5x",
-                ApplicationSourcesRepository.class.getResource("/lib/geckodriver.exe").getPath().substring(1), 5L,
+                getGeckoDriverPath(), 5L,
                 "http://regres.herokuapp.com/login",
                 "http://regres.herokuapp.com/logout");
     }
@@ -36,7 +44,7 @@ public final class ApplicationSourcesRepository {
         // +
         // ApplicationSourcesRepository.class.getResource("/lib/geckodriver.exe").getPath().substring(1));
         return new ApplicationSources("FireFox5x",
-                ApplicationSourcesRepository.class.getResource("/lib/geckodriver.exe").getPath().substring(1), 5L,
+                getGeckoDriverPath(), 5L,
                 "http://java.training.local:8080/registrator/login",
                 "http://java.training.local:8080/registrator/logout");
     }
@@ -45,7 +53,7 @@ public final class ApplicationSourcesRepository {
         return new ApplicationSources("Chrome",
                 // "C:\\Program Files
                 // (x86)\\Google\\Chrome\\Application\\chromedriver.exe", 5L,
-                ApplicationSourcesRepository.class.getResource("/lib/chromedriver.exe").getPath().substring(1), 5L,
+                getChromeDriverPath(), 5L,
                 "http://regres.herokuapp.com/login",
                 "http://regres.herokuapp.com/logout");
     }
@@ -54,7 +62,7 @@ public final class ApplicationSourcesRepository {
         return new ApplicationSources("Chrome",
                 // "C:\\Program Files
                 // (x86)\\Google\\Chrome\\Application\\chromedriver.exe", 5L,
-                ApplicationSourcesRepository.class.getResource("/lib/chromedriver.exe").getPath().substring(1), 5L,
+                getChromeDriverPath(), 5L,
                 "http://java.training.local:8080/registrator/login",
                 "http://java.training.local:8080/registrator/logout");
     }
