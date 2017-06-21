@@ -8,6 +8,15 @@ public class SystemEmailAccountComponent {
 
 	private class ErrorMessageAfterCheckButtonApplied {
 		private WebElement errorMessage;
+
+		public WebElement getErrorMessage() {
+			return errorMessage;
+		}
+
+		public void setErrorMessage(WebElement errorMessage) {
+			this.errorMessage = errorMessage;
+		}
+
 	}
 
 	// Labels
