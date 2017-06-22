@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 
 public class SettingsPage extends AdminHomePage {
+
 	private WebElement confirmChangesButton;
 	private UserRegistrationOptionsComponent userRegistrationOptionsComponent;
 	private DefaultTimeZoneComponent defaultTimeZoneComponent;
