@@ -115,7 +115,7 @@ public abstract class ACommonComponent extends ATopComponent {
         clickLoginAccount();
         getMenuAccount().click();
         // userAccount = new UserAccount(driver);
-        userAccount = new UserAccount();
+        this.userAccount = new UserAccount();
     }
 
     public void clickChangePassword() {
