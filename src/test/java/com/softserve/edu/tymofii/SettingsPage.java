@@ -9,13 +9,18 @@ import com.softserve.edu.registrator.pages.AdminHomePage;
 public class SettingsPage extends AdminHomePage {
 	private WebElement confirmChangesButton;
 	private UserRegistrationOptionsComponent userRegistrationOptionsComponent;
+	private DefaultTimeZoneComponent defaultTimeZoneComponent;
+	private EmailConfigurationComponent emailConfigurationComponent;
 
 	public SettingsPage(WebDriver driver) {
 		super(driver);
 		this.userRegistrationOptionsComponent = new UserRegistrationOptionsComponent(
 				driver);
+		this.defaultTimeZoneComponent = new DefaultTimeZoneComponent(driver);
+		this.emailConfigurationComponent = new EmailConfigurationComponent(
+				driver);
 		this.confirmChangesButton = driver.findElement(By
-				.cssSelector((".btn.btn-primary")));
+				.id(("confirmRegistrationMethod")));
 	}
 
 	public void confirmChangesButtonClick() {
@@ -28,5 +33,13 @@ public class SettingsPage extends AdminHomePage {
 
 	public UserRegistrationOptionsComponent getUserRegistrationOptionsComponent() {
 		return userRegistrationOptionsComponent;
+	}
+
+	public DefaultTimeZoneComponent getDefaultTimeZoneComponent() {
+		return defaultTimeZoneComponent;
+	}
+
+	public EmailConfigurationComponent getEmailConfigurationComponent() {
+		return emailConfigurationComponent;
 	}
 }
