@@ -27,6 +27,7 @@ public class Application {
         public WebDriver getBrowser(ApplicationSources applicationSources) {
             System.setProperty("webdriver.gecko.driver",
                     applicationSources.getDriverPath());
+                    //ApplicationSourcesRepository.getGeckoDriverPath());
             // System.out.println("+++ FirefoxTemporary "
             // + applicationSources.getDriverPath());
             return new FirefoxDriver();
@@ -37,6 +38,7 @@ public class Application {
         public WebDriver getBrowser(ApplicationSources applicationSources) {
             System.setProperty("webdriver.chrome.driver",
                     applicationSources.getDriverPath());
+                    //ApplicationSourcesRepository.getChromeDriverPath());
             return new ChromeDriver();
         }
     }
@@ -51,17 +53,25 @@ public class Application {
     }
 
     public static enum Browsers {
-        DEFAULT_TEMPORARY("ChromeTemporary", new ChromeTemporary()),
-        FIREFOX4X_TEMPORARY("FireFox4xTemporary", new Firefox4xTemporary()),
-        FIREFOX5X_TEMPORARY("FireFox5xTemporary", new Firefox5xTemporary()),
-        CHROME_TEMPORARY("ChromeTemporary", new ChromeTemporary()),
-        HTMLUNIT_TEMPORARY("HtmlUnitTemporary", new HtmlUnitTemporary());
+        DEFAULT_TEMPORARY("ChromeTemporary",
+                ApplicationSourcesRepository.getChromeDriverPath(),
+                new ChromeTemporary()),
+        FIREFOX4X_TEMPORARY("FireFox4xTemporary", new String(), new Firefox4xTemporary()),
+        FIREFOX5X_TEMPORARY("FireFox5xTemporary",
+                ApplicationSourcesRepository.getGeckoDriverPath(),
+                new Firefox5xTemporary()),
+        CHROME_TEMPORARY("ChromeTemporary",
+                ApplicationSourcesRepository.getChromeDriverPath(),
+                new ChromeTemporary()),
+        HTMLUNIT_TEMPORARY("HtmlUnitTemporary", new String(), new HtmlUnitTemporary());
         //
         private String browserName;
+        private String defaultDriverPath;
         private IBrowser browser;
 
-        private Browsers(String browserName, IBrowser browser) {
+        private Browsers(String browserName, String defaultDriverPath, IBrowser browser) {
             this.browserName = browserName;
+            this.defaultDriverPath = defaultDriverPath;
             this.browser = browser;
         }
 
@@ -72,6 +82,10 @@ public class Application {
         @Override
         public String toString() {
             return browserName;
+        }
+        
+        public String getDefaultDriverPath() {
+            return defaultDriverPath;
         }
     }
 

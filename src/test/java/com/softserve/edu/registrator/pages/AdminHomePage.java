@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.registrator.pages.communities.CommunityPage;
+
 public class AdminHomePage extends ACommonComponent {
 
     private class CoownersOptions {
@@ -161,8 +163,9 @@ public class AdminHomePage extends ACommonComponent {
         getSettings().click();
     }
 
-    public void clickCommunities() {
+    public CommunityPage clickCommunities() {
         getCommunities().click();
+        return new CommunityPage(driver);
     }
 
     public void clickNewUser() {
