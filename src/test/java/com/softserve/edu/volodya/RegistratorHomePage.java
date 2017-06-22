@@ -21,13 +21,17 @@ public class RegistratorHomePage extends ACommonComponent {
 	public RegistratorHomePage(WebDriver driver) {
 		super(driver);
 		// TODO delete hardcoded elements
-		 this.home = driver.findElement(By.cssSelector("a.glyphicon.glyphicon-home"));
-		 this.searchResources = driver.findElement(By.cssSelector("#navigationbar > ul > li:nth-child(2) > a"));
-		 this.subclassObjects = driver.findElement(By.xpath("//*[@id='navigationbar']/ul/li[3]/a"));
-		 this.addNewResource = driver.findElement(By.cssSelector("#navigationbar > ul > li:nth-child(5) > a"));
+		this.home = driver.findElement(By
+				.cssSelector("a.glyphicon.glyphicon-home"));
+		this.searchResources = driver.findElement(By
+				.cssSelector("#navigationbar > ul > li:nth-child(2) > a"));
+		this.subclassObjects = driver.findElement(By
+				.xpath("//*[@id='navigationbar']/ul/li[3]/a"));
+		this.addNewResource = driver.findElement(By
+				.cssSelector("#navigationbar > ul > li:nth-child(5) > a"));
 	}
 
-	//get
+	// get
 
 	public WebElement getHome() {
 		return this.home;
@@ -45,11 +49,11 @@ public class RegistratorHomePage extends ACommonComponent {
 		return this.addNewResource;
 	}
 
-	//set
+	// set
 
 	public void clickHome() {
-        getHome().click();
-    }
+		getHome().click();
+	}
 
 	public void clickSearchResources() {
 		getSearchResources().click();
@@ -63,16 +67,12 @@ public class RegistratorHomePage extends ACommonComponent {
 		getAddNewResource().click();
 	}
 
-
 	// Funk
 
 	public LoginPage logout() {
-        clickLogout();
-        // Return a new page object representing the destination.
-        return new LoginPage(driver);
-    }
-
-
-
+		clickLogout();
+		// Return a new page object representing the destination.
+		return new LoginPage(driver);
+	}
 
 }
