@@ -169,6 +169,10 @@ public class CommunityPage extends AdminHomePage {
 	public WebElement getActionsHeader() {
 		return this.actions;
 	}
+	
+	public ITable getTtableCommunity() {
+		return this.tableCommunity;
+	}
 
 	// Functional getters
 	public String getLabelCommunityText() {

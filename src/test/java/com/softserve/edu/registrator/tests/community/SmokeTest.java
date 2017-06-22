@@ -1,5 +1,6 @@
 package com.softserve.edu.registrator.tests.community;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -12,6 +13,7 @@ import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
 import com.softserve.edu.registrator.tests.TestRunner;
+
 
 public class SmokeTest extends TestRunner {
 		
@@ -27,24 +29,19 @@ public class SmokeTest extends TestRunner {
 	    	Application.get().getBrowser().quit();
 	    }
 	
-	    @DataProvider // (parallel = true)
-	    public Object[][] seccessAdded() {
-	        // Read from ...
+	    @DataProvider 
+	    public Object[][] community() {
 	        return new Object[][] {
 	                { new Community("mykolaiv", "")}
 	                };
 	    }
 
-	    @Test(dataProvider = "seccessAdded")
+	    @Test(dataProvider = "community")
 	    public void checkCommunitySecces(ICommunity community) throws Exception {
 	    	CommunityPage communityPage = adminHomePage.clickCommunities();
-	    	//communityPage = communityPage.addNewCommunity().seccesfulAddedCommunity(community);
-//	    	Thread.sleep(3000);
-	    	
-	        communityPage.deleteCommunity(community).ok();
-	    	communityPage.getCommunitiesText();
-
-
+	    	communityPage = communityPage.addNewCommunity().seccesfulAddedCommunity(community);
+	    	Assert.assertTrue(!communityPage.getTtableCommunity().getRowsByValue(community.getNameCommunity()).isEmpty()); 	
+	        communityPage.deleteCommunity(community).ok(); //TODO
 	    	Thread.sleep(3000);
 	    }
 }
