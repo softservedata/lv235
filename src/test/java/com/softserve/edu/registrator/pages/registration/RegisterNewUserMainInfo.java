@@ -7,19 +7,43 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.pages.Application;
 
-public class RegisterNewUserMainInfo  {
+public class RegisterNewUserMainInfo {
 
     // Enum with labels for localization
     
     public static enum MainInfoL10n {
         MAININFO_LABEL("Основна інформація", "Основная информация", "Basic information"),
+        FIRSTNAME_ERROR_LABEL("Некоректне введення, лише літери",
+                "Некорректный ввод, только буквы",
+                "Incorrect inputting, only letters are valid"),
         FIRSTNAME_LABEL("Ім'я *", "Имя *", "First name *"),
+        LASTNAME_ERROR_LABEL("Некоректне введення, лише літери",
+                "Некорректный ввод, только буквы",
+                "Incorrect inputting, only letters are valid"),
         LASTNAME_LABEL("Прізвище*", "Фамилия*", "Second name*"),
+        MIDDLENAME_ERROR_LABEL("Від 1 до 30 символів, цифри недопустимі",
+                "От 1 до 30 символов, цифры недопустимы",
+                "From 1 to 30 symbols, digits arent valid"),
         MIDDLENAME_LABEL("По-батькові", "Отчество", "Middle name"),
+        EMAIL_ERROR_LABEL("Введіть коректну адресу",
+                "Введите корректный адресс",
+                "Please, enter correct email"),
         EMAIL_LABEL("Електронна пошта *", "Электронная почта *", "E-mail *"),
+        LOGIN_ERROR_LABEL(
+                "Логін повинен складатись лише з латинських літер і/або цифр, від 6 до 20 символів",
+                "Логин должен состоять только с латинских букв и/или цифр, от 6 до 20 символов",
+                "The login must contain only latin letters and/or digits, from 6 to 20 characters"),
         LOGIN_LABEL("Логін *", "Логин *", "Login *"),
+        PASSWORD_ERROR_LABEL(
+                "Пароль повинен складатись з латинських літер і/або цифр, від 6 до 20 символів",
+                "Пароль должен состоять только с латинских букв и/или цифр, от 6 до 20 символов",
+                "The password must contain only latin letters and/or digits, from 6 to 20 characters"),
         PASSWORD_LABEL("Пароль *", "Пароль *", "Password *"),
+        CONFIRMPASSWORD_ERROR_LABEL("Підтвердження паролю неправильне",
+                "Подтверждение пароля неверное",
+                "You've entered bad password confirmation"),
         CONFIRMPASSWORD_LABEL("Підтвердження паролю *", "Подтверждение пароля *", "Confirm password *");
         
         private HashMap<ChangeLanguageFields, String> field;
@@ -41,25 +65,33 @@ public class RegisterNewUserMainInfo  {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     
     public static final String MAININFO_LABEL_CSSSELECTOR = ".personal_header.col-lg-4 h4";
+    public static final String FIRSTNAME_ERROR_LABEL_ID = "firstName.errors";
     public static final String FIRSTNAME_LABEL_CSSSELECTOR = "label[for='firstName']";
     public static final String FIRSTNAME_INPUT_ID = "firstName";
+    public static final String LASTNAME_ERROR_LABEL_ID = "lastName.errors";
     public static final String LASTNAME_LABEL_CSSSELECTOR = "label[for='lastName']";
     public static final String LASTNAME_INPUT_ID = "lastName";
+    public static final String MIDDLENAME_ERROR_LABEL_ID = "middleName.errors";
     public static final String MIDDLENAME_LABEL_CSSSELECTOR = "label[for='middleName']";
     public static final String MIDDLENAME_INPUT_ID = "middleName";
+    public static final String EMAIL_ERROR_LABEL_ID = "email.errors";
     public static final String EMAIL_LABEL_CSSSELECTOR = "label[for='email']";
     public static final String EMAIL_INPUT_ID = "email";
+    public static final String LOGIN_ERROR_LABEL_ID = "login.errors";
     public static final String LOGIN_LABEL_CSSSELECTOR = "label[for='login']";
     public static final String LOGIN_INPUT_ID = "login";
+    public static final String PASSWORD_ERROR_LABEL_ID = "password.errors";
     public static final String PASSWORD_LABEL_CSSSELECTOR = "label[for='password']";
     public static final String PASSWORD_INPUT_ID = "password";
+    public static final String CONFIRMPASSWORD_ERROR_LABEL_ID = "confirmPassword.errors";
     public static final String CONFIRMPASSWORD_LABEL_CSSSELECTOR = "label[for='confirmPassword']";
     public static final String CONFIRMPASSWORD_INPUT_ID = "confirmPassword";
     
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     
     // Fields
-
+    
+    private WebDriver driver;
     private WebElement mainInfoLabel;
     private WebElement firstNameLabel;
     private WebElement firstName;
@@ -79,6 +111,7 @@ public class RegisterNewUserMainInfo  {
     // Public constructor
     
     public RegisterNewUserMainInfo(WebDriver driver) {
+        this.driver = driver;
         this.mainInfoLabel = driver.findElement(By.cssSelector(MAININFO_LABEL_CSSSELECTOR));
         this.firstNameLabel = driver.findElement(By.cssSelector(FIRSTNAME_LABEL_CSSSELECTOR));
         this.firstName = driver.findElement(By.id(FIRSTNAME_INPUT_ID));
@@ -96,6 +129,36 @@ public class RegisterNewUserMainInfo  {
         this.confirmPassword = driver.findElement(By.id(CONFIRMPASSWORD_INPUT_ID));
     }
 
+    // get Main info error labels
+    
+    public WebElement getFirstNameErrorLabel() {
+        return getDriver().findElement(By.id(FIRSTNAME_ERROR_LABEL_ID));
+    }
+    
+    public WebElement getLastNameErrorLabel() {
+        return getDriver().findElement(By.id(LASTNAME_ERROR_LABEL_ID));
+    }
+    
+    public WebElement getMiddleNameErrorLabel() {
+        return getDriver().findElement(By.id(MIDDLENAME_ERROR_LABEL_ID));
+    }
+    
+    public WebElement getEmailErrorLabel() {
+        return getDriver().findElement(By.id(EMAIL_ERROR_LABEL_ID));
+    }
+    
+    public WebElement getLoginErrorLabel() {
+        return getDriver().findElement(By.id(LOGIN_ERROR_LABEL_ID));
+    }
+    
+    public WebElement getPasswordErrorLabel() {
+        return getDriver().findElement(By.id(PASSWORD_ERROR_LABEL_ID));
+    }
+    
+    public WebElement getConfirmPasswordErrorLabel() {
+        return getDriver().findElement(By.id(CONFIRMPASSWORD_ERROR_LABEL_ID));
+    }
+    
     // get Main info labels
 
     public WebElement getMainInfoLabel() {
@@ -132,6 +195,10 @@ public class RegisterNewUserMainInfo  {
     
     // get Main info
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+    
     public WebElement getFirstName() {
         return this.firstName;
     }

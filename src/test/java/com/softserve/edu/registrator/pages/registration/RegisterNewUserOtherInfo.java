@@ -14,6 +14,9 @@ public class RegisterNewUserOtherInfo {
 
     public static enum OtherInfoL10n {
         OTHERINFO_LABEL("Інші дані", "Другие данные", "Other data"),
+        PHONENUMBER_ERROR_LABEL("Некоректний номер телефону", 
+                "Некорректный телефонный номер", 
+                "Incorrect phone number"),
         PHONENUMBER_LABEL("Номер телефону", "Номер телефона", "Phone number"),
         COMMUNITY_LABEL("Громада *", "Община *", "Community *"),
         DATE_LABEL("Дата приєднання до договору*", 
@@ -37,6 +40,7 @@ public class RegisterNewUserOtherInfo {
     }
     
     public static final String OTHERINFO_LABEL_XPATH = "//*[@id='registrationForm']//h4[2]";
+    public static final String PHONENUMBER_ERROR_LABEL_ID = "phoneNumber.errors";
     public static final String PHONENUMBER_LABEL_CSSSELECTOR = "label[for='phone_number']";
     public static final String PHONENUMBER_INPUT_ID = "phone_number";
     public static final String COMMUNITY_LABEL_CSSSELECTOR = "label[for='territorial_Community']";
