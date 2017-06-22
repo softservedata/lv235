@@ -34,8 +34,6 @@ public class LoginPage extends ATopComponent {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     //public static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
-    public static final String SRC_ATTRIBUTE = "src"; 
-    public static final String VALUE_ATTRIBUTE = "value"; 
     public static final String NAME_IMAGE = "ukraine_logo2.gif";
     //
     private static final String LOGIN_LABEL_XPATH ="//label[contains(@for,'inputEmail')]";
