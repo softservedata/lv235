@@ -24,43 +24,27 @@ public class SmokeTest extends TestRunner {
 	
 	    @AfterClass
 	    public void afterClass() {
-	    	adminHomePage.logout();
+	    	Application.get().getBrowser().quit();
 	    }
 	
 	    @DataProvider // (parallel = true)
 	    public Object[][] seccessAdded() {
 	        // Read from ...
 	        return new Object[][] {
-	                { new Community("mykolaiv", "")}, 
-	                { new Community("Odesa", "200:00:00:000:00001")}
-	                };
-	    }
-	    
-	    @DataProvider // (parallel = true)
-	    public Object[][] errorAdded() {
-	        // Read from ...
-	        return new Object[][] {
-	                { new Community("Lviv", "")}, 
-	                { new Community("Lviv", "000:00:00:000:00001")}
+	                { new Community("mykolaiv", "")}
 	                };
 	    }
 
 	    @Test(dataProvider = "seccessAdded")
 	    public void checkCommunitySecces(ICommunity community) throws Exception {
 	    	CommunityPage communityPage = adminHomePage.clickCommunities();
-	    	communityPage = communityPage.addNewCommunity().seccesfulAddedCommunity(community);
-	    	Thread.sleep(3000);
-	    	communityPage = communityPage.deleteCommunity(community).ok();
-	    	adminHomePage = communityPage;
-	    	Thread.sleep(3000);
-	    }
-  
-	    @Test(dataProvider = "errorAdded")
-	    public void checkCommunityError(ICommunity community) throws Exception {
-	    	CommunityPage communityPage = adminHomePage.clickCommunities();
-	    	communityPage = communityPage.addNewCommunity().seccesfulAddedCommunity(community);
-	    	Thread.sleep(3000);
-	    	adminHomePage = communityPage;
+	    	//communityPage = communityPage.addNewCommunity().seccesfulAddedCommunity(community);
+//	    	Thread.sleep(3000);
+	    	
+	        communityPage.deleteCommunity(community).ok();
+	    	communityPage.getCommunitiesText();
+
+
 	    	Thread.sleep(3000);
 	    }
 }

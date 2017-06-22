@@ -6,102 +6,109 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.registrator.controls.ITable;
+import com.softserve.edu.registrator.controls.Table;
 import com.softserve.edu.registrator.data.communities.Community;
 import com.softserve.edu.registrator.data.communities.ICommunity;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 
 public class CommunityPage extends AdminHomePage {
 
-	private class CommunityTableRow {
+	public class DeleteCommunityAlert {
+		private WebElement alertLabel;
+		private WebElement okButton;
+		private WebElement cancelButton;
+		private WebElement closeButton;
 
-		private WebElement nameCommunityLable;
-		private WebElement registrationNumberLable;
-		private WebElement editButton;
-		private WebElement deleteButton;
-
-		public CommunityTableRow(ICommunity community) {
-			nameCommunityLable = driver.findElement(By.linkText(community
-					.getNameCommunity()));
-			registrationNumberLable = driver.findElement(By
-					.xpath("//a[text()='" + community.getNameCommunity()
-							+ "']/../../td[2]"));
-			editButton = driver.findElement(By.xpath("//a[text()='"
-					+ community.getNameCommunity().trim() + "']/../..//a["
-					+ "contains(@href,  'editCommunity')]"));
-			deleteButton = driver.findElement(By.xpath("//a[text()='"
-					+ community.getNameCommunity().trim() + "']/../..//a["
-					+ "contains(@href,  'deleteCommunity')]"));
+		public DeleteCommunityAlert() {
+			alertLabel = driver.findElement(By.cssSelector(".bootbox-body"));
+			okButton = driver.findElement(By
+					.xpath("//button[@data-bb-handler='confirm']"));
+			cancelButton = driver.findElement(By
+					.xpath("//button[@data-bb-handler='cancel']"));
+			closeButton = driver.findElement(By
+					.cssSelector(".bootbox-close-button.close"));
 		}
 
-		public CommunityTableRow(int index) {
-			nameCommunityLable = driver.findElement(By
-					.xpath("//tr[@class = 'commun'][" + index
-							+ "]//a[contains(@href,  '#')]"));
-			registrationNumberLable = driver.findElement(By
-					.xpath("//tr[@class = 'commun'][" + index + "]//td[2]"));
-			editButton = driver.findElement(By.xpath("//tr[@class = 'commun']["
-					+ index + "]//a[contains(@href,  'editCommunity')]"));
-			deleteButton = driver.findElement(By
-					.xpath("//tr[@class = 'commun'][" + index
-							+ "]//a[contains(@href,  'deleteCommunity')]"));
+		// Getters
+		public WebElement getAlertLabel() {
+			return this.alertLabel;
 		}
 
-		public WebElement getNameCommunityLable() {
-			return this.nameCommunityLable;
+		public WebElement getOkButton() {
+			return this.okButton;
 		}
 
-		public WebElement getRegistrationNumberLable() {
-			return this.registrationNumberLable;
+		public WebElement getCancelButton() {
+			return this.cancelButton;
 		}
 
-		public WebElement getEditButton() {
-			return this.editButton;
-		}
-
-		public WebElement getDeleteButton() {
-			return this.deleteButton;
+		public WebElement getCloseButton() {
+			return this.closeButton;
 		}
 
 		// Functional getters
-
-		public String getNameCommunityLableText() {
-			return getNameCommunityLable().getText();
+		public String getAlertLabelText() {
+			return getAlertLabel().getText();
 		}
 
-		public String getRegistrationNumberLableText() {
-			return getRegistrationNumberLable().getText();
+		public String getOkButtonText() {
+			return getOkButton().getText();
 		}
 
-		public String getEditButtonText() {
-			return getEditButton().getText();
-		}
-
-		public String getDeleteButtonText() {
-			return getDeleteButton().getText();
+		public String getCancelButtonText() {
+			return getCancelButton().getText();
 		}
 
 		// Setters
 
-		public void clickEditButton() {
-			getEditButton().click();
+		public void clickOkButton() {
+			getOkButton().click();
 		}
 
-		public void clickDeleteButton() {
-			getDeleteButton().click();
+		public void clickCancelButton() {
+			getCancelButton().click();
+		}
+
+		public void clickCloseButton() {
+			getCloseButton().click();
+		}
+
+		// Business Logic
+
+		public CommunityPage ok() {
+			clickOkButton();
+			return new CommunityPage(driver);
+		}
+
+		public CommunityPage cancel() {
+			clickCancelButton();
+			return new CommunityPage(driver);
+		}
+
+		public CommunityPage close() {
+			clickCloseButton();
+			return new CommunityPage(driver);
 		}
 	}
-
+	
 	public static enum CommunityPageL10n {
-		COMMUNITY_LABEL("Громади", "Общины", "Communities"), ADD_COMMUNITY_BUTTON(
-				"Додати нову територіальну громаду", "Добавить новую общину",
-				"Add new territorial community"), SHOW_NONE_ACTIVE_CBOX(
-				"Показати неактивні", "Показать неактивные", "Show inactive"), TERETORIAL_COMMUNITY_COLUMN_NAME(
-				"Територіальна громада", "Территоральная община",
-				"Territorial community"), REGISTRATION_NUMBER_COLUMN_NAME(
-				"Реєстраційний номер", "Регистрационный номер",
-				"Registration number"), ACTIONS_COMMUNITY_COLUMN_NAME("Дії",
-				"Действия", "Actions"), EDIT_BUTTON("Редагувати", "Изменить ",
-				"Edit"), DELETE_BUTTON("Видалити ", "Удалить", "Delete");
+		COMMUNITY_LABEL("Громади", "Общины", "Communities"), 
+		ADD_COMMUNITY_BUTTON("Додати нову територіальну громаду", "Добавить новую общину",
+				"Add new territorial community"),
+		SHOW_NONE_ACTIVE_CBOX("Показати неактивні", "Показать неактивные", "Show inactive"), 
+		TERETORIAL_COMMUNITY_COLUMN_NAME("Територіальна громада", "Территоральная община",
+				"Territorial community"), 
+		REGISTRATION_NUMBER_COLUMN_NAME("Реєстраційний номер", "Регистрационный номер",
+				"Registration number"), 
+		ACTIONS_COMMUNITY_COLUMN_NAME("Дії","Действия", "Actions"), 
+		EDIT_BUTTON("Редагувати", "Изменить ","Edit"), 
+		DELETE_BUTTON("Видалити ", "Удалить", "Delete"),
+		ALERT_LABEL("Ви впевнені, що хочете видалити цю громаду?",
+				"Вы уверены, что хотите удалить эту общину?",
+				"Do you really want to delete this community?"), 
+		ALERT_OK_BUTTON("Так", "Да", "OK"), 
+		ALERT_CANCEL_BUTTON("Відмінити", "Отменить", "Cancel");
 
 		private HashMap<ChangeLanguageFields, String> field;
 
@@ -125,9 +132,11 @@ public class CommunityPage extends AdminHomePage {
 	private WebElement teretorialCommunity;
 	private WebElement registrationNumber;
 	private WebElement actions;
+	private ITable tableCommunity;
 
 	public CommunityPage(WebDriver driver) {
 		super(driver);
+		tableCommunity = new Table(driver.findElement(By.tagName("table")));
 		communityLable = driver.findElement(By.cssSelector("h4"));
 		addNewCommunityButton = driver.findElement(By
 				.cssSelector("a[href= 'addCommunity']"));
@@ -149,15 +158,15 @@ public class CommunityPage extends AdminHomePage {
 		return this.showNoneActiveCBox;
 	}
 
-	public WebElement getTeretorialCommunity() {
+	public WebElement getTeretorialCommunityHeader() {
 		return this.teretorialCommunity;
 	}
 
-	public WebElement getRegistrationNumber() {
+	public WebElement getRegistrationNumberHeader() {
 		return this.registrationNumber;
 	}
 
-	public WebElement getActions() {
+	public WebElement getActionsHeader() {
 		return this.actions;
 	}
 
@@ -170,37 +179,59 @@ public class CommunityPage extends AdminHomePage {
 		return getAddNewCommunityButton().getText().trim();
 	}
 
-	public String getActionsText() {
-		return getShowNoneActiveCBox().getText().trim();
+	public String getActionsHeaderText() {
+		return getActionsHeader().getText().trim();
 	}
 
-	public String getTeretorialCommunityText() {
-		return getTeretorialCommunity().getText().trim();
+	public String getTeretorialCommunityHeaderText() {
+		return getTeretorialCommunityHeader().getText().trim();
 	}
 
-	public String getRegistrationNumberText() {
-		return getRegistrationNumber().getText().trim();
+	public String getRegistrationNumberHeaderText() {
+		return getRegistrationNumberHeader().getText().trim();
 	}
 
 	public String getCBoxShowNoneActiveText() {
 		return getShowNoneActiveCBox().getText().trim();
 	}
 
-	public String getCommunityNameText(Community community) {
-		return new CommunityTableRow(community).getNameCommunityLableText();
-	}
-
 	public String getRegistrationNumberText(Community community) {
-		return new CommunityTableRow(community)
-				.getRegistrationNumberLableText();
+		return tableCommunity.getCell(tableCommunity.
+				getRowIndexByValueInColumn(community
+						.getNameCommunity(), getNameCommunityColumnIndex()),
+				getRegisterNumberColumnIndex()).getText().trim();
 	}
 
+	private int getNameCommunityColumnIndex() {
+		return tableCommunity.getColumnIndexByValueOfHeader(getTeretorialCommunityHeaderText());
+	}
+	
+	private int getRegisterNumberColumnIndex() {
+		return tableCommunity.getColumnIndexByValueOfHeader(getRegistrationNumberHeaderText());
+	}
+	
+	private int getActionsColumnIndex() {
+		return tableCommunity.getColumnIndexByValueOfHeader(getActionsHeaderText());
+	}
+	
+	private WebElement getEditButtonByIndexOfRow(int indexRow) {
+		return tableCommunity
+				.getCell(indexRow, getActionsColumnIndex())
+				.findElement(By.cssSelector(".btn.btn-primary"));
+	}
+	
+	private WebElement getDeleteButtonByIndexOfRow(int indexRow) {
+		return tableCommunity
+				.getCell(indexRow, getActionsColumnIndex())
+				.findElement(By.cssSelector(".btn.btn-danger"));
+	}
+	
 	public String getEditButtonText() {
-		return new CommunityTableRow(1).getEditButtonText();
+		return getEditButtonByIndexOfRow(0).getText();
 	}
 
 	public String getDeleteButtonText() {
-		return new CommunityTableRow(1).getDeleteButtonText();
+		return getDeleteButtonByIndexOfRow(0).getText();
 	}
 
 	// Setters
@@ -214,12 +245,16 @@ public class CommunityPage extends AdminHomePage {
 	}
 
 	public void clickEditButton(Community community) {
-		new CommunityTableRow(community).clickEditButton();
-		;
+		getEditButtonByIndexOfRow(tableCommunity
+				.getRowIndexByValueInColumn(community.getNameCommunity(),
+						getNameCommunityColumnIndex())).click();
 	}
 
 	public void clickDeleteButton(ICommunity community) {
-		new CommunityTableRow(community).clickDeleteButton();
+		getDeleteButtonByIndexOfRow(tableCommunity
+				.getRowIndexByValueInColumn(community.getNameCommunity(),
+						getNameCommunityColumnIndex()))
+		.click();
 	}
 
 	// Business logic
@@ -254,6 +289,6 @@ public class CommunityPage extends AdminHomePage {
 
 	public DeleteCommunityAlert deleteCommunity(ICommunity community) {
 		clickDeleteButton(community);
-		return new DeleteCommunityAlert(driver, this);
+		return new DeleteCommunityAlert();
 	}
 }

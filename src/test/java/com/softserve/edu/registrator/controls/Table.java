@@ -71,7 +71,7 @@ public final class Table implements ITable {
     }
 
     private boolean isRowIndexEnable(int rowIndex) {
-        boolean isEnable = (0 < rowIndex) && (rowIndex < getRowCount());
+        boolean isEnable = (0 <= rowIndex) && (rowIndex < getRowCount());
         if (!isEnable) {
             // TODO Develop Custom Exception
             throw new RuntimeException(String.format(OUT_ROWS_RANGE,
@@ -81,7 +81,7 @@ public final class Table implements ITable {
     }
 
     private boolean isColumnIndexEnable(int columnIndex) {
-        boolean isEnable = (0 < columnIndex) && (columnIndex < getColumnCount());
+        boolean isEnable = (0 <= columnIndex) && (columnIndex < getColumnCount());
         if (!isEnable) {
             // TODO Develop Custom Exception
             throw new RuntimeException(String.format(OUT_COLUMN_RANGE,
