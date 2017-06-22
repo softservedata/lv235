@@ -1,8 +1,10 @@
-package com.softserve.edu.registrator.pages;
+package com.softserve.edu.registrator.pages.registration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.registrator.pages.AdminHomePage;
 
 public class NonConfirmedCoownersPage extends AdminHomePage {
 

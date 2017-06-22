@@ -1,4 +1,4 @@
-package com.softserve.edu.registrator.pages;
+package com.softserve.edu.registrator.pages.registration;
 
 import java.util.HashMap;
 
@@ -12,7 +12,13 @@ public class RegisterNewUserPassportInfo {
 
     public static enum PassportInfoL10n {
         PASSPORTINFO_LABEL("Паспортні дані", "Паспортные данные", "Passport information"),
+        SERIA_ERROR_LABEL("Поле повинне містити 2 великі літери",
+                "Поле должно содержать только 2 большие буквы", 
+                "The field must contain only two big cyrillic letters"),
         SERIA_LABEL("Серія", "Серия", "Seria"),
+        PASSPORTNUMBER_ERROR_LABEL("Поле повинне містити 6 цифр", 
+                "Поле должно содержать 6 цифр", 
+                "The field must contain 6 digits"),
         PASSPORTNUMBER_LABEL("Номер", "Номер", "Number"),
         PUBLISHED_LABEL("Виданий", "Выданный", "Published by");
 
@@ -33,8 +39,10 @@ public class RegisterNewUserPassportInfo {
     }
     
     public static final String PASSPORTINFO_LABEL_CSSSELECTOR = ".passport_header.col-lg-4 h4:first-child";
+    public static final String SERIA_ERROR_LABEL_ID = "passport.seria.errors";
     public static final String SERIA_LABEL_CSSSELECTOR = "label[for='passport_seria']";
     public static final String SERIA_INPUT_ID = "passport_seria";
+    public static final String PASSPORTNUMBER_ERROR_LABEL_ID = "passport.number.errors";
     public static final String PASSPORTNUMBER_LABEL_CSSSELECTOR = "label[for='passport_number']";
     public static final String PASSPORTNUMBER_INPUT_ID = "passport_number";
     public static final String PUBLISHED_LABEL_CSSSELECTOR = "label[for='published_by_data']";

@@ -1,4 +1,4 @@
-package com.softserve.edu.registrator.pages;
+package com.softserve.edu.registrator.pages.registration;
 
 import java.util.HashMap;
 
@@ -20,6 +20,9 @@ public class RegisterNewUserAddressInfo {
         STREET_LABEL("Вулиця", "Улица", "Street"),
         BUILDING_LABEL("Будинок", "Дом", "Building"),
         FLAT_LABEL("Квартира", "Квартира", "Flat"),
+        POSTCODE_ERROR_LABEL("Поле повинне містити тільки цифри",
+                "Поле должно содержать только цифры",
+                "The field must contain only digits"),
         POSTCODE_LABEL("Поштовий індекс", "Почтовый индекс", "Postcode");
         
         private HashMap<ChangeLanguageFields, String> field;
@@ -51,6 +54,7 @@ public class RegisterNewUserAddressInfo {
     public static final String BUILDING_INPUT_ID = "building";
     public static final String FLAT_LABEL_CSSSELECTOR = "label[for='flat']";
     public static final String FLAT_INPUT_ID = "flat";
+    public static final String POSTCODE_ERROR_LABEL_ID = "address.postcode.errors";
     public static final String POSTCODE_LABEL_CSSSELECTOR = "label[for='postcode']";
     public static final String POSTCODE_INPUT_ID = "postcode";
     

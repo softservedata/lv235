@@ -1,4 +1,4 @@
-package com.softserve.edu.registrator.pages;
+package com.softserve.edu.registrator.pages.registration;
 
 import java.util.HashMap;
 
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.User;
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.pages.AdminHomePage;
 
 public class RegisterUserPage extends AdminHomePage {
     
