@@ -10,13 +10,14 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.pages.LoginPage;
+import com.softserve.edu.registrator.pages.RegistratorHomePage;
 
 public class AutomatedTests {
 
 	/**
 	 * Delay for Thread.Sleep().
 	 */
-	private final int DELAY_FOR_DEMO = 500;
+	private final int DELAY_FOR_DEMO = 300;
 
 	/**
 	 * This method initialize driver with settings.
@@ -79,37 +80,33 @@ public class AutomatedTests {
 	@Test
 	public void testCreateSubclass() throws Exception {
 		WebDriver driver = init();
-		SubclassPage subclassPage = new SubclassPage(driver);
 		loginAsRegistrator(driver);
-		driver.findElement(By.xpath("//*[@id='navigationbar']/ul/li[3]/a")).click(); // Subclass of objects
+		RegistratorHomePage rp = new RegistratorHomePage(driver);
+		rp.clickSubclassObjects();
 		Thread.sleep(DELAY_FOR_DEMO);
+		SubclassPage subclassPage = new SubclassPage(driver);
 		subclassPage.getAddSubclassButton().click();
 		Thread.sleep(DELAY_FOR_DEMO);
-		subclassPage.getSubclassName().click();
-		subclassPage.getSubclassName().sendKeys("TestName");
+		subclassPage.FillSubclassName("TestName");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("clickmeshow")).click();
+		subclassPage.clickAddParametersButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.name("parameters[0].description")).click();
-		driver.findElement(By.name("parameters[0].description")).sendKeys("Test_Description");
+		subclassPage.FillDescriptionParameter("Test_Description");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.name("parameters[0].unitName")).click();
-		driver.findElement(By.name("parameters[0].unitName")).sendKeys("points");
+		subclassPage.FillUnitParameter("points");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("*[value='discreteParameters']")).click();
-		driver.findElement(By.id("btnAdd")).click();
+		subclassPage.clickDiscreteParameter();
+		subclassPage.clickAddButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.name("parameters[1].description")).click();
-		driver.findElement(By.name("parameters[1].description")).sendKeys("Test_Description2");
+		subclassPage.FillDescriptionParameter2("Test_Description2");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.name("parameters[1].unitName")).click();
-		driver.findElement(By.name("parameters[1].unitName")).sendKeys("count");
+		subclassPage.FillUnitParameter2("count");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#input2 #myparam2 [value='linearParameters']")).click();
+		subclassPage.clickLinearParameter();
 		//.findElement(By.cssSelector("*")).click();
 		driver.findElement(By.id("valid")).click();
 		Thread.sleep(DELAY_FOR_DEMO);
-		Assert.assertNotNull(driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'TestName')]")).getText());
+		Assert.assertNotNull(subclassPage.FindSubclassName("TestName"));
 		Thread.sleep(DELAY_FOR_DEMO);
 		logout(driver);
 	}

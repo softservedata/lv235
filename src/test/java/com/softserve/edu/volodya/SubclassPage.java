@@ -8,18 +8,16 @@ import com.softserve.edu.registrator.pages.ACommonComponent;
 
 public class SubclassPage extends ACommonComponent {
 
-	private static int ParameterCounter = -1;
-	
 	private static final String SUBCLASS_NAME_NAME = "typeName";
 	private static final String ADD_PARAMETERS_ID = "clickmeshow";
-	private static final String DESCRIPTION_PARAMETER_NAME = "parameters[" + ParameterCounter + "].description";
-	private static final String UNIT_PARAMETER_NAME = "parameters[" + ParameterCounter + "].unitName";
-	private static final String DISCRETE_PARAMETER_CSS = "#input"+ ParameterCounter+1 +" #myparam2 [value='discreteParameters']";
-	private static final String LINEAR_PARAMETER_CSS = "#input" + ParameterCounter+1 +" #myparam2 [value='linearParameters']";
+	private static final String DESCRIPTION_PARAMETER_NAME = "parameters[0].description";
+	private static final String UNIT_PARAMETER_NAME = "parameters[0].unitName";
+	private static final String DESCRIPTION_PARAMETER_NAME2 = "parameters[1].description";
+	private static final String UNIT_PARAMETER_NAME2 = "parameters[1].unitName";
+	private static final String DISCRETE_PARAMETER_CSS = "#input1 #myparam2 [value='discreteParameters']";
+	private static final String LINEAR_PARAMETER_CSS = "#input2 #myparam2 [value='linearParameters']";
 	private static final String ADD_BUTTON_ID = "btnAdd";
 
-	
-	
 	//
 	// Constructor
 	//
@@ -71,7 +69,6 @@ public class SubclassPage extends ACommonComponent {
 	
 	public void clickAddParametersButton() {
 		getAddParameters().click();
-		ParameterCounter++;
 	}
 	
 	public void clickDescriptionParameter() {
@@ -90,17 +87,23 @@ public class SubclassPage extends ACommonComponent {
 		getLinearParameter().click();
 	}
  	
+	public void clickAddButton() {
+		getAddButton().click();
+	}
 	//
 	// InputData
 	//
 	public void FillSubclassName(String subclassName) {
+		clickSubclassName();
 		getSubclassName().sendKeys(subclassName);
 	}
 	
 	public void FillDescriptionParameter(String descriptionName) {
+		clickDescriptionParameter();
 		getDescriptionParameter().sendKeys(descriptionName);
 	}
 	public void FillUnitParameter(String unitName) {
+		clickUnitParameter();
 		getUnitParameter().sendKeys(unitName);
 	}
 	
@@ -110,6 +113,30 @@ public class SubclassPage extends ACommonComponent {
 	
 	public String FindSubclassName(String subclassName) {
 		return driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'"+ subclassName +"')]")).getText();
+	}
+	
+	
+	//
+	//
+	//
+	//
+	//
+	//
+	public WebElement getDescriptionParameter2() {
+		return driver.findElement(By.name(DESCRIPTION_PARAMETER_NAME2));
+	}
+	
+	public WebElement getUnitParameter2() {
+		return driver.findElement(By.name(UNIT_PARAMETER_NAME2));
+	}
+	
+	public void FillDescriptionParameter2(String descriptionName) {
+		getDescriptionParameter2().click();
+		getDescriptionParameter2().sendKeys(descriptionName);
+	}
+	public void FillUnitParameter2(String unitName) {
+		getUnitParameter2().click();
+		getUnitParameter2().sendKeys(unitName);
 	}
 	
 }
