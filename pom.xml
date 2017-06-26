@@ -144,9 +144,6 @@
 						<selenium-version>
 							${org.seleniumhq.selenium.version}
 						</selenium-version>
-						<!-- <surefire.webdriver.name> -->
-						<!-- FireFox5x -->
-						<!-- </surefire.webdriver.name> -->
 					</systemPropertyVariables>
 					<suiteXmlFiles>
 						<suiteXmlFile>testng2.xml</suiteXmlFile>

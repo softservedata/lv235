@@ -1,11 +1,8 @@
-package com.softserve.edu.volodya;
+package com.softserve.edu.registrator.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import com.softserve.edu.registrator.pages.ACommonComponent;
-import com.softserve.edu.registrator.pages.LoginPage;
 
 public class RegistratorHomePage extends ACommonComponent {
 
@@ -20,11 +17,10 @@ public class RegistratorHomePage extends ACommonComponent {
 
 	public RegistratorHomePage(WebDriver driver) {
 		super(driver);
-		// TODO delete hardcoded elements
 		 this.home = driver.findElement(By.cssSelector("a.glyphicon.glyphicon-home"));
-		 this.searchResources = driver.findElement(By.cssSelector("#navigationbar > ul > li:nth-child(2) > a"));
-		 this.subclassObjects = driver.findElement(By.xpath("//*[@id='navigationbar']/ul/li[3]/a"));
-		 this.addNewResource = driver.findElement(By.cssSelector("#navigationbar > ul > li:nth-child(5) > a"));
+		 this.searchResources = driver.findElement(By.xpath("//a[contains(@href,'/searchOnMap')]"));
+		 this.subclassObjects = driver.findElement(By.xpath("//a[contains(@href,'/show-res-types')]"));
+		 this.addNewResource = driver.findElement(By.xpath("//a[contains(@href,'/new')]"));
 	}
 
 	//get
@@ -64,11 +60,10 @@ public class RegistratorHomePage extends ACommonComponent {
 	}
 
 
-	// Funk
+	// Functions
 
 	public LoginPage logout() {
         clickLogout();
-        // Return a new page object representing the destination.
         return new LoginPage(driver);
     }
 

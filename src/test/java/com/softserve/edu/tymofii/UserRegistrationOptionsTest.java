@@ -8,7 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class UserRegistrationOptionsTest {
+import com.softserve.edu.registrator.tests.TestRunner;
+
+// TODO
+public class UserRegistrationOptionsTest extends TestRunner {
 
 	@Test
 	public void adminLogin2() throws Exception {
@@ -29,10 +32,9 @@ public class UserRegistrationOptionsTest {
 				.click();
 		SettingsPage s = new SettingsPage(driver);
 		s.getUserRegistrationOptionsComponent().manualRegistrationClick();
-		s.confirmChangesButtonClick();
 		Thread.sleep(1000);
-		Assert.assertTrue(driver.findElements(
-				By.cssSelector("alert.alert-success.span")).size() > 0);
+		s.confirmChangesButtonClick();
+		Assert.assertTrue(driver.findElements(By.cssSelector(".alert")).size() > 0);
 		driver.quit();
 	}
 }
