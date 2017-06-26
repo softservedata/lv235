@@ -237,6 +237,11 @@ public class CommunityPage extends AdminHomePage {
 	public String getDeleteButtonText() {
 		return getDeleteButtonByIndexOfRow(0).getText();
 	}
+	
+	public int getCountOfCommunities(ICommunity community) {
+		return tableCommunity.getRowsByValue(
+				community.getNameCommunity()).size();
+	}
 
 	// Setters
 
@@ -294,5 +299,16 @@ public class CommunityPage extends AdminHomePage {
 	public DeleteCommunityAlert deleteCommunity(ICommunity community) {
 		clickDeleteButton(community);
 		return new DeleteCommunityAlert();
+	}
+	
+	public CommunityPage deleteCommunityIfExist(ICommunity community) {
+		if(tableCommunity.getColumnsByValue(community.getNameCommunity()).size() == 1){
+			clickDeleteButton(community);
+			DeleteCommunityAlert alert = new DeleteCommunityAlert();
+			return alert.ok();
+		}
+		else {
+			return this;
+		}
 	}
 }

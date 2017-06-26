@@ -1,6 +1,7 @@
 package com.softserve.edu.registrator.pages.communities;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -40,6 +41,7 @@ public class AddCommunityPage extends AdminHomePage {
 	public static final String VALUE_ATTRIBUTE = "value";
 	public static final String VALIDATION_MESSAGE_ATTRIBUTE = "alidationMessage";
 	public static final String VALUE_PLACEHOLDER = "value placeholder";
+	public static final String VALUE_VALIDATION_MESSAGE = "validationMessage";
 
 	private AddEditCommunityForm addEditCommunityForm;
 	private WebElement saveButton;
@@ -93,7 +95,7 @@ public class AddCommunityPage extends AdminHomePage {
 
 	public WebElement getRegistrationNumberErrorLabel() {
 		return driver.findElement(By.id("registrationNumber.errors"));
-	}
+	}	
 
 	// Functional getters
 	public String getNameFormLableText() {
@@ -159,6 +161,18 @@ public class AddCommunityPage extends AdminHomePage {
 	public int getCountofRegNumberErrorLabels() {
 		return driver.findElements(By.cssSelector("#body span")).size();
 	}
+	
+	public WebElement getActiveElement() {
+		return driver.switchTo().activeElement();
+	}
+	
+	public String getValidationMessageText(WebElement webElement) {
+		return webElement.getAttribute(VALUE_VALIDATION_MESSAGE);
+	}
+	
+	public List<WebElement> getErrorLables() {
+		return driver.findElements(By.cssSelector("#body span"));
+	}
 
 	// set Data
 
@@ -212,4 +226,11 @@ public class AddCommunityPage extends AdminHomePage {
 		setChangeLanguage(language);
 		return new AddCommunityPage(driver);
 	}
+	
+	public boolean isPresentErrorLabel(final String message) {
+		return driver.findElements(
+				By.xpath("//span[text() = '" + message + "']")).size() > 0;
+	}
+	
+	
 }
