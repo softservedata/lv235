@@ -1,5 +1,7 @@
 package com.softserve.edu.registrator.tests;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -11,6 +13,7 @@ import com.softserve.edu.registrator.data.apps.ApplicationUtils;
 import com.softserve.edu.registrator.pages.Application;
 
 public class TestRunner {
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     // Use, if class Application is not singleton
     // protected Application application;
 
