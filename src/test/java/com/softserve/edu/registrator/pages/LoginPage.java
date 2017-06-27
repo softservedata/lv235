@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.volodya.RegistratorHomePage;
 
 public class LoginPage extends ATopComponent {
 	
@@ -232,6 +233,10 @@ public class LoginPage extends ATopComponent {
 		return new AdminHomePage(driver);
 	}
 
+    public RegistratorHomePage successRegistratorLogin(IUser registrator) {
+            setLoginData(registrator);
+            return new RegistratorHomePage(driver);
+        }
 //	public RegistratorHomePage successRegistratorLogin(IUser registrator) {
 //		setLoginData(registrator);
 //		// Return a new page object representing the destination.

@@ -1,8 +1,11 @@
-package com.softserve.edu.registrator.pages;
+package com.softserve.edu.volodya;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.registrator.pages.ACommonComponent;
+import com.softserve.edu.registrator.pages.LoginPage;
 
 public class RegistratorHomePage extends ACommonComponent {
 
@@ -47,16 +50,20 @@ public class RegistratorHomePage extends ACommonComponent {
         getHome().click();
     }
 
-	public void clickSearchResources() {
+	public SearchResourcesPage clickSearchResources() {
 		getSearchResources().click();
+		return new SearchResourcesPage(driver);
 	}
 
-	public void clickSubclassObjects() {
+	public SubclassPage clickSubclassObjects() {
 		getSubclassObjects().click();
+		return new SubclassPage(driver);
 	}
 
-	public void clickAddNewResource() {
+	public AddResourcePage clickAddNewResource() {
 		getAddNewResource().click();
+		return new AddResourcePage(driver);
+		
 	}
 
 
