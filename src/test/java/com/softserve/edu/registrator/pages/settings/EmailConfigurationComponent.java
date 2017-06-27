@@ -1,8 +1,12 @@
-package com.softserve.edu.tymofii;
+package com.softserve.edu.registrator.pages.settings;
+
+import java.util.HashMap;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 
 public class EmailConfigurationComponent {
 	// TODO
@@ -13,6 +17,34 @@ public class EmailConfigurationComponent {
 	// this.errorMessage = errorMessage;
 	// }
 	// }
+
+	public static enum EmailConfigurationComponentL10n {
+		COMPONENT_LABEL("Налаштування надсилання електронної пошти",
+				"Настройки отправки электронной почты", "System email account"), EMAIL_SERVER_ADDRESS_LABEL(
+				"Адреса сервера", "Адрес сервера", "Email server address"), USERNAME_LABEL(
+				"Ім'я користувача", "Имя пользователя", "User name"), TCP_PORT_LABEL(
+				"Порт TCP", "Порт TCP", "TCP port"), PROTOCOL_LABEL("Протокол",
+				"Протокол", "Protocol"), PASSWORD_LABEL("Пароль", "Пароль",
+				"Password"), TLS_SECURE_CONNECTION_LABEL(
+				"Захищене з'єднання TLS", "Защищенное соединение TLS",
+				"TLS secure connection"), CHECK_BUTTON("Перевірити",
+				"Проверить", "Check");
+
+		private HashMap<ChangeLanguageFields, String> field;
+
+		private EmailConfigurationComponentL10n(String... localization) {
+			this.field = new HashMap<ChangeLanguageFields, String>();
+			int i = 0;
+			for (ChangeLanguageFields language : ChangeLanguageFields.values()) {
+				this.field.put(language, localization[i]);
+				i++;
+			}
+		}
+
+		public String getLocalization(ChangeLanguageFields language) {
+			return this.field.get(language).trim();
+		}
+	}
 
 	// Labels
 	private WebElement componentLabel;
