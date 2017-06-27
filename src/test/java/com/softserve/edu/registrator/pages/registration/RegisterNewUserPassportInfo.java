@@ -52,6 +52,7 @@ public class RegisterNewUserPassportInfo {
     
     // Fields
         
+    private WebDriver driver;
     private WebElement passportInfoLabel;
     private WebElement seriaLabel;
     private WebElement seria;
@@ -63,6 +64,7 @@ public class RegisterNewUserPassportInfo {
     // Public constructor
     
     public RegisterNewUserPassportInfo(WebDriver driver) {
+        this.driver = driver;
         this.passportInfoLabel = driver.findElement(By.cssSelector(PASSPORTINFO_LABEL_CSSSELECTOR));
         this.seriaLabel = driver.findElement(By.cssSelector(SERIA_LABEL_CSSSELECTOR));
         this.seria = driver.findElement(By.id(SERIA_INPUT_ID));
@@ -91,6 +93,10 @@ public class RegisterNewUserPassportInfo {
     }
 
     // get Passport info
+    
+    public WebDriver getDriver() {
+        return this.driver;
+    }
     
     public WebElement getSeria() {
         return this.seria;

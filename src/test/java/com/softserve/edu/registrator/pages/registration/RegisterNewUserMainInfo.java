@@ -196,7 +196,7 @@ public class RegisterNewUserMainInfo {
     // get Main info
 
     public WebDriver getDriver() {
-        return driver;
+        return this.driver;
     }
     
     public WebElement getFirstName() {
