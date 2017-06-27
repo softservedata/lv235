@@ -32,6 +32,7 @@ public class TestRunner {
     public void afterClass() {
         System.out.println("@AfterClass");
         Application.remove();
+        Application.get().getBrowser().quit();
     }
 
     @BeforeMethod

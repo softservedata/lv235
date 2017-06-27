@@ -156,7 +156,7 @@ public class AdminHomePage extends ACommonComponent {
         clickLoginAccount();
         getUsers().click();
         // coownersOptions = new CoownersOptions(driver);
-        coownersOptions = new CoownersOptions();
+        this.coownersOptions = new CoownersOptions();
     }
 
     public void clickSettings() {
@@ -212,6 +212,11 @@ public class AdminHomePage extends ACommonComponent {
         // Return a new page object representing the destination.
         return new LoginPage(driver);
     }
+
+    public ActiveUsersPage gotoActiveUsers() {
+        clickActive();
+        return new ActiveUsersPage(driver);
+     }
 
     // public RegisteredUsersHomePage gotoRegisteredUsers() {
     // clickNewUser();

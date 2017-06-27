@@ -103,7 +103,6 @@ public class DeleteCommunityAlert {
 
 	public CommunityPage cancel() {
 		clickCancelButton();
-		;
 		return communityPage;
 	}
 

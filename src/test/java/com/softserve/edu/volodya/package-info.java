@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author V_Ghost
+ * @author Volodya Zubchynskyi
  *
  */
 package com.softserve.edu.volodya;

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.volodya.RegistratorHomePage;
 
 public class LoginPage extends ATopComponent {
 	
@@ -34,8 +35,6 @@ public class LoginPage extends ATopComponent {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     //public static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
-    public static final String SRC_ATTRIBUTE = "src"; 
-    public static final String VALUE_ATTRIBUTE = "value"; 
     public static final String NAME_IMAGE = "ukraine_logo2.gif";
     //
     private static final String LOGIN_LABEL_XPATH ="//label[contains(@for,'inputEmail')]";
@@ -234,6 +233,10 @@ public class LoginPage extends ATopComponent {
 		return new AdminHomePage(driver);
 	}
 
+    public RegistratorHomePage successRegistratorLogin(IUser registrator) {
+            setLoginData(registrator);
+            return new RegistratorHomePage(driver);
+        }
 //	public RegistratorHomePage successRegistratorLogin(IUser registrator) {
 //		setLoginData(registrator);
 //		// Return a new page object representing the destination.

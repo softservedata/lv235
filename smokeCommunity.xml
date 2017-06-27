@@ -3,7 +3,7 @@
 <suite name="Suite1">
 <!-- 	<parameter name="loginurl" value="http://regres.herokuapp.com/login" /> -->
 <!-- 	<parameter name="logouturl" value="http://regres.herokuapp.com/logout" /> -->
-<!-- 	<parameter name="browserName" value="chrome" /> -->
+		<parameter name="browserName" value="chrome" /> 
 <!-- 	<parameter name="browserName" value="FireFox5x" /> -->
 <!-- 	<parameter name="driverPath" value="target/test-classes/lib/geckodriver.exe" /> -->
 		<!-- 3 ERROR 5 WARNING 7 INFO 9 DEBUG -->

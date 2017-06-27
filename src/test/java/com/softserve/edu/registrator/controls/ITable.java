@@ -10,6 +10,8 @@ public interface ITable {
 
     int getColumnCount();
     
+    WebElement getTableWebElement();
+    
     List<WebElement> getHeader();
     
     List<List<WebElement>> getTableBody();

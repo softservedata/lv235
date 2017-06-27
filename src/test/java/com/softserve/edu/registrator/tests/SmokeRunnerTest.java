@@ -8,6 +8,7 @@ import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.CommonPage;
+import com.softserve.edu.registrator.pages.PassiveEditUserPage;
 
 public class SmokeRunnerTest extends TestRunner {
 
@@ -21,7 +22,7 @@ public class SmokeRunnerTest extends TestRunner {
                 };
     }
 
-    @Test(dataProvider = "credentials")
+    //@Test(dataProvider = "credentials")
     public void checkLogin(IUser user) throws Exception {
         //
         CommonPage commonPage = Application.get().load()
@@ -30,6 +31,28 @@ public class SmokeRunnerTest extends TestRunner {
         //
         Assert.assertEquals(commonPage.getLoginAccountText(),
                 user.getAccount().getLogin());
+        Thread.sleep(2000);
+    }
+
+    @DataProvider // (parallel = true)
+    public Object[][] credentialsExistingUser() {
+        // Read from ...
+        return new Object[][] {
+                { UserRepository.get().admin(), UserRepository.get().commissioner() },
+                };
+    }
+
+    @Test(dataProvider = "credentialsExistingUser")
+    public void checkExistingUser(IUser adminUser, IUser existUser) throws Exception {
+        //
+        PassiveEditUserPage passiveEditUserPage = Application.get().load()
+                .successAdminLogin(adminUser)
+                .gotoActiveUsers()
+                .gotoEditUserByLogin(existUser.getAccount().getLogin());
+        Thread.sleep(2000);
+        //
+        Assert.assertEquals(passiveEditUserPage.getEmailInputText(),
+                existUser.getPerson().getEmail());
         Thread.sleep(2000);
     }
 

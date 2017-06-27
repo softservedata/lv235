@@ -1,16 +1,14 @@
 package com.softserve.edu.volodya;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.registrator.pages.LoginPage;
-import com.softserve.edu.registrator.pages.RegistratorHomePage;
+import com.softserve.edu.registrator.data.users.UserRepository;
+import com.softserve.edu.registrator.pages.Application;
 
 public class AutomatedTests {
 
@@ -19,57 +17,24 @@ public class AutomatedTests {
 	 */
 	private final int DELAY_FOR_DEMO = 300;
 
-	/**
-	 * This method initialize driver with settings.
-	 * @return driver.
-	 * @throws Exception - use for Thread.Sleep().
-	 */
-	private WebDriver init() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "./lib/chromedriver.exe");
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--start-maximized");
-		options.addArguments("--no-proxy-server");
-		WebDriver driver = new ChromeDriver(options);
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.get("http://java.training.local:8080/registrator");
-		Thread.sleep(DELAY_FOR_DEMO);
-		return driver;
-	}
-
-	/**
-	 * Thread.sleep() Use only for DEMO!
-	 * This method login user to account.
-	 * @param user - user name.
-	 * @param password - user password.
-	 * @param driver - driver.
-	 * @throws Exception - use for Thread.Sleep().
-	 */
-	private void loginAsRegistrator(WebDriver driver) throws Exception {
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.clickLogin();
-		loginPage.getLoginInput().sendKeys("registrator");
-		Thread.sleep(DELAY_FOR_DEMO);
-		loginPage.clickPassword();
-		loginPage.getPasswordInput().sendKeys("registrator");
-		Thread.sleep(DELAY_FOR_DEMO);
-		loginPage.clickSignin();
-		Thread.sleep(DELAY_FOR_DEMO);
-	}
-
-	/**
-	 * This method logout current user.
-	 * @param driver - driver.
-	 * @throws Exception - use for Thread.Sleep().
-	 */
-	private void logout(WebDriver driver) throws Exception {
-		RegistratorHomePage rp = new RegistratorHomePage(driver);
-		Thread.sleep(DELAY_FOR_DEMO);
-		rp.logout();
-		Thread.sleep(DELAY_FOR_DEMO);
-		LoginPage lp = new LoginPage(driver);
-		lp.getLogo();
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.quit();
+	RegistratorHomePage registratorHomePage;
+	
+	 @BeforeClass
+	    public void beforeClass() {
+	    	registratorHomePage = Application.get().load()
+	    			.successRegistratorLogin(UserRepository.get().registrator());
+	    }
+	
+	 @AfterClass
+	    public void afterClass() {
+	    	Application.get().getBrowser().quit();
+	    }
+	 
+	@DataProvider
+	public Object[][] subclass() {
+		return new Object[][] {
+				{ new Subclass("TestName", "TestDescription", "points") },
+				}; 
 	}
 
 	/**
@@ -77,38 +42,47 @@ public class AutomatedTests {
 	 * Thread.sleep() Use only for DEMO!
 	 * @throws Exception - use for Thread.Sleep().
 	 */
-	@Test
-	public void testCreateSubclass() throws Exception {
-		WebDriver driver = init();
-		loginAsRegistrator(driver);
-		RegistratorHomePage rp = new RegistratorHomePage(driver);
-		rp.clickSubclassObjects();
+	@Test (dataProvider = "subclass")
+	public void testCreateSubclass(ISubclass subclass) throws Exception {
+		AddSubclassPage addSubclassPage = registratorHomePage
+				.clickSubclassObjects().clickAddSubclassButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		SubclassPage subclassPage = new SubclassPage(driver);
-		subclassPage.getAddSubclassButton().click();
+		addSubclassPage.FillSubclassName(subclass);
 		Thread.sleep(DELAY_FOR_DEMO);
-		subclassPage.FillSubclassName("TestName");
+		addSubclassPage.clickAddParametersButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		subclassPage.clickAddParametersButton();
+		addSubclassPage.FillDescriptionParameter(subclass);
 		Thread.sleep(DELAY_FOR_DEMO);
-		subclassPage.FillDescriptionParameter("Test_Description");
+		addSubclassPage.FillUnitParameter(subclass);
 		Thread.sleep(DELAY_FOR_DEMO);
-		subclassPage.FillUnitParameter("points");
+		addSubclassPage.clickDiscreteParameter();
+		addSubclassPage.clickAddButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		subclassPage.clickDiscreteParameter();
-		subclassPage.clickAddButton();
+		addSubclassPage.FillDescriptionParameter2("Test_Description2");
 		Thread.sleep(DELAY_FOR_DEMO);
-		subclassPage.FillDescriptionParameter2("Test_Description2");
+		addSubclassPage.FillUnitParameter2("count");
 		Thread.sleep(DELAY_FOR_DEMO);
-		subclassPage.FillUnitParameter2("count");
+		addSubclassPage.clickLinearParameter();
+		addSubclassPage.clickSaveButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		subclassPage.clickLinearParameter();
-		//.findElement(By.cssSelector("*")).click();
-		driver.findElement(By.id("valid")).click();
+		Assert.assertNotNull(addSubclassPage.FindSubclassName(subclass));
 		Thread.sleep(DELAY_FOR_DEMO);
-		Assert.assertNotNull(subclassPage.FindSubclassName("TestName"));
+	}
+	
+	/**
+	 * This test DELETE a new subclass.
+	 * Thread.sleep() Use only for DEMO!
+	 * @throws Exception - use for Thread.Sleep().
+	 */
+	@Test (dataProvider = "subclass")
+	public void testDeleteSubclass(ISubclass subclass) throws Exception {
+		SubclassPage subclassPage = registratorHomePage.clickSubclassObjects();
 		Thread.sleep(DELAY_FOR_DEMO);
-		logout(driver);
+		Assert.assertNotNull(subclassPage.FindSubclassName(subclass));
+		subclassPage.clickDeleteCurrentSubclass(subclass);
+		Thread.sleep(DELAY_FOR_DEMO);
+		subclassPage.clickOkButton();
+		Assert.assertTrue(subclassPage.CheckSubclassName(subclass).size() == 0);
 	}
 
 	/**
@@ -116,155 +90,51 @@ public class AutomatedTests {
 	 * Thread.sleep() Use only for DEMO!
 	 * @throws Exception - use for Thread.Sleep().
 	 */
-	//@Test
-	public void testAddResource() throws Exception {
-		WebDriver driver = init();
-		loginAsRegistrator(driver);
+	@Test (dataProvider = "subclass")
+	public void testAddResource(ISubclass subclass) throws Exception {
+		AddResourcePage addResourcePage = registratorHomePage.clickAddNewResource();
 		Thread.sleep(DELAY_FOR_DEMO);
-	//	driver.findElement(By.cssSelector("#navigationbar > ul > li:nth-child(5) > a")).click();
+		addResourcePage.fillOwnerField("NazarUser");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("owner_search")).click();
-		driver.findElement(By.id("owner_search")).sendKeys("NazarUser");
+		addResourcePage.fillObjectName("Тестовий");  // Only Ukrainian allowed
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("w-input-search")).click();
-		driver.findElement(By.id("w-input-search")).sendKeys("Тестовий"); // Only Ukrainian allowed
+		addResourcePage.clickResourceByName("TestName");
+		addResourcePage.clickProcurations();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("resourcesTypeSelect")).click();
-		driver.findElement(By.cssSelector("*[value='TestName']")).click();
-		driver.findElement(By.id("delivery")).click();
+		addResourcePage.clickPointsButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.xpath("//*[@id='coordinates']/li/a[@data-target='#points']")).click();
+		addResourcePage.fillPoints();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("myparam1")).click();
-		driver.findElement(By.id("myparam1")).clear();
-		driver.findElement(By.id("myparam1")).sendKeys("1");
+		addResourcePage.clickPerimeterArea();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("myparam2")).click();
-		driver.findElement(By.id("myparam2")).clear();
-		driver.findElement(By.id("myparam2")).sendKeys("1");
+		addResourcePage.fillDiscreteValue("1000");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("myparam3")).click();
-		driver.findElement(By.id("myparam3")).clear();
-		driver.findElement(By.id("myparam3")).sendKeys("1.1");
+		addResourcePage.fillDiscreteComment("Hello, World!");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("myparam4")).click();
-		driver.findElement(By.id("myparam4")).clear();
-		driver.findElement(By.id("myparam4")).sendKeys("1");
+		addResourcePage.fillLinearValue("2000");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("myparam5")).click();
-		driver.findElement(By.id("myparam5")).clear();
-		driver.findElement(By.id("myparam5")).sendKeys("1");
+		addResourcePage.fillLinearComment("Second Great comment!");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("myparam6")).click();
-		driver.findElement(By.id("myparam6")).clear();
-		driver.findElement(By.id("myparam6")).sendKeys("1.1");
+		addResourcePage.clickMapButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("btnAddAreaPoint")).click();
+		addResourcePage.clickAllUkraineCheckbox();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput2 #myparam1")).click();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam1")).clear();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam1")).sendKeys("2");
+		addResourcePage.clickSaveButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput2 #myparam2")).click();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam2")).clear();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam2")).sendKeys("2");
+		SearchResourcesPage searchResourcesPage = registratorHomePage.clickSearchResources();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput2 #myparam3")).click();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam3")).clear();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam3")).sendKeys("2.1");
+		searchResourcesPage.clickSearchByParameterButton();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput2 #myparam4")).click();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam4")).clear();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam4")).sendKeys("2");
+		searchResourcesPage.clickResourceTypeSelect();
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput2 #myparam5")).click();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam5")).clear();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam5")).sendKeys("2");
+		searchResourcesPage.clickResourceByName(subclass);
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput2 #myparam6")).click();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam6")).clear();
-		driver.findElement(By.cssSelector("#areaInput2 #myparam6")).sendKeys("2.1");
+		searchResourcesPage.fillDiscreteParameter("1000");
 		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("btnAddAreaPoint")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput3 #myparam1")).click();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam1")).clear();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam1")).sendKeys("3");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput3 #myparam2")).click();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam2")).clear();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam2")).sendKeys("3");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput3 #myparam3")).click();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam3")).clear();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam3")).sendKeys("3.1");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput3 #myparam4")).click();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam4")).clear();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam4")).sendKeys("3");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput3 #myparam5")).click();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam5")).clear();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam5")).sendKeys("3");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#areaInput3 #myparam6")).click();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam6")).clear();
-		driver.findElement(By.cssSelector("#areaInput3 #myparam6")).sendKeys("3.1");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.xpath("//*[@id='calculatedParamsTab']")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("discreteValue")).click();
-		driver.findElement(By.id("discreteValue")).sendKeys("1000");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("discreteComment")).click();
-		driver.findElement(By.id("discreteComment")).sendKeys("Hello, World!");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("linearBegin")).click();
-		driver.findElement(By.id("linearBegin")).sendKeys("2000");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("linearEnd")).click();
-		driver.findElement(By.id("linearEnd")).sendKeys("Second Great comment!");
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.xpath("//*[@id='coordinates']/li/a[@data-target='#map']")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("allUkraine")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("submitForm")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		//driver.findElement(By.cssSelector("#navigationbar > ul > li:nth-child(2) > a")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("searchByParameterButton")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.id("resourcesTypeSelect")).click();
-		driver.findElement(By.xpath("//*[@id='resourcesTypeSelect']/option[contains(.,'TestName')]")).click();
-		driver.findElement(By.cssSelector("#discreteParameters > div > span.col-md-6 > input")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector("#discreteParameters > div > span.col-md-6 > input")).sendKeys("1000");
-		driver.findElement(By.cssSelector("#linearParameters > div > span > input")).click();
-		driver.findElement(By.cssSelector("#linearParameters > div > span > input")).sendKeys("2000");
+		searchResourcesPage.fillLinearParameter("2000");
 		Thread.sleep(DELAY_FOR_DEMO);
 		Assert.assertNotNull(By.linkText("Тестовий"));
-		logout(driver);
 	}
 
-	/**
-	 * This test DELETE a new subclass.
-	 * Thread.sleep() Use only for DEMO!
-	 * @throws Exception - use for Thread.Sleep().
-	 */
-	//@Test
-	public void testDeleteSubclass() throws Exception {
-		WebDriver driver = init();
-		loginAsRegistrator(driver);
-		RegistratorHomePage rp = new RegistratorHomePage(driver);
-		rp.clickSubclassObjects(); // Subclass of objects
-		Thread.sleep(DELAY_FOR_DEMO);
-		Assert.assertNotNull(driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'TestName')]")).getText());
-		driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'TestName')]/../td[6]/div/a")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		driver.findElement(By.cssSelector(".bootbox.modal.fade.bootbox-confirm.in")).findElement(By.cssSelector(".btn.btn-primary")).click();
-		Thread.sleep(DELAY_FOR_DEMO);
-		Assert.assertTrue(driver.findElements(By.xpath("*[@id='datatable']//td[contains(text(),'TestName')]")).size() == 0);
-		logout(driver);
-	}
+
 }
