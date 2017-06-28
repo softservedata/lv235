@@ -7,9 +7,7 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 import java.util.HashMap;
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
-import com.softserve.edu.registrator.pages. EditAddressInfoComponent;
-import com.softserve.edu.registrator.pages.EditPassportInfoComponent;
-import com.softserve.edu.registrator.pages.EditBasicInfoComponent;
+
 /**
  * Created by User on 6/18/2017.
  */
