@@ -15,9 +15,12 @@
 			<!-- <include name="testApp" /> -->
 			<!-- </methods> -->
 			<!-- </class> -->
-			<class name="com.softserve.edu.registrator.tests.community.SmokeTest">
+			<class name="com.softserve.edu.registrator.tests.community.AddComunityTest">
 				<methods>
-					<include name="checkCommunity" />
+					<include name="createComunityWithValidData" />
+					<include name="createComunityWithEmptyName" />
+					<include name="createComunityWithIncorectRegisterNimber" />
+					<include name="createComunityWithUsedName" />
 				</methods>
 			</class>
 			<!-- <class name="com.softserve.edu.registrator.Browsers" /> -->

@@ -44,6 +44,7 @@ public class SmokeRunnerTest extends TestRunner {
 
     @Test(dataProvider = "credentialsExistingUser")
     public void checkExistingUser(IUser adminUser, IUser existUser) throws Exception {
+        logger.info("Start");
         //
         PassiveEditUserPage passiveEditUserPage = Application.get().load()
                 .successAdminLogin(adminUser)
@@ -54,6 +55,8 @@ public class SmokeRunnerTest extends TestRunner {
         Assert.assertEquals(passiveEditUserPage.getEmailInputText(),
                 existUser.getPerson().getEmail());
         Thread.sleep(2000);
+        //
+        logger.info("Done");
     }
 
 }

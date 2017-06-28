@@ -1,6 +1,7 @@
 package com.softserve.edu.registrator.pages.communities;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +20,12 @@ public class AddCommunityPage extends AdminHomePage {
 				"Enter"), REGISTER_NUMBER_LABEL("Реєстраційний номер:",
 				"Регистрационный номер:", "Registration number:"), SAVE_BUTTON(
 				"Зберегти", "Сохранить", "Save"), CLEAR_FORM_BUTTON(
-				"Очистити форму", "Очистить форму", "Clear form");
+				"Очистити форму", "Очистить форму", "Clear form"),
+		NAME_COMMUNITY_USED_ERROR_LABLE_TEST ("Підклас з вказаним іменем вже існує", 
+				"Подкласс с указаным наименованием уже существует", 
+				"The subclass with the specified name already exists" ), 
+		INCORECT_REGISTER_COMMUNITY_ERROR_LABLE_TEST ("Невірний формат",
+				"Неверный формат", "Invalid format" );
 
 		private HashMap<ChangeLanguageFields, String> field;
 
@@ -40,6 +46,7 @@ public class AddCommunityPage extends AdminHomePage {
 	public static final String VALUE_ATTRIBUTE = "value";
 	public static final String VALIDATION_MESSAGE_ATTRIBUTE = "alidationMessage";
 	public static final String VALUE_PLACEHOLDER = "value placeholder";
+	public static final String VALUE_VALIDATION_MESSAGE = "validationMessage";
 
 	private AddEditCommunityForm addEditCommunityForm;
 	private WebElement saveButton;
@@ -93,7 +100,7 @@ public class AddCommunityPage extends AdminHomePage {
 
 	public WebElement getRegistrationNumberErrorLabel() {
 		return driver.findElement(By.id("registrationNumber.errors"));
-	}
+	}	
 
 	// Functional getters
 	public String getNameFormLableText() {
@@ -159,6 +166,18 @@ public class AddCommunityPage extends AdminHomePage {
 	public int getCountofRegNumberErrorLabels() {
 		return driver.findElements(By.cssSelector("#body span")).size();
 	}
+	
+	public WebElement getActiveElement() {
+		return driver.switchTo().activeElement();
+	}
+	
+	public String getValidationMessageText(WebElement webElement) {
+		return webElement.getAttribute(VALUE_VALIDATION_MESSAGE);
+	}
+	
+	public List<WebElement> getErrorLables() {
+		return driver.findElements(By.cssSelector("#body span"));
+	}
 
 	// set Data
 
@@ -207,9 +226,22 @@ public class AddCommunityPage extends AdminHomePage {
 		clickSaveButton();
 		return new CommunityPage(driver);
 	}
+	
+	public AddCommunityPage errorAddedCommunity(ICommunity community) { // TODO
+		setCommunityData(community);
+		clickSaveButton();
+		return new AddCommunityPage(driver);
+	}
 
 	public AddCommunityPage changeLanguage(ChangeLanguageFields language) {
 		setChangeLanguage(language);
 		return new AddCommunityPage(driver);
 	}
+	
+	public boolean isPresentErrorLabel(final String message) {
+		return driver.findElements(
+				By.xpath("//span[text() = '" + message + "']")).size() > 0;
+	}
+	
+	
 }

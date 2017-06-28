@@ -41,7 +41,7 @@ public class SmokeTest extends TestRunner {
 	    	CommunityPage communityPage = adminHomePage.clickCommunities();
 	    	communityPage = communityPage.addNewCommunity().seccesfulAddedCommunity(community);
 	    	Assert.assertTrue(!communityPage.getTtableCommunity().getRowsByValue(community.getNameCommunity()).isEmpty()); 	
-	        communityPage.deleteCommunity(community).ok(); //TODO
+	        communityPage.deleteCommunityIfExist(community); 
 	    	Thread.sleep(3000);
 	    }
 }
