@@ -16,7 +16,10 @@ public class AddComunityTest extends CommunityTestRunner {
 
 	@DataProvider
 	public Object[][] communityValid() {
-		return new Object[][] { { new Community("Mykolaiv", "") }, { new Community("Kyiv", "120:00:94:860:35001") } };
+		return new Object[][] { 
+			{ new Community("Mykolaiv", "") }, 
+			{ new Community("Kyiv", "120:00:94:860:35001") } 
+			};
 	}
 
 	/**

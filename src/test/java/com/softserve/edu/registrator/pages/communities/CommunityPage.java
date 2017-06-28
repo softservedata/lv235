@@ -14,7 +14,7 @@ import com.softserve.edu.registrator.pages.AdminHomePage;
 
 public class CommunityPage extends AdminHomePage {
 
-	private class DeleteCommunityAlert {
+	public class DeleteCommunityAlert {
 		private WebElement alertLabel;
 		private WebElement okButton;
 		private WebElement cancelButton;
@@ -332,5 +332,9 @@ public class CommunityPage extends AdminHomePage {
 		else {
 			return this;
 		}
+	}
+	
+	public CommunityPage deleteCommunityOk(ICommunity community) {
+			return deleteCommunity(community).ok();
 	}
 }

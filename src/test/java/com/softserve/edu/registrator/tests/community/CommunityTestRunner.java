@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
@@ -23,32 +24,40 @@ public class CommunityTestRunner extends TestRunner {
      */
 	private AdminHomePage adminHomePage;
 
+	@Override
 	@BeforeClass
     public void beforeClass(ITestContext context) {
-        System.out.println("@BeforeClass");
+        System.out.println("@BeforeClass111111111");
         Application.get(ApplicationUtils
                 .updateAll(ApplicationSourcesRepository.getChromeTraining(), context));
         adminHomePage = Application.get()
         		.load()
         		.successAdminLogin(UserRepository.get().admin());
     }
-
+	
+	@Override
     @AfterClass
     public void afterClass() {
-        System.out.println("@AfterClass");
+        System.out.println("@AfterClass11111");
+    }
+    
+	
+    @AfterSuite
+    public void afterSuit() {
+        System.out.println("@AfterSuitS111111111");
         Application.remove();
     }
 
     @Override
     @BeforeMethod
     public void beforeMethod() {
-        System.out.println("@BeforeMethod");
+        System.out.println("@BeforeMethod11111111111");
     }
     
     @Override
     @AfterMethod
     public void afterMethod() {
-        System.out.println("@AfterMethod");
+        System.out.println("@AfterMethod111111111");
     }
 
 	public AdminHomePage getAdminHomePage() {
