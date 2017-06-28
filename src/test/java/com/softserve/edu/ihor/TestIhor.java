@@ -2,10 +2,8 @@ package com.softserve.edu.ihor;
 
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
-import com.softserve.edu.registrator.pages.ActiveCoownersPage;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
-import com.softserve.edu.registrator.pages.EditPage;
 import com.softserve.edu.registrator.tests.TestRunner;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
