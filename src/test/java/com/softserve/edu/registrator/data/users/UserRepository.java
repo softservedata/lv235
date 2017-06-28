@@ -146,7 +146,183 @@ public final class UserRepository {
 							);
 	}
 
-	public IUser getEmpty() {
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+	
+	// TEST DATA START
+	
+	// COOWNER FOR TEST ONLY
+	
+    public IUser testCoowner() {
+        // TODO Read from file
+        return User.get()
+                    .setPerson(Person.get()
+                                    .setFirstname("Співвласник")
+                                    .setLastname("Співвласник")
+                                    .setEmail("test@mail.com")
+                                    .build()
+                                    .setMiddlename("Співвласникович")
+                                    .setPhonenumber("0661234567")
+                            )
+                    .setAccount(Account.get()
+                                    .setLogin("testCoowner")
+                                    .setPassword("qwerty")
+                                    .setRole("Співвласник")
+                                    .setStatus("")
+                                    .setCommunity("Lviv")
+                                    .build()
+                                    .setData("30.06.2017")
+                                    .setRegisterNumber("")
+                                    .setRegistratorNumber("")
+                                    .setVolumeNumber("")
+                            )
+                    .build()
+                    .setAddress(Address.get()
+                            .setRegion("Львівська")
+                            .setDistrict("Львів")
+                            .setCity("Львів")
+                            .setStreet("Бандери")
+                            .setBuilding("12")
+                            .setFlat("21")
+                            .setPostcode("26123")
+                            )
+                    .setPassport(Passport.get()
+                            .setSeria("НК")
+                            .setNumber("666666")
+                            .setPublished("Народом України")
+                            );
+    }
+    
+    // ADMINISTRATOR FOR TEST ONLY
+    
+    public IUser testAdmin() {
+        // TODO Read from file
+        return User.get()
+                    .setPerson(Person.get()
+                                    .setFirstname("Адміністратор")
+                                    .setLastname("Адмін")
+                                    .setEmail("test@mail.com")
+                                    .build()
+                                    .setMiddlename("Адмінович")
+                                    .setPhonenumber("0661234567")
+                            )
+                    .setAccount(Account.get()
+                                    .setLogin("testAdmin")
+                                    .setPassword("qwerty")
+                                    .setRole("Адміністратор")
+                                    .setStatus("")
+                                    .setCommunity("Lviv")
+                                    .build()
+                                    .setData("30.06.2017")
+                                    .setRegisterNumber("")
+                                    .setRegistratorNumber("")
+                                    .setVolumeNumber("")
+                            )
+                    .build()
+                    .setAddress(Address.get()
+                            .setRegion("Львівська")
+                            .setDistrict("Львів")
+                            .setCity("Львів")
+                            .setStreet("Бандери")
+                            .setBuilding("12")
+                            .setFlat("21")
+                            .setPostcode("26123")
+                            )
+                    .setPassport(Passport.get()
+                            .setSeria("НК")
+                            .setNumber("666666")
+                            .setPublished("Народом України")
+                            );
+    }
+
+    // COMMISSIONER FOR TEST ONLY
+    
+    public IUser testCommissioner() {
+        // TODO Read from file
+        return User.get()
+                    .setPerson(Person.get()
+                                    .setFirstname("Коммісіонер")
+                                    .setLastname("Коміс")
+                                    .setEmail("test@mail.com")
+                                    .build()
+                                    .setMiddlename("Коммісіонерович")
+                                    .setPhonenumber("0661234567")
+                            )
+                    .setAccount(Account.get()
+                                    .setLogin("testCommissioner")
+                                    .setPassword("qwerty")
+                                    .setRole("Коммісіонер")
+                                    .setStatus("")
+                                    .setCommunity("Lviv")
+                                    .build()
+                                    .setData("30.06.2017")
+                                    .setRegisterNumber("")
+                                    .setRegistratorNumber("")
+                                    .setVolumeNumber("")
+                            )
+                    .build()
+                    .setAddress(Address.get()
+                            .setRegion("Львівська")
+                            .setDistrict("Львів")
+                            .setCity("Львів")
+                            .setStreet("Бандери")
+                            .setBuilding("12")
+                            .setFlat("21")
+                            .setPostcode("26123")
+                            )
+                    .setPassport(Passport.get()
+                            .setSeria("НК")
+                            .setNumber("666666")
+                            .setPublished("Народом України")
+                            );
+    }
+    
+// COMMISSIONER FOR TEST ONLY
+    
+    public IUser testRegistrator() {
+        // TODO Read from file
+        return User.get()
+                    .setPerson(Person.get()
+                                    .setFirstname("Реєстратор")
+                                    .setLastname("Реєстр")
+                                    .setEmail("test@mail.com")
+                                    .build()
+                                    .setMiddlename("Реєстраторович")
+                                    .setPhonenumber("0661234567")
+                            )
+                    .setAccount(Account.get()
+                                    .setLogin("testRegistrator")
+                                    .setPassword("qwerty")
+                                    .setRole("Реєстратор")
+                                    .setStatus("")
+                                    .setCommunity("Lviv")
+                                    .build()
+                                    .setData("30.06.2017")
+                                    .setRegisterNumber("")
+                                    .setRegistratorNumber("")
+                                    .setVolumeNumber("")
+                            )
+                    .build()
+                    .setAddress(Address.get()
+                            .setRegion("Львівська")
+                            .setDistrict("Львів")
+                            .setCity("Львів")
+                            .setStreet("Бандери")
+                            .setBuilding("12")
+                            .setFlat("21")
+                            .setPostcode("26123")
+                            )
+                    .setPassport(Passport.get()
+                            .setSeria("НК")
+                            .setNumber("666666")
+                            .setPublished("Народом України")
+                            );
+    }
+    
+    // TEST DATA END
+    
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+    public IUser getEmpty() {
 		// TODO Read from file
 		return User.get()
 					.setPerson(Person.get()

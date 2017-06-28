@@ -19,8 +19,10 @@ public class CommunityPage extends AdminHomePage {
 		private WebElement okButton;
 		private WebElement cancelButton;
 		private WebElement closeButton;
+		private CommunityPage baseCommunityPage;
 
-		public DeleteCommunityAlert() {
+		public DeleteCommunityAlert(CommunityPage communityPage) {
+			this.baseCommunityPage = communityPage;
 			alertLabel = driver.findElement(By.cssSelector(".bootbox-body"));
 			okButton = driver.findElement(By
 					.xpath("//button[@data-bb-handler='confirm']"));
@@ -30,6 +32,9 @@ public class CommunityPage extends AdminHomePage {
 					.cssSelector(".bootbox-close-button.close"));
 		}
 
+		public CommunityPage getBaseCommunityPage() {
+			return this.baseCommunityPage;
+		}
 		// Getters
 		public WebElement getAlertLabel() {
 			return this.alertLabel;
@@ -63,6 +68,12 @@ public class CommunityPage extends AdminHomePage {
 		// Setters
 
 		public void clickOkButton() {
+			//TODO create explicit waits
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			getOkButton().click();
 		}
 
@@ -78,17 +89,26 @@ public class CommunityPage extends AdminHomePage {
 
 		public CommunityPage ok() {
 			clickOkButton();
-			return new CommunityPage(driver);
+		    //TODO create explicit waits
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			baseCommunityPage.setTtableCommunity();
+			return baseCommunityPage;
 		}
 
 		public CommunityPage cancel() {
 			clickCancelButton();
-			return new CommunityPage(driver);
+			baseCommunityPage.setTtableCommunity();
+			return baseCommunityPage;
 		}
 
 		public CommunityPage close() {
 			clickCloseButton();
-			return new CommunityPage(driver);
+			baseCommunityPage.setTtableCommunity();
+			return baseCommunityPage;
 		}
 	}
 	
@@ -132,11 +152,11 @@ public class CommunityPage extends AdminHomePage {
 	private WebElement teretorialCommunity;
 	private WebElement registrationNumber;
 	private WebElement actions;
-	private ITable tableCommunity;
+	private ITable communityTable; 
 
 	public CommunityPage(WebDriver driver) {
 		super(driver);
-		tableCommunity = new Table(driver.findElement(By.tagName("table")));
+		setTtableCommunity();
 		communityLable = driver.findElement(By.cssSelector("h4"));
 		addNewCommunityButton = driver.findElement(By
 				.cssSelector("a[href= 'addCommunity']"));
@@ -171,7 +191,7 @@ public class CommunityPage extends AdminHomePage {
 	}
 	
 	public ITable getTtableCommunity() {
-		return this.tableCommunity;
+		return this.communityTable;
 	}
 
 	// Functional getters
@@ -200,32 +220,32 @@ public class CommunityPage extends AdminHomePage {
 	}
 
 	public String getRegistrationNumberText(Community community) {
-		return tableCommunity.getCell(tableCommunity.
+		return getTtableCommunity().getCell(getTtableCommunity().
 				getRowIndexByValueInColumn(community
 						.getNameCommunity(), getNameCommunityColumnIndex()),
 				getRegisterNumberColumnIndex()).getText().trim();
 	}
 
 	private int getNameCommunityColumnIndex() {
-		return tableCommunity.getColumnIndexByValueOfHeader(getTeretorialCommunityHeaderText());
+		return getTtableCommunity().getColumnIndexByValueOfHeader(getTeretorialCommunityHeaderText());
 	}
 	
 	private int getRegisterNumberColumnIndex() {
-		return tableCommunity.getColumnIndexByValueOfHeader(getRegistrationNumberHeaderText());
+		return getTtableCommunity().getColumnIndexByValueOfHeader(getRegistrationNumberHeaderText());
 	}
 	
 	private int getActionsColumnIndex() {
-		return tableCommunity.getColumnIndexByValueOfHeader(getActionsHeaderText());
+		return getTtableCommunity().getColumnIndexByValueOfHeader(getActionsHeaderText());
 	}
 	
 	private WebElement getEditButtonByIndexOfRow(int indexRow) {
-		return tableCommunity
+		return getTtableCommunity()
 				.getCell(indexRow, getActionsColumnIndex())
 				.findElement(By.cssSelector(".btn.btn-primary"));
 	}
 	
 	private WebElement getDeleteButtonByIndexOfRow(int indexRow) {
-		return tableCommunity
+		return getTtableCommunity()
 				.getCell(indexRow, getActionsColumnIndex())
 				.findElement(By.cssSelector(".btn.btn-danger"));
 	}
@@ -237,9 +257,18 @@ public class CommunityPage extends AdminHomePage {
 	public String getDeleteButtonText() {
 		return getDeleteButtonByIndexOfRow(0).getText();
 	}
+	
+	public int getCountOfCommunities(ICommunity community) {
+		return getTtableCommunity().getRowsByValue(
+				community.getNameCommunity()).size();
+	}
 
 	// Setters
 
+	public void setTtableCommunity() {
+		this.communityTable = new Table(driver.findElement(By.tagName("table")));
+	}
+	
 	public void clickCBoxShowNoneActive() {
 		getShowNoneActiveCBox().click();
 	}
@@ -249,13 +278,13 @@ public class CommunityPage extends AdminHomePage {
 	}
 
 	public void clickEditButton(Community community) {
-		getEditButtonByIndexOfRow(tableCommunity
+		getEditButtonByIndexOfRow(getTtableCommunity()
 				.getRowIndexByValueInColumn(community.getNameCommunity(),
 						getNameCommunityColumnIndex())).click();
 	}
 
 	public void clickDeleteButton(ICommunity community) {
-		getDeleteButtonByIndexOfRow(tableCommunity
+		getDeleteButtonByIndexOfRow(getTtableCommunity()
 				.getRowIndexByValueInColumn(community.getNameCommunity(),
 						getNameCommunityColumnIndex()))
 		.click();
@@ -293,6 +322,19 @@ public class CommunityPage extends AdminHomePage {
 
 	public DeleteCommunityAlert deleteCommunity(ICommunity community) {
 		clickDeleteButton(community);
-		return new DeleteCommunityAlert();
+		return new DeleteCommunityAlert(this);
+	}
+	
+	public CommunityPage deleteCommunityIfExist(ICommunity community) {
+		if(getTtableCommunity().getColumnsByValue(community.getNameCommunity()).size() == 1){
+			return deleteCommunity(community).ok();
+		}
+		else {
+			return this;
+		}
+	}
+	
+	public CommunityPage deleteCommunityOk(ICommunity community) {
+			return deleteCommunity(community).ok();
 	}
 }

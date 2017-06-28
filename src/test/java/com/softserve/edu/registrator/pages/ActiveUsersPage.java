@@ -88,7 +88,6 @@ public class ActiveUsersPage extends RegisteredUsersPage {
         getSetCommunity().click();
     }
 
-
     public void clickResetPassword() {
         getResetPassword().click();
     }
