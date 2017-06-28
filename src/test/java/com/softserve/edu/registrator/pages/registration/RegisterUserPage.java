@@ -124,16 +124,18 @@ public class RegisterUserPage extends AdminHomePage {
     // set Data
     //TODO add setters for input fields
     
-    public void clickSubmit() {
+    public NonConfirmedUsersPage clickSubmit() {
         getSubmit().click();
+        return new NonConfirmedUsersPage(driver);
     }
     
     public void clickClearForm() {
         getClearForm().click();
     }
     
-    public void clickCancel() {
+    public AdminHomePage clickCancel() {
         getCancel().click();
+        return new AdminHomePage(driver);
     }
        
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -146,6 +148,7 @@ public class RegisterUserPage extends AdminHomePage {
     }
     
     public void registerNewUser(IUser newUser) {
+        clickClearForm();
         // Adding main info about user
         getMainInfo().getFirstName().sendKeys(newUser.getPerson().getFirstname());
         getMainInfo().getLastName().sendKeys(newUser.getPerson().getLastname());
@@ -157,6 +160,7 @@ public class RegisterUserPage extends AdminHomePage {
         // Adding address info about user
         getAddressInfo().getCity().sendKeys(newUser.getAddress().getCity());
         getAddressInfo().getRegion().sendKeys(newUser.getAddress().getRegion());
+        getAddressInfo().getDistrict().sendKeys(newUser.getAddress().getDistrict());
         getAddressInfo().getStreet().sendKeys(newUser.getAddress().getStreet());
         getAddressInfo().getBuilding().sendKeys(newUser.getAddress().getBuilding());
         getAddressInfo().getFlat().sendKeys(newUser.getAddress().getFlat());
@@ -169,13 +173,11 @@ public class RegisterUserPage extends AdminHomePage {
         getOtherInfo().getPhoneNumber().sendKeys(newUser.getPerson().getPhonenumber());
         getOtherInfo().setCommunity(newUser.getAccount().getCommunity());
         getOtherInfo().getDate().sendKeys(newUser.getAccount().getData());
-        // Registering new user
-        clickSubmit();
     }
         
-    public NonConfirmedCoownersPage successfulRegistration(User user) {
+    public NonConfirmedUsersPage successfulRegistration(User user) {
         registerNewUser(user);
-        return new NonConfirmedCoownersPage(driver);
+        return new NonConfirmedUsersPage(driver);
     }
     
     public RegisterUserPage unsuccessfulReristration(User user) {
