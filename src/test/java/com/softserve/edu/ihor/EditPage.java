@@ -5,9 +5,8 @@ import com.softserve.edu.registrator.pages.PassiveEditUserPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import com.softserve.edu.registrator.pages.AdminHomePage;
 import java.util.HashMap;
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
+
 
 /**
  * Created by User on 6/18/2017.
@@ -92,7 +91,5 @@ public class EditPage extends PassiveEditUserPage {
      public void EditActiveUser(IUser user){
         getEditBasicInfo().getFistNameField().sendKeys(user.getPerson().getFirstname());
      }
-
-
 
 }
