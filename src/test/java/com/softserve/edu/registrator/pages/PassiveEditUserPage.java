@@ -33,7 +33,7 @@ public class PassiveEditUserPage extends AdminHomePage {
         return getEmailInputAttributeText(VALUE_ATTRIBUTE);
     }
 
-    public EditPage clickEdditButton() {
+    public EditPage clickEditPageButton() {
         driver.findElement(By.id("edit")).click();
         return  new EditPage(driver);
     }

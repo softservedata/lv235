@@ -56,7 +56,7 @@ public class EditPage extends PassiveEditUserPage {
         this.editPassportInfoComponent = new EditPassportInfoComponent(driver);
         this.editBasicInfoComponent = new EditBasicInfoComponent(driver);
         //Buttons
-        this.editButton = driver.findElement(By.id(EDIT_BUTTON_ID));
+      //  this.editButton = driver.findElement(By.id(EDIT_BUTTON_ID));
         this.confirmButton = driver.findElement(By.id(CONFIRM_BUTTON_ID));
     }
 
@@ -88,8 +88,11 @@ public class EditPage extends PassiveEditUserPage {
         setChangeLanguage(language);
         return new EditPage(driver);
     }
-     public void EditActiveUser(IUser user){
-        getEditBasicInfo().getFistNameField().sendKeys(user.getPerson().getFirstname());
+     public void clickConfirmButton(){
+       getConfirmButton().click();
+     }
+     public void clickEditButton(){
+         getEditButton().click();
      }
 
 }

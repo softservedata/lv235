@@ -5,6 +5,8 @@ import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.PassiveEditUserPage;
 import com.softserve.edu.registrator.tests.TestRunner;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -24,7 +26,15 @@ public class EditTest extends TestRunner {
     @Test
     public void SearchTest() throws Exception{
         PassiveEditUserPage passiveEditPage = adminHomePage.gotoActiveUsers().gotoEditUserByLogin("adminIhor");
-        EditPage editPage = passiveEditPage.clickEdditButton();
+        Thread.sleep(4000);
+        EditPage editPage=passiveEditPage.clickEditPageButton();
+        editPage.getEditBasicInfo().setFirstNameValue("ihor");
+        editPage.clickConfirmButton();
+        Assert.assertTrue(adminHomePage.getActive().equals(adminHomePage.gotoActiveUsers()
+                .gotoEditUserByLogin("adminIhor")));
+
+        Thread.sleep(4000);
+
     }
     @AfterClass
     public void closeBrowser(){
