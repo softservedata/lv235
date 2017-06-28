@@ -62,6 +62,7 @@ public class RegisterNewUserAddressInfo {
     
     // Fields
     
+    private WebDriver driver;
     private WebElement addressInfoLabel; 
     private WebElement cityLabel;
     private WebElement city;
@@ -81,6 +82,7 @@ public class RegisterNewUserAddressInfo {
     // Public constructor
     
     public RegisterNewUserAddressInfo(WebDriver driver) {
+        this.driver = driver;
         this.addressInfoLabel = driver.findElement(By.cssSelector(ADDRESSINFO_LABEL_CSSSELECTOR));
         this.cityLabel = driver.findElement(By.cssSelector(CITY_LABEL_CSSSELECTOR));
         this.city = driver.findElement(By.id(CITY_INPUT_ID));
@@ -133,6 +135,10 @@ public class RegisterNewUserAddressInfo {
     }
     
     // get Address info
+    
+    public WebDriver getDriver() {
+        return this.driver;
+    }
     
     public WebElement getCity() {
         return this.city;

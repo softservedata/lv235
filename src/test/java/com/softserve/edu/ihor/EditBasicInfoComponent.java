@@ -1,4 +1,4 @@
-package com.softserve.edu.registrator.pages;
+package com.softserve.edu.ihor;
 
 import org.apache.commons.lang3.text.StrTokenizer;
 import org.openqa.selenium.By;
