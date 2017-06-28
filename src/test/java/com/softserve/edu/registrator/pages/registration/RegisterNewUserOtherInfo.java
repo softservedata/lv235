@@ -53,7 +53,6 @@ public class RegisterNewUserOtherInfo {
     
     // Fields
     
-    private WebDriver driver;
     private WebElement otherInfoLabel;
     private WebElement phoneNumberLabel;
     private WebElement phoneNumber;
@@ -67,7 +66,6 @@ public class RegisterNewUserOtherInfo {
     // Public constructor
     
     public RegisterNewUserOtherInfo(WebDriver driver) {
-        this.driver = driver;
         this.otherInfoLabel = driver.findElement(By.xpath(OTHERINFO_LABEL_XPATH));
         this.phoneNumberLabel = driver.findElement(By.cssSelector(PHONENUMBER_LABEL_CSSSELECTOR));
         this.phoneNumber = driver.findElement(By.id(PHONENUMBER_INPUT_ID));
@@ -98,10 +96,6 @@ public class RegisterNewUserOtherInfo {
     }
 
     // get Other info
-    
-    public WebDriver getDriver() {
-        return this.driver;
-    }
     
     public WebElement getPhoneNumber() {
         return this.phoneNumber;
