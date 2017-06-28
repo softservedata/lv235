@@ -1,5 +1,6 @@
-package com.softserve.edu.registrator.pages;
+package com.softserve.edu.ihor;
 
+import com.softserve.edu.registrator.pages.ATopComponent;
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
