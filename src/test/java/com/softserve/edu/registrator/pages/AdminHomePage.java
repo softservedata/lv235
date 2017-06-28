@@ -1,5 +1,6 @@
 package com.softserve.edu.registrator.pages;
 
+import com.softserve.edu.ihor.ActiveCoownersPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -178,8 +179,9 @@ public class AdminHomePage extends ACommonComponent {
 
     // set inner Data
 
-    public void clickActive() {
+    public ActiveCoownersPage clickActive() {
         getActive().click();
+        return new ActiveCoownersPage(driver);
     }
 
     public void clickInactive() {

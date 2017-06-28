@@ -1,6 +1,7 @@
 package com.softserve.edu.ihor;
 
 import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.registrator.pages.PassiveEditUserPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +12,7 @@ import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 /**
  * Created by User on 6/18/2017.
  */
-public class EditPage extends AdminHomePage {
+public class EditPage extends PassiveEditUserPage {
 
     public static enum EditPageL10n {
         EDIT_BUTTON("Редагувати", "Редактировать", "Edit"),

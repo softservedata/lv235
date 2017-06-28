@@ -1,5 +1,6 @@
 package com.softserve.edu.registrator.pages;
 
+import com.softserve.edu.ihor.EditPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +31,11 @@ public class PassiveEditUserPage extends AdminHomePage {
 
     public String getEmailInputText() {
         return getEmailInputAttributeText(VALUE_ATTRIBUTE);
+    }
+
+    public EditPage clickEdditButton() {
+        driver.findElement(By.id("edit")).click();
+        return  new EditPage(driver);
     }
 
     // get inner Data

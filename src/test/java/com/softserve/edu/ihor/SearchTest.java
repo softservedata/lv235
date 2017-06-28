@@ -16,18 +16,18 @@ import java.util.Collections;
 /**
  * Created by User on 6/27/2017.
  */
-public class TestIhor extends TestRunner {
-    private WebDriver driver;
+public class SearchTest extends TestRunner {
 
+    AdminHomePage adminHomePage;
     @BeforeClass
-    public void testhr(){
-    AdminHomePage adminHomePage = Application.get().load().successAdminLogin(UserRepository.get().admin());
-    adminHomePage.clickActive();
+    public void goToActiveUserPage(){
+        adminHomePage = Application.get().load().successAdminLogin(UserRepository.get().admin());
     }
-    @Test
-   public void test()throws Exception{
-        ActiveCoownersPage user=new ActiveCoownersPage(driver);
-       Thread.sleep(4000);
-        user.getEmailField().sendKeys("erf");
+  @Test
+    public void SearchTest()throws Exception{
+        ActiveCoownersPage activeCoownersPage = adminHomePage.clickActive();
+        activeCoownersPage.inputInCommunityField("dis");
+
+        Thread.sleep(4000);
     }
 }

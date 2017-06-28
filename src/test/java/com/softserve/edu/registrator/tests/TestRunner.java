@@ -1,5 +1,6 @@
 package com.softserve.edu.registrator.tests;
 
+import com.softserve.edu.registrator.pages.AdminHomePage;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -13,7 +14,7 @@ import com.softserve.edu.registrator.pages.Application;
 public class TestRunner {
     // Use, if class Application is not singleton
     // protected Application application;
-
+    private AdminHomePage adminHomePage;
     @BeforeClass
     public void beforeClass(ITestContext context) {
         System.out.println("@BeforeClass");
