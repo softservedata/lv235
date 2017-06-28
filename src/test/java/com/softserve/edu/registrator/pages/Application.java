@@ -38,7 +38,7 @@ public class Application {
         public WebDriver getBrowser(ApplicationSources applicationSources) {
             System.setProperty("webdriver.chrome.driver",
                     applicationSources.getDriverPath());
-                    //ApplicationSourcesRepository.getChromeDriverPath());
+                    ApplicationSourcesRepository.getChromeDriverPath();
             return new ChromeDriver();
         }
     }

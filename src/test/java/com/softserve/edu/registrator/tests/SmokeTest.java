@@ -23,8 +23,7 @@ public class SmokeTest {
 				// { "admin", "admin" },
 				// { "registrator", "registrator" },
 				{ UserRepository.get().admin() },
-				{ UserRepository.get().commissioner() },
-				{ UserRepository.get().registrator() }, };
+		};
 	}
 
 	@Test(dataProvider = "credentials")
