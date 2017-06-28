@@ -1,4 +1,4 @@
-package com.softserve.edu.registrator.pages;
+package com.softserve.edu.ihor;
 
 import com.softserve.edu.registrator.data.users.IUser;
 import org.openqa.selenium.By;
