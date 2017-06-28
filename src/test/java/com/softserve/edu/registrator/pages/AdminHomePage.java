@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
+import com.softserve.edu.registrator.pages.registration.NonConfirmedUsersPage;
+import com.softserve.edu.registrator.pages.registration.RegisterUserPage;
 
 public class AdminHomePage extends ACommonComponent {
 
@@ -168,8 +170,9 @@ public class AdminHomePage extends ACommonComponent {
         return new CommunityPage(driver);
     }
 
-    public void clickNewUser() {
+    public RegisterUserPage clickNewUser() {
         getNewUser().click();
+        return new RegisterUserPage(driver);
     }
 
     public void clickUnblockAll() {
@@ -178,16 +181,18 @@ public class AdminHomePage extends ACommonComponent {
 
     // set inner Data
 
-    public void clickActive() {
+    public ActiveUsersPage clickActive() {
         getActive().click();
+        return new ActiveUsersPage(driver);
     }
 
     public void clickInactive() {
         getInactive().click();
     }
 
-    public void clickNonConfirmed() {
+    public NonConfirmedUsersPage clickNonConfirmed() {
         getNonConfirmed().click();
+        return new NonConfirmedUsersPage(driver);
     }
 
     public void clickBlocked() {
@@ -216,7 +221,12 @@ public class AdminHomePage extends ACommonComponent {
     public ActiveUsersPage gotoActiveUsers() {
         clickActive();
         return new ActiveUsersPage(driver);
-     }
+    }
+    
+    public NonConfirmedUsersPage gotoNonConfirmedUsers() {
+        clickNonConfirmed();
+        return new NonConfirmedUsersPage(driver);
+    }
 
     // public RegisteredUsersHomePage gotoRegisteredUsers() {
     // clickNewUser();
