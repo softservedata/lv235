@@ -20,7 +20,12 @@ public class AddCommunityPage extends AdminHomePage {
 				"Enter"), REGISTER_NUMBER_LABEL("Реєстраційний номер:",
 				"Регистрационный номер:", "Registration number:"), SAVE_BUTTON(
 				"Зберегти", "Сохранить", "Save"), CLEAR_FORM_BUTTON(
-				"Очистити форму", "Очистить форму", "Clear form");
+				"Очистити форму", "Очистить форму", "Clear form"),
+		NAME_COMMUNITY_USED_ERROR_LABLE_TEST ("Підклас з вказаним іменем вже існує", 
+				"Подкласс с указаным наименованием уже существует", 
+				"The subclass with the specified name already exists" ), 
+		INCORECT_REGISTER_COMMUNITY_ERROR_LABLE_TEST ("Невірний формат",
+				"Неверный формат", "Invalid format" );
 
 		private HashMap<ChangeLanguageFields, String> field;
 
@@ -220,6 +225,12 @@ public class AddCommunityPage extends AdminHomePage {
 		setCommunityData(community);
 		clickSaveButton();
 		return new CommunityPage(driver);
+	}
+	
+	public AddCommunityPage errorAddedCommunity(ICommunity community) { // TODO
+		setCommunityData(community);
+		clickSaveButton();
+		return new AddCommunityPage(driver);
 	}
 
 	public AddCommunityPage changeLanguage(ChangeLanguageFields language) {
