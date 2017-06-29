@@ -181,9 +181,9 @@ public class AdminHomePage extends ACommonComponent {
 
     // set inner Data
 
-    public ActiveCoownersPage clickActive() {
+    public ActiveUsersPage clickActive() {
         getActive().click();
-        return new ActiveCoownersPage(driver);
+        return new ActiveUsersPage(driver);
     }
 
     public void clickInactive() {
