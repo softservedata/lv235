@@ -34,7 +34,6 @@ public class LoginPage extends ATopComponent {
     
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    //public static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
     public static final String NAME_IMAGE = "ukraine_logo2.gif";
     //
     private static final String LOGIN_LABEL_XPATH ="//label[contains(@for,'inputEmail')]";
@@ -47,8 +46,7 @@ public class LoginPage extends ATopComponent {
 
 	// Fields
     
-	// private WebDriver driver;
-	//
+
     private WebElement loginLabel;
     private WebElement loginInput;
     private WebElement passwordLabel;
@@ -56,12 +54,8 @@ public class LoginPage extends ATopComponent {
     private WebElement signin;
     private WebElement logo;
 
-    // TODO Remove public. Create Application.class only
 	public LoginPage(WebDriver driver) {
 		super(driver);
-		// this.driver = driver;
-		//
-		//this.loginLabel = Application.get().getBrowser().findElement(By.xpath(LOGIN_LABEL_XPATH));
 		this.loginLabel = driver.findElement(By.xpath(LOGIN_LABEL_XPATH));
 		this.loginInput = driver.findElement(By.id(LOGIN_INPUT_ID));
 		this.passwordLabel = driver.findElement(By.xpath(PASSWORD_LABEL_XPATH));
@@ -76,35 +70,26 @@ public class LoginPage extends ATopComponent {
 
 	public WebElement getLoginLabel() {
 		return this.loginLabel;
-		//return driver.findElement(By.xpath(LOGIN_LABEL_XPATH));
 	}
 
 	public WebElement getLoginInput() {
-		//logger.debug("Start");
 		return this.loginInput;
-		//return driver.findElement(By.id(LOGIN_INPUT_ID));
 	}
 
 	public WebElement getPasswordLabel() {
 		return this.passwordLabel;
-		//return driver.findElement(By.xpath(PASSWORD_LABEL_XPATH));
 	}
 
 	public WebElement getPasswordInput() {
-		//logger.debug("Start");
 		return this.passwordInput;
-		//return driver.findElement(By.id(PASSWORD_INPUT_ID));
 	}
 
 	public WebElement getSignin() {
-		//logger.debug("Start");
 		return this.signin;
-		//return driver.findElement(By.cssSelector(SIGNIN_CSSSELECTOR));
 	}
 
 	public WebElement getLogo() {
 		return this.logo;
-		//return driver.findElement(By.cssSelector(LOGO_CSSSELECTOR));
 	}
 
     public WebElement getRegister() {
@@ -198,58 +183,28 @@ public class LoginPage extends ATopComponent {
 
     public LoginPage changeLanguage(ChangeLanguageFields language) {
     	setChangeLanguage(language);
-        // Return a new page object representing the destination.
         return new LoginPage(driver);
     }
 
-    // TODO(done) Develop User class
     private void setLoginData(IUser user) {
-    //private void setLoginData(String login, String password) { // Code Smell
-		//logger.debug("Start");
 		setLoginInputClear(user.getAccount().getLogin());
-		//logger.trace("setLoginInputClear() Done, User Login = " + user.getLogin());
 		setPasswordInputClear(user.getAccount().getPassword());
-		//logger.trace("setPasswordInputClear() Done, User Password = " + user.getPassword());
-		//
-		//setLoginInputClear(login);
-		//setPasswordInputClear(password);
 		clickSignin();
-		//logger.trace("clickSignin() Done");
-		//logger.debug("Done");
 	}
 
     public CommonPage successLogin(IUser user) {
-    //public CommonPage successLogin(String login, String password) { // Code Smell
         setLoginData(user);
-        //setLoginData(login, password); // Code Smell
-        // Return a new page object representing the destination.
         return new CommonPage(driver);
     }
 
     public AdminHomePage successAdminLogin(IUser admin) {
-    //public AdminHomePage successAdminLogin(String login, String password) { // Code Smell
 		setLoginData(admin);
-		//setLoginData(login, password); // Code Smell
-		// Return a new page object representing the destination.
 		return new AdminHomePage(driver);
 	}
 
     public RegistratorHomePage successRegistratorLogin(IUser registrator) {
             setLoginData(registrator);
             return new RegistratorHomePage(driver);
-        }
-//	public RegistratorHomePage successRegistratorLogin(IUser registrator) {
-//		setLoginData(registrator);
-//		// Return a new page object representing the destination.
-//		return new RegistratorHomePage();
-//	}
-//
-    // TODO Develop User class
-//    public LoginValidatorPage unsuccessfulLogin(IUser invalidUser) {
-//	//public LoginValidatorPage unsuccessfulLogin(String login, String password) {
-//    	setLoginData(invalidUser);
-//		//setLoginData(login, password);
-//		return new LoginValidatorPage(driver); // return this;
-//	}
+    }
 
 }

@@ -13,14 +13,11 @@ public class AdminHomePage extends ACommonComponent {
 
     private class CoownersOptions {
 
-
-        // private WebDriver driver;
         private WebElement active;
         private WebElement inactive;
         private WebElement nonConfirmed;
         private WebElement blocked;
 
-        // public CoownersOptions(WebDriver driver) {
         public CoownersOptions() {
             // this.driver = driver;
             // TODO Delete hadrcode li[1]
@@ -157,7 +154,6 @@ public class AdminHomePage extends ACommonComponent {
     public void clickUsers() {
         clickLoginAccount();
         getUsers().click();
-        // coownersOptions = new CoownersOptions(driver);
         this.coownersOptions = new CoownersOptions();
     }
 
@@ -214,7 +210,6 @@ public class AdminHomePage extends ACommonComponent {
     
     public LoginPage logout() {
         clickLogout();
-        // Return a new page object representing the destination.
         return new LoginPage(driver);
     }
 

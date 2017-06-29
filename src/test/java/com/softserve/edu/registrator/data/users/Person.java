@@ -29,16 +29,6 @@ public class Person implements IFirstname, ILastname, IEmail, IBuildPerson, IPer
 		this.phonenumber = new String();
 	}
 
-	// Delete
-	// public Person(String firstname, String lastname, String middlename,
-	// String email, String phonenumber) {
-	// this.firstname = firstname;
-	// this.lastname = lastname;
-	// this.middlename = middlename;
-	// this.email = email;
-	// this.phonenumber = phonenumber;
-	// }
-
 	// static factory - - - - - - - - - -
 
 	public static IFirstname get() {

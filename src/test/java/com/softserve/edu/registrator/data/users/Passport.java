@@ -11,13 +11,7 @@ public class Passport implements IPassport {
 		this.number = new String();
 		this.published = new String();
 	}
-
-//	public Passport(String seria, String number, String published) {
-//		this.seria = seria;
-//		this.number = number;
-//		this.published = published;
-//	}
-
+	
 	// static factory - - - - - - - - - -
 
 	public static Passport get() {

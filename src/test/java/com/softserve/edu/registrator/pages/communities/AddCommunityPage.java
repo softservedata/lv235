@@ -54,12 +54,17 @@ public class AddCommunityPage extends AdminHomePage {
 
 	public AddCommunityPage(WebDriver driver) {
 		super(driver);
-
-		addEditCommunityForm = new AddEditCommunityForm(driver);
-		saveButton = driver.findElement(By
-				.cssSelector("input[type = 'submit']"));
-		clearFormButton = driver.findElement(By
-				.cssSelector("button[type='reset']"));
+		initPage();
+	}
+	
+	private void initPage() {
+		if(!driver.findElements(By.tagName("h2")).isEmpty()){
+			addEditCommunityForm = new AddEditCommunityForm(driver);
+			saveButton = driver.findElement(By
+					.cssSelector("input[type = 'submit']"));
+			clearFormButton = driver.findElement(By
+					.cssSelector("button[type='reset']"));
+		}
 	}
 
 	public WebElement getNameFormLable() {

@@ -13,7 +13,6 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import com.softserve.edu.registrator.data.apps.ApplicationSources;
 import com.softserve.edu.registrator.data.apps.ApplicationSourcesRepository;
 
-// TODO Move to com.softserve.edu.registrator.tools;
 public class Application {
 
 	private interface IBrowser {
@@ -29,9 +28,6 @@ public class Application {
 	private static class Firefox5xTemporary implements IBrowser {
 		public WebDriver getBrowser(ApplicationSources applicationSources) {
 			System.setProperty("webdriver.gecko.driver", applicationSources.getDriverPath());
-			// ApplicationSourcesRepository.getGeckoDriverPath());
-			// System.out.println("+++ FirefoxTemporary "
-			// + applicationSources.getDriverPath());
 			return new FirefoxDriver();
 		}
 	}

@@ -45,9 +45,15 @@ public class EditCmmunityPage extends AdminHomePage {
 
 	public EditCmmunityPage(WebDriver driver) {
 		super(driver);
-		addEditCommunityForm = new AddEditCommunityForm(driver);
-		saveButton = driver.findElement(By
-				.cssSelector("input[type = 'submit']"));
+		initPage();
+	}
+	
+	private void initPage() {
+		if(!driver.findElements(By.tagName("h2")).isEmpty()){
+			addEditCommunityForm = new AddEditCommunityForm(driver);
+			saveButton = driver.findElement(By
+					.cssSelector("input[type = 'submit']"));
+		}
 	}
 
 	public WebElement getNameFormLable() {
@@ -194,5 +200,10 @@ public class EditCmmunityPage extends AdminHomePage {
 	public AddCommunityPage changeLanguage(ChangeLanguageFields language) {
 		setChangeLanguage(language);
 		return new AddCommunityPage(driver);
+	}
+	
+	public CommunityPage save() {
+		clickSaveButton();
+		return new CommunityPage(driver);
 	}
 }

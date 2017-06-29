@@ -62,7 +62,6 @@ public final class Table implements ITable {
                     } else {
                         indexes.add(j);
                     }
-                    //isRow?indexes.add(i):indexes.add(j);
                 }
 
             }

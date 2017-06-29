@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
-import com.softserve.edu.registrator.pages.Application;
 
 public class RegisterNewUserMainInfo {
 
