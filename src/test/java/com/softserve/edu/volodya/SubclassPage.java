@@ -53,7 +53,7 @@ public class SubclassPage extends RegistratorHomePage {
 	}
 		
 	public List<WebElement> CheckSubclassName(ISubclass subclassName) {
-		return driver.findElements(By.xpath(".//*[@id='datatable']//td[contains(.,'"+ subclassName.getNameSubclass() +"')]"));
+		return driver.findElements(By.xpath(".//*[@id='datatable']//td[contains(text(),'"+ subclassName.getNameSubclass() +"')]"));
 	}
 
 }
