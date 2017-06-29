@@ -50,26 +50,25 @@ public class UserRegistrationOptionsComponent {
 	public UserRegistrationOptionsComponent(WebDriver driver) {
 		this.componentLabel = driver.findElement(By
 				.cssSelector("form div:nth-child(1) div.panel-heading h3"));
-
 		this.optionLabel = driver.findElement(By
 				.cssSelector("form div:nth-child(1) div.panel-body.panel30 p"));
 		this.personalRegistration = driver.findElement(By
-				.xpath("//*[@type = 'radio' and @value = 'PERSONAL']"));
+				.xpath("//input[@type = 'radio' and @value = 'PERSONAL']/.."));
 		this.manualRegistration = driver.findElement(By
-				.xpath("//*[@type = 'radio' and @value = 'MANUAL']"));
+				.xpath("//input[@type = 'radio' and @value = 'MANUAL']/.."));
 		this.mixedRegistration = driver.findElement(By
-				.xpath("//*[@type = 'radio' and @value = 'MIXED']"));
+				.xpath("//input[@type = 'radio' and @value = 'MIXED']/.."));
 	}
 
-	public void personalRegistrationClick() {
+	public void clickPersonalRegistration() {
 		personalRegistration.click();
 	}
 
-	public void manualRegistrationClick() {
+	public void clickManualRegistration() {
 		getManualRegistration().click();
 	}
 
-	public void mixedRegistrationClick() {
+	public void clickMixedRegistration() {
 		mixedRegistration.click();
 	}
 
@@ -78,7 +77,7 @@ public class UserRegistrationOptionsComponent {
 	}
 
 	public String getComponentLabelText() {
-		return componentLabel.getText().trim();
+		return getComponentLabel().getText().trim();
 	}
 
 	public WebElement getOptionLabel() {
@@ -93,12 +92,24 @@ public class UserRegistrationOptionsComponent {
 		return personalRegistration;
 	}
 
+	public String getPersonalRegistrationText() {
+		return getPersonalRegistration().getText().trim();
+	}
+
 	public WebElement getManualRegistration() {
 		return manualRegistration;
 	}
 
+	public String getManualRegistrationText() {
+		return getManualRegistration().getText().trim();
+	}
+
 	public WebElement getMixedRegistration() {
 		return mixedRegistration;
+	}
+
+	public String getMixedRegistrationText() {
+		return getMixedRegistration().getText().trim();
 	}
 
 }

@@ -10,9 +10,9 @@ import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 
 public class DefaultTimeZoneComponent {
 	public static enum DefaultTimeZoneComponentL10n {
-		COMPONENT_LABEL("Спосіб реєстрації нових співвласників",
-				"Способ регистрации новых пользователей",
-				"Method of registering new users"), INNER_LABEL(
+		COMPONENT_LABEL("Часовий пояс для розрахунку поточного часу",
+				"Часовой пояс для расчета текущего времени",
+				"Default time zone"), INNER_LABEL(
 				"Введіть місто або часовий пояс",
 				"Введите город или часовой пояс", "Enter city or time zone");
 
@@ -38,7 +38,7 @@ public class DefaultTimeZoneComponent {
 
 	public DefaultTimeZoneComponent(WebDriver driver) {
 		this.componentLabel = driver.findElement(By
-				.cssSelector("form div:nth-child(1) div.panel-heading h3"));
+				.cssSelector("form div:nth-child(2) div.panel-heading h3"));
 		this.innerLabel = driver.findElement(By
 				.cssSelector("form div:nth-child(2) div.panel-body.panel30 p"));
 		this.cityOrTimeZoneInputField = driver.findElement(By
@@ -61,7 +61,7 @@ public class DefaultTimeZoneComponent {
 		return innerLabel;
 	}
 
-	public String getInnerLabelTest() {
+	public String getInnerLabelText() {
 		return innerLabel.getText().trim();
 	}
 

@@ -11,7 +11,9 @@ import com.softserve.edu.registrator.pages.AdminHomePage;
 public class SettingsPage extends AdminHomePage {
 	public static enum SettingsPageL10n {
 		CONFIRM_CHANGES_BUTTON("Підтвердити зміни", "Подтвердить изменения",
-				"Confirm changes");
+				"Confirm changes"), ALERT("Налаштування успішно збережені!",
+				"Настройки успешно сохранены!",
+				"Settings was successfully saved!");
 
 		private HashMap<ChangeLanguageFields, String> field;
 
@@ -34,6 +36,8 @@ public class SettingsPage extends AdminHomePage {
 	private DefaultTimeZoneComponent defaultTimeZoneComponent;
 	private EmailConfigurationComponent emailConfigurationComponent;
 
+	private static final String ALERT_CSS_SELECTOR = ".alert";
+
 	public SettingsPage(WebDriver driver) {
 		super(driver);
 		this.userRegistrationOptionsComponent = new UserRegistrationOptionsComponent(
@@ -45,12 +49,31 @@ public class SettingsPage extends AdminHomePage {
 				.id(("confirmRegistrationMethod")));
 	}
 
-	public void confirmChangesButtonClick() {
+	public void clickConfirmChangesButton() {
 		getConfirmChangesButton().click();
 	}
 
 	public WebElement getConfirmChangesButton() {
 		return confirmChangesButton;
+	}
+
+	public String getConfirmChangesButtonText() {
+		return getConfirmChangesButton().getAttribute(VALUE_ATTRIBUTE).trim();
+	}
+
+	// TODO white own exception
+	public WebElement getAlert() {
+		return isAlertPresent() ? driver.findElement(By
+				.cssSelector(ALERT_CSS_SELECTOR)) : null;
+	}
+
+	public String getAlertText() {
+		return getAlert().getText().trim();
+	}
+
+	public boolean isAlertPresent() {
+		return !driver.findElements(By.cssSelector(ALERT_CSS_SELECTOR))
+				.isEmpty();
 	}
 
 	public UserRegistrationOptionsComponent getUserRegistrationOptionsComponent() {

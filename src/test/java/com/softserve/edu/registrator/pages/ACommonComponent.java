@@ -6,130 +6,136 @@ import org.openqa.selenium.WebElement;
 
 public abstract class ACommonComponent extends ATopComponent {
 
-    private class UserAccount {
+	private class UserAccount {
 
-        // Fields
+		// Fields
 
-        // private WebDriver driver;
-        //
-        private WebElement changePassword;
-        private WebElement resetPassword;
-        private WebElement logout;
-        //public final WebElement logout;
+		// private WebDriver driver;
+		//
+		private WebElement changePassword;
+		private WebElement resetPassword;
+		private WebElement logout;
 
-        // public UserAccount(WebDriver driver) {
-        public UserAccount() {
-            // this.driver = driver;
-            this.changePassword = driver.findElement(By.cssSelector("a.change-password"));
-            this.resetPassword = driver.findElement(By.cssSelector("a.reset-my-password"));
-            this.logout = driver.findElement(By.xpath("//a[contains(@href,'/logout')]"));
-        }
+		// public final WebElement logout;
 
-        // PageObject
+		// public UserAccount(WebDriver driver) {
+		public UserAccount() {
+			// this.driver = driver;
+			this.changePassword = driver.findElement(By
+					.cssSelector("a.change-password"));
+			this.resetPassword = driver.findElement(By
+					.cssSelector("a.reset-my-password"));
+			this.logout = driver.findElement(By
+					.xpath("//a[contains(@href,'/logout')]"));
+		}
 
-        // get Data
+		// PageObject
 
-        public WebElement getChangePasswordElement() {
-            return this.changePassword;
-        }
+		// get Data
 
-        public WebElement getResetPasswordElement() {
-            return this.resetPassword;
-        }
+		public WebElement getChangePasswordElement() {
+			return this.changePassword;
+		}
 
-        public WebElement getLogoutElement() {
-            return this.logout;
-        }
+		public WebElement getResetPasswordElement() {
+			return this.resetPassword;
+		}
 
-    }
+		public WebElement getLogoutElement() {
+			return this.logout;
+		}
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	}
 
-    // Fields
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    private WebElement loginAccount;
-    private WebElement menuAccount;
-    private UserAccount userAccount;
+	// Fields
 
-    public ACommonComponent(WebDriver driver) {
-        super(driver);
-        // TODO use cssSelector with not
-        this.loginAccount = driver.findElement(By.xpath("//button[@class='btn btn-primary btn-sm']"));
-        this.menuAccount = driver.findElement(By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle"));
-    }
+	private WebElement loginAccount;
+	private WebElement menuAccount;
+	private UserAccount userAccount;
 
-    // PageObject
+	public ACommonComponent(WebDriver driver) {
+		super(driver);
+		// TODO use cssSelector with not
+		this.loginAccount = driver.findElement(By
+				.xpath("//button[@class='btn btn-primary btn-sm']"));
+		this.menuAccount = driver.findElement(By
+				.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle"));
+	}
 
-    // get Data
+	// PageObject
 
-    public WebElement getLoginAccount() {
-        return this.loginAccount;
-    }
+	// get Data
 
-    public WebElement getMenuAccount() {
-        return this.menuAccount;
-    }
+	public WebElement getLoginAccount() {
+		return this.loginAccount;
+	}
 
-    // get inner Data
+	public WebElement getMenuAccount() {
+		return this.menuAccount;
+	}
 
-    public WebElement getChangePassword() {
-        clickMenuAccount();
-        return this.userAccount.getChangePasswordElement();
-    }
+	// get inner Data
 
-    public WebElement getResetPassword() {
-        clickMenuAccount();
-        return this.userAccount.getResetPasswordElement();
-    }
+	public WebElement getChangePassword() {
+		clickMenuAccount();
+		return this.userAccount.getChangePasswordElement();
+	}
 
-    public WebElement getLogout() {
-        clickMenuAccount();
-        return this.userAccount.getLogoutElement();
-    }
+	public WebElement getResetPassword() {
+		clickMenuAccount();
+		return this.userAccount.getResetPasswordElement();
+	}
 
-    // Functional
+	public WebElement getLogout() {
+		clickMenuAccount();
+		return this.userAccount.getLogoutElement();
+	}
 
-    public String getLoginAccountText() {
-        return getLoginAccount().getText();
-    }
+	// Functional
 
-    public String getChangePasswordText() {
-        return getChangePassword().getText();
-    }
+	public String getLoginAccountText() {
+		return getLoginAccount().getText();
+	}
 
-    public String getResetPasswordText() {
-        return getResetPassword().getText();
-    }
+	public String getChangePasswordText() {
+		return getChangePassword().getText();
+	}
 
-    public String getLogoutText() {
-        return getLogout().getText();
-    }
+	public String getResetPasswordText() {
+		return getResetPassword().getText();
+	}
 
-    // set Data
+	public String getLogoutText() {
+		return getLogout().getText();
+	}
 
-    public void clickLoginAccount() {
-        getLoginAccount().click();
-    }
+	// set Data
 
-    public void clickMenuAccount() {
-        clickLoginAccount();
-        getMenuAccount().click();
-        // userAccount = new UserAccount(driver);
-        this.userAccount = new UserAccount();
-    }
+	public void clickLoginAccount() {
+		getLoginAccount().click();
+	}
 
-    public void clickChangePassword() {
-        getChangePassword().click();
-    }
+	public void clickMenuAccount() {
+		clickLoginAccount();
+		getMenuAccount().click();
+		// userAccount = new UserAccount(driver);
+		this.userAccount = new UserAccount();
+	}
 
-    public void clickResetPassword() {
-        getResetPassword().click();
-    }
+	public void clickChangePassword() {
+		getChangePassword().click();
+	}
 
-    public void clickLogout() {
-        getLogout().click();
-    }
+	public void clickResetPassword() {
+		getResetPassword().click();
+	}
 
-    // Business Logic
+	public void clickLogout() {
+		getLogout().click();
+	}
+
+	// Business Logic
 
 }

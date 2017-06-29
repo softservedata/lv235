@@ -5,222 +5,235 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
+import com.softserve.edu.registrator.pages.settings.SettingsPage;
 
 public class AdminHomePage extends ACommonComponent {
 
-    private class CoownersOptions {
+	public static class CoownersOptions {
 
-        // Fields
+		// Fields
 
-        // private WebDriver driver;
-        private WebElement active;
-        private WebElement inactive;
-        private WebElement nonConfirmed;
-        private WebElement blocked;
+		// private WebDriver driver;
+		private WebElement active;
+		private WebElement inactive;
+		private WebElement nonConfirmed;
+		private WebElement blocked;
 
-        // public CoownersOptions(WebDriver driver) {
-        public CoownersOptions() {
-            // this.driver = driver;
-            // TODO Delete hadrcode li[1]
-            this.active = driver.findElement(By.xpath("//ul/li[1]/a[contains(@href,'/users/get-all-users')]"));
-            this.inactive = driver
-                    .findElement(By.xpath("//a[contains(@href,'/users/get-all-users?statusType=inactive')]"));
-            this.nonConfirmed = driver
-                    .findElement(By.xpath("//a[contains(@href,'/users/get-all-users?statusType=notcomfirmed')]"));
-            this.blocked = driver.findElement(By.xpath("//a[contains(@href,'/users/get-all-users?statusType=block')]"));
-        }
+		// public CoownersOptions(WebDriver driver) {
+		public CoownersOptions(WebDriver driver) {
+			// this.driver = driver;
+			// TODO Delete hadrcode li[1]
+			this.active = driver
+					.findElement(By
+							.xpath("//ul/li[1]/a[contains(@href,'/users/get-all-users')]"));
+			this.inactive = driver
+					.findElement(By
+							.xpath("//a[contains(@href,'/users/get-all-users?statusType=inactive')]"));
+			this.nonConfirmed = driver
+					.findElement(By
+							.xpath("//a[contains(@href,'/users/get-all-users?statusType=notcomfirmed')]"));
+			this.blocked = driver
+					.findElement(By
+							.xpath("//a[contains(@href,'/users/get-all-users?statusType=block')]"));
+		}
 
-        public WebElement getActiveElement() {
-            return this.active;
-        }
+		public WebElement getActiveElement() {
+			return this.active;
+		}
 
-        public WebElement getInactiveElement() {
-            return this.inactive;
-        }
+		public WebElement getInactiveElement() {
+			return this.inactive;
+		}
 
-        public WebElement getNonConfirmedElement() {
-            return this.nonConfirmed;
-        }
+		public WebElement getNonConfirmedElement() {
+			return this.nonConfirmed;
+		}
 
-        public WebElement getBlockedElement() {
-            return this.blocked;
-        }
+		public WebElement getBlockedElement() {
+			return this.blocked;
+		}
 
-    }
+	}
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    // Fields
+	// Fields
 
-    private WebElement home;
-    private WebElement users;
-    private WebElement settings;
-    private WebElement communities;
-    private WebElement newUser;
-    private WebElement unblockAll;
-    private CoownersOptions coownersOptions;
+	private WebElement home;
+	private WebElement users;
+	private WebElement settings;
+	private WebElement communities;
+	private WebElement newUser;
+	private WebElement unblockAll;
+	private CoownersOptions coownersOptions;
 
-    public AdminHomePage(WebDriver driver) {
-        super(driver);
-        this.home = driver.findElement(By.cssSelector("a.glyphicon.glyphicon-home"));
-        this.users = driver.findElement(By.xpath("//li[@class='dropdown']/a"));
-        this.settings = driver.findElement(By.xpath("//a[contains(@href,'/settings')]"));
-        this.communities = driver.findElement(By.xpath("//a[contains(@href,'/communities/show-all-communities')]"));
-        this.newUser = driver.findElement(By.xpath("//a[contains(@href,'/manualregistration')]"));
-        this.unblockAll = driver.findElement(By.id("unlockUsers"));
-    }
+	public AdminHomePage(WebDriver driver) {
+		super(driver);
+		this.home = driver.findElement(By
+				.cssSelector("a.glyphicon.glyphicon-home"));
+		this.users = driver.findElement(By.xpath("//li[@class='dropdown']/a"));
+		this.settings = driver.findElement(By
+				.xpath("//a[contains(@href,'/settings')]"));
+		this.communities = driver
+				.findElement(By
+						.xpath("//a[contains(@href,'/communities/show-all-communities')]"));
+		this.newUser = driver.findElement(By
+				.xpath("//a[contains(@href,'/manualregistration')]"));
+		this.unblockAll = driver.findElement(By.id("unlockUsers"));
+	}
 
-    // PageObject
+	// PageObject
 
-    // get Data
+	// get Data
 
-    public WebElement getHome() {
-        return this.home;
-    }
+	public WebElement getHome() {
+		return this.home;
+	}
 
-    public WebElement getUsers() {
-        return this.users;
-    }
+	public WebElement getUsers() {
+		return this.users;
+	}
 
-    public WebElement getSettings() {
-        return this.settings;
-    }
+	public WebElement getSettings() {
+		return this.settings;
+	}
 
-    public WebElement getCommunities() {
-        return this.communities;
-    }
+	public WebElement getCommunities() {
+		return this.communities;
+	}
 
-    public WebElement getNewUser() {
-        return this.newUser;
-    }
+	public WebElement getNewUser() {
+		return this.newUser;
+	}
 
-    public WebElement getUnblockAll() {
-        return this.unblockAll;
-    }
+	public WebElement getUnblockAll() {
+		return this.unblockAll;
+	}
 
-    // Functional
+	// Functional
 
-    public String getHomeText() {
-        return getHome().getText();
-    }
+	public String getHomeText() {
+		return getHome().getText();
+	}
 
-    public String getUsersText() {
-        return getUsers().getText();
-    }
+	public String getUsersText() {
+		return getUsers().getText();
+	}
 
-    public String getSettingsText() {
-        return getSettings().getText();
-    }
+	public String getSettingsText() {
+		return getSettings().getText();
+	}
 
-    public String getCommunitiesText() {
-        return getCommunities().getText();
-    }
+	public String getCommunitiesText() {
+		return getCommunities().getText();
+	}
 
-    public String getNewUserText() {
-        return getNewUser().getText();
-    }
+	public String getNewUserText() {
+		return getNewUser().getText();
+	}
 
-    public String getUnblockAllText() {
-        return getUnblockAll().getText();
-    }
+	public String getUnblockAllText() {
+		return getUnblockAll().getText();
+	}
 
-    // get inner Data
+	// get inner Data
 
-    public WebElement getActive() {
-        clickUsers();
-        return this.coownersOptions.getActiveElement();
-    }
+	public WebElement getActive() {
+		clickUsers();
+		return this.coownersOptions.getActiveElement();
+	}
 
-    public WebElement getInactive() {
-        clickUsers();
-        return this.coownersOptions.getInactiveElement();
-    }
+	public WebElement getInactive() {
+		clickUsers();
+		return this.coownersOptions.getInactiveElement();
+	}
 
-    public WebElement getNonConfirmed() {
-        clickUsers();
-        return this.coownersOptions.getNonConfirmedElement();
-    }
+	public WebElement getNonConfirmed() {
+		clickUsers();
+		return this.coownersOptions.getNonConfirmedElement();
+	}
 
-    public WebElement getBlocked() {
-        clickUsers();
-        return this.coownersOptions.getBlockedElement();
-    }
+	public WebElement getBlocked() {
+		clickUsers();
+		return this.coownersOptions.getBlockedElement();
+	}
 
-    // set Data
+	// set Data
 
-    public void clickHome() {
-        getHome().click();
-    }
+	public void clickHome() {
+		getHome().click();
+	}
 
-    public void clickUsers() {
-        clickLoginAccount();
-        getUsers().click();
-        // coownersOptions = new CoownersOptions(driver);
-        this.coownersOptions = new CoownersOptions();
-    }
+	public void clickUsers() {
+		clickLoginAccount();
+		getUsers().click();
+		// coownersOptions = new CoownersOptions(driver);
+		this.coownersOptions = new CoownersOptions(driver);
+	}
 
-    public void clickSettings() {
-        getSettings().click();
-    }
+	public SettingsPage clickSettings() {
+		getSettings().click();
+		return new SettingsPage(driver);
+	}
 
-    public CommunityPage clickCommunities() {
-        getCommunities().click();
-        return new CommunityPage(driver);
-    }
+	public CommunityPage clickCommunities() {
+		getCommunities().click();
+		return new CommunityPage(driver);
+	}
 
-    public void clickNewUser() {
-        getNewUser().click();
-    }
+	public void clickNewUser() {
+		getNewUser().click();
+	}
 
-    public void clickUnblockAll() {
-        getUnblockAll().click();
-    }
+	public void clickUnblockAll() {
+		getUnblockAll().click();
+	}
 
-    // set inner Data
+	// set inner Data
 
-    public void clickActive() {
-        getActive().click();
-    }
+	public void clickActive() {
+		getActive().click();
+	}
 
-    public void clickInactive() {
-        getInactive().click();
-    }
+	public void clickInactive() {
+		getInactive().click();
+	}
 
-    public void clickNonConfirmed() {
-        getNonConfirmed().click();
-    }
+	public void clickNonConfirmed() {
+		getNonConfirmed().click();
+	}
 
-    public void clickBlocked() {
-        getBlocked().click();
-    }
+	public void clickBlocked() {
+		getBlocked().click();
+	}
 
-    // Business Logic
+	// Business Logic
 
-    public AdminHomePage changeLanguage(ChangeLanguageFields language) {
-        setChangeLanguage(language);
-        // Return a new page object representing the destination.
-        return new AdminHomePage(driver);
-    }
+	public AdminHomePage changeLanguage(ChangeLanguageFields language) {
+		setChangeLanguage(language);
+		// Return a new page object representing the destination.
+		return new AdminHomePage(driver);
+	}
 
-    public AdminHomePage gotoAdminHomePage() {
-        clickHome();
-        return new AdminHomePage(driver);
-    }
-    
-    public LoginPage logout() {
-        clickLogout();
-        // Return a new page object representing the destination.
-        return new LoginPage(driver);
-    }
+	public AdminHomePage gotoAdminHomePage() {
+		clickHome();
+		return new AdminHomePage(driver);
+	}
 
-    public ActiveUsersPage gotoActiveUsers() {
-        clickActive();
-        return new ActiveUsersPage(driver);
-     }
+	public LoginPage logout() {
+		clickLogout();
+		// Return a new page object representing the destination.
+		return new LoginPage(driver);
+	}
 
-    // public RegisteredUsersHomePage gotoRegisteredUsers() {
-    // clickNewUser();
-    // return new RegisteredUsersHomePage(driver);
-    // }
+	public ActiveUsersPage gotoActiveUsers() {
+		clickActive();
+		return new ActiveUsersPage(driver);
+	}
+
+	// public RegisteredUsersHomePage gotoRegisteredUsers() {
+	// clickNewUser();
+	// return new RegisteredUsersHomePage(driver);
+	// }
 
 }

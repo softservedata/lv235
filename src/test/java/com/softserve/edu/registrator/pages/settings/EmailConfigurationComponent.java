@@ -6,17 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.mysql.jdbc.Driver;
+import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 
 public class EmailConfigurationComponent {
-	// TODO
-	// private class ErrorMessageAfterCheckButtonApplied {
-	// private WebElement errorMessage;
-	//
-	// public ErrorMessageAfterCheckButtonApplied(WebElement errorMessage) {
-	// this.errorMessage = errorMessage;
-	// }
-	// }
 
 	public static enum EmailConfigurationComponentL10n {
 		COMPONENT_LABEL("Налаштування надсилання електронної пошти",
@@ -28,7 +22,10 @@ public class EmailConfigurationComponent {
 				"Password"), TLS_SECURE_CONNECTION_LABEL(
 				"Захищене з'єднання TLS", "Защищенное соединение TLS",
 				"TLS secure connection"), CHECK_BUTTON("Перевірити",
-				"Проверить", "Check");
+				"Проверить", "Check"), EMAIL_ALERT(
+				"Не вдалось встановити зєднання з сервером. Перевірте вказані параметри.",
+				"Не удалось соединиться с сервером. Проверьте параметры подключения.",
+				"Couldnt connect to server. Check parameters.");
 
 		private HashMap<ChangeLanguageFields, String> field;
 
@@ -68,9 +65,11 @@ public class EmailConfigurationComponent {
 	// Button
 	private WebElement checkButton;
 
+	private static final String EMAIL_ALERT_CSS_SELECTOR = "div.bootbox-body";
+
 	public EmailConfigurationComponent(WebDriver driver) {
 		this.componentLabel = driver.findElement(By
-				.cssSelector("form div:nth-child(1) div.panel-heading h3"));
+				.cssSelector("form div:nth-child(3) div.panel-heading h3"));
 		this.emailServerAddressLabel = driver.findElement(By
 				.cssSelector("label[for = 'smtpHost']"));
 		this.userNameLabel = driver.findElement(By
@@ -124,6 +123,35 @@ public class EmailConfigurationComponent {
 
 	public WebElement getTlsSecureConnectionLabel() {
 		return tlsSecureConnectionLabel;
+	}
+
+	// Text getters for labels
+	public String getComponentLabelText() {
+		return getComponentLabel().getText().trim();
+	}
+
+	public String getEmailServerAddressLabelText() {
+		return getEmailServerAddressLabel().getText().trim();
+	}
+
+	public String getUserNameLabelText() {
+		return getUserNameLabel().getText().trim();
+	}
+
+	public String getTcpPortLabelText() {
+		return getTcpPortLabel().getText().trim();
+	}
+
+	public String getProtocolLabelText() {
+		return getProtocolLabel().getText().trim();
+	}
+
+	public String getPasswordLabelText() {
+		return getPasswordLabel().getText().trim();
+	}
+
+	public String getTlsSecureConnectionLabelText() {
+		return getTlsSecureConnectionLabel().getText().trim();
 	}
 
 	// Getters and methods with fields
@@ -186,5 +214,28 @@ public class EmailConfigurationComponent {
 
 	public WebElement getCheckButton() {
 		return checkButton;
+	}
+
+	public void clickCheckButton() {
+		getCheckButton().click();
+	}
+
+	public String getCheckButtonText() {
+		return getCheckButton().getText().trim();
+	}
+
+	public WebElement getEmailAlert() {
+		return isEmailAlertPresent() ? Application.get().getBrowser()
+				.findElement(By.cssSelector(EMAIL_ALERT_CSS_SELECTOR)) : null;
+	}
+
+	public String getEmailAlertText() {
+		return getEmailAlert().getText().trim();
+	}
+
+	public boolean isEmailAlertPresent() {
+		return !Application.get().getBrowser()
+				.findElements(By.cssSelector(EMAIL_ALERT_CSS_SELECTOR))
+				.isEmpty();
 	}
 }

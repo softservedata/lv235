@@ -11,41 +11,42 @@ import com.softserve.edu.registrator.data.apps.ApplicationUtils;
 import com.softserve.edu.registrator.pages.Application;
 
 public class TestRunner {
-    // Use, if class Application is not singleton
-    // protected Application application;
+	// Use, if class Application is not singleton
+	// protected Application application;
 
-    @BeforeClass
-    public void beforeClass(ITestContext context) {
-        System.out.println("@BeforeClass");
-        // System.out.println("***@BeforeClass MAVEN"
-        // + System.getProperty("surefire.reports.directory"));
-        // Use, if class Application is not singleton
-        // application = new Application();
-        //Application.get(ApplicationSourcesRepository.getChromeTraining());
-//        Application.get(ApplicationUtils
-//                .updateFromTestNgXML(ApplicationSourcesRepository.getChromeTraining(), context));
-        Application.get(ApplicationUtils
-                .updateAll(ApplicationSourcesRepository.getChromeTraining(), context));
-    }
+	@BeforeClass
+	public void beforeClass(ITestContext context) {
+		System.out.println("@BeforeClass");
+		// System.out.println("***@BeforeClass MAVEN"
+		// + System.getProperty("surefire.reports.directory"));
+		// Use, if class Application is not singleton
+		// application = new Application();
+		// Application.get(ApplicationSourcesRepository.getChromeTraining());
+		// Application.get(ApplicationUtils
+		// .updateFromTestNgXML(ApplicationSourcesRepository.getChromeTraining(),
+		// context));
+		Application.get(ApplicationUtils.updateAll(
+				ApplicationSourcesRepository.getChromeTraining(), context));
+	}
 
-    @AfterClass
-    public void afterClass() {
-        System.out.println("@AfterClass");
-        Application.remove();
-        Application.get().getBrowser().quit();
-    }
+	@AfterClass
+	public void afterClass() {
+		System.out.println("@AfterClass");
+		Application.remove();
+		// Application.get().getBrowser().quit();
+	}
 
-    @BeforeMethod
-    public void beforeMethod() {
-        System.out.println("@BeforeMethod");
-        //Application.get().load();
-        // Application.get().login();
-    }
+	@BeforeMethod
+	public void beforeMethod() {
+		System.out.println("@BeforeMethod");
+		// Application.get().load();
+		// Application.get().login();
+	}
 
-    @AfterMethod
-    public void afterMethod() {
-        System.out.println("@AfterMethod");
-        Application.get().logout();
-    }
+	@AfterMethod
+	public void afterMethod() {
+		System.out.println("@AfterMethod");
+		Application.get().logout();
+	}
 
 }
