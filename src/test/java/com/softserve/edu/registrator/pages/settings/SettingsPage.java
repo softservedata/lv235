@@ -9,25 +9,6 @@ import org.openqa.selenium.WebElement;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 
 public class SettingsPage extends AdminHomePage {
-	public static enum SettingsPageL10n {
-		CONFIRM_CHANGES_BUTTON("Підтвердити зміни", "Подтвердить изменения",
-				"Confirm changes");
-
-		private HashMap<ChangeLanguageFields, String> field;
-
-		private SettingsPageL10n(String... localization) {
-			this.field = new HashMap<ChangeLanguageFields, String>();
-			int i = 0;
-			for (ChangeLanguageFields language : ChangeLanguageFields.values()) {
-				this.field.put(language, localization[i]);
-				i++;
-			}
-		}
-
-		public String getLocalization(ChangeLanguageFields language) {
-			return this.field.get(language).trim();
-		}
-	}
 
 	private WebElement confirmChangesButton;
 	private UserRegistrationOptionsComponent userRegistrationOptionsComponent;

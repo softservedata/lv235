@@ -1,5 +1,6 @@
 package com.softserve.edu.registrator.tests.settings;
 
+
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -10,7 +11,6 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.pages.settings.SettingsPage;
 import com.softserve.edu.registrator.tests.TestRunner;
-
 // TODO
 public class UserRegistrationOptionsTest extends TestRunner {
 

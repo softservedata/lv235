@@ -1,5 +1,6 @@
 package com.softserve.edu.registrator.pages.settings;
 
+
 import java.util.HashMap;
 
 import org.openqa.selenium.By;

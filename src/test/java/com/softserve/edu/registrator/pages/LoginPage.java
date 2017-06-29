@@ -56,6 +56,7 @@ public class LoginPage extends ATopComponent {
     private WebElement signin;
     private WebElement logo;
 
+    // TODO Remove public. Create Application.class only
 	public LoginPage(WebDriver driver) {
 		super(driver);
 		// this.driver = driver;
