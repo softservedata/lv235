@@ -12,7 +12,7 @@ import com.softserve.edu.registrator.pages.communities.CommunityPage;
 import org.testng.annotations.DataProvider;
 import org.testng.Assert;
 
-public class AddComunityTest extends CommunityTestRunner {
+public class AddComunityTest extends AdminHomePageTestRunner {
 
 	@DataProvider
 	public Object[][] communityValid() {
@@ -30,7 +30,7 @@ public class AddComunityTest extends CommunityTestRunner {
 		CommunityPage communityPage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.seccesfulAddedCommunity(community);
 		Assert.assertTrue(communityPage.getCountOfCommunities(community) == 1);
-		setCommunityPage(communityPage);
+		setAdminHomePage(communityPage);
 		communityPage.deleteCommunityIfExist(community);
 	}
 
@@ -47,7 +47,7 @@ public class AddComunityTest extends CommunityTestRunner {
 	public void createComunityWithEmptyName(ICommunity community, String validationMessage) {
 		AddCommunityPage addCommunityPage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.errorAddedCommunity(community);
-		setCommunityPage(addCommunityPage);
+		setAdminHomePage(addCommunityPage);
 		if (getAdminHomePage() instanceof CommunityPage) {
 			((CommunityPage) getAdminHomePage()).deleteCommunityIfExist(community);
 		}
@@ -70,7 +70,7 @@ public class AddComunityTest extends CommunityTestRunner {
 	public void createComunityWithIncorectRegisterNimber(ICommunity community) {
 		AddCommunityPage addCommunityPage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.errorAddedCommunity(community);
-		setCommunityPage(addCommunityPage);
+		setAdminHomePage(addCommunityPage);
 		if (addCommunityPage.getCountofRegNumberErrorLabels() == 0) {
 			if (getAdminHomePage() instanceof CommunityPage) {
 				((CommunityPage) getAdminHomePage()).deleteCommunityIfExist(community);
@@ -98,7 +98,7 @@ public class AddComunityTest extends CommunityTestRunner {
 	public void createComunityWithUsedName(ICommunity community) {
 		AddCommunityPage addCommunityPage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.errorAddedCommunity(community);
-		setCommunityPage(addCommunityPage);
+		setAdminHomePage(addCommunityPage);
 		if (addCommunityPage.getCountofRegNumberErrorLabels() == 0) {
 			if (getAdminHomePage() instanceof CommunityPage) {
 				((CommunityPage) getAdminHomePage()).deleteCommunityIfExist(community);

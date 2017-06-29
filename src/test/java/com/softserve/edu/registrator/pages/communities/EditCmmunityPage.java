@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.registrator.data.communities.Community;
+import com.softserve.edu.registrator.data.communities.ICommunity;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 
 public class EditCmmunityPage extends AdminHomePage {
@@ -180,12 +180,12 @@ public class EditCmmunityPage extends AdminHomePage {
 	}
 
 	// Functional setters
-	public void setCommunityData(Community community) {
+	public void setCommunityData(ICommunity community) {
 		setCommunityNameInput(community.getNameCommunity());
 		setRegistrationNumberInput(community.getRegistrationNumber());
 	}
 
-	public CommunityPage seccesfulEditedCommunity(Community community) { // TODO
+	public CommunityPage seccesfulEditedCommunity(ICommunity community) { // TODO
 		setCommunityData(community);
 		clickSaveButton();
 		return new CommunityPage(driver);

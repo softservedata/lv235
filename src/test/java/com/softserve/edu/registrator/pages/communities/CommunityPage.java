@@ -277,7 +277,7 @@ public class CommunityPage extends AdminHomePage {
 		getAddNewCommunityButton().click();
 	}
 
-	public void clickEditButton(Community community) {
+	public void clickEditButton(ICommunity community) {
 		getEditButtonByIndexOfRow(getTtableCommunity()
 				.getRowIndexByValueInColumn(community.getNameCommunity(),
 						getNameCommunityColumnIndex())).click();
@@ -315,7 +315,7 @@ public class CommunityPage extends AdminHomePage {
 		return new CommunityPage(driver);
 	}
 
-	public EditCmmunityPage editCommunity(Community community) {
+	public EditCmmunityPage editCommunity(ICommunity community) {
 		clickEditButton(community);
 		return new EditCmmunityPage(driver);
 	}

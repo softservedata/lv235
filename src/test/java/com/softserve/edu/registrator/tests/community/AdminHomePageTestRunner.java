@@ -16,7 +16,7 @@ import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.tests.TestRunner;
 
-public class CommunityTestRunner extends TestRunner {
+public class AdminHomePageTestRunner extends TestRunner {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
@@ -64,7 +64,7 @@ public class CommunityTestRunner extends TestRunner {
 		return adminHomePage;
 	}
 	
-	public void setCommunityPage(AdminHomePage adminHomePage) {
+	public void setAdminHomePage(AdminHomePage adminHomePage) {
 		this.adminHomePage = adminHomePage;
 	}
 }

@@ -8,7 +8,7 @@ import com.softserve.edu.registrator.data.communities.Community;
 import com.softserve.edu.registrator.data.communities.ICommunity;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
 
-public class DeleteCommunityTest extends CommunityTestRunner {
+public class DeleteCommunityTest extends AdminHomePageTestRunner {
 
 	@DataProvider
 	public Object[][] dataCommunity() {
@@ -22,7 +22,7 @@ public class DeleteCommunityTest extends CommunityTestRunner {
 		CommunityPage communityPage = getAdminHomePage()
 				.clickCommunities()
 				.deleteCommunityOk(community);
-		setCommunityPage(communityPage);
+		setAdminHomePage(communityPage);
 		Assert.assertTrue(communityPage.getTtableCommunity()
 				.getColumnsByValue(community.getNameCommunity()).isEmpty());
 	}
@@ -33,7 +33,7 @@ public class DeleteCommunityTest extends CommunityTestRunner {
 				.clickCommunities()
 				.deleteCommunity(community)
 				.cancel();
-		setCommunityPage(communityPage);
+		setAdminHomePage(communityPage);
 		Assert.assertTrue(!communityPage.getTtableCommunity()
 				.getColumnsByValue(community.getNameCommunity()).isEmpty());
 	}
