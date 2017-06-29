@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite20">
+	<test name="Test20">
+		<classes>
+			<!-- <class name="com.softserve.edu.registrator.AppTest"> -->
+			<!-- <methods> -->
+			<!-- <include name="testApp" /> -->
+			<!-- </methods> -->
+			<!-- </class> -->
+			<class name="com.softserve.edu.andrii.RegistrationTest">
+				<methods>
+					<include name="CheckUserRegistration" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite> 

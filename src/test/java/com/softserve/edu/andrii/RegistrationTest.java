@@ -64,5 +64,7 @@ public class RegistrationTest extends RegistrationTestRunner {
         Thread.sleep(2000);
         
         
+        
+        
     }
 }
