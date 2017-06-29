@@ -12,7 +12,7 @@ import com.softserve.edu.registrator.pages.communities.CommunityPage;
 import org.testng.annotations.DataProvider;
 import org.testng.Assert;
 
-public class AddComunityTest extends CommunityTestRunner {
+public class AddComunityTest extends AdminHomePageTestRunner {
 
 	@DataProvider
 	public Object[][] communityValid() {

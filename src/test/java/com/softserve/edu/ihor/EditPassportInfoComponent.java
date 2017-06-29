@@ -60,6 +60,7 @@ public class EditPassportInfoComponent {
     public static final String NUMBER_ID = "number";
     public static final String PUBLISH_ID = "published";
     public static final String COMMUNITY_ID = "community";
+    public static final String VALUE = "value";
     private WebElement seriaFiled;
     private WebElement numberField;
     private WebElement publishField;
@@ -151,6 +152,16 @@ public class EditPassportInfoComponent {
 
     public String getCommunityLabelText() {
         return getCommunityLabel().getText().trim();
+    }
+    //Functional for values
+    public String getSeriaValueText(){
+        return getSeriaFiled().getAttribute(VALUE);
+    }
+    public String getNumberValueText(){
+        return getNumberField().getAttribute(VALUE);
+    }
+    public  String getPublishValueText(){
+        return getPublishField().getAttribute(VALUE);
     }
 
     //Functional for  passport data

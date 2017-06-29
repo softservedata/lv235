@@ -1,5 +1,8 @@
 package com.softserve.edu.ihor;
 
+import com.softserve.edu.registrator.controls.ITable;
+import com.softserve.edu.registrator.pages.ActiveUsersPage;
+import com.softserve.edu.registrator.pages.RegisteredUsersPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +15,7 @@ import java.util.List;
 /**
  * Created by User on 6/17/2017.
  */
-public class ActiveCoownersPage extends AdminHomePage{
+public class ActiveCoownersPage extends RegisteredUsersPage {
 
     private class ActionList{
         // private WebDriver driver;
@@ -51,6 +54,7 @@ public class ActiveCoownersPage extends AdminHomePage{
     private WebElement adminValue;
     private WebElement registratorValue;
     private WebElement commissionerValue;
+    private WebElement testValue;
 
     private WebElement actionDropdownList;
     private WebElement searchButton;
@@ -68,7 +72,9 @@ public class ActiveCoownersPage extends AdminHomePage{
 
     public ActiveCoownersPage(WebDriver driver) {
         super(driver);
+
         //Fields for Searching
+        this.testValue=driver.findElement(By.xpath("//td[@class=' email'][text()='IvaTest@gmail.com']"));
         this.firstNameField=driver.findElement((By.id(FIRST_NAME_FIELD)));
         this.lastNameField=driver.findElement((By.id("inputIndex2")));
         this.loginField=driver.findElement((By.id("inputIndex3")));
@@ -94,6 +100,9 @@ public class ActiveCoownersPage extends AdminHomePage{
         this.emailSorting=driver.findElement(By.cssSelector(".email.sorting"));
         this.roleSorting=driver.findElement(By.cssSelector(".role_type.sorting"));
     }
+    //get testValue
+    public WebElement getTestValue(){ return this.testValue; }
+
     //methods for Search fields
     public WebElement getFirstNameField(){
         return this.firstNameField;

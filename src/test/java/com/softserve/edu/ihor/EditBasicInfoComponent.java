@@ -60,6 +60,8 @@ public class EditBasicInfoComponent {
     public static final String USER_ROLE_XPATH = "//option[@value='USER']";
     public static final String COMMISSIONER_ROLE_XPATH = "//option[@value='COMMISSIONER']";
     public static final String REGISTRATOR_ROLE_XPATH = "//option[@value='REGISTRATOR']";
+    //For functional search by VALUE
+    public static final String VALUE = "value";
 
     private WebElement firstNameLabel;
     private WebElement secondNameLabel;
@@ -231,6 +233,17 @@ public class EditBasicInfoComponent {
 
     public String getStatusLabelText() {
         return getStatusLabel().getText().trim();
+    }
+
+    //Functional for values
+     public String getFirstNameValueText(){
+       return  getFistNameField().getAttribute(VALUE);
+     }
+    public String getSecondNameValueText(){
+        return  getSecondNameField().getAttribute(VALUE);
+    }
+    public String getEmailValueText(){
+        return getEmailField().getAttribute(VALUE);
     }
 
     //Functional for fields

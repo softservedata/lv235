@@ -8,7 +8,7 @@ import com.softserve.edu.registrator.data.communities.Community;
 import com.softserve.edu.registrator.data.communities.ICommunity;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
 
-public class DeleteCommunityTest extends CommunityTestRunner {
+public class DeleteCommunityTest extends AdminHomePageTestRunner {
 
 	@DataProvider
 	public Object[][] dataCommunity() {

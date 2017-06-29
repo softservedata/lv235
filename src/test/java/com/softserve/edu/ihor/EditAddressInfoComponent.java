@@ -56,7 +56,7 @@ public class EditAddressInfoComponent {
     public static final String BUILDING_ID = "building";
     public static final String FLAT_ID = "flat";
     public static final String POSTCODE_ID = "postcode";
-
+    public static final String ADDRESS_VALUE = "value";
     //WebDriver
     private WebDriver driver;
     //label
@@ -101,6 +101,7 @@ public class EditAddressInfoComponent {
     public WebDriver getDriver(){
         return driver;
     }
+
     // get LABEl
 
     public WebElement getAddressMainLabel() {
@@ -135,7 +136,18 @@ public class EditAddressInfoComponent {
         return this.postcodeLabel;
     }
 
+    //Functional for get Value
+    public String getCityValueText(){
+        return getCityField().getAttribute(ADDRESS_VALUE);
+    }
+    public String getRegionValueText(){
+        return getRegionField().getAttribute(ADDRESS_VALUE);
+    }
+    public String getFlatValueNumber(){
+        return getFlatField().getAttribute(ADDRESS_VALUE);
+    }
     // get Fields
+
     public WebElement getRegionField() {
         return this.regionField;
     }
