@@ -1,5 +1,6 @@
 package com.softserve.edu.volodya;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -15,9 +16,10 @@ public class AutomatedTests {
 	/**
 	 * Delay for Thread.Sleep().
 	 */
-	private final int DELAY_FOR_DEMO = 300;
+	private final int DELAY_FOR_DEMO = 1000;
 
 	RegistratorHomePage registratorHomePage;
+	public static final Logger logger = Logger.getLogger(AutomatedTests.class);
 	
 	 @BeforeClass
 	    public void beforeClass() {
@@ -42,8 +44,9 @@ public class AutomatedTests {
 	 * Thread.sleep() Use only for DEMO!
 	 * @throws Exception - use for Thread.Sleep().
 	 */
-	@Test (dataProvider = "subclass")
+	//@Test (dataProvider = "subclass")
 	public void testCreateSubclass(ISubclass subclass) throws Exception {
+		logger.info("Started");
 		AddSubclassPage addSubclassPage = registratorHomePage
 				.clickSubclassObjects().clickAddSubclassButton();
 		Thread.sleep(DELAY_FOR_DEMO);
@@ -67,6 +70,7 @@ public class AutomatedTests {
 		Thread.sleep(DELAY_FOR_DEMO);
 		Assert.assertNotNull(addSubclassPage.FindSubclassName(subclass));
 		Thread.sleep(DELAY_FOR_DEMO);
+		logger.info("Done");
 	}
 	
 	/**
@@ -74,15 +78,18 @@ public class AutomatedTests {
 	 * Thread.sleep() Use only for DEMO!
 	 * @throws Exception - use for Thread.Sleep().
 	 */
-	@Test (dataProvider = "subclass")
+	//@Test (dataProvider = "subclass")
 	public void testDeleteSubclass(ISubclass subclass) throws Exception {
+		logger.info("Started");
 		SubclassPage subclassPage = registratorHomePage.clickSubclassObjects();
 		Thread.sleep(DELAY_FOR_DEMO);
 		Assert.assertNotNull(subclassPage.FindSubclassName(subclass));
 		subclassPage.clickDeleteCurrentSubclass(subclass);
 		Thread.sleep(DELAY_FOR_DEMO);
 		subclassPage.clickOkButton();
+		Thread.sleep(DELAY_FOR_DEMO);
 		Assert.assertTrue(subclassPage.CheckSubclassName(subclass).size() == 0);
+		logger.info("Done");
 	}
 
 	/**
@@ -92,6 +99,7 @@ public class AutomatedTests {
 	 */
 	@Test (dataProvider = "subclass")
 	public void testAddResource(ISubclass subclass) throws Exception {
+		logger.info("Started");
 		AddResourcePage addResourcePage = registratorHomePage.clickAddNewResource();
 		Thread.sleep(DELAY_FOR_DEMO);
 		addResourcePage.fillOwnerField("NazarUser");
@@ -134,6 +142,7 @@ public class AutomatedTests {
 		searchResourcesPage.fillLinearParameter("2000");
 		Thread.sleep(DELAY_FOR_DEMO);
 		Assert.assertNotNull(By.linkText("Тестовий"));
+		logger.info("Done");
 	}
 
 
