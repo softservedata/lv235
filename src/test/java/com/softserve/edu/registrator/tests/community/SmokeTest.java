@@ -9,7 +9,7 @@ import com.softserve.edu.registrator.data.communities.ICommunity;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
 
 
-public class SmokeTest extends CommunityTestRunner {
+public class SmokeTest extends AdminHomePageTestRunner {
 	
 	    @DataProvider 
 	    public Object[][] community() {
@@ -26,6 +26,6 @@ public class SmokeTest extends CommunityTestRunner {
 	    			.seccesfulAddedCommunity(community);
 	    	Assert.assertTrue(!communityPage.getTtableCommunity().getRowsByValue(community.getNameCommunity()).isEmpty()); 	
 	    	Thread.sleep(1000);
-	    	setCommunityPage(communityPage);
+	    	setAdminHomePage(communityPage);
 	    }
 }
