@@ -13,7 +13,6 @@ public class AdminHomePage extends ACommonComponent {
 
     private class CoownersOptions {
 
-        // Fields
 
         // private WebDriver driver;
         private WebElement active;
@@ -182,9 +181,9 @@ public class AdminHomePage extends ACommonComponent {
 
     // set inner Data
 
-    public ActiveUsersPage clickActive() {
+    public ActiveCoownersPage clickActive() {
         getActive().click();
-        return new ActiveUsersPage(driver);
+        return new ActiveCoownersPage(driver);
     }
 
     public void clickInactive() {
@@ -229,9 +228,5 @@ public class AdminHomePage extends ACommonComponent {
         return new NonConfirmedUsersPage(driver);
     }
 
-    // public RegisteredUsersHomePage gotoRegisteredUsers() {
-    // clickNewUser();
-    // return new RegisteredUsersHomePage(driver);
-    // }
 
 }

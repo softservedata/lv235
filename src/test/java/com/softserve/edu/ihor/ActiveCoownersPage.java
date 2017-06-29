@@ -205,7 +205,10 @@ public void clickActionDropDownList(){
         clickActionDropDownList();
         actionList.getPasswordElement().click();
     }
-    //method for Role
+    //method for buttons
+    public void clickSearchButton(){
+        getSearchButton().click();
+    }
 
     //
     public void inputInFirstNameField(String name){

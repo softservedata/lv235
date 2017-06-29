@@ -30,14 +30,13 @@ public class EditTest extends TestRunner {
         EditPage editPage=passiveEditPage.clickEditPageButton();
         editPage.getEditBasicInfo().setFirstNameValue("ihor");
         editPage.clickConfirmButton();
-        Assert.assertTrue(adminHomePage.getActive().equals(adminHomePage.gotoActiveUsers()
-                .gotoEditUserByLogin("adminIhor")));
+
 
         Thread.sleep(4000);
 
     }
     @AfterClass
     public void closeBrowser(){
-
+     Application.get().getBrowser().quit();
     }
 }
