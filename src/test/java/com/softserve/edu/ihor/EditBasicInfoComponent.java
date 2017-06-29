@@ -273,7 +273,7 @@ public class EditBasicInfoComponent {
     public void setRoleValue(String role) {
         getRoleField().click();
         for (WebElement we : getRoles()) {
-            if (we.getAttribute("value").equals(role)) {
+            if (we.getText().trim().equals(role)) {
                 select.selectByVisibleText(role);
                 break;
             }
