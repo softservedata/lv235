@@ -4,10 +4,13 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.softserve.edu.ihor.EditPage;
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
+import com.softserve.edu.registrator.pages.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
+import com.softserve.edu.registrator.pages.PassiveEditUserPage;
 import com.softserve.edu.registrator.pages.RegisteredUsersPage;
 import com.softserve.edu.registrator.pages.registration.RegisterUserPage;
 import com.softserve.edu.registrator.tests.RegistrationTestRunner;
@@ -58,13 +61,21 @@ public class RegistrationTest extends RegistrationTestRunner {
                 .getCurrentUrl()
                 .contains("statusType=notcomfirmed"));
         
-        registeredUsers.gotoEditUserByLogin(user
+        PassiveEditUserPage passiveEditUserPage = registeredUsers
+                .gotoEditUserByLogin(user
                     .getAccount()
                     .getLogin());
         Thread.sleep(2000);
         
+        // TODO CHANGE USER STATUS AND ROLE
+               
+        EditPage editPage = passiveEditUserPage.clickEditPageButton();
+        editPage.getEditBasicInfo().setActiveUser();
+        editPage.getEditBasicInfo().setRoleValue(user.getAccount().getRole());
+        Thread.sleep(2000);
         
         
+        ActiveUsersPage activeUsersPage = passiveEditUserPage.gotoActiveUsers();
         
     }
 }

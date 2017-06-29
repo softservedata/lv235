@@ -1,11 +1,14 @@
 package com.softserve.edu.ihor;
 
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
+import java.util.HashMap;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
-import java.util.HashMap;
+import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 
 /**
  * Created by User on 6/20/2017.
@@ -85,7 +88,9 @@ public class EditBasicInfoComponent {
     private WebElement userRole;
     private WebElement commissionerRole;
     private WebElement selectButton;
-
+    private List<WebElement> roles;
+    private Select select;
+    
     public EditBasicInfoComponent(WebDriver driver) {
         this.driver = driver;
         //labels
@@ -110,6 +115,8 @@ public class EditBasicInfoComponent {
         this.loginField = driver.findElement(By.id(LOGIN_ID));
         this.emailField = driver.findElement(By.id(EMAIL_ID));
         this.roleField = driver.findElement(By.id(ROLE_ID));
+        this.roles = driver.findElements(By.xpath("//*[@id='roleId']/option"));
+        this.select = new Select(getRoleField());
         this.statusField = driver.findElement(By.id(STATUS_ID));
     }
 
@@ -196,6 +203,10 @@ public class EditBasicInfoComponent {
         return this.roleField;
     }
 
+    public List<WebElement> getRoles() {
+        return this.roles;
+    }
+    
     public WebElement getStatusField() {
         return this.statusField;
     }
@@ -259,8 +270,14 @@ public class EditBasicInfoComponent {
         getEmailField().sendKeys(email);
     }
 
-    public void setRoleValue() {
+    public void setRoleValue(String role) {
         getRoleField().click();
+        for (WebElement we : getRoles()) {
+            if (we.getAttribute("value").equals(role)) {
+                select.selectByVisibleText(role);
+                break;
+            }
+        }
     }
 
     public void setStatusValue() {
