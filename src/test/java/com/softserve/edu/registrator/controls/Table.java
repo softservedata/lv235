@@ -205,5 +205,5 @@ public final class Table implements ITable {
     public WebElement getCell(int rowIndex, int columnIndex) {
         return getTableBody().get(rowIndex).get(columnIndex);
     }
-    
+     
 }

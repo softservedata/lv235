@@ -10,6 +10,8 @@ import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
+import com.softserve.edu.registrator.pages.CommonPage;
+import com.softserve.edu.registrator.pages.LoginPage;
 import com.softserve.edu.registrator.pages.PassiveEditUserPage;
 import com.softserve.edu.registrator.pages.RegisteredUsersPage;
 import com.softserve.edu.registrator.pages.registration.RegisterUserPage;
@@ -21,11 +23,11 @@ public class RegistrationTest extends RegistrationTestRunner {
     public Object[][] credentials() {
         return new Object[][] {
             { UserRepository.get().testAdmin() },
-//            { UserRepository.get().testCoowner() },
+            { UserRepository.get().testCoowner() },
 //            { UserRepository.get().testCommissioner() },
 //            { UserRepository.get().testRegistrator() },
-    };
-}
+        };
+    }
 
     @Test(dataProvider = "credentials")
     public void CheckUserRegistration(IUser user) throws Exception {
@@ -53,7 +55,8 @@ public class RegistrationTest extends RegistrationTestRunner {
         registrationPage.registerNewUser(user);
         Thread.sleep(2000);
         // TODO Drop database
-        RegisteredUsersPage registeredUsers = registrationPage.clickSubmit();
+//        RegisteredUsersPage registeredUsers = registrationPage.clickSubmit();
+        RegisteredUsersPage registeredUsers = registrationPage.clickNonConfirmed();
         
         Thread.sleep(2000);
         Assert.assertTrue(Application.get()
@@ -75,7 +78,22 @@ public class RegistrationTest extends RegistrationTestRunner {
         Thread.sleep(2000);
         
         
-        ActiveUsersPage activeUsersPage = passiveEditUserPage.gotoActiveUsers();
+        ActiveUsersPage activeUsersPage = passiveEditUserPage
+                .gotoActiveUsers();
+//        Assert.assertEquals(activeUsersPage.getTable().getCell(activeUsersPage
+//                .getTable()
+//                .getRowIndexByValueInColumn(
+//                        user
+//                        .getAccount()
+//                        .getLogin(), 3)
+//                , 3).getText(),
+//                user.getAccount().getLogin());        
+//        Thread.sleep(3000);
+//        
+        LoginPage loginPage = activeUsersPage.logout();
+//        CommonPage commonPage = loginPage.successLogin(user);
+//        Assert.assertEquals(commonPage.getLoginAccountText(),
+//                user.getAccount().getLogin());
         
     }
 }
