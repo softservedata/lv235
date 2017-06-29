@@ -24,10 +24,10 @@ public class SearchTest extends TestRunner {
 
     @Test
     public void SearchTest() throws Exception {
-     ActiveCoownersPage activeCoownersPage=adminHomePage.clickActive();
-     activeCoownersPage.inputInFirstNameField("ihor");
-     activeCoownersPage.clickSearchButton();
-     Thread.sleep(4000);
+//    // ActiveCoownersPage activeCoownersPage=adminHomePage.clickActive();
+//     activeCoownersPage.inputInFirstNameField("ihor");
+//     activeCoownersPage.clickSearchButton();
+//     Thread.sleep(4000);
     // Assert.assertTrue();
     }
 

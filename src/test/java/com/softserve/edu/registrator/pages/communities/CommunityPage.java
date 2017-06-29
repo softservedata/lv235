@@ -78,10 +78,22 @@ public class CommunityPage extends AdminHomePage {
 		}
 
 		public void clickCancelButton() {
+			//TODO create explicit waits
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			getCancelButton().click();
 		}
 
 		public void clickCloseButton() {
+			//TODO create explicit waits
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			getCloseButton().click();
 		}
 
