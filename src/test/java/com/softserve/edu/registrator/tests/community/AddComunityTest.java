@@ -2,7 +2,7 @@ package com.softserve.edu.registrator.tests.community;
 
 import org.testng.annotations.Test;
 
-import com.softserve.edu.registrator.data.communities.Community;
+import com.softserve.edu.registrator.data.communities.CommunityRepository;
 import com.softserve.edu.registrator.data.communities.ICommunity;
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 import com.softserve.edu.registrator.pages.AdminHomePage;
@@ -18,7 +18,8 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 
 	@DataProvider
 	public Object[][] communityValid() {
-		return new Object[][] { { new Community("Mykolaiv", "") }, { new Community("Kyiv", "120:00:94:860:35001") } };
+		return new Object[][] { { CommunityRepository.getCommunityValidName() },
+				{ CommunityRepository.getCommunityValidData() } };
 	}
 
 	/**
@@ -28,7 +29,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 	public void createComunityWithValidData(ICommunity community) {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.seccesfulAddedCommunity(community);
-		
+
 		if (adminHomePage instanceof CommunityPage) {
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(((CommunityPage) adminHomePage).getCountOfCommunities(community) == 1);
@@ -37,13 +38,14 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(false);
 		}
-		
+
 	}
 
 	@DataProvider
 	public Object[][] communityEmptyName() {
-		return new Object[][] { { new Community("", ""), "Please fill out this field." },
-				{ new Community("", "124:00:94:960:35001"), "Please fill out this field." } };
+		return new Object[][] {
+				{ CommunityRepository.getCommunityEmptyData(), CommunityRepository.getErrorMessageNameCommunity() },
+				{ CommunityRepository.getCommunityEmptyName(), CommunityRepository.getErrorMessageNameCommunity() } };
 	}
 
 	/**
@@ -69,7 +71,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 
 	@DataProvider
 	public Object[][] communityIncorectRegisterNumber() {
-		return new Object[][] { { new Community("*]sv12.'", "srb") }, { new Community("Kyiv", "376") } };
+		return new Object[][] { { CommunityRepository.getCommunityIncorectNumber() } };
 	}
 
 	/**
@@ -96,7 +98,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 
 	@DataProvider
 	public Object[][] communityUsedName() {
-		return new Object[][] { { new Community("Lviv", "") }, { new Community("Lviv", "262:07:60:025:68001") } };
+		return new Object[][] { { CommunityRepository.getCommunityUsedName() } };
 	}
 
 	/**
@@ -123,7 +125,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 
 	@DataProvider
 	public Object[][] communityIncorectName() {
-		return new Object[][] { { new Community("*//[]($", "") }, { new Community("!$?#{]", "262:07:60:025:68001") } };
+		return new Object[][] { { CommunityRepository.getCommunityIncorectName() } };
 	}
 
 	/**
@@ -148,7 +150,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 
 	@DataProvider
 	public Object[][] communityUsedNumber() {
-		return new Object[][] { { new Community("Odessa", "120:00:94:860:35001") } };
+		return new Object[][] { { CommunityRepository.getCommunityUsedNumber() } };
 	}
 
 	/**
@@ -162,7 +164,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 		if (adminHomePage instanceof CommunityPage) {
 			adminHomePage = new CommunityPage(Application.get().getBrowser());
 			adminHomePage = ((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
-			
+
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(false);
 		}
