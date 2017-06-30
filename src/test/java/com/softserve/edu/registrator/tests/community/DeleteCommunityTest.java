@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.registrator.data.communities.Community;
 import com.softserve.edu.registrator.data.communities.CommunityRepository;
 import com.softserve.edu.registrator.data.communities.ICommunity;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
