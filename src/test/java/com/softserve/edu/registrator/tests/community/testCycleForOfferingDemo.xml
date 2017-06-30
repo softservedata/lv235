@@ -5,11 +5,6 @@
 	<test verbose="7" name="Test1">
 		<parameter name="number" value="2" />
 		<classes>
-			<class name="com.softserve.edu.registrator.tests.community.SmokeTest">
-				<methods>
-					<include name="checkCommunityAdd" />
-				</methods>
-			</class>
 			<class
 				name="com.softserve.edu.registrator.tests.community.EditCommunityTest">
 				<methods>

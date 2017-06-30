@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.data.communities.Community;
 import com.softserve.edu.registrator.data.communities.ICommunity;
+import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
 
 
@@ -20,12 +21,12 @@ public class SmokeTest extends AdminHomePageTestRunner {
 
 	    @Test(dataProvider = "community")
 	    public void checkCommunityAdd(ICommunity community) throws Exception {
-	    	CommunityPage communityPage = getAdminHomePage()
+	    	AdminHomePage adminHomePage = getAdminHomePage()
 	    			.clickCommunities()
 	    			.addNewCommunity()
 	    			.seccesfulAddedCommunity(community);
-	    	Assert.assertTrue(!communityPage.getTtableCommunity().getRowsByValue(community.getNameCommunity()).isEmpty()); 	
+	    	Assert.assertTrue(!((CommunityPage)adminHomePage).getTtableCommunity().getRowsByValue(community.getNameCommunity()).isEmpty()); 	
 	    	Thread.sleep(1000);
-	    	setAdminHomePage(communityPage);
+	    	setAdminHomePage(adminHomePage);
 	    }
 }

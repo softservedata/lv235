@@ -29,7 +29,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.seccesfulAddedCommunity(community);
 		
-		if (adminHomePage instanceof CommunityPage && ((CommunityPage) adminHomePage).getTtableCommunity() != null) {
+		if (adminHomePage instanceof CommunityPage) {
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(((CommunityPage) adminHomePage).getCountOfCommunities(community) == 1);
 			((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
@@ -54,7 +54,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.seccesfulAddedCommunity(community);
 
-		if (adminHomePage instanceof CommunityPage && ((CommunityPage) adminHomePage).getTtableCommunity() != null) {
+		if (adminHomePage instanceof CommunityPage) {
 			adminHomePage = new CommunityPage(Application.get().getBrowser());
 			((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 			setAdminHomePage(adminHomePage);
@@ -80,7 +80,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.seccesfulAddedCommunity(community);
 
-		if (adminHomePage instanceof CommunityPage && ((CommunityPage) adminHomePage).getTtableCommunity() != null) {
+		if (adminHomePage instanceof CommunityPage) {
 			adminHomePage = new CommunityPage(Application.get().getBrowser());
 			((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 			setAdminHomePage(adminHomePage);
@@ -107,7 +107,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.seccesfulAddedCommunity(community);
 
-		if (adminHomePage instanceof CommunityPage && ((CommunityPage) adminHomePage).getTtableCommunity() != null) {
+		if (adminHomePage instanceof CommunityPage) {
 			adminHomePage = new CommunityPage(Application.get().getBrowser());
 			((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 			setAdminHomePage(adminHomePage);
@@ -134,7 +134,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.seccesfulAddedCommunity(community);
 
-		if (adminHomePage instanceof CommunityPage && ((CommunityPage) adminHomePage).getTtableCommunity() != null) {
+		if (adminHomePage instanceof CommunityPage) {
 			adminHomePage = new CommunityPage(Application.get().getBrowser());
 			adminHomePage = ((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 			setAdminHomePage(adminHomePage);
@@ -159,7 +159,7 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().addNewCommunity()
 				.seccesfulAddedCommunity(community);
 
-		if (adminHomePage instanceof CommunityPage && ((CommunityPage) adminHomePage).getTtableCommunity() != null) {
+		if (adminHomePage instanceof CommunityPage) {
 			adminHomePage = new CommunityPage(Application.get().getBrowser());
 			adminHomePage = ((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 			

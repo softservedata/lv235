@@ -173,7 +173,6 @@ public class CommunityPage extends AdminHomePage {
 	
 	
 	private void initPage() {
-		if(!driver.findElements(By.tagName("table")).isEmpty()){
 			setTtableCommunity();
 			communityLable = driver.findElement(By.cssSelector("h4"));
 			addNewCommunityButton = driver.findElement(By
@@ -182,7 +181,6 @@ public class CommunityPage extends AdminHomePage {
 			teretorialCommunity = driver.findElement(By.xpath("//tr/th[1]"));
 			registrationNumber = driver.findElement(By.xpath("//tr/th[2]"));
 			actions = driver.findElement(By.xpath("//tr/th[3]"));
-		}
 	}
 
 	public WebElement getCommunityLable() {

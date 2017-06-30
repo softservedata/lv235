@@ -49,11 +49,9 @@ public class EditCmmunityPage extends AdminHomePage {
 	}
 	
 	private void initPage() {
-		if(!driver.findElements(By.tagName("h2")).isEmpty()){
 			addEditCommunityForm = new AddEditCommunityForm(driver);
 			saveButton = driver.findElement(By
 					.cssSelector("input[type = 'submit']"));
-		}
 	}
 
 	public WebElement getNameFormLable() {
@@ -191,10 +189,14 @@ public class EditCmmunityPage extends AdminHomePage {
 		setRegistrationNumberInput(community.getRegistrationNumber());
 	}
 
-	public CommunityPage seccesfulEditedCommunity(ICommunity community) { // TODO
+	public AdminHomePage seccesfulEditedCommunity(ICommunity community) { // TODO
 		setCommunityData(community);
 		clickSaveButton();
-		return new CommunityPage(driver);
+		if(!driver.findElements(By.tagName("table")).isEmpty()){
+			return new CommunityPage(driver);
+		} else {
+			return new EditCmmunityPage(driver);
+		}
 	}
 
 	public AddCommunityPage changeLanguage(ChangeLanguageFields language) {
@@ -202,8 +204,12 @@ public class EditCmmunityPage extends AdminHomePage {
 		return new AddCommunityPage(driver);
 	}
 	
-	public CommunityPage save() {
+	public AdminHomePage save() {
 		clickSaveButton();
-		return new CommunityPage(driver);
+		if(!driver.findElements(By.tagName("table")).isEmpty()){
+			return new CommunityPage(driver);
+		} else {
+			return new EditCmmunityPage(driver);
+		}
 	}
 }

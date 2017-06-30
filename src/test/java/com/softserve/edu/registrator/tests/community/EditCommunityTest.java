@@ -39,7 +39,7 @@ public class EditCommunityTest extends AdminHomePageTestRunner {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().editCommunity(communityBeforeEdit)
 				.seccesfulEditedCommunity(communityAfterEdit);
 
-		if (adminHomePage instanceof CommunityPage && ((CommunityPage) adminHomePage).getTtableCommunity() != null) {
+		if (adminHomePage instanceof CommunityPage) {
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(!((CommunityPage) adminHomePage).getTtableCommunity()
 					.getRowsByValue(communityAfterEdit.getNameCommunity()).isEmpty());
@@ -63,7 +63,7 @@ public class EditCommunityTest extends AdminHomePageTestRunner {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().editCommunity(communityBeforeEdit)
 				.seccesfulEditedCommunity(communityAfterEdit);
 
-		if (adminHomePage instanceof CommunityPage && ((CommunityPage) adminHomePage).getTtableCommunity() != null) {
+		if (adminHomePage instanceof CommunityPage) {
 			adminHomePage = new CommunityPage(Application.get().getBrowser());
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(!((CommunityPage) adminHomePage).getTtableCommunity()
@@ -83,7 +83,7 @@ public class EditCommunityTest extends AdminHomePageTestRunner {
 	public void editCommunityNothingChangedOk(ICommunity community) {
 		AdminHomePage adminHomePage = getAdminHomePage().clickCommunities().editCommunity(community).save();
 
-		if (adminHomePage instanceof CommunityPage && ((CommunityPage) adminHomePage).getTtableCommunity() != null) {
+		if (adminHomePage instanceof CommunityPage) {
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(!((CommunityPage) adminHomePage).getTtableCommunity()
 					.getRowsByValue(community.getNameCommunity()).isEmpty()

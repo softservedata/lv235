@@ -58,13 +58,11 @@ public class AddCommunityPage extends AdminHomePage {
 	}
 	
 	private void initPage() {
-		if(!driver.findElements(By.tagName("h2")).isEmpty()){
 			addEditCommunityForm = new AddEditCommunityForm(driver);
 			saveButton = driver.findElement(By
 					.cssSelector("input[type = 'submit']"));
 			clearFormButton = driver.findElement(By
 					.cssSelector("button[type='reset']"));
-		}
 	}
 
 	public WebElement getNameFormLable() {
@@ -226,10 +224,14 @@ public class AddCommunityPage extends AdminHomePage {
 		setRegistrationNumberInput(community.getRegistrationNumber());
 	}
 
-	public CommunityPage seccesfulAddedCommunity(ICommunity community) { // TODO
+	public AdminHomePage seccesfulAddedCommunity(ICommunity community) { // TODO
 		setCommunityData(community);
 		clickSaveButton();
-		return new CommunityPage(driver);
+		if(!driver.findElements(By.tagName("table")).isEmpty()){
+			return new CommunityPage(driver);
+		} else {
+			return new AddCommunityPage(driver);
+		}
 	}
 	
 	public AddCommunityPage errorAddedCommunity(ICommunity community) { // TODO
