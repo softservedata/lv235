@@ -10,11 +10,15 @@ import org.testng.annotations.BeforeMethod;
 
 import com.softserve.edu.registrator.data.apps.ApplicationSourcesRepository;
 import com.softserve.edu.registrator.data.apps.ApplicationUtils;
+import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
 
 public class TestRunner {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    // Use, if class Application is not singleton
+    // protected Application application;
+    private AdminHomePage adminHomePage;
     
     @BeforeClass
     public void beforeClass(ITestContext context) {

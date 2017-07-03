@@ -18,9 +18,33 @@ public final class ApplicationSources {
         }
     }
 
-    private static class ImplicitTimeOutFactory implements IApplicationFactory {
+    private static class ImplicitWaitTimeOutFactory implements IApplicationFactory {
         public void setParameter(ApplicationSources applicationSources, String parameter) {
-            applicationSources.setImplicitTimeOut(Long.parseLong(parameter));
+            applicationSources.setImplicitWaitTimeOut(Long.parseLong(parameter));
+        }
+    }
+
+    private static class ImplicitLoadTimeOutFactory implements IApplicationFactory {
+        public void setParameter(ApplicationSources applicationSources, String parameter) {
+            applicationSources.setImplicitLoadTimeOut(Long.parseLong(parameter));
+        }
+    }
+
+    private static class ImplicitScriptTimeOutFactory implements IApplicationFactory {
+        public void setParameter(ApplicationSources applicationSources, String parameter) {
+            applicationSources.setImplicitScriptTimeOut(Long.parseLong(parameter));
+        }
+    }
+
+    private static class ExplicitTimeOutFactory implements IApplicationFactory {
+        public void setParameter(ApplicationSources applicationSources, String parameter) {
+            applicationSources.setExplicitTimeOut(Long.parseLong(parameter));
+        }
+    }
+
+    private static class SearchStrategyFactory implements IApplicationFactory {
+        public void setParameter(ApplicationSources applicationSources, String parameter) {
+            applicationSources.setSearchStrategy(parameter);
         }
     }
 
@@ -39,7 +63,11 @@ public final class ApplicationSources {
     public static enum ApplicationParameters {
         BROWSER_NAME("browserName", new BrowserNameFactory()),
         DRIVER_PATH("driverPath", new DriverPathFactory()),
-        IMPLICIT_TIMEOUT("implicitTimeOut", new ImplicitTimeOutFactory()),
+        IMPLICIT_WAIT_TIMEOUT("implicitWaitTimeOut", new ImplicitWaitTimeOutFactory()),
+        IMPLICIT_LOAD_TIMEOUT("implicitLoadTimeOut", new ImplicitLoadTimeOutFactory()),
+        IMPLICIT_SCRIPT_TIMEOUT("implicitScriptTimeOut", new ImplicitScriptTimeOutFactory()),
+        EXPLICIT_TIMEOUT("explicitTimeOut", new ExplicitTimeOutFactory()),
+        SEARCH_STRATEGY("searchStrategy", new SearchStrategyFactory()),
         LOGIN_URL("loginUrl", new LoginUrlFactory()),
         LOGOUT_URL("logoutUrl", new LogoutUrlFactory());
         //
@@ -66,15 +94,40 @@ public final class ApplicationSources {
     // Browser Data
     private String browserName;
     private String driverPath;
-    private long implicitTimeOut;
+
+    // private String browserPath;
+    // private String defaulProfile;
+    //
+    // Implicit and Explicit Waits
+    private long implicitWaitTimeOut;
+    private long implicitLoadTimeOut;
+    private long implicitScriptTimeOut;
+    private long explicitTimeOut;
+    //
+    // Localization Strategy
+    // private String language;
+    //
+    // Search Strategy
+    private String searchStrategy;
+    //
+    // Logger Strategy
+    // private String loggerStrategy;
+    //
+    // URLs
     private String loginUrl;
     private String logoutUrl;
 
-    public ApplicationSources(String browserName, String driverPath, long implicitTimeOut, String loginUrl,
-            String logoutUrl) {
+    // TODO Use Builder
+    public ApplicationSources(String browserName, String driverPath, long implicitWaitTimeOut,
+            long implicitLoadTimeOut, long implicitScriptTimeOut, long explicitTimeOut,
+            String searchStrategy, String loginUrl, String logoutUrl) {
         this.browserName = browserName;
         this.driverPath = driverPath;
-        this.implicitTimeOut = implicitTimeOut;
+        this.implicitWaitTimeOut = implicitWaitTimeOut;
+        this.implicitLoadTimeOut = implicitLoadTimeOut;
+        this.implicitScriptTimeOut = implicitScriptTimeOut;
+        this.explicitTimeOut = explicitTimeOut;
+        this.searchStrategy = searchStrategy;
         this.loginUrl = loginUrl;
         this.logoutUrl = logoutUrl;
     }
@@ -89,8 +142,24 @@ public final class ApplicationSources {
         this.driverPath = driverPath;
     }
 
-    private void setImplicitTimeOut(long implicitTimeOut) {
-        this.implicitTimeOut = implicitTimeOut;
+    private void setImplicitWaitTimeOut(long implicitWaitTimeOut) {
+        this.implicitWaitTimeOut = implicitWaitTimeOut;
+    }
+
+    private void setImplicitLoadTimeOut(long implicitLoadTimeOut) {
+        this.implicitLoadTimeOut = implicitLoadTimeOut;
+    }
+    
+    private void setImplicitScriptTimeOut(long implicitScriptTimeOut) {
+        this.implicitScriptTimeOut = implicitScriptTimeOut;
+    }
+
+    private void setExplicitTimeOut(long explicitTimeOut) {
+        this.explicitTimeOut = explicitTimeOut;
+    }
+
+    private void setSearchStrategy(String searchStrategy) {
+        this.searchStrategy = searchStrategy;
     }
 
     private void setLoginUrl(String loginUrl) {
@@ -111,8 +180,24 @@ public final class ApplicationSources {
         return driverPath;
     }
 
-    public long getImplicitTimeOut() {
-        return implicitTimeOut;
+    public long getImplicitWaitTimeOut() {
+        return implicitWaitTimeOut;
+    }
+
+    public long getImplicitLoadTimeOut() {
+        return implicitLoadTimeOut;
+    }
+    
+    public long getImplicitScriptTimeOut() {
+        return implicitScriptTimeOut;
+    }
+
+    public long getExplicitTimeOut() {
+        return explicitTimeOut;
+    }
+
+    public String getSearchStrategy() {
+        return searchStrategy;
     }
 
     public String getLoginUrl() {

@@ -59,13 +59,14 @@ public class Application {
 
 	public static enum Browsers {
 		DEFAULT_TEMPORARY("ChromeTemporary", ApplicationSourcesRepository.getChromeDriverPath(),
-				new ChromeTemporary()), FIREFOX4X_TEMPORARY("FireFox4xTemporary", new String(),
-						new Firefox4xTemporary()), FIREFOX5X_TEMPORARY("FireFox5xTemporary",
-								ApplicationSourcesRepository.getGeckoDriverPath(),
-								new Firefox5xTemporary()), CHROME_TEMPORARY("ChromeTemporary",
-										ApplicationSourcesRepository.getChromeDriverPath(),
-										new ChromeTemporary()), HTMLUNIT_TEMPORARY("HtmlUnitTemporary", new String(),
-												new HtmlUnitTemporary());
+		            new ChromeTemporary()),
+		FIREFOX4X_TEMPORARY("FireFox4xTemporary", new String(),
+		            new Firefox4xTemporary()),
+		FIREFOX5X_TEMPORARY("FireFox5xTemporary", ApplicationSourcesRepository.getGeckoDriverPath(),
+		            new Firefox5xTemporary()),
+		CHROME_TEMPORARY("ChromeTemporary", ApplicationSourcesRepository.getChromeDriverPath(),
+		            new ChromeTemporary()),
+		HTMLUNIT_TEMPORARY("HtmlUnitTemporary", new String(), new HtmlUnitTemporary());
 		//
 		private String browserName;
 		private String defaultDriverPath;
@@ -186,7 +187,8 @@ public class Application {
 		driver = currentBrowser.runBrowser(this.getApplicationSources());
 	}
 
+	// TODO for Strategy
 	private void initWaits() {
-		getBrowser().manage().timeouts().implicitlyWait(applicationSources.getImplicitTimeOut(), TimeUnit.SECONDS);
+		getBrowser().manage().timeouts().implicitlyWait(applicationSources.getImplicitWaitTimeOut(), TimeUnit.SECONDS);
 	}
 }
