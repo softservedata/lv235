@@ -191,7 +191,8 @@ public class Application {
 		driver = currentBrowser.runBrowser(this.getApplicationSources());
 	}
 
+	// TODO for Strategy
 	private void initWaits() {
-		getBrowser().manage().timeouts().implicitlyWait(applicationSources.getImplicitTimeOut(), TimeUnit.SECONDS);
+		getBrowser().manage().timeouts().implicitlyWait(applicationSources.getImplicitWaitTimeOut(), TimeUnit.SECONDS);
 	}
 }

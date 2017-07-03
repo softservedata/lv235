@@ -14,60 +14,66 @@ import com.softserve.edu.registrator.pages.Application;
  * Class for searching present elements with explicit timeout.
  */
 public class SearchExplicitVisible implements ISearch {
+    private WebDriverWait wait;
 
     public SearchExplicitVisible() {
-        Application.get().getBrowser().manage().timeouts().implicitlyWait(0L, TimeUnit.SECONDS);
+        this.wait = new WebDriverWait(Application.get().getBrowser(),
+                Application.get().getApplicationSources().getExplicitTimeOut());
+        Application.get().getBrowser().manage().timeouts()
+            .implicitlyWait(0L, TimeUnit.SECONDS);
+        // TODO
+        //Application.get().getBrowser().manage().timeouts()
+        //    .pageLoadTimeout(0L, TimeUnit.SECONDS);
+        //Application.get().getBrowser().manage().timeouts()
+        //    .setScriptTimeout(0L, TimeUnit.SECONDS);
     }
 
+    private WebDriverWait getWait() {
+        return this.wait;
+    }
+    
     /**
      * Method to explicitly wait for visibility of specific element.
-     * @param by
-     *            locator for element.
+     * @param by locator for element.
      * @return present webelement.
      */
     private WebElement getVisibleWebElement(By by) {
-        return new WebDriverWait(Application.get().getBrowser(), EXPLICIT_WAIT_TIMEOUT)
-                .until(ExpectedConditions.visibilityOfElementLocated(by));
+        // return new WebDriverWait(Application.get().getBrowser(), EXPLICIT_WAIT_TIMEOUT)
+        //            .until(ExpectedConditions.visibilityOfElementLocated(by));
+        return getWait().until(ExpectedConditions
+                .visibilityOfElementLocated(by));
     }
 
-    // Must be Selenium version 2.53.1
-    // private WebElement getVisibleWebElement(By by, WebElement fromWebElement)
-    // {
-    // return new WebDriverWait(Application.get().getBrowser(),
-    // getApplication().getApplicationSources().getExplicitTimeOut())
-    // .until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(fromWebElement,
-    // by)).get(0);
-    // }
-
-    // TODO
     private WebElement getVisibleWebElement(By by, WebElement fromWebElement) {
-        WebElement result;
-        Application.get().getBrowser().manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
-        result = fromWebElement.findElement(by);
-        Application.get().getBrowser().manage().timeouts().implicitlyWait(0L, TimeUnit.SECONDS);
-        return result;
+        return getWait().until(ExpectedConditions
+                .visibilityOfNestedElementsLocatedBy(fromWebElement, by)).get(0);
     }
 
     /**
      * Method to explicitly wait for visibility of specific elements.
-     * @param by
-     *            locator for elements.
+     * @param by locator for elements.
      * @return present webelements.
      */
     private List<WebElement> getVisibleWebElements(By by) {
-        return new WebDriverWait(Application.get().getBrowser(), EXPLICIT_WAIT_TIMEOUT)
-                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+        return getWait().until(ExpectedConditions
+                .visibilityOfAllElementsLocatedBy(by));
+    }
+
+    private List<WebElement> getVisibleWebElements(By by, WebElement fromWebElement) {
+        return getWait().until(ExpectedConditions
+                .visibilityOfNestedElementsLocatedBy(fromWebElement, by));
     }
 
     public boolean stalenessOf(WebElement webElement) {
-        // TODO
-        return true;
+        return getWait().until(ExpectedConditions
+                .stalenessOf(webElement));
     }
+
+    // Search Element
 
     /*
      * Methods, used by Search entity.
      */
-    // Element
     @Override
     public WebElement id(String id) {
         return getVisibleWebElement(By.id(id));
@@ -164,7 +170,7 @@ public class SearchExplicitVisible implements ISearch {
 
     @Override
     public List<WebElement> xpaths(String xpath, WebElement fromWebElement) {
-        return null;
+        return getVisibleWebElements(By.xpath(xpath), fromWebElement);
     }
 
     @Override

@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.softserve.edu.registrator.pages.Application;
 
@@ -12,9 +14,6 @@ import com.softserve.edu.registrator.pages.Application;
  * Class for searching visible elements with implicit timeout.
  */
 public class SearchImplicit implements ISearch {
-    public static final long IMPLICIT_WAIT_TIMEOUT = 5L;
-    public static final long IMPLICIT_LOAD_TIMEOUT = 30L;
-    public static final long IMPLICIT_SCRIPT_TIMEOUT = 30L;
 
     public SearchImplicit() {
         initImplicitWaits();
@@ -23,11 +22,14 @@ public class SearchImplicit implements ISearch {
 
     private void initImplicitWaits() {
         Application.get().getBrowser().manage().timeouts()
-            .implicitlyWait(IMPLICIT_WAIT_TIMEOUT, TimeUnit.SECONDS);
+            .implicitlyWait(Application.get().getApplicationSources()
+                    .getImplicitWaitTimeOut(), TimeUnit.SECONDS);
         Application.get().getBrowser().manage().timeouts()
-            .pageLoadTimeout(IMPLICIT_LOAD_TIMEOUT, TimeUnit.SECONDS);
+            .pageLoadTimeout(Application.get().getApplicationSources()
+                    .getImplicitLoadTimeOut(), TimeUnit.SECONDS);
         Application.get().getBrowser().manage().timeouts()
-            .setScriptTimeout(IMPLICIT_SCRIPT_TIMEOUT, TimeUnit.SECONDS);
+            .setScriptTimeout(Application.get().getApplicationSources()
+                    .getImplicitScriptTimeOut(), TimeUnit.SECONDS);
     }
 
     private void removeImplicitWaits() {
@@ -70,7 +72,9 @@ public class SearchImplicit implements ISearch {
 
     public boolean stalenessOf(WebElement webElement) {
         removeImplicitWaits();
-        // TODO call explicit;
+        new WebDriverWait(Application.get().getBrowser(),
+                Application.get().getApplicationSources().getExplicitTimeOut())
+            .until(ExpectedConditions.stalenessOf(webElement));
         initImplicitWaits();
         return true;
     }

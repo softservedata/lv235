@@ -14,9 +14,22 @@ import com.softserve.edu.registrator.pages.Application;
  * Class for searching present elements with explicit timeout.
  */
 public class SearchExplicitPresent implements ISearch {
+    private WebDriverWait wait;
 
     public SearchExplicitPresent() {
-        Application.get().getBrowser().manage().timeouts().implicitlyWait(0L, TimeUnit.SECONDS);
+        this.wait = new WebDriverWait(Application.get().getBrowser(),
+                Application.get().getApplicationSources().getExplicitTimeOut());
+        Application.get().getBrowser().manage().timeouts()
+            .implicitlyWait(0L, TimeUnit.SECONDS);
+        // TODO
+        //Application.get().getBrowser().manage().timeouts()
+        //    .pageLoadTimeout(0L, TimeUnit.SECONDS);
+        //Application.get().getBrowser().manage().timeouts()
+        //    .setScriptTimeout(0L, TimeUnit.SECONDS);
+    }
+
+    private WebDriverWait getWait() {
+        return this.wait;
     }
 
     /**
@@ -26,48 +39,41 @@ public class SearchExplicitPresent implements ISearch {
      * @return present webelement.
      */
     private WebElement getPresentWebElement(By by) {
-        return new WebDriverWait(Application.get().getBrowser(), EXPLICIT_WAIT_TIMEOUT)
-                .until(ExpectedConditions.presenceOfElementLocated(by));
+        return getWait().until(ExpectedConditions
+                .presenceOfElementLocated(by));
     }
 
-    // Must be Selenium version 2.53.1
-    // private WebElement getVisibleWebElement(By by, WebElement fromWebElement)
-    // {
-    // return new WebDriverWait(Application.get().getBrowser(),
-    // getApplication().getApplicationSources().getExplicitTimeOut())
-    // .until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(fromWebElement,
-    // by)).get(0);
-    // }
-
-    // TODO
     private WebElement getPresentWebElement(By by, WebElement fromWebElement) {
-        WebElement result;
-        Application.get().getBrowser().manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
-        result = fromWebElement.findElement(by);
-        Application.get().getBrowser().manage().timeouts().implicitlyWait(0L, TimeUnit.SECONDS);
-        return result;
+        return getWait().until(ExpectedConditions
+                .presenceOfNestedElementLocatedBy(fromWebElement, by));
     }
 
     /**
      * Method to explicitly wait for presence of specific elements.
-     * @param by
-     *            locator for elements.
+     * @param by locator for elements.
      * @return present webelements.
      */
     private List<WebElement> getPresentWebElements(By by) {
-        return new WebDriverWait(Application.get().getBrowser(), EXPLICIT_WAIT_TIMEOUT)
-                .until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+        return getWait().until(ExpectedConditions
+                .presenceOfAllElementsLocatedBy(by));
+    }
+
+    private List<WebElement> getPresentWebElements(By by, WebElement fromWebElement) {
+        // TODO Use presenceOfNestedElementLocatedBy Method
+        return getWait().until(ExpectedConditions
+                .visibilityOfNestedElementsLocatedBy(fromWebElement, by));
     }
 
     public boolean stalenessOf(WebElement webElement) {
-        // TODO
-        return true;
+        return getWait().until(ExpectedConditions
+                .stalenessOf(webElement));
     }
+
+    // Search Element
 
     /*
      * Methods, used by Search entity.
      */
-    // Element
     @Override
     public WebElement id(String id) {
         return getPresentWebElement(By.id(id));
@@ -164,7 +170,7 @@ public class SearchExplicitPresent implements ISearch {
 
     @Override
     public List<WebElement> xpaths(String xpath, WebElement fromWebElement) {
-        return null;
+        return getPresentWebElements(By.xpath(xpath), fromWebElement);
     }
 
     @Override

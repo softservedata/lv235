@@ -10,10 +10,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.softserve.edu.registrator.pages.Application;
 
 public class SearchExplicitClickable implements ISearch {
+    private WebDriverWait wait;
 
     public SearchExplicitClickable() {
+        this.wait = new WebDriverWait(Application.get().getBrowser(),
+                Application.get().getApplicationSources().getExplicitTimeOut());
+        Application.get().getBrowser().manage().timeouts()
+            .implicitlyWait(0L, TimeUnit.SECONDS);
+        // TODO
+        //Application.get().getBrowser().manage().timeouts()
+        //    .pageLoadTimeout(0L, TimeUnit.SECONDS);
+        //Application.get().getBrowser().manage().timeouts()
+        //    .setScriptTimeout(0L, TimeUnit.SECONDS);
+    }
 
-        Application.get().getBrowser().manage().timeouts().implicitlyWait(0L, TimeUnit.SECONDS);
+    private WebDriverWait getWait() {
+        return this.wait;
     }
 
     /**
@@ -24,35 +36,39 @@ public class SearchExplicitClickable implements ISearch {
      * @return clickable webelement.
      */
     private WebElement getClickableWebElement(By by) {
-        return new WebDriverWait(Application.get().getBrowser(), EXPLICIT_WAIT_TIMEOUT)
-                .until(ExpectedConditions.elementToBeClickable(by));
+        return getWait().until(ExpectedConditions
+                .elementToBeClickable(by));
     }
 
-    // Must be Selenium version 2.53.1
-//    private WebElement getVisibleWebElement(By by, WebElement fromWebElement) {
-//        return new WebDriverWait(Application.get().getBrowser(),
-//                getApplication().getApplicationSources().getExplicitTimeOut())
-//            .until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(fromWebElement, by)).get(0);
-//    }
+    private WebElement getClickableWebElement(By by, WebElement fromWebElement) {
+        // TODO Use elementToBeClickable for Next Version
+        return getWait().until(ExpectedConditions
+                .visibilityOfNestedElementsLocatedBy(fromWebElement, by)).get(0);
+    }
 
-    // TODO
-    private WebElement getPresentWebElement(By by, WebElement fromWebElement) {
-        WebElement result;
-        Application.get().getBrowser().manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
-        result = fromWebElement.findElement(by);
-        Application.get().getBrowser().manage().timeouts().implicitlyWait(0L, TimeUnit.SECONDS);
-        return result;
+    private List<WebElement> getClickableWebElements(By by) {
+        // TODO Use elementToBeClickable for Next Version
+        return getWait().until(ExpectedConditions
+                .visibilityOfAllElementsLocatedBy(by));
+    }
+
+    private List<WebElement> getClickableWebElements(By by, WebElement fromWebElement) {
+        // TODO Use elementToBeClickable for Next Version
+        return getWait().until(ExpectedConditions
+                .visibilityOfNestedElementsLocatedBy(fromWebElement, by));
     }
 
     public boolean stalenessOf(WebElement webElement) {
-        // TODO
-        return true;
+        // TODO Use elementToBeClickable for Next Version
+        return getWait().until(ExpectedConditions
+                .stalenessOf(webElement));
     }
+
+    // Search Element
 
     /*
     Methods, used by Search entity.
      */
-    //Element
     @Override
     public WebElement id(String id) {
         return getClickableWebElement(By.id(id));
@@ -100,42 +116,42 @@ public class SearchExplicitClickable implements ISearch {
     //TODO
     @Override
     public WebElement id(String id, WebElement fromWebElement) {
-        return getPresentWebElement(By.id(id), fromWebElement);
+        return getClickableWebElement(By.id(id), fromWebElement);
     }
 
     @Override
     public WebElement name(String name, WebElement fromWebElement) {
-        return getPresentWebElement(By.name(name), fromWebElement);
+        return getClickableWebElement(By.name(name), fromWebElement);
     }
 
     @Override
     public WebElement xpath(String xpath, WebElement fromWebElement) {
-        return getPresentWebElement(By.xpath(xpath), fromWebElement);
+        return getClickableWebElement(By.xpath(xpath), fromWebElement);
     }
 
     @Override
     public WebElement cssSelector(String cssSelector, WebElement fromWebElement) {
-        return getPresentWebElement(By.cssSelector(cssSelector), fromWebElement);
+        return getClickableWebElement(By.cssSelector(cssSelector), fromWebElement);
     }
 
     @Override
     public WebElement className(String className, WebElement fromWebElement) {
-        return getPresentWebElement(By.className(className), fromWebElement);
+        return getClickableWebElement(By.className(className), fromWebElement);
     }
 
     @Override
     public WebElement partialLinkText(String partialLinkText, WebElement fromWebElement) {
-        return getPresentWebElement(By.partialLinkText(partialLinkText), fromWebElement);
+        return getClickableWebElement(By.partialLinkText(partialLinkText), fromWebElement);
     }
 
     @Override
     public WebElement linkText(String linkText, WebElement fromWebElement) {
-        return getPresentWebElement(By.linkText(linkText), fromWebElement);
+        return getClickableWebElement(By.linkText(linkText), fromWebElement);
     }
 
     @Override
     public WebElement tagName(String tagName, WebElement fromWebElement) {
-        return getPresentWebElement(By.tagName(tagName), fromWebElement);
+        return getClickableWebElement(By.tagName(tagName), fromWebElement);
     }
 
     // Get List

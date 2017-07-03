@@ -5,7 +5,6 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 
 public interface ISearch {
-    static final long EXPLICIT_WAIT_TIMEOUT = 10L;
 
     boolean stalenessOf(WebElement webElement);
     

@@ -20,6 +20,7 @@ public class TestRunner {
     // Use, if class Application is not singleton
     // protected Application application;
     private AdminHomePage adminHomePage;
+    
     @BeforeClass
     public void beforeClass(ITestContext context) {
         System.out.println("@BeforeClass");
