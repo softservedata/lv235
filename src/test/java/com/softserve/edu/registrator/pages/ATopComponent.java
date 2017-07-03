@@ -70,22 +70,12 @@ public abstract class ATopComponent {
         return getChangeLanguageSelected().getText().trim();
     }
 
-//    public ChangeLanguageFields getSelectedLanguage() {
-//        ChangeLanguageFields currentLanguage = ChangeLanguageFields.UKRAINIAN;
-//        for (ChangeLanguageFields language : ChangeLanguageFields.values()) {
-//            if (language.toString().contains(getChangeLanguageSelectedText())) {
-//                currentLanguage = language;
-//                break;
-//            }
-//        }
-//        return currentLanguage;
-//    }
+
 
     // set Data
 
-    //public void setChangeLanguage(String language) { // Code Smell
+
     public void setChangeLanguage(ChangeLanguageFields language) {
-    //    getChangeLanguage().selectByVisibleText(language); // Code Smell
         getChangeLanguage().selectByVisibleText(language.toString());
     }
 

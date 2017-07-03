@@ -2,7 +2,6 @@ package com.softserve.edu.registrator.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -152,21 +151,15 @@ public class LogPage {
 
     // TODO Develop User class
     private void setLoginData(IUser user) {
-        // private void setLoginData(String login, String password) {
         setLoginInputClear(user.getAccount().getLogin());
         setPasswordInputClear(user.getAccount().getPassword());
-        // setLoginInputClear(login);
-        // setPasswordInputClear(password);
         clickSignin();
     }
 
-    // TODO Develop User class
+
     public LogPage unsuccessfulLogin(IUser invalidUser) {
-        // public LoginValidatorPage unsuccessfulLogin(String login, String
-        // password) {
         setLoginData(invalidUser);
-        // setLoginData(login, password);
-        return new LogPage(driver); // return this;
+        return new LogPage(driver); 
     }
 
 }

@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.registrator.data.communities.Community;
+import com.softserve.edu.registrator.data.communities.CommunityRepository;
 import com.softserve.edu.registrator.data.communities.ICommunity;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
 
@@ -13,7 +13,7 @@ public class DeleteCommunityTest extends AdminHomePageTestRunner {
 	@DataProvider
 	public Object[][] dataCommunity() {
 		return new Object[][] { 
-			{ new Community("Kyiv", "") }
+			{ CommunityRepository.getCommunityValidData() }
 		};
 	}
 	

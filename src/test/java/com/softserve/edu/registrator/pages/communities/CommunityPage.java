@@ -168,14 +168,19 @@ public class CommunityPage extends AdminHomePage {
 
 	public CommunityPage(WebDriver driver) {
 		super(driver);
-		setTtableCommunity();
-		communityLable = driver.findElement(By.cssSelector("h4"));
-		addNewCommunityButton = driver.findElement(By
-				.cssSelector("a[href= 'addCommunity']"));
-		showNoneActiveCBox = driver.findElement(By.cssSelector("label"));
-		teretorialCommunity = driver.findElement(By.xpath("//tr/th[1]"));
-		registrationNumber = driver.findElement(By.xpath("//tr/th[2]"));
-		actions = driver.findElement(By.xpath("//tr/th[3]"));
+		initPage();
+	}
+	
+	
+	private void initPage() {
+			setTtableCommunity();
+			communityLable = driver.findElement(By.cssSelector("h4"));
+			addNewCommunityButton = driver.findElement(By
+					.cssSelector("a[href= 'addCommunity']"));
+			showNoneActiveCBox = driver.findElement(By.cssSelector("label"));
+			teretorialCommunity = driver.findElement(By.xpath("//tr/th[1]"));
+			registrationNumber = driver.findElement(By.xpath("//tr/th[2]"));
+			actions = driver.findElement(By.xpath("//tr/th[3]"));
 	}
 
 	public WebElement getCommunityLable() {

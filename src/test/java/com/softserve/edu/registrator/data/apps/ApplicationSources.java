@@ -94,6 +94,7 @@ public final class ApplicationSources {
     // Browser Data
     private String browserName;
     private String driverPath;
+
     // private String browserPath;
     // private String defaulProfile;
     //
@@ -115,10 +116,6 @@ public final class ApplicationSources {
     // URLs
     private String loginUrl;
     private String logoutUrl;
-    // private String serverUrl;
-    //
-    // Connect to DB
-    // Selenium Version
 
     // TODO Use Builder
     public ApplicationSources(String browserName, String driverPath, long implicitWaitTimeOut,

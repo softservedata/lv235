@@ -27,7 +27,6 @@ public class AdminHomePageTestRunner extends TestRunner {
 	@Override
 	@BeforeClass
     public void beforeClass(ITestContext context) {
-        System.out.println("@BeforeClass111111111");
         Application.get(ApplicationUtils
                 .updateAll(ApplicationSourcesRepository.getChromeTraining(), context));
         adminHomePage = Application.get()
@@ -38,26 +37,33 @@ public class AdminHomePageTestRunner extends TestRunner {
 	@Override
     @AfterClass
     public void afterClass() {
-        System.out.println("@AfterClass11111");
+        //TODO must be deleted
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     }
     
 	
     @AfterSuite
     public void afterSuit() {
-        System.out.println("@AfterSuitS111111111");
         Application.remove();
     }
 
     @Override
     @BeforeMethod
-    public void beforeMethod() {
-        System.out.println("@BeforeMethod11111111111");
-    }
+    public void beforeMethod() { }
     
     @Override
     @AfterMethod
     public void afterMethod() {
-        System.out.println("@AfterMethod111111111");
+    	//TODO must be deleted
+        try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     }
 
 	public AdminHomePage getAdminHomePage() {

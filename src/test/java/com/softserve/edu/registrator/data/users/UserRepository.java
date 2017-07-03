@@ -16,15 +16,6 @@ public final class UserRepository {
         }
         return instance;
     }
-
-    // TODO
-	//public IUser getAdmin()
-	//public IUser getRegistrator()
-	//public IUser getCommissioner()
-	//public IUser getCoOwner()
-	//public IUser getNewUser()
-	//
-	//public List<IUser> getAdminDB()
 	
 	public IUser admin() {
 		// TODO Read from file
@@ -401,7 +392,7 @@ public final class UserRepository {
 	                            .setPublished("Народом України")
 	                            );
 	    }
-
+//TODO
 //    public List<IUser> getExistUsersCVS() {
 //        return new UserUtils().getAllUsers();
 //    }

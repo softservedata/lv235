@@ -20,21 +20,6 @@ public class Address implements IAddress {
 		this.postcode = new String();
 	}
 
-	// Delete
-	// public Address(String city, String region, String district, String
-	// street, String building, String flat,
-	// String postcode) {
-	// this.city = city;
-	// this.region = region;
-	// this.district = district;
-	// this.street = street;
-	// this.building = building;
-	// this.flat = flat;
-	// this.postcode = postcode;
-	// }
-
-	// static factory - - - - - - - - - -
-
 	public static Address get() {
 		return new Address();
 	}
