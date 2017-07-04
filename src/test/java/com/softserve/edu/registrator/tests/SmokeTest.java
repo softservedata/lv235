@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
-import com.softserve.edu.registrator.pages.CommonPage;
-import com.softserve.edu.registrator.pages.LoginPage;
+import com.softserve.edu.registrator.pages.common.CommonPage;
+import com.softserve.edu.registrator.pages.common.LoginPage;
 
 public class SmokeTest {
 

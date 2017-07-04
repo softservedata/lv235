@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.Application;
-import com.softserve.edu.registrator.pages.CommonPage;
-import com.softserve.edu.registrator.pages.PassiveEditUserPage;
+import com.softserve.edu.registrator.pages.common.CommonPage;
+import com.softserve.edu.registrator.pages.user.PassiveEditUserPage;
 
 public class SmokeRunnerTest extends TestRunner {
 

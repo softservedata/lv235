@@ -9,8 +9,8 @@ import org.testng.annotations.BeforeMethod;
 import com.softserve.edu.registrator.data.apps.ApplicationSourcesRepository;
 import com.softserve.edu.registrator.data.apps.ApplicationUtils;
 import com.softserve.edu.registrator.data.users.UserRepository;
-import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
 
 public class RegistrationTestRunner extends TestRunner {
 

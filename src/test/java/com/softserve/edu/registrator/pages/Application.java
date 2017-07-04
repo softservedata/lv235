@@ -12,6 +12,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import com.softserve.edu.registrator.data.apps.ApplicationSources;
 import com.softserve.edu.registrator.data.apps.ApplicationSourcesRepository;
+import com.softserve.edu.registrator.pages.common.LoginPage;
 
 public class Application {
 

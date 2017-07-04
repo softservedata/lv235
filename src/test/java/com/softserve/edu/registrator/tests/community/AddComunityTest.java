@@ -4,9 +4,9 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.data.communities.CommunityRepository;
 import com.softserve.edu.registrator.data.communities.ICommunity;
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
-import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
+import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
 import com.softserve.edu.registrator.pages.communities.AddCommunityPage;
 import com.softserve.edu.registrator.pages.communities.AddCommunityPage.AddCommunityPageL10n;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;

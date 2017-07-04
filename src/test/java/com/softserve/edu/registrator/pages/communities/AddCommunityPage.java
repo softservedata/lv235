@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.communities.ICommunity;
-import com.softserve.edu.registrator.pages.AdminHomePage;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
 
 public class AddCommunityPage extends AdminHomePage {
 

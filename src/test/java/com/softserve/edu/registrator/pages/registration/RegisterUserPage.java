@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.User;
-import com.softserve.edu.registrator.pages.AdminHomePage;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
 
 public class RegisterUserPage extends AdminHomePage {
     

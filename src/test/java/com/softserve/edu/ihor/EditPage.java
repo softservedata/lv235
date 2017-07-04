@@ -1,7 +1,8 @@
 package com.softserve.edu.ihor;
 
 import com.softserve.edu.registrator.data.users.IUser;
-import com.softserve.edu.registrator.pages.PassiveEditUserPage;
+import com.softserve.edu.registrator.pages.user.PassiveEditUserPage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
