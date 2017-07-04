@@ -14,6 +14,7 @@ import com.softserve.edu.registrator.pages.Application;
  * Class for searching present elements with explicit timeout.
  */
 public class SearchExplicitVisible extends ASearch {
+	
     private WebDriverWait wait;
 
     public SearchExplicitVisible() {
@@ -28,7 +29,7 @@ public class SearchExplicitVisible extends ASearch {
         //    .setScriptTimeout(0L, TimeUnit.SECONDS);
     }
 
-    private WebDriverWait getWait() {
+    protected WebDriverWait getWait() {
         return this.wait;
     }
     

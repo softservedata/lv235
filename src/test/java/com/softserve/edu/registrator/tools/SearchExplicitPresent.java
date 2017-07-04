@@ -1,35 +1,18 @@
 package com.softserve.edu.registrator.tools;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.softserve.edu.registrator.pages.Application;
 
 /**
  * Class for searching present elements with explicit timeout.
  */
-public class SearchExplicitPresent extends ASearch {
-    private WebDriverWait wait;
+public class SearchExplicitPresent extends SearchExplicitVisible {
 
     public SearchExplicitPresent() {
-        this.wait = new WebDriverWait(Application.get().getBrowser(),
-                Application.get().getApplicationSources().getExplicitTimeOut());
-        Application.get().getBrowser().manage().timeouts()
-            .implicitlyWait(0L, TimeUnit.SECONDS);
-        // TODO
-        //Application.get().getBrowser().manage().timeouts()
-        //    .pageLoadTimeout(0L, TimeUnit.SECONDS);
-        //Application.get().getBrowser().manage().timeouts()
-        //    .setScriptTimeout(0L, TimeUnit.SECONDS);
-    }
-
-    private WebDriverWait getWait() {
-        return this.wait;
+        super();
     }
 
     /**
@@ -64,13 +47,11 @@ public class SearchExplicitPresent extends ASearch {
     @Override
     protected List<WebElement> getWebElements(By by, WebElement fromWebElement) {
         // TODO Use presenceOfNestedElementLocatedBy Method
-        return getWait().until(ExpectedConditions
-                .visibilityOfNestedElementsLocatedBy(fromWebElement, by));
+        return super.getWebElements(by, fromWebElement);
     }
 
     @Override
     public boolean stalenessOf(WebElement webElement) {
-        return getWait().until(ExpectedConditions
-                .stalenessOf(webElement));
+        return super.stalenessOf(webElement);
     }
 }
