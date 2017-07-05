@@ -1,4 +1,4 @@
-package com.softserve.edu.ihor;
+package com.softserve.edu.registrator.pages.edits;
 
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 import org.openqa.selenium.By;
@@ -39,7 +39,6 @@ public class EditAddressInfoComponent {
         }
     }
 
-
     public static final String REGION_LABEL = "//input[@id='region']/../..//label";
     public static final String CITY_LABEL = "//input[@id='city']/../..//label";
     public static final String DISTRICT_LABEL = "//input[@id='district']/../..//label";
@@ -56,7 +55,7 @@ public class EditAddressInfoComponent {
     public static final String BUILDING_ID = "building";
     public static final String FLAT_ID = "flat";
     public static final String POSTCODE_ID = "postcode";
-
+    public static final String ADDRESS_VALUE = "value";
     //WebDriver
     private WebDriver driver;
     //label
@@ -101,6 +100,7 @@ public class EditAddressInfoComponent {
     public WebDriver getDriver(){
         return driver;
     }
+
     // get LABEl
 
     public WebElement getAddressMainLabel() {
@@ -135,6 +135,19 @@ public class EditAddressInfoComponent {
         return this.postcodeLabel;
     }
 
+    //Functional for get Value
+    public String getCityValueText(){
+        return getCityField().getAttribute(ADDRESS_VALUE);
+    }
+
+    public String getRegionValueText(){
+        return getRegionField().getAttribute(ADDRESS_VALUE);
+    }
+
+    public String getFlatValueNumber() {
+        return getFlatField().getAttribute(ADDRESS_VALUE);
+    }
+
     // get Fields
     public WebElement getRegionField() {
         return this.regionField;
@@ -163,6 +176,7 @@ public class EditAddressInfoComponent {
     public WebElement getPostcodeField() {
         return this.postcodeField;
     }
+
     //Functional for labels
     public String getMainAddressLabelTetx(){
         return getAddressMainLabel().getText().trim();
@@ -194,26 +208,32 @@ public class EditAddressInfoComponent {
      getRegionField().clear();
      getRegionField().sendKeys(region);
     }
+
     public  void setCityFieldValue(String city){
         getCityField().clear();
         getCityField().sendKeys(city);
     }
+
     public void setDistrictFieldValue(String district){
     getDistrictField().clear();
     getDistrictField().sendKeys(district);
     }
+
     public void setStreetFieldValue(String street){
     getStreetField().clear();
     getStreetField().sendKeys(street);
     }
+
     public void setBuildingFieldValue(String building){
         getBuildingField().clear();
         getBuildingField().sendKeys(building);
     }
+
     public void setFlatFieldValue(String flat) {
         getFlatField().clear();
         getFlatField().sendKeys(flat);
     }
+
     public void setPostcode(String postcode){
     getPostcodeField().clear();
     getPostcodeField().sendKeys(postcode);

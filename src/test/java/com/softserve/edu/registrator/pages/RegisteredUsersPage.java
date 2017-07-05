@@ -23,7 +23,7 @@ public abstract class RegisteredUsersPage extends AdminHomePage {
         super(driver);
         this.actionsButton = driver.findElement(By.id("dLabel"));
         //this.table = new Table(driver.findElement(By.tagName("table"));
-        this.table = new Table(driver.findElement(By.id("example")));
+        this.table = new Table(driver.findElement(By.tagName("table")));
     }
 
     // PageObject
@@ -45,6 +45,14 @@ public abstract class RegisteredUsersPage extends AdminHomePage {
     }
 
     // get inner Data
+
+    public ITable getTable(){
+        return this.table;
+    }
+
+    public ITable getRefTable(){
+        return new Table(driver.findElement(By.tagName("table")));
+    }
 
     // set Data
 
