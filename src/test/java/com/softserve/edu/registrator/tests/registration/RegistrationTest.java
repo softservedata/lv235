@@ -9,7 +9,6 @@ import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
-import com.softserve.edu.registrator.pages.common.CommonPage;
 import com.softserve.edu.registrator.pages.common.LoginPage;
 import com.softserve.edu.registrator.pages.registration.RegisterUserPage;
 import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
