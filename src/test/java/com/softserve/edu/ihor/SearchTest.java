@@ -24,7 +24,7 @@ public class SearchTest extends TestRunner {
 
     @Test
     public void SearchTest() throws Exception {
-//    // ActiveCoownersPage activeCoownersPage=adminHomePage.clickActive();
+//    // ActiveUserPageContent activeCoownersPage=adminHomePage.clickActive();
 //     activeCoownersPage.inputInFirstNameField("ihor");
 //     activeCoownersPage.clickSearchButton();
 //     Thread.sleep(4000);

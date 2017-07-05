@@ -1,6 +1,6 @@
 package com.softserve.edu.registrator.tests.serch;
 
-import com.softserve.edu.registrator.pages.search.user.ActiveCoownersPage;
+import com.softserve.edu.registrator.pages.search.user.ActiveUserPageContent;
 import com.softserve.edu.registrator.pages.search.user.ISearchFields;
 import com.softserve.edu.registrator.pages.search.user.SearchFieldsData;
 import com.softserve.edu.registrator.tests.community.AdminHomePageTestRunner;
@@ -33,7 +33,7 @@ public class SearchTest extends AdminHomePageTestRunner {
 
     @Test(dataProvider = "searchData")
     public void searchByFistNameWithEmailTest(ISearchFields searchFields) throws Exception {
-        ActiveCoownersPage page = getAdminHomePage().clickActive();
+        ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputFirstNameData(searchFields);
         page.inputInEmailField("IvaTest@gmail.com");
         page.clickSearchButton();
@@ -48,7 +48,7 @@ public class SearchTest extends AdminHomePageTestRunner {
                         "IvaTest@gmail.com",
                         page.getRefTable().getColumnIndexByValueOfHeader("Електронна пошта")).
                         isEmpty());
-        setCommunityPage(page);
+        setAdminHomePage(page);
     }
 
     /**
@@ -57,7 +57,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      */
     @Test
     public void searchByFistNameWithLoginTest() throws Exception {
-       ActiveCoownersPage page = getAdminHomePage().clickActive();
+       ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputInFirstNameField("ihor");
         page.inputInLoginField("adminIhor");
         page.clickSearchButton();
@@ -72,7 +72,7 @@ public class SearchTest extends AdminHomePageTestRunner {
                         "adminIhor",
                         page.getRefTable().getColumnIndexByValueOfHeader("Логін")).
                         isEmpty());
-        setCommunityPage(page);
+        setAdminHomePage(page);
     }
 
     /**
@@ -81,7 +81,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      */
     @Test
     public void searchLoginWithCommunity() throws Exception {
-        ActiveCoownersPage page = getAdminHomePage().clickActive();
+        ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputInLoginField("adminIhor");
         page.inputInCommunityField("Львівська");
         page.clickSearchButton();
@@ -96,7 +96,7 @@ public class SearchTest extends AdminHomePageTestRunner {
                         "Львівська",
                         page.getRefTable().getColumnIndexByValueOfHeader("Територіальна громада")).
                         isEmpty());
-        setCommunityPage(page);
+        setAdminHomePage(page);
     }
 
     /**
@@ -105,7 +105,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      */
     @Test
     public void searchEmailWithLastName() throws Exception {
-        ActiveCoownersPage page = getAdminHomePage().clickActive();
+        ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputInEmailField("IvaTest@gmail.com");
         page.inputInLastNameField("IvaTestSurname");
         page.clickSearchButton();
@@ -120,7 +120,7 @@ public class SearchTest extends AdminHomePageTestRunner {
                         "IvaTestSurname",
                         page.getRefTable().getColumnIndexByValueOfHeader("Прізвище")).
                         isEmpty());
-        setCommunityPage(page);
+        setAdminHomePage(page);
     }
 
     /**
@@ -129,7 +129,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      */
     @Test
     public void searchCommunityWithLastname() throws Exception {
-        ActiveCoownersPage page = getAdminHomePage().clickActive();
+        ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputInCommunityField("Львівська");
         page.inputInLastNameField("IvaTestSurname");
         page.clickSearchButton();
@@ -144,6 +144,6 @@ public class SearchTest extends AdminHomePageTestRunner {
                         "IvaTestSurname",
                         page.getRefTable().getColumnIndexByValueOfHeader("Прізвище")).
                         isEmpty());
-        setCommunityPage(page);
+        setAdminHomePage(page);
     }
 }

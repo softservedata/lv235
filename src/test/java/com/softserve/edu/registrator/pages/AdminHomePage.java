@@ -1,10 +1,6 @@
 package com.softserve.edu.registrator.pages;
 
-<<<<<<< HEAD
-
-=======
-import com.softserve.edu.registrator.pages.search.user.ActiveCoownersPage;
->>>>>>> mvnihor
+import com.softserve.edu.registrator.pages.search.user.ActiveUserPageContent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -181,9 +177,9 @@ public class AdminHomePage extends ACommonComponent {
 
     // set inner Data
 
-    public ActiveUsersPage clickActive() {
+    public ActiveUserPageContent clickActive() {
         getActive().click();
-        return new ActiveUsersPage(driver);
+        return new ActiveUserPageContent(driver);
     }
 
     public void clickInactive() {
@@ -211,7 +207,7 @@ public class AdminHomePage extends ACommonComponent {
         clickHome();
         return new AdminHomePage(driver);
     }
-    
+
     public LoginPage logout() {
         clickLogout();
         return new LoginPage(driver);
@@ -221,7 +217,7 @@ public class AdminHomePage extends ACommonComponent {
         clickActive();
         return new ActiveUsersPage(driver);
     }
-    
+
     public NonConfirmedUsersPage gotoNonConfirmedUsers() {
         clickNonConfirmed();
         return new NonConfirmedUsersPage(driver);

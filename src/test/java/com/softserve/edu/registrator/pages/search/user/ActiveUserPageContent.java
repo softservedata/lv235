@@ -1,5 +1,6 @@
 package com.softserve.edu.registrator.pages.search.user;
 
+import com.softserve.edu.registrator.pages.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.RegisteredUsersPage;
 import com.softserve.edu.registrator.pages.search.user.ISearchFields;
 import org.openqa.selenium.By;
@@ -9,7 +10,7 @@ import org.openqa.selenium.WebElement;
 /**
  * @author ihor
  */
-public class ActiveCoownersPage extends RegisteredUsersPage {
+public class ActiveUserPageContent extends ActiveUsersPage {
 
     private class ActionList {
         // private WebDriver driver;
@@ -69,7 +70,7 @@ public class ActiveCoownersPage extends RegisteredUsersPage {
     private WebElement roleSorting;
     private ActionList actionList;
 
-    public ActiveCoownersPage(WebDriver driver) {
+    public ActiveUserPageContent(WebDriver driver) {
         super(driver);
         //Fields for Searching
         this.testValue = driver.findElement(By.xpath("//td[@class=' email'][text()='IvaTest@gmail.com']"));

@@ -39,10 +39,7 @@ public abstract class RegisteredUsersPage extends AdminHomePage {
     public String getActionsButtonText() {
         return getActionsButton().getText().trim();
     }
-    
-    public ITable getTable() {
-        return this.table;
-    }
+
 
     // get inner Data
 

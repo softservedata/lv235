@@ -1,15 +1,11 @@
 package com.softserve.edu.registrator.pages;
 
-<<<<<<< HEAD
-
-=======
 import com.softserve.edu.registrator.pages.edits.EditPage;
->>>>>>> mvnihor
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.ihor.EditPage;
 
 public class PassiveEditUserPage extends AdminHomePage {
 

@@ -1,10 +1,10 @@
 package com.softserve.edu.andrii;
 
+import com.softserve.edu.registrator.pages.edits.EditPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.ihor.EditPage;
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.ActiveUsersPage;
