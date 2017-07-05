@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.testng.ITestContext;
 
 import com.softserve.edu.registrator.data.apps.ApplicationSources.ApplicationParameters;
-import com.softserve.edu.registrator.pages.Application.Browsers;
+import com.softserve.edu.registrator.tools.browser.BrowserWrapper.Browsers;
 
 public final class ApplicationUtils {
     private static final String SUREFIRE_WEBDRIVER_NAME = "surefire.webdriver.name";

@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.registrator.data.apps.ApplicationSources;
+import com.softserve.edu.registrator.tools.browser.BrowserWrapper.Browsers;
+
 public final class Search {
 
     interface ISearchStrategy {
@@ -34,7 +37,9 @@ public final class Search {
         }
     }
 
-    public static enum SearchStrategy {
+    public static enum SearchStrategies {
+        DEFAULT_STRATEGY("SearchImplicitStrategy",
+                new ImplicitStrategy()),
         IMPLICIT_STRATEGY("SearchImplicitStrategy",
                 new ImplicitStrategy()),
         EXPLICIT_STRATEGY_VISIBLE("SearchExplicitStrategyVisible",
@@ -47,7 +52,7 @@ public final class Search {
         private String searchStrategyName;
         private ISearchStrategy searchStrategy;
 
-        private SearchStrategy(String searchStrategyName, ISearchStrategy searchStrategy) {
+        private SearchStrategies(String searchStrategyName, ISearchStrategy searchStrategy) {
             this.searchStrategyName = searchStrategyName;
             this.searchStrategy = searchStrategy;
         }
@@ -69,6 +74,18 @@ public final class Search {
     private static ISearch search = new SearchImplicit();
 
     private Search() {
+    }
+
+    public static void initSearch(ApplicationSources applicationSources) {
+        SearchStrategies currentStrategy = SearchStrategies.DEFAULT_STRATEGY;
+        for (SearchStrategies strategy : SearchStrategies.values()) {
+            if (strategy.toString().toLowerCase().contains(applicationSources.getSearchStrategy().toLowerCase())) {
+                currentStrategy = strategy;
+                break;
+            }
+        }
+        setStrategy(currentStrategy.getSearchStrategy());
+        //System.out.println("\t+++Choosen Strategy: " + currentStrategy.toString());
     }
 
     // Set Strategy

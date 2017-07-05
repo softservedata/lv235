@@ -20,6 +20,7 @@ public class SearchExplicitClickable extends SearchExplicitVisible {
      */
     @Override
     protected WebElement getWebElement(By by) {
+        //System.out.println("\t\t\t*** Class SearchExplicitClickable");
         return getWait().until(ExpectedConditions
                 .elementToBeClickable(by));
     }

@@ -48,6 +48,7 @@ public class SearchImplicit extends ASearch {
      */
     @Override
     protected WebElement getWebElement(By by) {
+        //System.out.println("\t\t\t*** Class SearchImplicit");
         return Application.get().getBrowser().findElement(by);
     }
 

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import com.softserve.edu.registrator.tools.search.Search;
+
 public abstract class ATopComponent {
 
     public static enum ChangeLanguageFields {
@@ -39,9 +41,11 @@ public abstract class ATopComponent {
 
     protected ATopComponent(WebDriver driver) {
         this.driver = driver;
-        this.titleMessage = driver.findElement(By
-                .cssSelector("div.col-md-7.col-xs-12"));
-        this.changeLanguage = new Select(driver.findElement(By.id("changeLanguage")));
+        //this.titleMessage = driver.findElement(By.cssSelector("div.col-md-7.col-xs-12"));
+        //this.changeLanguage = new Select(driver.findElement(By.id("changeLanguage")));
+        //
+        this.titleMessage = Search.cssSelector("div.col-md-7.col-xs-12");
+        this.changeLanguage = new Select(Search.id("changeLanguage"));
     }
 
     // PageObject

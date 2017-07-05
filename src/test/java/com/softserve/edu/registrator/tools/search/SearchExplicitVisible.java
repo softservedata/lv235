@@ -40,6 +40,7 @@ public class SearchExplicitVisible extends ASearch {
      */
     @Override
     protected WebElement getWebElement(By by) {
+        //System.out.println("\t\t\t*** Class SearchExplicitVisible");
         // return new WebDriverWait(Application.get().getBrowser(), EXPLICIT_WAIT_TIMEOUT)
         //            .until(ExpectedConditions.visibilityOfElementLocated(by));
         return getWait().until(ExpectedConditions

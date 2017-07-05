@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class LoginPage extends ATopComponent {
 	
@@ -55,12 +56,22 @@ public class LoginPage extends ATopComponent {
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
-		this.loginLabel = driver.findElement(By.xpath(LOGIN_LABEL_XPATH));
-		this.loginInput = driver.findElement(By.id(LOGIN_INPUT_ID));
-		this.passwordLabel = driver.findElement(By.xpath(PASSWORD_LABEL_XPATH));
-		this.passwordInput = driver.findElement(By.id(PASSWORD_INPUT_ID));
-		this.signin = driver.findElement(By.cssSelector(SIGNIN_CSSSELECTOR));
-		this.logo = driver.findElement(By.cssSelector(LOGO_CSSSELECTOR));
+//		this.loginLabel = driver.findElement(By.xpath(LOGIN_LABEL_XPATH));
+//		this.loginInput = driver.findElement(By.id(LOGIN_INPUT_ID));
+//		this.passwordLabel = driver.findElement(By.xpath(PASSWORD_LABEL_XPATH));
+//		this.passwordInput = driver.findElement(By.id(PASSWORD_INPUT_ID));
+//		this.signin = driver.findElement(By.cssSelector(SIGNIN_CSSSELECTOR));
+//		this.logo = driver.findElement(By.cssSelector(LOGO_CSSSELECTOR));
+		//
+        this.loginLabel = Search.xpath(LOGIN_LABEL_XPATH);
+        this.loginInput = Search.id(LOGIN_INPUT_ID);
+        //Search.setExplicitVisibleStrategy();
+        this.passwordLabel = Search.xpath(PASSWORD_LABEL_XPATH);
+        this.passwordInput = Search.id(PASSWORD_INPUT_ID);
+        //Search.setExplicitClickableStrategy();
+        this.signin = Search.cssSelector(SIGNIN_CSSSELECTOR);
+        //Search.setImplicitStrategy();
+        this.logo = Search.cssSelector(LOGO_CSSSELECTOR);
 	}
 
     // PageObject
