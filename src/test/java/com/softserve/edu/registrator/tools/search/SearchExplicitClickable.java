@@ -23,7 +23,7 @@ public class SearchExplicitClickable extends SearchExplicitVisible {
         return getWait().until(ExpectedConditions
                 .elementToBeClickable(by));
     }
-
+ 
     @Override
     protected WebElement getWebElement(By by, WebElement fromWebElement) {
         // TODO Use elementToBeClickable for Next Version

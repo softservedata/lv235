@@ -69,6 +69,7 @@ public class SearchExplicitVisible extends ASearch {
                 .visibilityOfNestedElementsLocatedBy(fromWebElement, by));
     }
 
+    @Override
     public boolean stalenessOf(WebElement webElement) {
         return getWait().until(ExpectedConditions
                 .stalenessOf(webElement));

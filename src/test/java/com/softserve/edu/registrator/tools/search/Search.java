@@ -43,6 +43,7 @@ public final class Search {
                 new ExplicitStrategyPresent()),
         EXPLICIT_STRATEGY_CLICKABLE("SearchExplicitStrategyClickable",
                 new ExplicitStrategyClickable());
+    	
         private String searchStrategyName;
         private ISearchStrategy searchStrategy;
 
@@ -99,9 +100,7 @@ public final class Search {
     }
 
     public static boolean stalenessOf(WebElement webElement) {
-        // TODO
-        // return getSearch().stalenessOf(webElement);
-        return true;
+        return getSearch().stalenessOf(webElement);
     }
 
     public static WebElement id(String id) {

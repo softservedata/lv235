@@ -46,6 +46,7 @@ public class SearchImplicit extends ASearch {
      * @param by locator for element.
      * @return visible WebElement.
      */
+    @Override
     protected WebElement getWebElement(By by) {
         return Application.get().getBrowser().findElement(by);
     }
@@ -57,6 +58,7 @@ public class SearchImplicit extends ASearch {
      * @param fromWebElement located WebElement to start searching from.
      * @return visible WebElement.
      */
+    @Override
     protected WebElement getWebElement(By by, WebElement fromWebElement) {
         return fromWebElement.findElement(by);
     }
@@ -66,6 +68,7 @@ public class SearchImplicit extends ASearch {
      * @param by locator for elements.
      * @return visible WebElement.
      */
+    @Override
     protected List<WebElement> getWebElements(By by) {
         return Application.get().getBrowser().findElements(by);
     }
@@ -75,6 +78,7 @@ public class SearchImplicit extends ASearch {
 		return fromWebElement.findElements(by);
 	}
 
+	@Override
     public boolean stalenessOf(WebElement webElement) {
         removeImplicitWaits();
         new WebDriverWait(Application.get().getBrowser(),
