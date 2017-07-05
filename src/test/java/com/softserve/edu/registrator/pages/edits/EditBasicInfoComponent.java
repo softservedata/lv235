@@ -1,4 +1,4 @@
-package com.softserve.edu.ihor;
+package com.softserve.edu.registrator.pages.edits;
 
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 import org.openqa.selenium.By;
@@ -126,7 +126,8 @@ public class EditBasicInfoComponent {
         return this.basicLabel;
     }
 
-    public WebElement getFirstNameLabel() {return this.firstNameLabel; }
+    public WebElement getFirstNameLabel() {
+        return this.firstNameLabel; }
 
     public WebElement getSecondNameLabel() {
         return this.secondNameLabel;
@@ -166,6 +167,7 @@ public class EditBasicInfoComponent {
         return this.commissionerRole;
     }
 
+    //get methods
     public WebElement getBlockUser() {
         return this.blockUser;
     }

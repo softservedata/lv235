@@ -1,4 +1,4 @@
-package com.softserve.edu.ihor;
+package com.softserve.edu.registrator.pages.edits;
 
 import com.softserve.edu.registrator.pages.ATopComponent;
 import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
@@ -153,19 +153,21 @@ public class EditPassportInfoComponent {
     public String getCommunityLabelText() {
         return getCommunityLabel().getText().trim();
     }
+
     //Functional for values
     public String getSeriaValueText(){
         return getSeriaFiled().getAttribute(VALUE);
     }
+
     public String getNumberValueText(){
         return getNumberField().getAttribute(VALUE);
     }
+
     public  String getPublishValueText(){
         return getPublishField().getAttribute(VALUE);
     }
 
     //Functional for  passport data
-
     public void setCommunitiesOptions(String communitiesOptions) {
         getCommunityField().click();
         for (WebElement web : getCommunitiesOptions()) {
@@ -174,7 +176,6 @@ public class EditPassportInfoComponent {
                 break;
             }
         }
-
     }
 
     public void setSeriaFiledValue(String seria) {

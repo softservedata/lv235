@@ -1,14 +1,17 @@
-package com.softserve.edu.ihor;
+package com.softserve.edu.registrator.tests.edit;
 
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.PassiveEditUserPage;
+import com.softserve.edu.registrator.pages.edits.EditPage;
+import com.softserve.edu.registrator.tests.TestRunner;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 
 /**
  * Test to editing passport information
@@ -16,7 +19,8 @@ import org.testng.annotations.Test;
  *@author Ihor
  *
  */
-public class EditAddressInfoTest {
+public class EditBasicInfoTest extends TestRunner {
+
     /**
      * Delay for Thread.Sleep().
      */
@@ -25,7 +29,6 @@ public class EditAddressInfoTest {
     /**
      * For login as administrator
      */
-
     AdminHomePage adminHomePage;
 
     /**
@@ -48,17 +51,17 @@ public class EditAddressInfoTest {
         //Go to Edit page by Login
         EditPage editPage = passiveEditPage.clickEditPageButton();
         //Editing
-        editPage.getEditAddressInfo().setCityFieldValue("Lviv");
-        editPage.getEditAddressInfo().setRegionFieldValue("Lvivska");
-        editPage.getEditAddressInfo().setFlatFieldValue("34");
+        editPage.getEditBasicInfo().setFirstNameValue("ihor");
+        editPage.getEditBasicInfo().setSecondNameValue("IvaTestSurname");
+        editPage.getEditBasicInfo().setEmailValue("IvaTest@gmail.com");
         ActiveUsersPage activeUsersPage = editPage.clickConfirmButton();
         //Go to Edit page by Login
         activeUsersPage.gotoEditUserByLogin("adminIhor");
         EditPage editBasic = passiveEditPage.clickEditPageButton();
-        //test for editing AddressInfoComponent
-        Assert.assertEquals(editBasic.getEditAddressInfo().getCityValueText(),"Lviv");
-        Assert.assertEquals(editBasic.getEditAddressInfo().getRegionValueText(),"Lvivska");
-        Assert.assertEquals(editBasic.getEditAddressInfo().getFlatValueNumber(),"34");
+        //test for editing BasicInfoComponent
+        Assert.assertEquals(editBasic.getEditBasicInfo().getFirstNameValueText(),"ihor");
+        Assert.assertEquals(editBasic.getEditBasicInfo().getSecondNameValueText(),"IvaTestSurname");
+        Assert.assertEquals(editBasic.getEditBasicInfo().getEmailValueText(), "IvaTest@gmail.com");
     }
 
     /**
@@ -69,5 +72,3 @@ public class EditAddressInfoTest {
         Application.get().getBrowser().quit();
     }
 }
-
-

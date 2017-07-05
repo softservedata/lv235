@@ -1,6 +1,6 @@
 package com.softserve.edu.registrator.pages;
 
-import com.softserve.edu.ihor.EditPage;
+import com.softserve.edu.registrator.pages.edits.EditPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

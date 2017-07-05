@@ -1,10 +1,11 @@
-package com.softserve.edu.ihor;
+package com.softserve.edu.registrator.tests.edit;
 
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.PassiveEditUserPage;
+import com.softserve.edu.registrator.pages.edits.EditPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -16,12 +17,15 @@ import org.testng.annotations.Test;
  *@author Ihor
  *
  */
-public class EditPassportInfoTest {
-
+public class EditAddressInfoTest {
     /**
      * Delay for Thread.Sleep().
      */
     private final int DELAY_FOR_DEMO = 1000;
+
+    /**
+     * For login as administrator
+     */
 
     AdminHomePage adminHomePage;
 
@@ -34,7 +38,7 @@ public class EditPassportInfoTest {
     }
 
     /**
-     * Test for editing passport fields
+     * Test for editing address fields
      * @throws Exception - used by Thread.sleep() for DEMO
      */
     @Test
@@ -45,17 +49,17 @@ public class EditPassportInfoTest {
         //Go to Edit page by Login
         EditPage editPage = passiveEditPage.clickEditPageButton();
         //Editing
-        editPage.getEditPassportInfo().setSeriaFiledValue("ЛЛ");
-        editPage.getEditPassportInfo().setNumberFieldValue("123456");
-        editPage.getEditPassportInfo().setPublishFieldValue("1234567");
+        editPage.getEditAddressInfo().setCityFieldValue("Lviv");
+        editPage.getEditAddressInfo().setRegionFieldValue("Lvivska");
+        editPage.getEditAddressInfo().setFlatFieldValue("34");
         ActiveUsersPage activeUsersPage = editPage.clickConfirmButton();
         //Go to Edit page by Login
         activeUsersPage.gotoEditUserByLogin("adminIhor");
         EditPage editBasic = passiveEditPage.clickEditPageButton();
-        //test for editing BasicInfoComponent
-        Assert.assertEquals(editBasic.getEditPassportInfo().getSeriaValueText(),"ЛЛ");
-        Assert.assertEquals(editBasic.getEditPassportInfo().getNumberValueText(),"123456");
-        Assert.assertEquals(editBasic.getEditPassportInfo().getPublishValueText(),"1234567");
+        //test for editing AddressInfoComponent
+        Assert.assertEquals(editBasic.getEditAddressInfo().getCityValueText(),"Lviv");
+        Assert.assertEquals(editBasic.getEditAddressInfo().getRegionValueText(),"Lvivska");
+        Assert.assertEquals(editBasic.getEditAddressInfo().getFlatValueNumber(),"34");
     }
 
     /**
@@ -66,3 +70,5 @@ public class EditPassportInfoTest {
         Application.get().getBrowser().quit();
     }
 }
+
+

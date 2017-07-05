@@ -1,10 +1,8 @@
-package com.softserve.edu.ihor;
+package com.softserve.edu.registrator.pages.edits;
 
 import com.softserve.edu.registrator.controls.ITable;
-import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.pages.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.PassiveEditUserPage;
-import com.softserve.edu.registrator.pages.RegisteredUsersPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,12 +35,9 @@ public class EditPage extends PassiveEditUserPage {
         }
     }
 
-    //----------------------------------------------------------------------------
+    //buttons
     public static final String EDIT_BUTTON_ID = "edit";
     public static final String CONFIRM_BUTTON_ID = "ok";
-
-    //----------------------------------------------------------------------------
-    //Buttons
     private WebElement editButton;
     private WebElement confirmButton;
 
@@ -89,7 +84,6 @@ public class EditPage extends PassiveEditUserPage {
         return editPassportInfoComponent;
     }
 
-    //----------------------------------------------------------------------------
     //Functional
     public EditPage changeLanguage(ChangeLanguageFields language){
         setChangeLanguage(language);

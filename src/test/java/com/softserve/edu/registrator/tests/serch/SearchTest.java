@@ -1,7 +1,11 @@
-package com.softserve.edu.ihor;
+package com.softserve.edu.registrator.tests.serch;
 
+import com.softserve.edu.registrator.pages.search.user.ActiveCoownersPage;
+import com.softserve.edu.registrator.pages.search.user.ISearchFields;
+import com.softserve.edu.registrator.pages.search.user.SearchFieldsData;
 import com.softserve.edu.registrator.tests.community.AdminHomePageTestRunner;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -11,6 +15,12 @@ import org.testng.annotations.Test;
  *
  */
 public class SearchTest extends AdminHomePageTestRunner {
+    @DataProvider
+    public Object[][] searchData() {
+        return new Object[][] {
+                { new SearchFieldsData("ihor", "IvaSurname", "") },
+        };
+    }
     /**
      * Delay for Thread.Sleep().
      */
@@ -20,10 +30,11 @@ public class SearchTest extends AdminHomePageTestRunner {
      * Test for checking search functional by FirstName and E-mail.
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-    @Test
-    public void searchByFistNameWithEmailTest() throws Exception {
+
+    @Test(dataProvider = "searchData")
+    public void searchByFistNameWithEmailTest(ISearchFields searchFields) throws Exception {
         ActiveCoownersPage page = getAdminHomePage().clickActive();
-        page.inputInFirstNameField("ihor");
+        page.inputFirstNameData(searchFields);
         page.inputInEmailField("IvaTest@gmail.com");
         page.clickSearchButton();
         Thread.sleep(DELAY_FOR_DEMO);
@@ -135,5 +146,4 @@ public class SearchTest extends AdminHomePageTestRunner {
                         isEmpty());
         setCommunityPage(page);
     }
-
 }
