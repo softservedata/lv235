@@ -22,14 +22,14 @@ public class SearchTest extends TestRunner {
         adminHomePage = Application.get().load().successAdminLogin(UserRepository.get().admin());
     }
 
-    @Test
-    public void SearchTest() throws Exception {
-     ActiveCoownersPage activeCoownersPage=adminHomePage.clickActive();
-     activeCoownersPage.inputInFirstNameField("ihor");
-     activeCoownersPage.clickSearchButton();
-     Thread.sleep(4000);
-    // Assert.assertTrue();
-    }
+//    @Test
+//    public void SearchTest() throws Exception {
+//     ActiveCoownersPage activeCoownersPage=adminHomePage.clickActive();
+//     activeCoownersPage.inputInFirstNameField("ihor");
+//     activeCoownersPage.clickSearchButton();
+//     Thread.sleep(4000);
+//    // Assert.assertTrue();
+//    }
 
     @AfterClass
     public void closeBrowser(){

@@ -22,17 +22,12 @@ public class RegistrationTest extends RegistrationTestRunner {
     @DataProvider
     public Object[][] credentials() {
         return new Object[][] {
-            { UserRepository.get().testAdmin() },
-            { UserRepository.get().testCoowner() },
-//            { UserRepository.get().testCommissioner() },
-//            { UserRepository.get().testRegistrator() },
+            { UserRepository.get().testRegistrator() },
         };
     }
 
     @Test(dataProvider = "credentials")
     public void CheckUserRegistration(IUser user) throws Exception {
-        System.out.println("\t\t\t\t+++++TEST RUNNING+++++");
-        Thread.sleep(2000);
         
         RegisterUserPage registrationPage = getAdminHomePage().clickNewUser();
         AdminHomePage adminHomePage = registrationPage.clickCancel();
@@ -40,25 +35,21 @@ public class RegistrationTest extends RegistrationTestRunner {
                 "http://java.training.local:8080/registrator/");
         
         registrationPage = adminHomePage.clickNewUser();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         Assert.assertEquals(Application.get().getBrowser().getCurrentUrl(),
                 "http://java.training.local:8080/registrator/manualregistration");
         
         registrationPage.registerNewUser(user);
-        Thread.sleep(2000);
         
         registrationPage.clickClearForm();
-        Thread.sleep(2000);
         Assert.assertEquals(Application.get().getBrowser().getCurrentUrl(),
                 "http://java.training.local:8080/registrator/manualregistration");
-        
+                
+        Thread.sleep(1000);
         registrationPage.registerNewUser(user);
-        Thread.sleep(2000);
         // TODO Drop database
-//        RegisteredUsersPage registeredUsers = registrationPage.clickSubmit();
-        RegisteredUsersPage registeredUsers = registrationPage.clickNonConfirmed();
-        
-        Thread.sleep(2000);
+        RegisteredUsersPage registeredUsers = registrationPage.clickSubmit();
+        Thread.sleep(1000);
         Assert.assertTrue(Application.get()
                 .getBrowser()
                 .getCurrentUrl()
@@ -69,31 +60,35 @@ public class RegistrationTest extends RegistrationTestRunner {
                     .getAccount()
                     .getLogin());
         Thread.sleep(2000);
-        
-        // TODO CHANGE USER STATUS AND ROLE
-               
+        Assert.assertTrue(Application.get()
+                .getBrowser()
+                .getCurrentUrl()
+                .contains("edit-registrated-user"));
+        Assert.assertEquals(passiveEditUserPage.getEmailInputText(), 
+                user.getPerson().getEmail());
+
         EditPage editPage = passiveEditUserPage.clickEditPageButton();
         editPage.getEditBasicInfo().setActiveUser();
         editPage.getEditBasicInfo().setRoleValue(user.getAccount().getRole());
         Thread.sleep(2000);
+                
+        ActiveUsersPage activeUsersPage = editPage.clickConfirmButton();
+        Assert.assertEquals(activeUsersPage.getTable().getCell(activeUsersPage
+                .getTable()
+                .getRowIndexByValueInColumn(
+                        user
+                        .getAccount()
+                        .getLogin(), 3)
+                , 3).getText(),
+                user.getAccount().getLogin());        
+        Thread.sleep(3000);
         
-        
-        ActiveUsersPage activeUsersPage = passiveEditUserPage
-                .gotoActiveUsers();
-//        Assert.assertEquals(activeUsersPage.getTable().getCell(activeUsersPage
-//                .getTable()
-//                .getRowIndexByValueInColumn(
-//                        user
-//                        .getAccount()
-//                        .getLogin(), 3)
-//                , 3).getText(),
-//                user.getAccount().getLogin());        
-//        Thread.sleep(3000);
-//        
+        activeUsersPage.clickLoginAccount();
         LoginPage loginPage = activeUsersPage.logout();
-//        CommonPage commonPage = loginPage.successLogin(user);
-//        Assert.assertEquals(commonPage.getLoginAccountText(),
-//                user.getAccount().getLogin());
+        CommonPage commonPage = loginPage.successLogin(user);
+        Assert.assertEquals(commonPage.getLoginAccountText(),
+                user.getAccount().getLogin());
+        commonPage.clickLogout();
         
     }
 }

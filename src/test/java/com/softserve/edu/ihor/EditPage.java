@@ -1,6 +1,7 @@
 package com.softserve.edu.ihor;
 
 import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.registrator.pages.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.PassiveEditUserPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -88,8 +89,9 @@ public class EditPage extends PassiveEditUserPage {
         setChangeLanguage(language);
         return new EditPage(driver);
     }
-     public void clickConfirmButton(){
+     public ActiveUsersPage clickConfirmButton(){
        getConfirmButton().click();
+       return new ActiveUsersPage(driver);
      }
      public void clickEditButton(){
          getEditButton().click();
