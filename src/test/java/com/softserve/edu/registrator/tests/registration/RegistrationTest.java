@@ -10,6 +10,7 @@ import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
 import com.softserve.edu.registrator.pages.edits.EditPage;
 import com.softserve.edu.registrator.pages.registration.RegisterUserPage;
+import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.user.PassiveEditUserPage;
 import com.softserve.edu.registrator.pages.user.RegisteredUsersPage;
 import com.softserve.edu.registrator.tests.RegistrationTestRunner;
@@ -80,14 +81,6 @@ public class RegistrationTest extends RegistrationTestRunner {
                 user.getAccount().getLogin());        
         Thread.sleep(3000);
         
-<<<<<<< HEAD:src/test/java/com/softserve/edu/andrii/RegistrationTest.java
-        activeUsersPage.clickLoginAccount();
-        LoginPage loginPage = activeUsersPage.logout();
-        CommonPage commonPage = loginPage.successLogin(user);
-        Assert.assertEquals(commonPage.getLoginAccountText(),
-                user.getAccount().getLogin());
-        commonPage.clickLogout();
-=======
         
 //        ActiveUsersPage activeUsersPage = passiveEditUserPage
 //                .gotoActiveUsers();
@@ -105,7 +98,6 @@ public class RegistrationTest extends RegistrationTestRunner {
 //        CommonPage commonPage = loginPage.successLogin(user);
 //        Assert.assertEquals(commonPage.getLoginAccountText(),
 //                user.getAccount().getLogin());
->>>>>>> test:src/test/java/com/softserve/edu/registrator/tests/registration/RegistrationTest.java
         
     }
 }

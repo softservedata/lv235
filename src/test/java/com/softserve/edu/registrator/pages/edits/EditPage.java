@@ -1,15 +1,5 @@
 package com.softserve.edu.registrator.pages.edits;
 
-
-<<<<<<< HEAD:src/test/java/com/softserve/edu/ihor/EditPage.java
-import com.softserve.edu.registrator.data.users.IUser;
-import com.softserve.edu.registrator.pages.ActiveUsersPage;
-import com.softserve.edu.registrator.pages.PassiveEditUserPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-=======
->>>>>>> test:src/test/java/com/softserve/edu/registrator/pages/edits/EditPage.java
 import java.util.HashMap;
 
 import org.openqa.selenium.WebElement;
@@ -102,11 +92,7 @@ public class EditPage extends PassiveEditUserPage {
     }
      public ActiveUsersPage clickConfirmButton(){
        getConfirmButton().click();
-<<<<<<< HEAD:src/test/java/com/softserve/edu/ihor/EditPage.java
-       return new ActiveUsersPage(driver);
-=======
        return new ActiveUsersPage();
->>>>>>> test:src/test/java/com/softserve/edu/registrator/pages/edits/EditPage.java
      }
 
 
