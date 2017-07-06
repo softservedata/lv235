@@ -1,11 +1,12 @@
 package com.softserve.edu.registrator.tests.edit;
 
 import com.softserve.edu.registrator.data.users.UserRepository;
-import com.softserve.edu.registrator.pages.ActiveUsersPage;
-import com.softserve.edu.registrator.pages.AdminHomePage;
 import com.softserve.edu.registrator.pages.Application;
-import com.softserve.edu.registrator.pages.PassiveEditUserPage;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
 import com.softserve.edu.registrator.pages.edits.EditPage;
+import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
+import com.softserve.edu.registrator.pages.user.PassiveEditUserPage;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

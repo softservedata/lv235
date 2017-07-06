@@ -1,9 +1,10 @@
 package com.softserve.edu.registrator.pages.edits;
 
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
 
 import java.security.SecureRandom;
 import java.util.HashMap;

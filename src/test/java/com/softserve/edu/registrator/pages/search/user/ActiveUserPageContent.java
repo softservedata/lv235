@@ -1,8 +1,8 @@
 package com.softserve.edu.registrator.pages.search.user;
 
-import com.softserve.edu.registrator.pages.ActiveUsersPage;
-import com.softserve.edu.registrator.pages.RegisteredUsersPage;
 import com.softserve.edu.registrator.pages.search.user.ISearchFields;
+import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

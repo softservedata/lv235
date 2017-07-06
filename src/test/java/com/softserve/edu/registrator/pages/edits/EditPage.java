@@ -1,8 +1,10 @@
 package com.softserve.edu.registrator.pages.edits;
 
+
 import com.softserve.edu.registrator.controls.ITable;
-import com.softserve.edu.registrator.pages.ActiveUsersPage;
-import com.softserve.edu.registrator.pages.PassiveEditUserPage;
+import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
+import com.softserve.edu.registrator.pages.user.PassiveEditUserPage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

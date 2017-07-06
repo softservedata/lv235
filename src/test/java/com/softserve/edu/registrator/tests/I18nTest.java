@@ -8,9 +8,9 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
-import com.softserve.edu.registrator.pages.LoginPage;
-import com.softserve.edu.registrator.pages.LoginPage.LoginPageL10n;
+import com.softserve.edu.registrator.pages.common.LoginPage;
+import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.pages.common.LoginPage.LoginPageL10n;
 
 public class I18nTest {
 
