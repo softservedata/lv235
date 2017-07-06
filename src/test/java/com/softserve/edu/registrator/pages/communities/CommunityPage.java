@@ -19,19 +19,17 @@ public class CommunityPage extends AdminHomePage {
 		private WebElement okButton;
 		private WebElement cancelButton;
 		private WebElement closeButton;
-		private CommunityPage baseCommunityPage;
 
-		public DeleteCommunityAlert(CommunityPage communityPage) {
-			this.baseCommunityPage = communityPage;
+		public DeleteCommunityAlert() {
+			Search.setExplicitVisibleStrategy();
 			alertLabel = Search.cssSelector(".bootbox-body");
+			Search.setExplicitClickableStrategy();
 			okButton = Search.xpath("//button[@data-bb-handler='confirm']");
 			cancelButton = Search.xpath("//button[@data-bb-handler='cancel']");
 			closeButton = Search.cssSelector(".bootbox-close-button.close");
+			Search.setImplicitStrategy();
 		}
 
-		public CommunityPage getBaseCommunityPage() {
-			return this.baseCommunityPage;
-		}
 		// Getters
 		public WebElement getAlertLabel() {
 			return this.alertLabel;
@@ -65,32 +63,14 @@ public class CommunityPage extends AdminHomePage {
 		// Setters
 
 		public void clickOkButton() {
-			//TODO create explicit waits
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			getOkButton().click();
 		}
 
 		public void clickCancelButton() {
-			//TODO create explicit waits
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			getCancelButton().click();
 		}
 
 		public void clickCloseButton() {
-			//TODO create explicit waits
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			getCloseButton().click();
 		}
 
@@ -98,26 +78,17 @@ public class CommunityPage extends AdminHomePage {
 
 		public CommunityPage ok() {
 			clickOkButton();
-		    //TODO create explicit waits
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			baseCommunityPage.setTtableCommunity();
-			return baseCommunityPage;
+			return new CommunityPage();
 		}
 
 		public CommunityPage cancel() {
 			clickCancelButton();
-			baseCommunityPage.setTtableCommunity();
-			return baseCommunityPage;
+			return new CommunityPage();
 		}
 
 		public CommunityPage close() {
 			clickCloseButton();
-			baseCommunityPage.setTtableCommunity();
-			return baseCommunityPage;
+			return new CommunityPage();
 		}
 	}
 	
@@ -168,15 +139,16 @@ public class CommunityPage extends AdminHomePage {
 		initPage();
 	}
 	
-	
 	private void initPage() {
-			setTtableCommunity();
+			Search.setExplicitVisibleStrategy();
 			communityLable = Search.cssSelector("h4");
 			addNewCommunityButton = Search.cssSelector("a[href= 'addCommunity']");
 			showNoneActiveCBox = Search.cssSelector("label");
 			teretorialCommunity = Search.xpath("//tr/th[1]");
 			registrationNumber = Search.xpath("//tr/th[2]");
 			actions = Search.xpath("//tr/th[3]");
+			setTtableCommunity();
+			Search.setImplicitStrategy();
 	}
 
 	public WebElement getCommunityLable() {
@@ -334,7 +306,7 @@ public class CommunityPage extends AdminHomePage {
 
 	public DeleteCommunityAlert deleteCommunity(ICommunity community) {
 		clickDeleteButton(community);
-		return new DeleteCommunityAlert(this);
+		return new DeleteCommunityAlert();
 	}
 	
 	public CommunityPage deleteCommunityIfExist(ICommunity community) {
