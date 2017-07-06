@@ -1,12 +1,11 @@
 package com.softserve.edu.registrator.pages.common;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.resource.AddResourcePage;
 import com.softserve.edu.registrator.pages.resource.SearchResourcesPage;
 import com.softserve.edu.registrator.pages.subclass.SubclassPage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class RegistratorHomePage extends ACommonComponent {
 
@@ -19,15 +18,15 @@ public class RegistratorHomePage extends ACommonComponent {
 
 	// Constructor
 
-	public RegistratorHomePage(WebDriver driver) {
-		super(driver);
-		 this.home = driver.findElement(By.cssSelector("a.glyphicon.glyphicon-home"));
-		 this.searchResources = driver.findElement(By.xpath("//a[contains(@href,'/searchOnMap')]"));
-		 this.subclassObjects = driver.findElement(By.xpath("//a[contains(@href,'/show-res-types')]"));
-		 this.addNewResource = driver.findElement(By.xpath("//a[contains(@href,'/new')]"));
+	public RegistratorHomePage() {
+		super();
+		this.home = Search.cssSelector("a.glyphicon.glyphicon-home");
+		this.searchResources = Search.xpath("//a[contains(@href,'/searchOnMap')]");
+		this.subclassObjects = Search.xpath("//a[contains(@href,'/show-res-types')]");
+		this.addNewResource = Search.xpath("//a[contains(@href,'/new')]");
 	}
 
-	//get
+	// get
 
 	public WebElement getHome() {
 		return this.home;
@@ -45,37 +44,33 @@ public class RegistratorHomePage extends ACommonComponent {
 		return this.addNewResource;
 	}
 
-	//set
+	// set
 
 	public void clickHome() {
-        getHome().click();
-    }
+		getHome().click();
+	}
 
 	public SearchResourcesPage clickSearchResources() {
 		getSearchResources().click();
-		return new SearchResourcesPage(driver);
+		return new SearchResourcesPage();
 	}
 
 	public SubclassPage clickSubclassObjects() {
 		getSubclassObjects().click();
-		return new SubclassPage(driver);
+		return new SubclassPage();
 	}
 
 	public AddResourcePage clickAddNewResource() {
 		getAddNewResource().click();
-		return new AddResourcePage(driver);
-		
-	}
+		return new AddResourcePage();
 
+	}
 
 	// Functions
 
 	public LoginPage logout() {
-        clickLogout();
-        return new LoginPage(driver);
-    }
-
-
-
+		clickLogout();
+		return new LoginPage();
+	}
 
 }

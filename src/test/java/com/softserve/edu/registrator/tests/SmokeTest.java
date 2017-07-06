@@ -47,7 +47,7 @@ public class SmokeTest {
 		driver.get("http://java.training.local:8080/registrator/login");
 		Thread.sleep(1000);
 		//
-		LoginPage loginPage = new LoginPage(driver);
+		LoginPage loginPage = new LoginPage();
 		Thread.sleep(2000);
 		//
 		// Steps

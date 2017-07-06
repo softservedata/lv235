@@ -1,14 +1,13 @@
 package com.softserve.edu.registrator.pages.common;
 
-import com.softserve.edu.registrator.pages.search.user.ActiveUserPageContent;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
 import com.softserve.edu.registrator.pages.registration.NonConfirmedUsersPage;
 import com.softserve.edu.registrator.pages.registration.RegisterUserPage;
+import com.softserve.edu.registrator.pages.search.user.ActiveUserPageContent;
 import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class AdminHomePage extends ACommonComponent {
 
@@ -20,14 +19,10 @@ public class AdminHomePage extends ACommonComponent {
         private WebElement blocked;
 
         public CoownersOptions() {
-            // this.driver = driver;
-            // TODO Delete hadrcode li[1]
-            this.active = driver.findElement(By.xpath("//ul/li[1]/a[contains(@href,'/users/get-all-users')]"));
-            this.inactive = driver
-                    .findElement(By.xpath("//a[contains(@href,'/users/get-all-users?statusType=inactive')]"));
-            this.nonConfirmed = driver
-                    .findElement(By.xpath("//a[contains(@href,'/users/get-all-users?statusType=notcomfirmed')]"));
-            this.blocked = driver.findElement(By.xpath("//a[contains(@href,'/users/get-all-users?statusType=block')]"));
+            this.active = Search.xpath("//ul/li[1]/a[contains(@href,'/users/get-all-users')]");
+            this.inactive = Search.xpath("//a[contains(@href,'/users/get-all-users?statusType=inactive')]");
+            this.nonConfirmed = Search.xpath("//a[contains(@href,'/users/get-all-users?statusType=notcomfirmed')]");
+            this.blocked = Search.xpath("//a[contains(@href,'/users/get-all-users?statusType=block')]");
         }
 
         public WebElement getActiveElement() {
@@ -60,14 +55,14 @@ public class AdminHomePage extends ACommonComponent {
     private WebElement unblockAll;
     private CoownersOptions coownersOptions;
 
-    public AdminHomePage(WebDriver driver) {
-        super(driver);
-        this.home = driver.findElement(By.cssSelector("a.glyphicon.glyphicon-home"));
-        this.users = driver.findElement(By.xpath("//li[@class='dropdown']/a"));
-        this.settings = driver.findElement(By.xpath("//a[contains(@href,'/settings')]"));
-        this.communities = driver.findElement(By.xpath("//a[contains(@href,'/communities/show-all-communities')]"));
-        this.newUser = driver.findElement(By.xpath("//a[contains(@href,'/manualregistration')]"));
-        this.unblockAll = driver.findElement(By.id("unlockUsers"));
+    public AdminHomePage() {
+        super();
+        this.home = Search.cssSelector("a.glyphicon.glyphicon-home");
+        this.users = Search.xpath("//li[@class='dropdown']/a");
+        this.settings = Search.xpath("//a[contains(@href,'/settings')]");
+        this.communities = Search.xpath("//a[contains(@href,'/communities/show-all-communities')]");
+        this.newUser = Search.xpath("//a[contains(@href,'/manualregistration')]");
+        this.unblockAll = Search.id("unlockUsers");
     }
 
     // PageObject
@@ -164,12 +159,12 @@ public class AdminHomePage extends ACommonComponent {
 
     public CommunityPage clickCommunities() {
         getCommunities().click();
-        return new CommunityPage(driver);
+        return new CommunityPage();
     }
 
     public RegisterUserPage clickNewUser() {
         getNewUser().click();
-        return new RegisterUserPage(driver);
+        return new RegisterUserPage();
     }
 
     public void clickUnblockAll() {
@@ -180,7 +175,7 @@ public class AdminHomePage extends ACommonComponent {
 
     public ActiveUserPageContent clickActive() {
         getActive().click();
-        return new ActiveUserPageContent(driver);
+        return new ActiveUserPageContent();
     }
 
     public void clickInactive() {
@@ -189,7 +184,7 @@ public class AdminHomePage extends ACommonComponent {
 
     public NonConfirmedUsersPage clickNonConfirmed() {
         getNonConfirmed().click();
-        return new NonConfirmedUsersPage(driver);
+        return new NonConfirmedUsersPage();
     }
 
     public void clickBlocked() {
@@ -201,27 +196,27 @@ public class AdminHomePage extends ACommonComponent {
     public AdminHomePage changeLanguage(ChangeLanguageFields language) {
         setChangeLanguage(language);
         // Return a new page object representing the destination.
-        return new AdminHomePage(driver);
+        return new AdminHomePage();
     }
 
     public AdminHomePage gotoAdminHomePage() {
         clickHome();
-        return new AdminHomePage(driver);
+        return new AdminHomePage();
     }
 
     public LoginPage logout() {
         clickLogout();
-        return new LoginPage(driver);
+        return new LoginPage();
     }
 
     public ActiveUsersPage gotoActiveUsers() {
         clickActive();
-        return new ActiveUsersPage(driver);
+        return new ActiveUsersPage();
     }
 
     public NonConfirmedUsersPage gotoNonConfirmedUsers() {
         clickNonConfirmed();
-        return new NonConfirmedUsersPage(driver);
+        return new NonConfirmedUsersPage();
     }
 
 

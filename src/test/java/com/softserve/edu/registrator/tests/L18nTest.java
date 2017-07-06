@@ -70,7 +70,7 @@ public class L18nTest {
 //		driver.get("http://registrator.herokuapp.com/login");
 		//
 		// Steps
-		LoginPage loginPage = new LoginPage(driver);
+		LoginPage loginPage = new LoginPage();
 		Thread.sleep(2000);
 		loginPage = loginPage.changeLanguage(language);
 		//
@@ -106,7 +106,7 @@ public class L18nTest {
 		SoftAssert softAssert = new SoftAssert();
 		//
 		// Steps
-		LoginPage loginPage = new LoginPage(driver);
+		LoginPage loginPage = new LoginPage();
 		Thread.sleep(1000);
 		loginPage = loginPage.changeLanguage(language);
 		//

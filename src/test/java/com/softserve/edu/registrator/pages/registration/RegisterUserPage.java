@@ -2,13 +2,12 @@ package com.softserve.edu.registrator.pages.registration;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.User;
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class RegisterUserPage extends AdminHomePage {
     
@@ -59,16 +58,16 @@ public class RegisterUserPage extends AdminHomePage {
     
     // Public constructor
     
-    public RegisterUserPage(WebDriver driver) {
-        super(driver);
-        this.submit = driver.findElement(By.id(SUBMIT_ID));
-        this.clearForm = driver.findElement(By.cssSelector(CLEARFORM_CSSSELECTOR));
-        this.cancel = driver.findElement(By.cssSelector(CANCEL_CSSSELECTOR));
+    public RegisterUserPage() {
+        super();
+        this.submit = Search.id(SUBMIT_ID);
+        this.clearForm = Search.cssSelector(CLEARFORM_CSSSELECTOR);
+        this.cancel = Search.cssSelector(CANCEL_CSSSELECTOR);
         
-        this.mainInfo = new RegisterNewUserMainInfo(driver);
-        this.addressInfo = new RegisterNewUserAddressInfo(driver);
-        this.passportInfo = new RegisterNewUserPassportInfo(driver);
-        this.otherInfo = new RegisterNewUserOtherInfo(driver);
+        this.mainInfo = new RegisterNewUserMainInfo();
+        this.addressInfo = new RegisterNewUserAddressInfo();
+        this.passportInfo = new RegisterNewUserPassportInfo();
+        this.otherInfo = new RegisterNewUserOtherInfo();
     }
 
     // Page object
@@ -126,7 +125,7 @@ public class RegisterUserPage extends AdminHomePage {
     
     public NonConfirmedUsersPage clickSubmit() {
         getSubmit().click();
-        return new NonConfirmedUsersPage(driver);
+        return new NonConfirmedUsersPage();
     }
     
     public void clickClearForm() {
@@ -135,7 +134,7 @@ public class RegisterUserPage extends AdminHomePage {
     
     public AdminHomePage clickCancel() {
         getCancel().click();
-        return new AdminHomePage(driver);
+        return new AdminHomePage();
     }
        
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -144,7 +143,7 @@ public class RegisterUserPage extends AdminHomePage {
         
     public RegisterUserPage changeLanguage(ChangeLanguageFields language) {
         setChangeLanguage(language);
-        return new RegisterUserPage(driver);
+        return new RegisterUserPage();
     }
     
     public void registerNewUser(IUser newUser) {
@@ -177,19 +176,19 @@ public class RegisterUserPage extends AdminHomePage {
         
     public NonConfirmedUsersPage successfulRegistration(User user) {
         registerNewUser(user);
-        return new NonConfirmedUsersPage(driver);
+        return new NonConfirmedUsersPage();
     }
     
     public RegisterUserPage unsuccessfulReristration(User user) {
         registerNewUser(user); // Is it needed???
-        return new RegisterUserPage(driver);
+        return new RegisterUserPage();
     }
     
     public RegisterUserPage clearForm() {
-        return new RegisterUserPage(driver);
+        return new RegisterUserPage();
     }
     
     public AdminHomePage cancelRegistration() {
-        return new AdminHomePage(driver);
+        return new AdminHomePage();
     }
 }

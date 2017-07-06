@@ -1,7 +1,5 @@
 package com.softserve.edu.registrator.pages;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 
 import com.softserve.edu.registrator.data.apps.ApplicationSources;
@@ -66,18 +64,18 @@ public class Application {
 	public LoginPage load() {
 		logout();
 		getBrowser().get(applicationSources.getLoginUrl());
-		return new LoginPage(getBrowser());
+		return new LoginPage();
 	}
 
 	public LoginPage login() {
 		logout();
 		getBrowser().get(applicationSources.getLoginUrl());
-		return new LoginPage(getBrowser());
+		return new LoginPage();
 	}
 
 	public LoginPage logout() {
 		getBrowser().get(applicationSources.getLogoutUrl());
-		return new LoginPage(getBrowser());
+		return new LoginPage();
 	}
 
 	// TODO Change for parallel work

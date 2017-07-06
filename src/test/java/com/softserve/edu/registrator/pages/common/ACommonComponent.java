@@ -1,8 +1,8 @@
 package com.softserve.edu.registrator.pages.common;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.registrator.tools.search.Search;
 
 public abstract class ACommonComponent extends ATopComponent {
 
@@ -20,9 +20,9 @@ public abstract class ACommonComponent extends ATopComponent {
         // public UserAccount(WebDriver driver) {
         public UserAccount() {
             // this.driver = driver;
-            this.changePassword = driver.findElement(By.cssSelector("a.change-password"));
-            this.resetPassword = driver.findElement(By.cssSelector("a.reset-my-password"));
-            this.logout = driver.findElement(By.xpath("//a[contains(@href,'/logout')]"));
+            this.changePassword = Search.cssSelector("a.change-password");
+            this.resetPassword = Search.cssSelector("a.reset-my-password");
+            this.logout = Search.xpath("//a[contains(@href,'/logout')]");
         }
 
         // PageObject
@@ -51,11 +51,11 @@ public abstract class ACommonComponent extends ATopComponent {
     private WebElement menuAccount;
     private UserAccount userAccount;
 
-    public ACommonComponent(WebDriver driver) {
-        super(driver);
+    public ACommonComponent() {
+        super();
         // TODO use cssSelector with not
-        this.loginAccount = driver.findElement(By.xpath("//button[@class='btn btn-primary btn-sm']"));
-        this.menuAccount = driver.findElement(By.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle"));
+        this.loginAccount = Search.xpath("//button[@class='btn btn-primary btn-sm']");
+        this.menuAccount = Search.cssSelector(".btn.btn-primary.btn-sm.dropdown-toggle");
     }
 
     // PageObject

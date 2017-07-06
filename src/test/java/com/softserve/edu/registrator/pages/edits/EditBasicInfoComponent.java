@@ -3,12 +3,11 @@ package com.softserve.edu.registrator.pages.edits;
 import java.util.HashMap;
 import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.tools.search.Search;
 
 /**
  * Created by User on 6/20/2017.
@@ -75,7 +74,6 @@ public class EditBasicInfoComponent {
     private WebElement statusLabel;
     private WebElement basicLabel;
 
-    private WebDriver driver;
     private WebElement fistNameField;
     private WebElement secondNameField;
     private WebElement middleNameField;
@@ -89,44 +87,37 @@ public class EditBasicInfoComponent {
     private WebElement registratorRole;
     private WebElement userRole;
     private WebElement commissionerRole;
-    private WebElement selectButton;
     private List<WebElement> roles;
     private Select select;
     
-    public EditBasicInfoComponent(WebDriver driver) {
-        this.driver = driver;
+    public EditBasicInfoComponent() {
         //labels
-        this.registratorRole = driver.findElement(By.xpath(REGISTRATOR_ROLE_XPATH));
-        this.commissionerRole = driver.findElement(By.xpath(COMMISSIONER_ROLE_XPATH));
-        this.userRole = driver.findElement(By.xpath(USER_ROLE_XPATH));
-        this.adminRole = driver.findElement(By.xpath(ADMIN_ROLE_XPATH));
-        this.firstNameLabel = driver.findElement(By.xpath(FIRST_NAME_LABEL));
-        this.secondNameLabel = driver.findElement(By.xpath(SECOND_NAME_LABEL));
-        this.middleNameLabel = driver.findElement(By.xpath(MIDDLE_NAME_LABEL));
-        this.loginLabel = driver.findElement(By.xpath(LOGIN_NAME_LABEL));
-        this.emailLabel = driver.findElement(By.xpath(EMAIL_LABEL));
-        this.roleLabel = driver.findElement(By.xpath(ROLE_LABEL));
-        this.statusLabel = driver.findElement(By.xpath(STATUS_LABEL));
-        this.basicLabel = driver.findElement(By.xpath(MAIN_BASIC_LABEL_XPATH));
+        this.registratorRole = Search.xpath(REGISTRATOR_ROLE_XPATH);
+        this.commissionerRole = Search.xpath(COMMISSIONER_ROLE_XPATH);
+        this.userRole = Search.xpath(USER_ROLE_XPATH);
+        this.adminRole = Search.xpath(ADMIN_ROLE_XPATH);
+        this.firstNameLabel = Search.xpath(FIRST_NAME_LABEL);
+        this.secondNameLabel = Search.xpath(SECOND_NAME_LABEL);
+        this.middleNameLabel = Search.xpath(MIDDLE_NAME_LABEL);
+        this.loginLabel = Search.xpath(LOGIN_NAME_LABEL);
+        this.emailLabel = Search.xpath(EMAIL_LABEL);
+        this.roleLabel = Search.xpath(ROLE_LABEL);
+        this.statusLabel = Search.xpath(STATUS_LABEL);
+        this.basicLabel = Search.xpath(MAIN_BASIC_LABEL_XPATH);
         //fields
-        this.blockUser = driver.findElement(By.xpath(BLOCK_USER_XPATH));
-        this.activeUser = driver.findElement(By.xpath(ACTIVE_USER_XPATH));
-        this.fistNameField = driver.findElement(By.id(FIRST_NAME_ID));
-        this.secondNameField = driver.findElement(By.id(SECOND_NAME_ID));
-        this.middleNameField = driver.findElement(By.id(MIDDLE_NAME_ID));
-        this.loginField = driver.findElement(By.id(LOGIN_ID));
-        this.emailField = driver.findElement(By.id(EMAIL_ID));
-        this.roleField = driver.findElement(By.id(ROLE_ID));
-        this.roles = driver.findElements(By.xpath("//*[@id='roleId']/option"));
+        this.blockUser = Search.xpath(BLOCK_USER_XPATH);
+        this.activeUser = Search.xpath(ACTIVE_USER_XPATH);
+        this.fistNameField = Search.id(FIRST_NAME_ID);
+        this.secondNameField = Search.id(SECOND_NAME_ID);
+        this.middleNameField = Search.id(MIDDLE_NAME_ID);
+        this.loginField = Search.id(LOGIN_ID);
+        this.emailField = Search.id(EMAIL_ID);
+        this.roleField = Search.id(ROLE_ID);
+        this.roles = Search.xpaths("//*[@id='roleId']/option");
         this.select = new Select(getRoleField());
-        this.statusField = driver.findElement(By.id(STATUS_ID));
+        this.statusField = Search.id(STATUS_ID);
     }
-
-    //get Driver
-    public WebDriver getDriver() {
-        return driver;
-    }
-
+    
     // get Label
 
     public WebElement getBasicLabel() {

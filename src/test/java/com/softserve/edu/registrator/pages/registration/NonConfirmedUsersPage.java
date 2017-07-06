@@ -1,10 +1,9 @@
 package com.softserve.edu.registrator.pages.registration;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.user.RegisteredUsersPage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class NonConfirmedUsersPage extends RegisteredUsersPage {
 
@@ -18,8 +17,8 @@ public class NonConfirmedUsersPage extends RegisteredUsersPage {
 
         public NonConfirmedUsersPageAction() {
             // this.driver = driver;
-            this.delete = driver.findElement(By.id("DELETE"));
-            this.resendEmail = driver.findElement(By.id("SENDEMAILAGAIN"));
+            this.delete = Search.id("DELETE");
+            this.resendEmail = Search.id("SENDEMAILAGAIN");
         }
 
         public WebElement getDelete() {
@@ -38,8 +37,8 @@ public class NonConfirmedUsersPage extends RegisteredUsersPage {
 
     private NonConfirmedUsersPageAction nonConfirmedUsersPageAction;
     
-    public NonConfirmedUsersPage(WebDriver driver) {
-        super(driver);
+    public NonConfirmedUsersPage() {
+        super();
     }
 
     // Page Object

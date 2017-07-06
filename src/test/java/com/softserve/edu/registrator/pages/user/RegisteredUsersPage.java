@@ -1,12 +1,12 @@
 package com.softserve.edu.registrator.pages.user;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.controls.ITable;
 import com.softserve.edu.registrator.controls.Table;
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public abstract class RegisteredUsersPage extends AdminHomePage {
 
@@ -20,11 +20,11 @@ public abstract class RegisteredUsersPage extends AdminHomePage {
     private WebElement actionsButton;
     private ITable table;
 
-    public RegisteredUsersPage(WebDriver driver) {
-        super(driver);
-        this.actionsButton = driver.findElement(By.id("dLabel"));
+    public RegisteredUsersPage() {
+        super();
+        this.actionsButton = Search.id("dLabel");
         //this.table = new Table(driver.findElement(By.tagName("table"));
-        this.table = new Table(driver.findElement(By.tagName("table")));
+        this.table = new Table(Search.tagName("table"));
     }
 
     // PageObject
@@ -49,7 +49,7 @@ public abstract class RegisteredUsersPage extends AdminHomePage {
     }
 
     public ITable getRefTable(){
-        return new Table(driver.findElement(By.tagName("table")));
+        return new Table(Search.tagName("table"));
     }
 
     // set Data
@@ -74,7 +74,7 @@ public abstract class RegisteredUsersPage extends AdminHomePage {
         int columnActionIndex = table.getColumnIndexByValueOfHeader(actionHeaderName);
         table.getCell(rowIndex, columnActionIndex)
                 .findElement(By.tagName("button")).click();
-        return new PassiveEditUserPage(driver);
+        return new PassiveEditUserPage();
      }
     
 }

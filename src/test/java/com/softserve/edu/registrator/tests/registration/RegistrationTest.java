@@ -1,6 +1,5 @@
 package com.softserve.edu.registrator.tests.registration;
 
-import com.softserve.edu.registrator.pages.edits.EditPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -9,9 +8,8 @@ import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
-import com.softserve.edu.registrator.pages.common.LoginPage;
+import com.softserve.edu.registrator.pages.edits.EditPage;
 import com.softserve.edu.registrator.pages.registration.RegisterUserPage;
-import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.user.PassiveEditUserPage;
 import com.softserve.edu.registrator.pages.user.RegisteredUsersPage;
 import com.softserve.edu.registrator.tests.RegistrationTestRunner;
@@ -77,8 +75,8 @@ public class RegistrationTest extends RegistrationTestRunner {
         Thread.sleep(2000);
         
         
-        ActiveUsersPage activeUsersPage = passiveEditUserPage
-                .gotoActiveUsers();
+//        ActiveUsersPage activeUsersPage = passiveEditUserPage
+//                .gotoActiveUsers();
 //        Assert.assertEquals(activeUsersPage.getTable().getCell(activeUsersPage
 //                .getTable()
 //                .getRowIndexByValueInColumn(
@@ -89,7 +87,7 @@ public class RegistrationTest extends RegistrationTestRunner {
 //                user.getAccount().getLogin());        
 //        Thread.sleep(3000);
 //        
-        LoginPage loginPage = activeUsersPage.logout();
+//        LoginPage loginPage = activeUsersPage.logout();
 //        CommonPage commonPage = loginPage.successLogin(user);
 //        Assert.assertEquals(commonPage.getLoginAccountText(),
 //                user.getAccount().getLogin());

@@ -2,7 +2,7 @@ package com.softserve.edu.registrator.tools.exception;
 
 public class GeneralCustomException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
-	private static final String GENERAL_CUSTOM_EXCEPTION ="GeneralCustomException: ";
+	//private static final String GENERAL_CUSTOM_EXCEPTION ="GeneralCustomException: ";
 
 	// Classic constructor with a message of error.
 	public GeneralCustomException(String message) {

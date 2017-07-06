@@ -2,79 +2,76 @@ package com.softserve.edu.registrator.pages.common;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.tools.search.Search;
 
 public class LoginPage extends ATopComponent {
-	
-    public static enum LoginPageL10n {
-    	LOGIN_LABEL("Логін","Логин","Login"),
-        PASSWORD_LABEL("Пароль","Пароль","Password"),
-		SUBMIT_BUTTON("Увійти","Войти","Sign in");
 
-        private HashMap<ChangeLanguageFields, String> field;
+	public static enum LoginPageL10n {
+		LOGIN_LABEL("Логін", "Логин", "Login"), PASSWORD_LABEL("Пароль", "Пароль", "Password"), SUBMIT_BUTTON("Увійти",
+				"Войти", "Sign in");
 
-        private LoginPageL10n(String... localization) {
-        	this.field = new HashMap<ChangeLanguageFields, String>();
-        	int i = 0;
-        	for (ChangeLanguageFields language : ChangeLanguageFields.values()) {
-        		this.field.put(language, localization[i]);
-        		i++;
-        	}
-        }
+		private HashMap<ChangeLanguageFields, String> field;
 
-        public String getLocalization(ChangeLanguageFields language) {
-            return this.field.get(language).trim();
-        }
-    }
-    
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+		private LoginPageL10n(String... localization) {
+			this.field = new HashMap<ChangeLanguageFields, String>();
+			int i = 0;
+			for (ChangeLanguageFields language : ChangeLanguageFields.values()) {
+				this.field.put(language, localization[i]);
+				i++;
+			}
+		}
 
-    public static final String NAME_IMAGE = "ukraine_logo2.gif";
-    //
-    private static final String LOGIN_LABEL_XPATH ="//label[contains(@for,'inputEmail')]";
-    private static final String LOGIN_INPUT_ID ="login";
-    private static final String PASSWORD_LABEL_XPATH ="//label[contains(@for,'inputPassword')]";
-    private static final String PASSWORD_INPUT_ID ="password";
-    private static final String SIGNIN_CSSSELECTOR ="button.btn.btn-primary";
-    private static final String LOGO_CSSSELECTOR ="img.login_logo.col-md-8.col-xs-12";
-    private static final String REGISTER_CSSSELECTOR =".btn.btn-success";
-
-	// Fields
-    
-
-    private WebElement loginLabel;
-    private WebElement loginInput;
-    private WebElement passwordLabel;
-    private WebElement passwordInput;
-    private WebElement signin;
-    private WebElement logo;
-
-	public LoginPage(WebDriver driver) {
-		super(driver);
-//		this.loginLabel = driver.findElement(By.xpath(LOGIN_LABEL_XPATH));
-//		this.loginInput = driver.findElement(By.id(LOGIN_INPUT_ID));
-//		this.passwordLabel = driver.findElement(By.xpath(PASSWORD_LABEL_XPATH));
-//		this.passwordInput = driver.findElement(By.id(PASSWORD_INPUT_ID));
-//		this.signin = driver.findElement(By.cssSelector(SIGNIN_CSSSELECTOR));
-//		this.logo = driver.findElement(By.cssSelector(LOGO_CSSSELECTOR));
-		//
-        this.loginLabel = Search.xpath(LOGIN_LABEL_XPATH);
-        this.loginInput = Search.id(LOGIN_INPUT_ID);
-        //Search.setExplicitVisibleStrategy();
-        this.passwordLabel = Search.xpath(PASSWORD_LABEL_XPATH);
-        this.passwordInput = Search.id(PASSWORD_INPUT_ID);
-        //Search.setExplicitClickableStrategy();
-        this.signin = Search.cssSelector(SIGNIN_CSSSELECTOR);
-        //Search.setImplicitStrategy();
-        this.logo = Search.cssSelector(LOGO_CSSSELECTOR);
+		public String getLocalization(ChangeLanguageFields language) {
+			return this.field.get(language).trim();
+		}
 	}
 
-    // PageObject
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+	public static final String NAME_IMAGE = "ukraine_logo2.gif";
+	//
+	private static final String LOGIN_LABEL_XPATH = "//label[contains(@for,'inputEmail')]";
+	private static final String LOGIN_INPUT_ID = "login";
+	private static final String PASSWORD_LABEL_XPATH = "//label[contains(@for,'inputPassword')]";
+	private static final String PASSWORD_INPUT_ID = "password";
+	private static final String SIGNIN_CSSSELECTOR = "button.btn.btn-primary";
+	private static final String LOGO_CSSSELECTOR = "img.login_logo.col-md-8.col-xs-12";
+	private static final String REGISTER_CSSSELECTOR = ".btn.btn-success";
+
+	// Fields
+
+	private WebElement loginLabel;
+	private WebElement loginInput;
+	private WebElement passwordLabel;
+	private WebElement passwordInput;
+	private WebElement signin;
+	private WebElement logo;
+
+	public LoginPage() {
+		super();
+		// this.loginLabel = driver.findElement(By.xpath(LOGIN_LABEL_XPATH));
+		// this.loginInput = driver.findElement(By.id(LOGIN_INPUT_ID));
+		// this.passwordLabel =
+		// driver.findElement(By.xpath(PASSWORD_LABEL_XPATH));
+		// this.passwordInput = driver.findElement(By.id(PASSWORD_INPUT_ID));
+		// this.signin = driver.findElement(By.cssSelector(SIGNIN_CSSSELECTOR));
+		// this.logo = driver.findElement(By.cssSelector(LOGO_CSSSELECTOR));
+		//
+		this.loginLabel = Search.xpath(LOGIN_LABEL_XPATH);
+		this.loginInput = Search.id(LOGIN_INPUT_ID);
+		// Search.setExplicitVisibleStrategy();
+		this.passwordLabel = Search.xpath(PASSWORD_LABEL_XPATH);
+		this.passwordInput = Search.id(PASSWORD_INPUT_ID);
+		// Search.setExplicitClickableStrategy();
+		this.signin = Search.cssSelector(SIGNIN_CSSSELECTOR);
+		// Search.setImplicitStrategy();
+		this.logo = Search.cssSelector(LOGO_CSSSELECTOR);
+	}
+	
+	// PageObject
 
 	// get Data
 
@@ -102,20 +99,20 @@ public class LoginPage extends ATopComponent {
 		return this.logo;
 	}
 
-    public WebElement getRegister() {
-        // TODO Check WebElement Exist
-        return driver.findElement(By.cssSelector(REGISTER_CSSSELECTOR));
-    }
+	public WebElement getRegister() {
+		// TODO Check WebElement Exist
+		return Search.cssSelector(REGISTER_CSSSELECTOR);
+	}
 
 	// Functional
-	
+
 	public String getLoginLabelText() {
 		return getLoginLabel().getText().trim();
 	}
 
-    public String getLoginInputAttributeText(String attribute) {
-        return getLoginInput().getAttribute(attribute);
-    }
+	public String getLoginInputAttributeText(String attribute) {
+		return getLoginInput().getAttribute(attribute);
+	}
 
 	public String getLoginInputText() {
 		return getLoginInputAttributeText(VALUE_ATTRIBUTE);
@@ -125,10 +122,10 @@ public class LoginPage extends ATopComponent {
 		return getPasswordLabel().getText().trim();
 	}
 
-    public String getPasswordInputAttributeText(String attribute) {
-        return getPasswordInput().getAttribute(attribute);
-    }
-    
+	public String getPasswordInputAttributeText(String attribute) {
+		return getPasswordInput().getAttribute(attribute);
+	}
+
 	public String getPasswordInputText() {
 		return getPasswordInputAttributeText(VALUE_ATTRIBUTE);
 	}
@@ -136,7 +133,7 @@ public class LoginPage extends ATopComponent {
 	public String getSignintText() {
 		return getSignin().getText().trim();
 	}
-	
+
 	public String getLogoAttributeText(String attribute) {
 		return getLogo().getAttribute(attribute).trim();
 	}
@@ -185,36 +182,36 @@ public class LoginPage extends ATopComponent {
 		getSignin().click();
 	}
 
-    public void clickRegister() {
-        getRegister().click();
-    }
+	public void clickRegister() {
+		getRegister().click();
+	}
 
-    // Business Logic
+	// Business Logic
 
-    public LoginPage changeLanguage(ChangeLanguageFields language) {
-    	setChangeLanguage(language);
-        return new LoginPage(driver);
-    }
+	public LoginPage changeLanguage(ChangeLanguageFields language) {
+		setChangeLanguage(language);
+		return new LoginPage();
+	}
 
-    private void setLoginData(IUser user) {
+	private void setLoginData(IUser user) {
 		setLoginInputClear(user.getAccount().getLogin());
 		setPasswordInputClear(user.getAccount().getPassword());
 		clickSignin();
 	}
 
-    public CommonPage successLogin(IUser user) {
-        setLoginData(user);
-        return new CommonPage(driver);
-    }
-
-    public AdminHomePage successAdminLogin(IUser admin) {
-		setLoginData(admin);
-		return new AdminHomePage(driver);
+	public CommonPage successLogin(IUser user) {
+		setLoginData(user);
+		return new CommonPage();
 	}
 
-    public RegistratorHomePage successRegistratorLogin(IUser registrator) {
-            setLoginData(registrator);
-            return new RegistratorHomePage(driver);
-    }
+	public AdminHomePage successAdminLogin(IUser admin) {
+		setLoginData(admin);
+		return new AdminHomePage();
+	}
+
+	public RegistratorHomePage successRegistratorLogin(IUser registrator) {
+		setLoginData(registrator);
+		return new RegistratorHomePage();
+	}
 
 }

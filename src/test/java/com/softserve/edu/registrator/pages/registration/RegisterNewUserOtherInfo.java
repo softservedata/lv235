@@ -3,12 +3,11 @@ package com.softserve.edu.registrator.pages.registration;
 import java.util.HashMap;
 import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class RegisterNewUserOtherInfo {
 
@@ -65,15 +64,15 @@ public class RegisterNewUserOtherInfo {
 
     // Public constructor
     
-    public RegisterNewUserOtherInfo(WebDriver driver) {
-        this.otherInfoLabel = driver.findElement(By.xpath(OTHERINFO_LABEL_XPATH));
-        this.phoneNumberLabel = driver.findElement(By.cssSelector(PHONENUMBER_LABEL_CSSSELECTOR));
-        this.phoneNumber = driver.findElement(By.id(PHONENUMBER_INPUT_ID));
-        this.communityLabel = driver.findElement(By.cssSelector(COMMUNITY_LABEL_CSSSELECTOR));
-        this.community = driver.findElement(By.id(COMMUNITY_DROPDOWN_ID));
-        this.communitiesOptions = driver.findElements(By.xpath(COMMUNITIESOPTIONS_XPATH));  
-        this.dateLabel = driver.findElement(By.cssSelector(DATE_LABEL_CSSSELECTOR));
-        this.date = driver.findElement(By.id(DATE_INPUT_ID));
+    public RegisterNewUserOtherInfo() {
+        this.otherInfoLabel = Search.xpath(OTHERINFO_LABEL_XPATH);
+        this.phoneNumberLabel = Search.cssSelector(PHONENUMBER_LABEL_CSSSELECTOR);
+        this.phoneNumber = Search.id(PHONENUMBER_INPUT_ID);
+        this.communityLabel = Search.cssSelector(COMMUNITY_LABEL_CSSSELECTOR);
+        this.community = Search.id(COMMUNITY_DROPDOWN_ID);
+        this.communitiesOptions = Search.xpaths(COMMUNITIESOPTIONS_XPATH);  
+        this.dateLabel = Search.cssSelector(DATE_LABEL_CSSSELECTOR);
+        this.date = Search.id(DATE_INPUT_ID);
         this.select = new Select(getCommunity());
     }
 

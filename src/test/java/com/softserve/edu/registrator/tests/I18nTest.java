@@ -38,7 +38,7 @@ public class I18nTest {
         //
         // Steps
         //
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         Thread.sleep(2000);
         loginPage = loginPage.changeLanguage(language);
         //

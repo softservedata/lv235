@@ -1,11 +1,9 @@
 package com.softserve.edu.registrator.pages.search.user;
 
-import com.softserve.edu.registrator.pages.search.user.ISearchFields;
-import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 /**
  * @author ihor
@@ -20,9 +18,9 @@ public class ActiveUserPageContent extends ActiveUsersPage {
 
         //Public ActionList constructor
         public ActionList() {
-            this.role = driver.findElement(By.cssSelector("#actionList > ul > li.dropdown-submenu > a"));
-            this.community = driver.findElement(By.cssSelector(".set-community"));
-            this.password = driver.findElement(By.cssSelector(".reset-password"));
+            this.role = Search.cssSelector("#actionList > ul > li.dropdown-submenu > a");
+            this.community = Search.cssSelector(".set-community");
+            this.password = Search.cssSelector(".reset-password");
         }
 
         //method GET
@@ -70,34 +68,34 @@ public class ActiveUserPageContent extends ActiveUsersPage {
     private WebElement roleSorting;
     private ActionList actionList;
 
-    public ActiveUserPageContent(WebDriver driver) {
-        super(driver);
+    public ActiveUserPageContent() {
+        super();
         //Fields for Searching
-        this.testValue = driver.findElement(By.xpath("//td[@class=' email'][text()='IvaTest@gmail.com']"));
-        this.firstNameField = driver.findElement((By.id(FIRST_NAME_FIELD)));
-        this.lastNameField = driver.findElement((By.id("inputIndex2")));
-        this.loginField = driver.findElement((By.id("inputIndex3")));
-        this.territorialCommunityField = driver.findElement((By.id("inputIndex4")));
-        this.emailField = driver.findElement((By.id("inputIndex5")));
-        this.roleValue = driver.findElement(By.id("inputIndex6"));
+        this.testValue = Search.xpath("//td[@class=' email'][text()='IvaTest@gmail.com']");
+        this.firstNameField = Search.id(FIRST_NAME_FIELD);
+        this.lastNameField = Search.id("inputIndex2");
+        this.loginField = Search.id("inputIndex3");
+        this.territorialCommunityField = Search.id("inputIndex4");
+        this.emailField = Search.id("inputIndex5");
+        this.roleValue = Search.id("inputIndex6");
         //Values for Role DropDown
-        this.userValue = driver.findElement(By.xpath("//option[@value='USER']"));
-        this.adminValue = driver.findElement(By.xpath("//option[@value='ADMIN']"));
-        this.registratorValue = driver.findElement(By.xpath("//option[@value='REGISTRATOR']"));
-        this.commissionerValue = driver.findElement(By.xpath("//option[@value='COMMISSIONER']"));
+        this.userValue = Search.xpath("//option[@value='USER']");
+        this.adminValue = Search.xpath("//option[@value='ADMIN']");
+        this.registratorValue = Search.xpath("//option[@value='REGISTRATOR']");
+        this.commissionerValue = Search.xpath("//option[@value='COMMISSIONER']");
         //Buttons
-        this.actionDropdownList = driver.findElement(By.id("dLabel"));
-        this.editButton = driver.findElement(By.xpath("//td[text()='adminIhor']/../td/button"));
-        this.searchButton = driver.findElement(By.id("bth-search"));
-        this.nextButton = driver.findElement(By.id("example_next"));
-        this.previousButton = driver.findElement(By.id("example_previous"));
+        this.actionDropdownList = Search.id("dLabel");
+        this.editButton = Search.xpath("//td[text()='adminIhor']/../td/button");
+        this.searchButton = Search.id("bth-search");
+        this.nextButton = Search.id("example_next");
+        this.previousButton = Search.id("example_previous");
         //Labels for sorting
-        this.firstNameSorting = driver.findElement(By.cssSelector(".firstName.sorting"));
-        this.lastNameSorting = driver.findElement(By.cssSelector(".lastName.sorting"));
-        this.loginSorting = driver.findElement(By.cssSelector(".login.sorting_asc"));
-        this.territorialCommunitySorting = driver.findElement(By.cssSelector(".territorialCommunity_name.sorting"));
-        this.emailSorting = driver.findElement(By.cssSelector(".email.sorting"));
-        this.roleSorting = driver.findElement(By.cssSelector(".role_type.sorting"));
+        this.firstNameSorting = Search.cssSelector(".firstName.sorting");
+        this.lastNameSorting = Search.cssSelector(".lastName.sorting");
+        this.loginSorting = Search.cssSelector(".login.sorting_asc");
+        this.territorialCommunitySorting = Search.cssSelector(".territorialCommunity_name.sorting");
+        this.emailSorting = Search.cssSelector(".email.sorting");
+        this.roleSorting = Search.cssSelector(".role_type.sorting");
     }
 
     //get testValue

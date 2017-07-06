@@ -1,13 +1,12 @@
 package com.softserve.edu.registrator.pages.edits;
 
-import org.openqa.selenium.By;
+import java.util.HashMap;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
-
-import java.security.SecureRandom;
-import java.util.HashMap;
+import com.softserve.edu.registrator.tools.search.Search;
 
 /**
  * Created by User on 6/20/2017.
@@ -77,25 +76,24 @@ public class EditAddressInfoComponent {
     private WebElement flatField;
     private WebElement postcodeField;
 
-    public EditAddressInfoComponent(WebDriver driver) {
-        this.driver=driver;
+    public EditAddressInfoComponent() {
         //labels
-        this.regionLabel = driver.findElement(By.xpath(REGION_LABEL));
-        this.cityLabel = driver.findElement(By.xpath(CITY_LABEL));
-        this.districtLabel = driver.findElement(By.xpath(DISTRICT_LABEL));
-        this.streetLabel = driver.findElement(By.xpath(STREET_LABEL));
-        this.buildingLabel = driver.findElement(By.xpath(BUILDING_LABEL));
-        this.flatLabel = driver.findElement(By.xpath(FLAT_LABEL));
-        this.postcodeLabel = driver.findElement(By.xpath(POSTCODE_LABEL));
-        this.addressMainLabel = driver.findElement(By.xpath(MAIN_ADDRESS_LABEL_XPATH));
+        this.regionLabel = Search.xpath(REGION_LABEL);
+        this.cityLabel = Search.xpath(CITY_LABEL);
+        this.districtLabel = Search.xpath(DISTRICT_LABEL);
+        this.streetLabel = Search.xpath(STREET_LABEL);
+        this.buildingLabel = Search.xpath(BUILDING_LABEL);
+        this.flatLabel = Search.xpath(FLAT_LABEL);
+        this.postcodeLabel = Search.xpath(POSTCODE_LABEL);
+        this.addressMainLabel = Search.xpath(MAIN_ADDRESS_LABEL_XPATH);
         //fields
-        this.regionField = driver.findElement(By.id(REGION_ID));
-        this.cityField = driver.findElement(By.id(CITY_ID));
-        this.districtField = driver.findElement(By.id(DISTRICT_ID));
-        this.streetField = driver.findElement(By.id(STREET_ID));
-        this.buildingField = driver.findElement(By.id(BUILDING_ID));
-        this.flatField = driver.findElement(By.id(FLAT_ID));
-        this.postcodeField = driver.findElement(By.id(POSTCODE_ID));
+        this.regionField = Search.id(REGION_ID);
+        this.cityField = Search.id(CITY_ID);
+        this.districtField = Search.id(DISTRICT_ID);
+        this.streetField = Search.id(STREET_ID);
+        this.buildingField = Search.id(BUILDING_ID);
+        this.flatField = Search.id(FLAT_ID);
+        this.postcodeField = Search.id(POSTCODE_ID);
     }
     // get driver
     public WebDriver getDriver(){

@@ -1,19 +1,18 @@
 package com.softserve.edu.registrator.pages.resource;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.subclass.ISubclass;
 import com.softserve.edu.registrator.pages.common.RegistratorHomePage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class SearchResourcesPage extends RegistratorHomePage {
 
 	/*
 	 * Constructor
 	 */
-	public SearchResourcesPage(WebDriver driver) {
-		super(driver);
+	public SearchResourcesPage() {
+		super();
 	}
 	
 	private static final String SEARCH_BY_PARAMETER_BUTTON_ID = "searchByParameterButton";
@@ -23,19 +22,19 @@ public class SearchResourcesPage extends RegistratorHomePage {
 	
 	
 	public WebElement getSearchByParameterButton() {
-		return driver.findElement(By.id(SEARCH_BY_PARAMETER_BUTTON_ID));
+		return Search.id(SEARCH_BY_PARAMETER_BUTTON_ID);
 	}
 	
 	public WebElement getResourceTypeSelect() {
-		return driver.findElement(By.id(RESOURCE_TYPE_SELECT_ID));
+		return Search.id(RESOURCE_TYPE_SELECT_ID);
 	}
 	
 	public WebElement getDiscreteParameterInput() {
-		return driver.findElement(By.cssSelector(DISCRETE_PARAMETER_INPUT_CSS));
+		return Search.cssSelector(DISCRETE_PARAMETER_INPUT_CSS);
 	}
 	
 	public WebElement getLinearParameterInput() {
-		return driver.findElement(By.cssSelector(LINEAR_PARAMETER_INPUT_CSS));
+		return Search.cssSelector(LINEAR_PARAMETER_INPUT_CSS);
 	}
 	
 	public void clickSearchByParameterButton() {
@@ -55,7 +54,7 @@ public class SearchResourcesPage extends RegistratorHomePage {
 	}
 	
 	public void clickResourceByName(ISubclass subclassName) {
-		driver.findElement(By.xpath("//*[@id='resourcesTypeSelect']/option[contains(.,'"+ subclassName.getNameSubclass() +"')]")).click();
+		Search.xpath("//*[@id='resourcesTypeSelect']/option[contains(.,'"+ subclassName.getNameSubclass() +"')]").click();
 	}
 	
 	public void fillDiscreteParameter(String value) {

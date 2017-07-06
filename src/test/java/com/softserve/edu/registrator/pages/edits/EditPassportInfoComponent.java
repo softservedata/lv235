@@ -1,15 +1,14 @@
 package com.softserve.edu.registrator.pages.edits;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import java.util.HashMap;
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import com.softserve.edu.registrator.pages.common.ATopComponent;
 import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
-
-import java.util.HashMap;
-import java.util.List;
+import com.softserve.edu.registrator.tools.search.Search;
 
 /**
  * Created by User on 6/20/2017.
@@ -67,17 +66,17 @@ public class EditPassportInfoComponent {
     private WebElement publishField;
     private WebElement communityField;
 
-    public EditPassportInfoComponent(WebDriver driver) {
-        this.seriaFiled = driver.findElement(By.id(SERIA_ID));
-        this.numberField = driver.findElement(By.id(NUMBER_ID));
-        this.publishField = driver.findElement(By.id(PUBLISH_ID));
-        this.communityField = driver.findElement(By.id(COMMUNITY_ID));
+    public EditPassportInfoComponent() {
+        this.seriaFiled = Search.id(SERIA_ID);
+        this.numberField = Search.id(NUMBER_ID);
+        this.publishField = Search.id(PUBLISH_ID);
+        this.communityField = Search.id(COMMUNITY_ID);
 
-        this.seriaLabel = driver.findElement(By.xpath(SERIA_LABEL_XPATH));
-        this.numberLabel = driver.findElement(By.xpath(NUMBER_LABEL_XPATH));
-        this.publishLabel = driver.findElement(By.xpath(PUBLISHED_LABEL_XPATH));
-        this.communityLabel = driver.findElement(By.xpath(COMMUNITY_LABEL_XPATH));
-        this.passportInfoLabel = driver.findElement(By.xpath(MAIN_PASSPORT_LABEL_XPATH));
+        this.seriaLabel = Search.xpath(SERIA_LABEL_XPATH);
+        this.numberLabel = Search.xpath(NUMBER_LABEL_XPATH);
+        this.publishLabel = Search.xpath(PUBLISHED_LABEL_XPATH);
+        this.communityLabel = Search.xpath(COMMUNITY_LABEL_XPATH);
+        this.passportInfoLabel = Search.xpath(MAIN_PASSPORT_LABEL_XPATH);
         this.select = new Select(getCommunity());
     }
 

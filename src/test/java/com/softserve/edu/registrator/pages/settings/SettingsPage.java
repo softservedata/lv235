@@ -14,7 +14,7 @@ public class SettingsPage extends AdminHomePage {
 	private EmailConfigurationComponent emailConfigurationComponent;
 
 	public SettingsPage(WebDriver driver) {
-		super(driver);
+		super();
 		this.userRegistrationOptionsComponent = new UserRegistrationOptionsComponent(
 				driver);
 		this.defaultTimeZoneComponent = new DefaultTimeZoneComponent(driver);

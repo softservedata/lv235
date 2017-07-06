@@ -3,12 +3,12 @@ package com.softserve.edu.registrator.pages.communities;
 import java.util.HashMap;
 import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.communities.ICommunity;
+import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class AddCommunityPage extends AdminHomePage {
 
@@ -52,17 +52,15 @@ public class AddCommunityPage extends AdminHomePage {
 	private WebElement saveButton;
 	private WebElement clearFormButton;
 
-	public AddCommunityPage(WebDriver driver) {
-		super(driver);
+	public AddCommunityPage() {
+		super();
 		initPage();
 	}
 	
 	private void initPage() {
-			addEditCommunityForm = new AddEditCommunityForm(driver);
-			saveButton = driver.findElement(By
-					.cssSelector("input[type = 'submit']"));
-			clearFormButton = driver.findElement(By
-					.cssSelector("button[type='reset']"));
+			addEditCommunityForm = new AddEditCommunityForm();
+			saveButton = Search.cssSelector("input[type = 'submit']");
+			clearFormButton = Search.cssSelector("button[type='reset']");
 	}
 
 	public WebElement getNameFormLable() {
@@ -98,11 +96,11 @@ public class AddCommunityPage extends AdminHomePage {
 	}
 
 	public WebElement getNameCommunityErrorLabel() {
-		return driver.findElement(By.id("name.errors"));
+		return Search.id("name.errors");
 	}
 
 	public WebElement getRegistrationNumberErrorLabel() {
-		return driver.findElement(By.id("registrationNumber.errors"));
+		return Search.id("registrationNumber.errors");
 	}	
 
 	// Functional getters
@@ -127,7 +125,7 @@ public class AddCommunityPage extends AdminHomePage {
 	}
 
 	private String getCommunityNameErrorAttributeText(String attribute) {
-		return driver.switchTo().activeElement().getAttribute(attribute);
+		return Application.get().getBrowser().switchTo().activeElement().getAttribute(attribute);
 	}
 
 	public String getCommunityNameInputErrorText() {
@@ -167,11 +165,11 @@ public class AddCommunityPage extends AdminHomePage {
 	}
 
 	public int getCountofRegNumberErrorLabels() {
-		return driver.findElements(By.cssSelector("#body span")).size();
+		return Search.cssSelectors("#body span").size();
 	}
 	
 	public WebElement getActiveElement() {
-		return driver.switchTo().activeElement();
+		return Application.get().getBrowser().switchTo().activeElement();
 	}
 	
 	public String getValidationMessageText(WebElement webElement) {
@@ -179,7 +177,7 @@ public class AddCommunityPage extends AdminHomePage {
 	}
 	
 	public List<WebElement> getErrorLables() {
-		return driver.findElements(By.cssSelector("#body span"));
+		return Search.cssSelectors("#body span");
 	}
 
 	// set Data
@@ -224,30 +222,29 @@ public class AddCommunityPage extends AdminHomePage {
 		setRegistrationNumberInput(community.getRegistrationNumber());
 	}
 
-	public AdminHomePage seccesfulAddedCommunity(ICommunity community) { // TODO
+	public AdminHomePage seccesfulAddedCommunity(ICommunity community) {
 		setCommunityData(community);
 		clickSaveButton();
-		if(!driver.findElements(By.tagName("table")).isEmpty()){
-			return new CommunityPage(driver);
+		if(!Search.tagNames("table").isEmpty()){
+			return new CommunityPage();
 		} else {
-			return new AddCommunityPage(driver);
+			return new AddCommunityPage();
 		}
 	}
 	
-	public AddCommunityPage errorAddedCommunity(ICommunity community) { // TODO
+	public AddCommunityPage errorAddedCommunity(ICommunity community) {
 		setCommunityData(community);
 		clickSaveButton();
-		return new AddCommunityPage(driver);
+		return new AddCommunityPage();
 	}
 
 	public AddCommunityPage changeLanguage(ChangeLanguageFields language) {
 		setChangeLanguage(language);
-		return new AddCommunityPage(driver);
+		return new AddCommunityPage();
 	}
 	
 	public boolean isPresentErrorLabel(final String message) {
-		return driver.findElements(
-				By.xpath("//span[text() = '" + message + "']")).size() > 0;
+		return Search.xpaths("//span[text() = '" + message + "']").size() > 0;
 	}
 	
 	

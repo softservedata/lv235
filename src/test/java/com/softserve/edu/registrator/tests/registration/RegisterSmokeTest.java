@@ -36,7 +36,7 @@ public class RegisterSmokeTest extends TestRunner {
         // driver.get("http://regres.herokuapp.com/login");
         driver.get("http://java.training.local:8080/registrator/login");
         //
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         //
         // Steps
         //
@@ -51,7 +51,7 @@ public class RegisterSmokeTest extends TestRunner {
         
         driver.get("http://java.training.local:8080/registrator/manualregistration");
         
-        RegisterUserPage registerUserPage = new RegisterUserPage(driver);
+        RegisterUserPage registerUserPage = new RegisterUserPage();
         
         registerUserPage.registerNewUser(user);
         Assert.assertEquals("Цей логін уже використовується", 

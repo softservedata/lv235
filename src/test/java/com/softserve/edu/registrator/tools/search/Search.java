@@ -5,7 +5,6 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.apps.ApplicationSources;
-import com.softserve.edu.registrator.tools.browser.BrowserWrapper.Browsers;
 
 public final class Search {
 

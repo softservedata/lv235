@@ -1,11 +1,10 @@
 package com.softserve.edu.registrator.pages.subclass;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.subclass.ISubclass;
 import com.softserve.edu.registrator.pages.common.ACommonComponent;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class AddSubclassPage extends ACommonComponent {
 
@@ -21,43 +20,43 @@ public class AddSubclassPage extends ACommonComponent {
 	//
 	// Constructor
 	//
-	public AddSubclassPage(WebDriver driver) {
-		super(driver);
+	public AddSubclassPage() {
+		super();
 	}
 	
 	//
 	// Get
 	//
 	public WebElement getSubclassName() {
-		return driver.findElement(By.name(SUBCLASS_NAME_NAME));
+		return Search.name(SUBCLASS_NAME_NAME);
 	}
 	
 	public WebElement getAddParameters() {
-		return driver.findElement(By.id(ADD_PARAMETERS_ID));
+		return Search.id(ADD_PARAMETERS_ID);
 	}
 	
 	public WebElement getDescriptionParameter() {
-		return driver.findElement(By.name(DESCRIPTION_PARAMETER_NAME));
+		return Search.name(DESCRIPTION_PARAMETER_NAME);
 	}
 	
 	public WebElement getUnitParameter() {
-		return driver.findElement(By.name(UNIT_PARAMETER_NAME));
+		return Search.name(UNIT_PARAMETER_NAME);
 	}
 	
 	public WebElement getAddButton() {
-		return driver.findElement(By.id(ADD_BUTTON_ID));
+		return Search.id(ADD_BUTTON_ID);
 	}
 	
 	public WebElement getDiscreteParameter() {
-		return driver.findElement(By.cssSelector(DISCRETE_PARAMETER_CSS));
+		return Search.cssSelector(DISCRETE_PARAMETER_CSS);
 	}
 	
 	public WebElement getLinearParameter() {
-		return driver.findElement(By.cssSelector(LINEAR_PARAMETER_CSS));
+		return Search.cssSelector(LINEAR_PARAMETER_CSS);
 	}
 	
 	public WebElement getSaveButton() {
-		return driver.findElement(By.id(SAVE_BUTTON_ID));
+		return Search.id(SAVE_BUTTON_ID);
 	}
 	
 	//
@@ -117,7 +116,7 @@ public class AddSubclassPage extends ACommonComponent {
 	// Functions
 	//
 	public String FindSubclassName(ISubclass subclassName) {
-		return driver.findElement(By.xpath(".//*[@id='datatable']//td[contains(.,'"+ subclassName.getNameSubclass() +"')]")).getText();
+		return Search.xpath(".//*[@id='datatable']//td[contains(.,'"+ subclassName.getNameSubclass() +"')]").getText();
 	}
 	
 	
@@ -131,11 +130,11 @@ public class AddSubclassPage extends ACommonComponent {
 	private static final String DESCRIPTION_PARAMETER_NAME2 = "parameters[1].description";
 	private static final String UNIT_PARAMETER_NAME2 = "parameters[1].unitName";
 	public WebElement getDescriptionParameter2() {
-		return driver.findElement(By.name(DESCRIPTION_PARAMETER_NAME2));
+		return Search.name(DESCRIPTION_PARAMETER_NAME2);
 	}
 	
 	public WebElement getUnitParameter2() {
-		return driver.findElement(By.name(UNIT_PARAMETER_NAME2));
+		return Search.name(UNIT_PARAMETER_NAME2);
 	}
 	
 	public void FillDescriptionParameter2(String descriptionName) {

@@ -1,20 +1,19 @@
 package com.softserve.edu.registrator.pages.user;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
 import com.softserve.edu.registrator.pages.edits.EditPage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class PassiveEditUserPage extends AdminHomePage {
 
     // Fields
     private WebElement emailInput;
 
-    public PassiveEditUserPage(WebDriver driver) {
-        super(driver);
-        this.emailInput = driver.findElement(By.id("email"));
+    public PassiveEditUserPage() {
+        super();
+        this.emailInput = Search.id("email");
     }
 
     // PageObject
@@ -36,8 +35,8 @@ public class PassiveEditUserPage extends AdminHomePage {
     }
 
     public EditPage clickEditPageButton() {
-        driver.findElement(By.id("edit")).click();
-        return  new EditPage(driver);
+    	Search.id("edit").click();
+        return  new EditPage();
     }
 
     // get inner Data

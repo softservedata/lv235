@@ -1,14 +1,14 @@
 package com.softserve.edu.registrator.pages.edits;
 
 
+import java.util.HashMap;
+
+import org.openqa.selenium.WebElement;
+
 import com.softserve.edu.registrator.controls.ITable;
 import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.user.PassiveEditUserPage;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import java.util.HashMap;
+import com.softserve.edu.registrator.tools.search.Search;
 
 
 /**
@@ -32,7 +32,7 @@ public class EditPage extends PassiveEditUserPage {
             }
         }
 
-        private String getLocalization(ChangeLanguageFields language) {
+        public String getLocalization(ChangeLanguageFields language) {
             return this.fieldsHashMap.get(language).trim();
         }
     }
@@ -50,14 +50,14 @@ public class EditPage extends PassiveEditUserPage {
     private EditBasicInfoComponent editBasicInfoComponent;
 
     //Constructor
-    public EditPage(WebDriver driver) {
-        super(driver);
+    public EditPage() {
+        super();
         // class
-        this.editAddressInfoComponent = new EditAddressInfoComponent(driver);
-        this.editPassportInfoComponent = new EditPassportInfoComponent(driver);
-        this.editBasicInfoComponent = new EditBasicInfoComponent(driver);
+        this.editAddressInfoComponent = new EditAddressInfoComponent();
+        this.editPassportInfoComponent = new EditPassportInfoComponent();
+        this.editBasicInfoComponent = new EditBasicInfoComponent();
         //Buttons
-        this.confirmButton = driver.findElement(By.id(CONFIRM_BUTTON_ID));
+        this.confirmButton = Search.id(CONFIRM_BUTTON_ID);
     }
 
     //Get  buttons
@@ -89,11 +89,11 @@ public class EditPage extends PassiveEditUserPage {
     //Functional
     public EditPage changeLanguage(ChangeLanguageFields language){
         setChangeLanguage(language);
-        return new EditPage(driver);
+        return new EditPage();
     }
      public ActiveUsersPage clickConfirmButton(){
        getConfirmButton().click();
-       return new ActiveUsersPage(driver);
+       return new ActiveUsersPage();
      }
 
 

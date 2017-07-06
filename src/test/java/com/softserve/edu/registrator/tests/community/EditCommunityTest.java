@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.data.communities.Community;
 import com.softserve.edu.registrator.data.communities.ICommunity;
-import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
 import com.softserve.edu.registrator.pages.communities.EditCmmunityPage;
@@ -64,7 +63,7 @@ public class EditCommunityTest extends AdminHomePageTestRunner {
 				.seccesfulEditedCommunity(communityAfterEdit);
 
 		if (adminHomePage instanceof CommunityPage) {
-			adminHomePage = new CommunityPage(Application.get().getBrowser());
+			adminHomePage = new CommunityPage();
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(!((CommunityPage) adminHomePage).getTtableCommunity()
 					.getRowsByValue(communityAfterEdit.getNameCommunity()).isEmpty()

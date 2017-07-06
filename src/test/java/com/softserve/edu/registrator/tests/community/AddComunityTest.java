@@ -4,7 +4,6 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.data.communities.CommunityRepository;
 import com.softserve.edu.registrator.data.communities.ICommunity;
-import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
 import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
 import com.softserve.edu.registrator.pages.communities.AddCommunityPage;
@@ -57,13 +56,13 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 				.seccesfulAddedCommunity(community);
 
 		if (adminHomePage instanceof CommunityPage) {
-			adminHomePage = new CommunityPage(Application.get().getBrowser());
+			adminHomePage = new CommunityPage();
 			((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(false);
 		}
 
-		adminHomePage = new AddCommunityPage(Application.get().getBrowser());
+		adminHomePage = new AddCommunityPage();
 		setAdminHomePage(adminHomePage);
 		Assert.assertEquals(((AddCommunityPage) adminHomePage)
 				.getValidationMessageText(((AddCommunityPage) adminHomePage).getActiveElement()), validationMessage);
@@ -83,13 +82,13 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 				.seccesfulAddedCommunity(community);
 
 		if (adminHomePage instanceof CommunityPage) {
-			adminHomePage = new CommunityPage(Application.get().getBrowser());
+			adminHomePage = new CommunityPage();
 			((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(false);
 		}
 
-		adminHomePage = new AddCommunityPage(Application.get().getBrowser());
+		adminHomePage = new AddCommunityPage();
 		setAdminHomePage(adminHomePage);
 		Assert.assertEquals(((AddCommunityPage) adminHomePage).getRegistrationNumberErrorLabelText(),
 				AddCommunityPageL10n.INCORECT_REGISTER_COMMUNITY_ERROR_LABLE_TEST
@@ -110,13 +109,13 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 				.seccesfulAddedCommunity(community);
 
 		if (adminHomePage instanceof CommunityPage) {
-			adminHomePage = new CommunityPage(Application.get().getBrowser());
+			adminHomePage = new CommunityPage();
 			((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(false);
 		}
 
-		adminHomePage = new AddCommunityPage(Application.get().getBrowser());
+		adminHomePage = new AddCommunityPage();
 		setAdminHomePage(adminHomePage);
 		Assert.assertEquals(((AddCommunityPage) adminHomePage).getNameCommunityErrorLabelText(),
 				AddCommunityPageL10n.NAME_COMMUNITY_USED_ERROR_LABLE_TEST
@@ -137,13 +136,13 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 				.seccesfulAddedCommunity(community);
 
 		if (adminHomePage instanceof CommunityPage) {
-			adminHomePage = new CommunityPage(Application.get().getBrowser());
+			adminHomePage = new CommunityPage();
 			adminHomePage = ((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(false);
 		}
 
-		adminHomePage = new AddCommunityPage(Application.get().getBrowser());
+		adminHomePage = new AddCommunityPage();
 		setAdminHomePage(adminHomePage);
 		Assert.assertTrue(((AddCommunityPage) adminHomePage).getErrorLables().size() == 1);
 	}
@@ -162,14 +161,14 @@ public class AddComunityTest extends AdminHomePageTestRunner {
 				.seccesfulAddedCommunity(community);
 
 		if (adminHomePage instanceof CommunityPage) {
-			adminHomePage = new CommunityPage(Application.get().getBrowser());
+			adminHomePage = new CommunityPage();
 			adminHomePage = ((CommunityPage) adminHomePage).deleteCommunityIfExist(community);
 
 			setAdminHomePage(adminHomePage);
 			Assert.assertTrue(false);
 		}
 
-		adminHomePage = new AddCommunityPage(Application.get().getBrowser());
+		adminHomePage = new AddCommunityPage();
 		setAdminHomePage(adminHomePage);
 		Assert.assertTrue(((AddCommunityPage) adminHomePage).getErrorLables().size() == 1);
 	}

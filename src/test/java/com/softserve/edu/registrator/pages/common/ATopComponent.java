@@ -1,7 +1,5 @@
 package com.softserve.edu.registrator.pages.common;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -33,14 +31,11 @@ public abstract class ATopComponent {
     public static final String VALUE_ATTRIBUTE = "value"; 
 
     // Fields
-
-    protected WebDriver driver;
     //
     private WebElement titleMessage;
     private Select changeLanguage;
 
-    protected ATopComponent(WebDriver driver) {
-        this.driver = driver;
+    protected ATopComponent() {
         //this.titleMessage = driver.findElement(By.cssSelector("div.col-md-7.col-xs-12"));
         //this.changeLanguage = new Select(driver.findElement(By.id("changeLanguage")));
         //
