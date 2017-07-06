@@ -96,9 +96,6 @@ public class EditAddressInfoComponent {
         this.postcodeField = Search.id(POSTCODE_ID);
     }
     // get driver
-    public WebDriver getDriver(){
-        return driver;
-    }
 
     // get LABEl
 
