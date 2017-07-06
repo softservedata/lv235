@@ -1,11 +1,11 @@
 package com.softserve.edu.registrator.pages.common;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.registrator.pages.Application;
 
 public class LogPage {
     //
@@ -14,9 +14,7 @@ public class LogPage {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    // Fields
-
-    private WebDriver driver;
+    // Field
     //
     @FindBy(css = "div.col-md-7.col-xs-12")
     private WebElement titleMessage;
@@ -40,9 +38,8 @@ public class LogPage {
     @FindBy(css = "img.login_logo.col-md-8.col-xs-12")
     private WebElement logo;
 
-    public LogPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this); // 1st item
+    public LogPage() {
+        PageFactory.initElements(Application.get().getBrowser(), this); // 1st item
     }
 
     // PageObject
@@ -159,7 +156,7 @@ public class LogPage {
 
     public LogPage unsuccessfulLogin(IUser invalidUser) {
         setLoginData(invalidUser);
-        return new LogPage(driver); 
+        return new LogPage(); 
     }
 
 }

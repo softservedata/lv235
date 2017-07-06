@@ -2,7 +2,7 @@ package com.softserve.edu.registrator.pages.communities;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.controls.ITable;
@@ -252,15 +252,14 @@ public class CommunityPage extends AdminHomePage {
 	}
 	
 	private WebElement getEditButtonByIndexOfRow(int indexRow) {
-		return getTtableCommunity()
-				.getCell(indexRow, getActionsColumnIndex())
-				.findElement(By.cssSelector(".btn.btn-primary"));
+		return Search.cssSelector(".btn.btn-primary", getTtableCommunity()
+				.getCell(indexRow, getActionsColumnIndex()));
+
 	}
 	
 	private WebElement getDeleteButtonByIndexOfRow(int indexRow) {
-		return getTtableCommunity()
-				.getCell(indexRow, getActionsColumnIndex())
-				.findElement(By.cssSelector(".btn.btn-danger"));
+		return Search.cssSelector(".btn.btn-danger", getTtableCommunity()
+				.getCell(indexRow, getActionsColumnIndex()));
 	}
 	
 	public String getEditButtonText() {

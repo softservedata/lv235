@@ -1,10 +1,9 @@
 package com.softserve.edu.registrator.pages.settings;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class SettingsPage extends AdminHomePage {
 
@@ -13,15 +12,12 @@ public class SettingsPage extends AdminHomePage {
 	private DefaultTimeZoneComponent defaultTimeZoneComponent;
 	private EmailConfigurationComponent emailConfigurationComponent;
 
-	public SettingsPage(WebDriver driver) {
+	public SettingsPage() {
 		super();
-		this.userRegistrationOptionsComponent = new UserRegistrationOptionsComponent(
-				driver);
-		this.defaultTimeZoneComponent = new DefaultTimeZoneComponent(driver);
-		this.emailConfigurationComponent = new EmailConfigurationComponent(
-				driver);
-		this.confirmChangesButton = driver.findElement(By
-				.id(("confirmRegistrationMethod")));
+		this.userRegistrationOptionsComponent = new UserRegistrationOptionsComponent();
+		this.defaultTimeZoneComponent = new DefaultTimeZoneComponent();
+		this.emailConfigurationComponent = new EmailConfigurationComponent();
+		this.confirmChangesButton = Search.id("confirmRegistrationMethod");
 	}
 
 	public void confirmChangesButtonClick() {

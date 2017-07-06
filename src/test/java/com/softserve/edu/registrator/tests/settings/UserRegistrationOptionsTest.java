@@ -31,7 +31,7 @@ public class UserRegistrationOptionsTest extends TestRunner {
 		driver.findElement(
 				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
-		SettingsPage s = new SettingsPage(driver);
+		SettingsPage s = new SettingsPage();
 		s.getUserRegistrationOptionsComponent().manualRegistrationClick();
 		Thread.sleep(1000);
 		s.confirmChangesButtonClick();

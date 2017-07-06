@@ -2,7 +2,6 @@ package com.softserve.edu.registrator.pages.edits;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
@@ -56,8 +55,6 @@ public class EditAddressInfoComponent {
     public static final String FLAT_ID = "flat";
     public static final String POSTCODE_ID = "postcode";
     public static final String ADDRESS_VALUE = "value";
-    //WebDriver
-    private WebDriver driver;
     //label
     private WebElement addressMainLabel;
     private WebElement regionLabel;
@@ -94,10 +91,6 @@ public class EditAddressInfoComponent {
         this.buildingField = Search.id(BUILDING_ID);
         this.flatField = Search.id(FLAT_ID);
         this.postcodeField = Search.id(POSTCODE_ID);
-    }
-    // get driver
-    public WebDriver getDriver(){
-        return driver;
     }
 
     // get LABEl

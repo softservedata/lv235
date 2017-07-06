@@ -36,7 +36,7 @@ public class LogTest {
 		driver.get("java.training.local:8080/registrator/login");
 		//
 		// Steps
-		LogPage logPage = new LogPage(driver); // 1st item
+		LogPage logPage = new LogPage(); // 1st item
 		//LogPage logPage = PageFactory.initElements(driver, LogPage.class); // 2nd item
 		//
 		Thread.sleep(2000);

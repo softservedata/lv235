@@ -1,6 +1,6 @@
 package com.softserve.edu.registrator.pages.user;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.controls.ITable;
@@ -64,16 +64,15 @@ public abstract class RegisteredUsersPage extends AdminHomePage {
     // Business Logic
 
     public PassiveEditUserPage gotoEditUserByLogin(String login) {
-        String loginHeaderName = table.getTableWebElement()
-                .findElement(By.cssSelector(LOGIN_HEADER_CSSSELECTOR)).getText().trim();
+        String loginHeaderName = Search.cssSelector(LOGIN_HEADER_CSSSELECTOR, table.getTableWebElement()).getText().trim();
         int columnLoginIndex = table.getColumnIndexByValueOfHeader(loginHeaderName);
         int rowIndex = table.getRowIndexByValueInColumn(login, columnLoginIndex);
         //
-        String actionHeaderName = table.getTableWebElement()
-                .findElement(By.cssSelector(ACTION_HEADER_CSSSELECTOR)).getText().trim();
+        String actionHeaderName = Search.cssSelector(ACTION_HEADER_CSSSELECTOR, table.getTableWebElement()).getText().trim();
+        
         int columnActionIndex = table.getColumnIndexByValueOfHeader(actionHeaderName);
-        table.getCell(rowIndex, columnActionIndex)
-                .findElement(By.tagName("button")).click();
+        
+        Search.tagName("button", table.getCell(rowIndex, columnActionIndex)).click();
         return new PassiveEditUserPage();
      }
     

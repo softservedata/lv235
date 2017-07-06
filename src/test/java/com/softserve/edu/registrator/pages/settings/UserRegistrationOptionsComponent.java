@@ -3,11 +3,10 @@ package com.softserve.edu.registrator.pages.settings;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class UserRegistrationOptionsComponent {
 
@@ -48,18 +47,13 @@ public class UserRegistrationOptionsComponent {
 	private WebElement manualRegistration;
 	private WebElement mixedRegistration;
 
-	public UserRegistrationOptionsComponent(WebDriver driver) {
-		this.componentLabel = driver.findElement(By
-				.cssSelector("form div:nth-child(1) div.panel-heading h3"));
+	public UserRegistrationOptionsComponent() {
+		this.componentLabel = Search.cssSelector("form div:nth-child(1) div.panel-heading h3");
 
-		this.optionLabel = driver.findElement(By
-				.cssSelector("form div:nth-child(1) div.panel-body.panel30 p"));
-		this.personalRegistration = driver.findElement(By
-				.xpath("//*[@type = 'radio' and @value = 'PERSONAL']"));
-		this.manualRegistration = driver.findElement(By
-				.xpath("//*[@type = 'radio' and @value = 'MANUAL']"));
-		this.mixedRegistration = driver.findElement(By
-				.xpath("//*[@type = 'radio' and @value = 'MIXED']"));
+		this.optionLabel = Search.cssSelector("form div:nth-child(1) div.panel-body.panel30 p");
+		this.personalRegistration = Search.xpath("//*[@type = 'radio' and @value = 'PERSONAL']");
+		this.manualRegistration = Search.xpath("//*[@type = 'radio' and @value = 'MANUAL']");
+		this.mixedRegistration = Search.xpath("//*[@type = 'radio' and @value = 'MIXED']");
 	}
 
 	public void personalRegistrationClick() {
