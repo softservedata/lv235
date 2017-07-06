@@ -2,12 +2,10 @@ package com.softserve.edu.registrator.pages.registration;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
-import com.softserve.edu.registrator.pages.Application;
+import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class RegisterNewUserMainInfo {
 
@@ -91,7 +89,6 @@ public class RegisterNewUserMainInfo {
     
     // Fields
     
-    private WebDriver driver;
     private WebElement mainInfoLabel;
     private WebElement firstNameLabel;
     private WebElement firstName;
@@ -110,53 +107,52 @@ public class RegisterNewUserMainInfo {
     
     // Public constructor
     
-    public RegisterNewUserMainInfo(WebDriver driver) {
-        this.driver = driver;
-        this.mainInfoLabel = driver.findElement(By.cssSelector(MAININFO_LABEL_CSSSELECTOR));
-        this.firstNameLabel = driver.findElement(By.cssSelector(FIRSTNAME_LABEL_CSSSELECTOR));
-        this.firstName = driver.findElement(By.id(FIRSTNAME_INPUT_ID));
-        this.lastNameLabel = driver.findElement(By.cssSelector(LASTNAME_LABEL_CSSSELECTOR));
-        this.lastName = driver.findElement(By.id(LASTNAME_INPUT_ID));
-        this.middleNameLabel = driver.findElement(By.cssSelector(MIDDLENAME_LABEL_CSSSELECTOR));
-        this.middleName = driver.findElement(By.id(MIDDLENAME_INPUT_ID));
-        this.emailLabel = driver.findElement(By.cssSelector(EMAIL_LABEL_CSSSELECTOR));
-        this.email = driver.findElement(By.id(EMAIL_INPUT_ID));
-        this.loginLabel = driver.findElement(By.cssSelector(LOGIN_LABEL_CSSSELECTOR));
-        this.login = driver.findElement(By.id(LOGIN_INPUT_ID));
-        this.passwordLabel = driver.findElement(By.cssSelector(PASSWORD_LABEL_CSSSELECTOR));
-        this.password = driver.findElement(By.id(PASSWORD_INPUT_ID));
-        this.confirmPasswordLabel = driver.findElement(By.cssSelector(CONFIRMPASSWORD_LABEL_CSSSELECTOR));
-        this.confirmPassword = driver.findElement(By.id(CONFIRMPASSWORD_INPUT_ID));
+    public RegisterNewUserMainInfo() {
+        this.mainInfoLabel = Search.cssSelector(MAININFO_LABEL_CSSSELECTOR);
+        this.firstNameLabel = Search.cssSelector(FIRSTNAME_LABEL_CSSSELECTOR);
+        this.firstName = Search.id(FIRSTNAME_INPUT_ID);
+        this.lastNameLabel = Search.cssSelector(LASTNAME_LABEL_CSSSELECTOR);
+        this.lastName = Search.id(LASTNAME_INPUT_ID);
+        this.middleNameLabel = Search.cssSelector(MIDDLENAME_LABEL_CSSSELECTOR);
+        this.middleName = Search.id(MIDDLENAME_INPUT_ID);
+        this.emailLabel = Search.cssSelector(EMAIL_LABEL_CSSSELECTOR);
+        this.email = Search.id(EMAIL_INPUT_ID);
+        this.loginLabel = Search.cssSelector(LOGIN_LABEL_CSSSELECTOR);
+        this.login = Search.id(LOGIN_INPUT_ID);
+        this.passwordLabel = Search.cssSelector(PASSWORD_LABEL_CSSSELECTOR);
+        this.password = Search.id(PASSWORD_INPUT_ID);
+        this.confirmPasswordLabel = Search.cssSelector(CONFIRMPASSWORD_LABEL_CSSSELECTOR);
+        this.confirmPassword = Search.id(CONFIRMPASSWORD_INPUT_ID);
     }
 
     // get Main info error labels
     
     public WebElement getFirstNameErrorLabel() {
-        return getDriver().findElement(By.id(FIRSTNAME_ERROR_LABEL_ID));
+        return Search.id(FIRSTNAME_ERROR_LABEL_ID);
     }
     
     public WebElement getLastNameErrorLabel() {
-        return getDriver().findElement(By.id(LASTNAME_ERROR_LABEL_ID));
+        return Search.id(LASTNAME_ERROR_LABEL_ID);
     }
     
     public WebElement getMiddleNameErrorLabel() {
-        return getDriver().findElement(By.id(MIDDLENAME_ERROR_LABEL_ID));
+        return Search.id(MIDDLENAME_ERROR_LABEL_ID);
     }
     
     public WebElement getEmailErrorLabel() {
-        return getDriver().findElement(By.id(EMAIL_ERROR_LABEL_ID));
+        return Search.id(EMAIL_ERROR_LABEL_ID);
     }
     
     public WebElement getLoginErrorLabel() {
-        return getDriver().findElement(By.id(LOGIN_ERROR_LABEL_ID));
+        return Search.id(LOGIN_ERROR_LABEL_ID);
     }
     
     public WebElement getPasswordErrorLabel() {
-        return getDriver().findElement(By.id(PASSWORD_ERROR_LABEL_ID));
+        return Search.id(PASSWORD_ERROR_LABEL_ID);
     }
     
     public WebElement getConfirmPasswordErrorLabel() {
-        return getDriver().findElement(By.id(CONFIRMPASSWORD_ERROR_LABEL_ID));
+        return Search.id(CONFIRMPASSWORD_ERROR_LABEL_ID);
     }
     
     // get Main info labels
@@ -194,10 +190,6 @@ public class RegisterNewUserMainInfo {
     }
     
     // get Main info
-
-    public WebDriver getDriver() {
-        return driver;
-    }
     
     public WebElement getFirstName() {
         return this.firstName;

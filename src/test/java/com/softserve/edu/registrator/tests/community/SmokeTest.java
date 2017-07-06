@@ -4,28 +4,29 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.softserve.edu.registrator.data.communities.Community;
+import com.softserve.edu.registrator.data.communities.CommunityRepository;
 import com.softserve.edu.registrator.data.communities.ICommunity;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
 import com.softserve.edu.registrator.pages.communities.CommunityPage;
 
 
-public class SmokeTest extends CommunityTestRunner {
+public class SmokeTest extends AdminHomePageTestRunner {
 	
 	    @DataProvider 
 	    public Object[][] community() {
 	        return new Object[][] {
-	                { new Community("Kyiv", "470:09:30:461:05471")}
+	                { CommunityRepository.getCommunityValidData()}
 	                };
 	    }
 
 	    @Test(dataProvider = "community")
 	    public void checkCommunityAdd(ICommunity community) throws Exception {
-	    	CommunityPage communityPage = getAdminHomePage()
+	    	AdminHomePage adminHomePage = getAdminHomePage()
 	    			.clickCommunities()
 	    			.addNewCommunity()
 	    			.seccesfulAddedCommunity(community);
-	    	Assert.assertTrue(!communityPage.getTtableCommunity().getRowsByValue(community.getNameCommunity()).isEmpty()); 	
+	    	Assert.assertTrue(!((CommunityPage)adminHomePage).getTtableCommunity().getRowsByValue(community.getNameCommunity()).isEmpty()); 	
 	    	Thread.sleep(1000);
-	    	setCommunityPage(communityPage);
+	    	setAdminHomePage(adminHomePage);
 	    }
 }

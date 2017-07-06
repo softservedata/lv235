@@ -1,8 +1,8 @@
 package com.softserve.edu.registrator.pages.communities;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class AddEditCommunityForm {
 
@@ -12,15 +12,12 @@ public class AddEditCommunityForm {
 	private WebElement registrationNumberLable;
 	private WebElement registrationNumberInput;
 
-	public AddEditCommunityForm(WebDriver driver) {
-		nameFormLable = driver.findElement(By.cssSelector("h2"));
-		communityNameLable = driver.findElement(By
-				.xpath("//input[@name = 'name']/../../label"));
-		communityNameInput = driver.findElement(By.name("name"));
-		registrationNumberLable = driver.findElement(By
-				.xpath("//input[@name = 'registrationNumber']/../../label"));
-		registrationNumberInput = driver.findElement(By
-				.name("registrationNumber"));
+	public AddEditCommunityForm() {
+		nameFormLable = Search.cssSelector("h2");
+		communityNameLable = Search.xpath("//input[@name = 'name']/../../label");
+		communityNameInput = Search.name("name");
+		registrationNumberLable = Search.xpath("//input[@name = 'registrationNumber']/../../label");
+		registrationNumberInput = Search.name("registrationNumber");
 	}
 
 	public WebElement getNameFormLable() {

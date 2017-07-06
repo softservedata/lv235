@@ -1,12 +1,12 @@
 package com.softserve.edu.registrator.pages.settings;
 
+
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class DefaultTimeZoneComponent {
 	public static enum DefaultTimeZoneComponentL10n {
@@ -36,13 +36,10 @@ public class DefaultTimeZoneComponent {
 	private WebElement innerLabel;
 	private WebElement cityOrTimeZoneInputField;
 
-	public DefaultTimeZoneComponent(WebDriver driver) {
-		this.componentLabel = driver.findElement(By
-				.cssSelector("form div:nth-child(1) div.panel-heading h3"));
-		this.innerLabel = driver.findElement(By
-				.cssSelector("form div:nth-child(2) div.panel-body.panel30 p"));
-		this.cityOrTimeZoneInputField = driver.findElement(By
-				.cssSelector("#time_id"));
+	public DefaultTimeZoneComponent() {
+		this.componentLabel = Search.cssSelector("form div:nth-child(1) div.panel-heading h3");
+		this.innerLabel = Search.cssSelector("form div:nth-child(2) div.panel-body.panel30 p");
+		this.cityOrTimeZoneInputField = Search.cssSelector("#time_id");
 	}
 
 	public void typeInCityOrTimeZoneInputField(String text) {

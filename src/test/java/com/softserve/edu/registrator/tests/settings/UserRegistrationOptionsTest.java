@@ -1,5 +1,6 @@
 package com.softserve.edu.registrator.tests.settings;
 
+
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -10,7 +11,6 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.pages.settings.SettingsPage;
 import com.softserve.edu.registrator.tests.TestRunner;
-
 // TODO
 public class UserRegistrationOptionsTest extends TestRunner {
 
@@ -31,7 +31,7 @@ public class UserRegistrationOptionsTest extends TestRunner {
 		driver.findElement(
 				By.xpath("//a[@href='/registrator/administrator/settings']"))
 				.click();
-		SettingsPage s = new SettingsPage(driver);
+		SettingsPage s = new SettingsPage();
 		s.getUserRegistrationOptionsComponent().manualRegistrationClick();
 		Thread.sleep(1000);
 		s.confirmChangesButtonClick();

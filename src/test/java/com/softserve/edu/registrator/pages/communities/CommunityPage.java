@@ -2,15 +2,15 @@ package com.softserve.edu.registrator.pages.communities;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.controls.ITable;
 import com.softserve.edu.registrator.controls.Table;
 import com.softserve.edu.registrator.data.communities.Community;
 import com.softserve.edu.registrator.data.communities.ICommunity;
-import com.softserve.edu.registrator.pages.AdminHomePage;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class CommunityPage extends AdminHomePage {
 
@@ -23,13 +23,10 @@ public class CommunityPage extends AdminHomePage {
 
 		public DeleteCommunityAlert(CommunityPage communityPage) {
 			this.baseCommunityPage = communityPage;
-			alertLabel = driver.findElement(By.cssSelector(".bootbox-body"));
-			okButton = driver.findElement(By
-					.xpath("//button[@data-bb-handler='confirm']"));
-			cancelButton = driver.findElement(By
-					.xpath("//button[@data-bb-handler='cancel']"));
-			closeButton = driver.findElement(By
-					.cssSelector(".bootbox-close-button.close"));
+			alertLabel = Search.cssSelector(".bootbox-body");
+			okButton = Search.xpath("//button[@data-bb-handler='confirm']");
+			cancelButton = Search.xpath("//button[@data-bb-handler='cancel']");
+			closeButton = Search.cssSelector(".bootbox-close-button.close");
 		}
 
 		public CommunityPage getBaseCommunityPage() {
@@ -78,10 +75,22 @@ public class CommunityPage extends AdminHomePage {
 		}
 
 		public void clickCancelButton() {
+			//TODO create explicit waits
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			getCancelButton().click();
 		}
 
 		public void clickCloseButton() {
+			//TODO create explicit waits
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			getCloseButton().click();
 		}
 
@@ -154,16 +163,20 @@ public class CommunityPage extends AdminHomePage {
 	private WebElement actions;
 	private ITable communityTable; 
 
-	public CommunityPage(WebDriver driver) {
-		super(driver);
-		setTtableCommunity();
-		communityLable = driver.findElement(By.cssSelector("h4"));
-		addNewCommunityButton = driver.findElement(By
-				.cssSelector("a[href= 'addCommunity']"));
-		showNoneActiveCBox = driver.findElement(By.cssSelector("label"));
-		teretorialCommunity = driver.findElement(By.xpath("//tr/th[1]"));
-		registrationNumber = driver.findElement(By.xpath("//tr/th[2]"));
-		actions = driver.findElement(By.xpath("//tr/th[3]"));
+	public CommunityPage() {
+		super();
+		initPage();
+	}
+	
+	
+	private void initPage() {
+			setTtableCommunity();
+			communityLable = Search.cssSelector("h4");
+			addNewCommunityButton = Search.cssSelector("a[href= 'addCommunity']");
+			showNoneActiveCBox = Search.cssSelector("label");
+			teretorialCommunity = Search.xpath("//tr/th[1]");
+			registrationNumber = Search.xpath("//tr/th[2]");
+			actions = Search.xpath("//tr/th[3]");
 	}
 
 	public WebElement getCommunityLable() {
@@ -239,15 +252,14 @@ public class CommunityPage extends AdminHomePage {
 	}
 	
 	private WebElement getEditButtonByIndexOfRow(int indexRow) {
-		return getTtableCommunity()
-				.getCell(indexRow, getActionsColumnIndex())
-				.findElement(By.cssSelector(".btn.btn-primary"));
+		return Search.cssSelector(".btn.btn-primary", getTtableCommunity()
+				.getCell(indexRow, getActionsColumnIndex()));
+
 	}
 	
 	private WebElement getDeleteButtonByIndexOfRow(int indexRow) {
-		return getTtableCommunity()
-				.getCell(indexRow, getActionsColumnIndex())
-				.findElement(By.cssSelector(".btn.btn-danger"));
+		return Search.cssSelector(".btn.btn-danger", getTtableCommunity()
+				.getCell(indexRow, getActionsColumnIndex()));
 	}
 	
 	public String getEditButtonText() {
@@ -266,7 +278,7 @@ public class CommunityPage extends AdminHomePage {
 	// Setters
 
 	public void setTtableCommunity() {
-		this.communityTable = new Table(driver.findElement(By.tagName("table")));
+		this.communityTable = new Table(Search.tagName("table"));
 	}
 	
 	public void clickCBoxShowNoneActive() {
@@ -277,7 +289,7 @@ public class CommunityPage extends AdminHomePage {
 		getAddNewCommunityButton().click();
 	}
 
-	public void clickEditButton(Community community) {
+	public void clickEditButton(ICommunity community) {
 		getEditButtonByIndexOfRow(getTtableCommunity()
 				.getRowIndexByValueInColumn(community.getNameCommunity(),
 						getNameCommunityColumnIndex())).click();
@@ -295,29 +307,29 @@ public class CommunityPage extends AdminHomePage {
 	public CommunityPage checkedCBoxShowNoneActive() {
 		getCommunities().click();
 		clickCBoxShowNoneActive();
-		return new CommunityPage(driver);
+		return new CommunityPage();
 	}
 
 	public CommunityPage uncheckedCBoxShowNoneActive() {
 		getCommunities().click();
 		clickCBoxShowNoneActive();
 		clickCBoxShowNoneActive();
-		return new CommunityPage(driver);
+		return new CommunityPage();
 	}
 
 	public AddCommunityPage addNewCommunity() {
 		getAddNewCommunityButton().click();
-		return new AddCommunityPage(driver);
+		return new AddCommunityPage();
 	}
 
 	public CommunityPage changeLanguage(ChangeLanguageFields language) {
 		setChangeLanguage(language);
-		return new CommunityPage(driver);
+		return new CommunityPage();
 	}
 
-	public EditCmmunityPage editCommunity(Community community) {
+	public EditCmmunityPage editCommunity(ICommunity community) {
 		clickEditButton(community);
-		return new EditCmmunityPage(driver);
+		return new EditCmmunityPage();
 	}
 
 	public DeleteCommunityAlert deleteCommunity(ICommunity community) {

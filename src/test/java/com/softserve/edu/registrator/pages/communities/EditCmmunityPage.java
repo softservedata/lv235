@@ -2,12 +2,12 @@ package com.softserve.edu.registrator.pages.communities;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.registrator.data.communities.Community;
-import com.softserve.edu.registrator.pages.AdminHomePage;
+import com.softserve.edu.registrator.data.communities.ICommunity;
+import com.softserve.edu.registrator.pages.Application;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class EditCmmunityPage extends AdminHomePage {
 
@@ -43,11 +43,14 @@ public class EditCmmunityPage extends AdminHomePage {
 	private AddEditCommunityForm addEditCommunityForm;
 	private WebElement saveButton;
 
-	public EditCmmunityPage(WebDriver driver) {
-		super(driver);
-		addEditCommunityForm = new AddEditCommunityForm(driver);
-		saveButton = driver.findElement(By
-				.cssSelector("input[type = 'submit']"));
+	public EditCmmunityPage() {
+		super();
+		initPage();
+	}
+	
+	private void initPage() {
+			addEditCommunityForm = new AddEditCommunityForm();
+			saveButton = Search.cssSelector("input[type = 'submit']");
 	}
 
 	public WebElement getNameFormLable() {
@@ -83,11 +86,11 @@ public class EditCmmunityPage extends AdminHomePage {
 	}
 
 	public WebElement getNameCommunityErrorLabel() {
-		return driver.findElement(By.id("name.errors"));
+		return Search.id("name.errors");
 	}
 
 	public WebElement getRegistrationNumberErrorLabel() {
-		return driver.findElement(By.id("registrationNumber.errors"));
+		return Search.id("registrationNumber.errors");
 	}
 
 	// Functional Getters
@@ -109,7 +112,7 @@ public class EditCmmunityPage extends AdminHomePage {
 	}
 
 	private String getCommunityNameErrorAttributeText(String attribute) {
-		return driver.switchTo().activeElement().getAttribute(attribute);
+		return Application.get().getBrowser().switchTo().activeElement().getAttribute(attribute);
 	}
 
 	public String getCommunityNameInputErrorText() {
@@ -145,7 +148,7 @@ public class EditCmmunityPage extends AdminHomePage {
 	}
 
 	public int getCountofRegNumberErrorLabels() {
-		return driver.findElements(By.cssSelector("#body span")).size();
+		return Search.cssSelectors("#body span").size();
 	}
 
 	// Setters
@@ -180,19 +183,32 @@ public class EditCmmunityPage extends AdminHomePage {
 	}
 
 	// Functional setters
-	public void setCommunityData(Community community) {
+	public void setCommunityData(ICommunity community) {
 		setCommunityNameInput(community.getNameCommunity());
 		setRegistrationNumberInput(community.getRegistrationNumber());
 	}
 
-	public CommunityPage seccesfulEditedCommunity(Community community) { // TODO
+	public AdminHomePage seccesfulEditedCommunity(ICommunity community) {
 		setCommunityData(community);
 		clickSaveButton();
-		return new CommunityPage(driver);
+		if(!Search.tagNames("table").isEmpty()){
+			return new CommunityPage();
+		} else {
+			return new EditCmmunityPage();
+		}
 	}
 
 	public AddCommunityPage changeLanguage(ChangeLanguageFields language) {
 		setChangeLanguage(language);
-		return new AddCommunityPage(driver);
+		return new AddCommunityPage();
+	}
+	
+	public AdminHomePage save() {
+		clickSaveButton();
+		if(!Search.tagNames("table").isEmpty()){
+			return new CommunityPage();
+		} else {
+			return new EditCmmunityPage();
+		}
 	}
 }

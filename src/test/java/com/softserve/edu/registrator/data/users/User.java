@@ -24,15 +24,6 @@ public class User implements IPersonUser, IAccountUser, IBuildUser, IUserExt {
 		this.passport = Passport.get();
 	}
 
-	// Delete
-	// public User(Person person, Account account, Address adress, Passport
-	// passport) {
-	// this.person = person;
-	// this.account = account;
-	// this.adress = adress;
-	// this.passport = passport;
-	// }
-
 	// static factory - - - - - - - - - -
 
 	public static IPersonUser get() {

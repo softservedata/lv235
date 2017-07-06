@@ -16,15 +16,6 @@ public final class UserRepository {
         }
         return instance;
     }
-
-    // TODO
-	//public IUser getAdmin()
-	//public IUser getRegistrator()
-	//public IUser getCommissioner()
-	//public IUser getCoOwner()
-	//public IUser getNewUser()
-	//
-	//public List<IUser> getAdminDB()
 	
 	public IUser admin() {
 		// TODO Read from file
@@ -361,7 +352,47 @@ public final class UserRepository {
 							.setPublished("")
 							);
 	}
-	
+
+	   public IUser invalid() {
+	        // TODO Read from file
+	        return User.get()
+	                    .setPerson(Person.get()
+	                                    .setFirstname("Адміністратор")
+	                                    .setLastname("Адміністратор")
+	                                    .setEmail("admin@admin.com")
+	                                    .build()
+	                                    .setMiddlename("Адміністратор")
+	                                    .setPhonenumber("")
+	                            )
+	                    .setAccount(Account.get()
+	                                    .setLogin("admin11")
+	                                    .setPassword("admin11")
+	                                    .setRole("Адміністратор")
+	                                    .setStatus("Активний")
+	                                    .setCommunity("Україна")
+	                                    .build()
+	                                    .setData("")
+	                                    .setRegisterNumber("0")
+	                                    .setRegistratorNumber("0")
+	                                    .setVolumeNumber("0")
+	                            )
+	                    .build()
+	                    .setAddress(Address.get()
+	                            .setRegion("Львівська")
+	                            .setDistrict("Галицький")
+	                            .setCity("Львів")
+	                            .setStreet("Вітовського")
+	                            .setBuilding("48")
+	                            .setFlat("31")
+	                            .setPostcode("00000")
+	                            )
+	                    .setPassport(Passport.get()
+	                            .setSeria("AA")
+	                            .setNumber("00000")
+	                            .setPublished("Народом України")
+	                            );
+	    }
+//TODO
 //    public List<IUser> getExistUsersCVS() {
 //        return new UserUtils().getAllUsers();
 //    }

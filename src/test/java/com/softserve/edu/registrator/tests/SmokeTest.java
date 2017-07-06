@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
-import com.softserve.edu.registrator.pages.CommonPage;
-import com.softserve.edu.registrator.pages.LoginPage;
+import com.softserve.edu.registrator.pages.common.CommonPage;
+import com.softserve.edu.registrator.pages.common.LoginPage;
 
 public class SmokeTest {
 
@@ -47,7 +47,7 @@ public class SmokeTest {
 		driver.get("http://java.training.local:8080/registrator/login");
 		Thread.sleep(1000);
 		//
-		LoginPage loginPage = new LoginPage(driver);
+		LoginPage loginPage = new LoginPage();
 		Thread.sleep(2000);
 		//
 		// Steps

@@ -1,13 +1,10 @@
 package com.softserve.edu.registrator.tests;
 
-
-import com.softserve.edu.registrator.pages.AdminHomePage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
@@ -17,19 +14,13 @@ import com.softserve.edu.registrator.pages.Application;
 
 public class TestRunner {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     // Use, if class Application is not singleton
     // protected Application application;
-    private AdminHomePage adminHomePage;
+    
     @BeforeClass
     public void beforeClass(ITestContext context) {
         System.out.println("@BeforeClass");
-        // System.out.println("***@BeforeClass MAVEN"
-        // + System.getProperty("surefire.reports.directory"));
-        // Use, if class Application is not singleton
-        // application = new Application();
-        //Application.get(ApplicationSourcesRepository.getChromeTraining());
-//        Application.get(ApplicationUtils
-//                .updateFromTestNgXML(ApplicationSourcesRepository.getChromeTraining(), context));
         Application.get(ApplicationUtils
                 .updateAll(ApplicationSourcesRepository.getChromeTraining(), context));
     }
@@ -43,8 +34,6 @@ public class TestRunner {
     @BeforeMethod
     public void beforeMethod() {
         System.out.println("@BeforeMethod");
-        //Application.get().load();
-        // Application.get().login();
     }
 
     @AfterMethod

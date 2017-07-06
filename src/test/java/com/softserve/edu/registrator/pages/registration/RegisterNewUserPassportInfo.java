@@ -2,11 +2,10 @@ package com.softserve.edu.registrator.pages.registration;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class RegisterNewUserPassportInfo {
 
@@ -62,14 +61,14 @@ public class RegisterNewUserPassportInfo {
     
     // Public constructor
     
-    public RegisterNewUserPassportInfo(WebDriver driver) {
-        this.passportInfoLabel = driver.findElement(By.cssSelector(PASSPORTINFO_LABEL_CSSSELECTOR));
-        this.seriaLabel = driver.findElement(By.cssSelector(SERIA_LABEL_CSSSELECTOR));
-        this.seria = driver.findElement(By.id(SERIA_INPUT_ID));
-        this.passportNumberLabel = driver.findElement(By.cssSelector(PASSPORTNUMBER_LABEL_CSSSELECTOR));
-        this.passportNumber = driver.findElement(By.id(PASSPORTNUMBER_INPUT_ID));
-        this.publishedLabel = driver.findElement(By.cssSelector(PUBLISHED_LABEL_CSSSELECTOR));
-        this.published = driver.findElement(By.id(PUBLISHED_INPUT_ID));
+    public RegisterNewUserPassportInfo() {
+        this.passportInfoLabel = Search.cssSelector(PASSPORTINFO_LABEL_CSSSELECTOR);
+        this.seriaLabel = Search.cssSelector(SERIA_LABEL_CSSSELECTOR);
+        this.seria = Search.id(SERIA_INPUT_ID);
+        this.passportNumberLabel = Search.cssSelector(PASSPORTNUMBER_LABEL_CSSSELECTOR);
+        this.passportNumber = Search.id(PASSPORTNUMBER_INPUT_ID);
+        this.publishedLabel = Search.cssSelector(PUBLISHED_LABEL_CSSSELECTOR);
+        this.published = Search.id(PUBLISHED_INPUT_ID);
     }
     
     // get Passport info labels

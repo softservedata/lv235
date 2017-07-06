@@ -2,11 +2,10 @@ package com.softserve.edu.registrator.pages.registration;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.registrator.pages.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class RegisterNewUserAddressInfo {
 
@@ -80,22 +79,22 @@ public class RegisterNewUserAddressInfo {
     
     // Public constructor
     
-    public RegisterNewUserAddressInfo(WebDriver driver) {
-        this.addressInfoLabel = driver.findElement(By.cssSelector(ADDRESSINFO_LABEL_CSSSELECTOR));
-        this.cityLabel = driver.findElement(By.cssSelector(CITY_LABEL_CSSSELECTOR));
-        this.city = driver.findElement(By.id(CITY_INPUT_ID));
-        this.regionLabel = driver.findElement(By.cssSelector(REGION_LABEL_CSSSELECTOR));
-        this.region = driver.findElement(By.id(REGION_INPUT_ID));
-        this.districtLabel = driver.findElement(By.cssSelector(DISTRICT_LABEL_CSSSELECTOR));
-        this.district = driver.findElement(By.id(DISTRICT_INPUT_ID));
-        this.streetLabel = driver.findElement(By.cssSelector(STREET_LABEL_CSSSELECTOR));
-        this.street = driver.findElement(By.id(STREET_INPUT_ID));
-        this.buildingLabel = driver.findElement(By.cssSelector(BUILDING_LABEL_CSSSELECTOR));
-        this.building = driver.findElement(By.id(BUILDING_INPUT_ID));
-        this.flatLabel = driver.findElement(By.cssSelector(FLAT_LABEL_CSSSELECTOR));
-        this.flat = driver.findElement(By.id(FLAT_INPUT_ID));
-        this.postcodeLabel = driver.findElement(By.cssSelector(POSTCODE_LABEL_CSSSELECTOR));
-        this.postcode = driver.findElement(By.id(POSTCODE_INPUT_ID));
+    public RegisterNewUserAddressInfo() {
+        this.addressInfoLabel = Search.cssSelector(ADDRESSINFO_LABEL_CSSSELECTOR);
+        this.cityLabel = Search.cssSelector(CITY_LABEL_CSSSELECTOR);
+        this.city = Search.id(CITY_INPUT_ID);
+        this.regionLabel = Search.cssSelector(REGION_LABEL_CSSSELECTOR);
+        this.region = Search.id(REGION_INPUT_ID);
+        this.districtLabel = Search.cssSelector(DISTRICT_LABEL_CSSSELECTOR);
+        this.district = Search.id(DISTRICT_INPUT_ID);
+        this.streetLabel = Search.cssSelector(STREET_LABEL_CSSSELECTOR);
+        this.street = Search.id(STREET_INPUT_ID);
+        this.buildingLabel = Search.cssSelector(BUILDING_LABEL_CSSSELECTOR);
+        this.building = Search.id(BUILDING_INPUT_ID);
+        this.flatLabel = Search.cssSelector(FLAT_LABEL_CSSSELECTOR);
+        this.flat = Search.id(FLAT_INPUT_ID);
+        this.postcodeLabel = Search.cssSelector(POSTCODE_LABEL_CSSSELECTOR);
+        this.postcode = Search.id(POSTCODE_INPUT_ID);
     }
 
     // get Address info labels
