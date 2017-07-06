@@ -15,6 +15,8 @@ import com.softserve.edu.registrator.pages.Application;
 public class TestRunner {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    // Use, if class Application is not singleton
+    // protected Application application;
     
     @BeforeClass
     public void beforeClass(ITestContext context) {

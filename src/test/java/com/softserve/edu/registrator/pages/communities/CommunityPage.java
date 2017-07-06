@@ -10,7 +10,7 @@ import com.softserve.edu.registrator.controls.ITable;
 import com.softserve.edu.registrator.controls.Table;
 import com.softserve.edu.registrator.data.communities.Community;
 import com.softserve.edu.registrator.data.communities.ICommunity;
-import com.softserve.edu.registrator.pages.AdminHomePage;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
 
 public class CommunityPage extends AdminHomePage {
 

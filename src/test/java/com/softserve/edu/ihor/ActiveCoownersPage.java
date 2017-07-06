@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import com.softserve.edu.registrator.pages.AdminHomePage;
+import com.softserve.edu.registrator.pages.common.AdminHomePage;
 
 import java.util.List;
 

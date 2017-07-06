@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.softserve.edu.registrator.pages.RegisteredUsersPage;
+import com.softserve.edu.registrator.pages.user.RegisteredUsersPage;
 
 public class NonConfirmedUsersPage extends RegisteredUsersPage {
 
