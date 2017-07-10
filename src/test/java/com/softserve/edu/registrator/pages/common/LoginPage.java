@@ -10,8 +10,9 @@ import com.softserve.edu.registrator.tools.search.Search;
 public class LoginPage extends ATopComponent {
 
 	public static enum LoginPageL10n {
-		LOGIN_LABEL("Логін", "Логин", "Login"), PASSWORD_LABEL("Пароль", "Пароль", "Password"), SUBMIT_BUTTON("Увійти",
-				"Войти", "Sign in");
+		LOGIN_LABEL("Логін", "Логин", "Login"),
+		PASSWORD_LABEL("Пароль", "Пароль", "Password"),
+		SUBMIT_BUTTON("Увійти", "Войти", "Sign in");
 
 		private HashMap<ChangeLanguageFields, String> field;
 

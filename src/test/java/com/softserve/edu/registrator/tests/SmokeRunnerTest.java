@@ -22,7 +22,7 @@ public class SmokeRunnerTest extends TestRunner {
                 };
     }
 
-    //@Test(dataProvider = "credentials")
+    @Test(dataProvider = "credentials")
     public void checkLogin(IUser user) throws Exception {
         //
         CommonPage commonPage = Application.get().load()
@@ -38,11 +38,12 @@ public class SmokeRunnerTest extends TestRunner {
     public Object[][] credentialsExistingUser() {
         // Read from ...
         return new Object[][] {
-                { UserRepository.get().admin(), UserRepository.get().commissioner() },
+                { UserRepository.get().admin(),
+                  UserRepository.get().commissioner() },
                 };
     }
 
-    @Test(dataProvider = "credentialsExistingUser")
+    //@Test(dataProvider = "credentialsExistingUser")
     public void checkExistingUser(IUser adminUser, IUser existUser) throws Exception {
         logger.info("Start");
         //

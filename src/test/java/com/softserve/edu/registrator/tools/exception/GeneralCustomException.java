@@ -1,8 +1,10 @@
 package com.softserve.edu.registrator.tools.exception;
 
+import com.softserve.edu.registrator.tools.logs.ReporterWrapper;
+
 public class GeneralCustomException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
-	//private static final String GENERAL_CUSTOM_EXCEPTION ="GeneralCustomException: ";
+	private static final String GENERAL_CUSTOM_EXCEPTION ="GeneralCustomException: %s";
 
 	// Classic constructor with a message of error.
 	public GeneralCustomException(String message) {
@@ -16,8 +18,7 @@ public class GeneralCustomException extends RuntimeException {
 	}
 
 	private void performLogging(String message) {
-		// TODO
-		//LoggerWrapper.get().errorLog(GENERAL_CUSTOM_EXCEPTION + message);
+		ReporterWrapper.get().error(String.format(GENERAL_CUSTOM_EXCEPTION, message));
 	}
 
 }
