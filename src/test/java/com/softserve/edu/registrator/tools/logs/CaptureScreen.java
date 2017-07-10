@@ -27,8 +27,15 @@ public class CaptureScreen {
         return outputDirectory + SLASH;
     }
 
-    private String getAbsolutePathFileName() {
+    private String getRelativePathFileName() {
         return getOutputDirectory() + CurrentTime.get() + FILE_SUFFIX;
+    }
+
+    private String getAbsolutePathFileName() {
+        //System.out.println("\t\t\t+++ getAbsolutePathFileName() = " 
+        //        + CaptureScreen.class.getResource("/").getPath().substring(1)
+        //        + getRelativePathFileName());
+        return CaptureScreen.class.getResource(SLASH).getPath().substring(1) + getRelativePathFileName();
     }
 
     /**

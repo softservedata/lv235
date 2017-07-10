@@ -5,10 +5,10 @@ import org.testng.Reporter;
 public class ReporterWrapper {
     
     private static enum ReporterTags {
-        BR_ERROR("<br>[ERROR]"),
-        BR_WARNING("<br>[WARNING]"),
-        BR_INFO("<br>[INFO]"),
-        BR_DEBUG("<br>[DEBUG]");
+        BR_ERROR("<br>[ERROR] "),
+        BR_WARNING("<br>[WARNING] "),
+        BR_INFO("<br>[INFO] "),
+        BR_DEBUG("<br>[DEBUG] ");
         //
         private String field;
 
@@ -39,7 +39,11 @@ public class ReporterWrapper {
         }
     }
 
-    private static final String IMG_TEMPLATE = "<br><img src='%s' alt='could not take screen shot' width='80%' height='80%'>";
+    //private static final String IMG_TEMPLATE = "<br><img src='%s' alt='could not take screen shot' width='80%' height='80%'>";
+    private static final String IMG_TEMPLATE = "<br><div><image style=\"max-width:90%%\" src=\"%s\"  alt=\"could not take screen shot\" /></div>";
+    private static final String SCREENSHOT_FILENAME = "<br><p>Screenshot filename is %s</p>";
+    private static final String SPACE = " ";
+    //
     private static volatile ReporterWrapper instance = null;
     private boolean consoleOutput;
 
@@ -64,28 +68,30 @@ public class ReporterWrapper {
     }
     
     public void error(String message){
-        Reporter.log(ReporterTags.BR_ERROR.toString() + CurrentTime.get() + message,
+        Reporter.log(ReporterTags.BR_ERROR.toString() + CurrentTime.get() + SPACE + message,
                 ReporterLevels.ERROR_LEVEL.getLevel(), consoleOutput);
     }
 
     public void warning(String message){
-        Reporter.log(ReporterTags.BR_WARNING.toString() + CurrentTime.get() + message,
+        Reporter.log(ReporterTags.BR_WARNING.toString() + CurrentTime.get() + SPACE + message,
         ReporterLevels.WARNING_LEVEL.getLevel(), consoleOutput);
     }
 
     public void info(String message){
-        Reporter.log(ReporterTags.BR_INFO.toString() + CurrentTime.get() + message,
+        Reporter.log(ReporterTags.BR_INFO.toString() + CurrentTime.get() + SPACE + message,
                 ReporterLevels.INFO_LEVEL.getLevel(), consoleOutput);
     }
 
     public void debug(String message){
-        Reporter.log(ReporterTags.BR_DEBUG.toString() + CurrentTime.get() + message,
+        Reporter.log(ReporterTags.BR_DEBUG.toString() + CurrentTime.get() + SPACE + message,
                 ReporterLevels.DEBUG_LEVEL.getLevel(), consoleOutput);
     }
 
-    public void addScreenShot() {
-        CaptureScreen captureScreen = new CaptureScreen();
-        Reporter.log(String.format(IMG_TEMPLATE, captureScreen.takeScreen()));
+    public String addScreenShot() {
+        String screenFileName = new CaptureScreen().takeScreen();
+        Reporter.log(String.format(SCREENSHOT_FILENAME, screenFileName));
+        Reporter.log(String.format(IMG_TEMPLATE, screenFileName));
+        return screenFileName;
     }
 
 }
