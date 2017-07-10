@@ -5,6 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.registrator.data.apps.ApplicationSourcesRepository;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.Application;
 import com.softserve.edu.registrator.pages.common.AdminHomePage;
@@ -21,6 +22,7 @@ public class RegistrationTest extends RegistrationTestRunner {
     public Object[][] credentials() {
         return new Object[][] {
             { UserRepository.get().testRegistrator() },
+            { UserRepository.get().testAdmin() },
         };
     }
 
@@ -41,7 +43,7 @@ public class RegistrationTest extends RegistrationTestRunner {
         
         registrationPage.clickClearForm();
         Assert.assertEquals(Application.get().getBrowser().getCurrentUrl(),
-                "http://java.training.local:8080/registrator/manualregistration");
+               ApplicationSourcesRepository.LOCAL_MANUALREGISTRATION);
                 
         Thread.sleep(1000);
         registrationPage.registerNewUser(user);
