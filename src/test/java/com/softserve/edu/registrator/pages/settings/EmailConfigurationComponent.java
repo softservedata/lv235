@@ -2,11 +2,10 @@ package com.softserve.edu.registrator.pages.settings;
 
 import java.util.HashMap;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
+import com.softserve.edu.registrator.tools.search.Search;
 
 public class EmailConfigurationComponent {
 	// TODO
@@ -68,33 +67,32 @@ public class EmailConfigurationComponent {
 	// Button
 	private WebElement checkButton;
 
-	public EmailConfigurationComponent(WebDriver driver) {
-		this.componentLabel = driver.findElement(By
-				.cssSelector("form div:nth-child(1) div.panel-heading h3"));
-		this.emailServerAddressLabel = driver.findElement(By
-				.cssSelector("label[for = 'smtpHost']"));
-		this.userNameLabel = driver.findElement(By
-				.cssSelector("label[for = 'smtpUsername']"));
-		this.tcpPortLabel = driver.findElement(By
-				.cssSelector("label[for = 'smtpPort']"));
-		this.protocolLabel = driver.findElement(By
-				.cssSelector("label[for = 'smtpProtocol']"));
-		this.passwordLabel = driver.findElement(By
-				.cssSelector("label[for = 'smtpPassword']"));
-		this.tlsSecureConnectionLabel = driver.findElement(By
-				.cssSelector("label[for = 'smtpParameters.tlsEnabled1']"));
-		this.emailServerAddressField = driver.findElement(By.id("smtpHost"));
-		this.userNameField = driver.findElement(By.id("smtpUsername"));
-		this.tcpPortField = driver.findElement(By.id("smtpPort"));
-		this.passwordField = driver.findElement(By.id("smtpPassword"));
-		this.protocolSelect = driver.findElement(By.id("smtpProtocol"));
-		this.protocolSelectSMTP = driver.findElement(By
-				.cssSelector("#smtpProtocol option[value = 'SMTP']"));
-		this.protocolSelectSMTPS = driver.findElement(By
-				.cssSelector("#smtpProtocol option[value = 'SMTPS']"));
-		this.tlsSecureConnectionCheckbox = driver.findElement(By
-				.id("smtpParameters.tlsEnabled1"));
-		this.checkButton = driver.findElement(By.id("checkSMTP"));
+	public EmailConfigurationComponent() {
+		this.componentLabel = Search.cssSelector("form div:nth-child(1) div.panel-heading h3");
+		this.emailServerAddressLabel = Search
+				.cssSelector("label[for = 'smtpHost']");
+		this.userNameLabel = Search
+				.cssSelector("label[for = 'smtpUsername']");
+		this.tcpPortLabel = Search
+				.cssSelector("label[for = 'smtpPort']");
+		this.protocolLabel = Search
+				.cssSelector("label[for = 'smtpProtocol']");
+		this.passwordLabel = Search
+				.cssSelector("label[for = 'smtpPassword']");
+		this.tlsSecureConnectionLabel = Search
+				.cssSelector("label[for = 'smtpParameters.tlsEnabled1']");
+		this.emailServerAddressField = Search.id("smtpHost");
+		this.userNameField = Search.id("smtpUsername");
+		this.tcpPortField = Search.id("smtpPort");
+		this.passwordField = Search.id("smtpPassword");
+		this.protocolSelect = Search.id("smtpProtocol");
+		this.protocolSelectSMTP = Search
+				.cssSelector("#smtpProtocol option[value = 'SMTP']");
+		this.protocolSelectSMTPS = Search
+				.cssSelector("#smtpProtocol option[value = 'SMTPS']");
+		this.tlsSecureConnectionCheckbox = Search
+				.id("smtpParameters.tlsEnabled1");
+		this.checkButton = Search.id("checkSMTP");
 	}
 
 	// Getters for labels

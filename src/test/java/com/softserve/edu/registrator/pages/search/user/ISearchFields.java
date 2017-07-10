@@ -5,6 +5,7 @@ package com.softserve.edu.registrator.pages.search.user;
  */
 public interface ISearchFields {
     public String getFirstName();
+    public  String getTestFirstNameData();
     public String getSecondName();
     public String getEmail();
 }

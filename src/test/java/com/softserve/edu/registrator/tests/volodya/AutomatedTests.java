@@ -51,7 +51,7 @@ public class AutomatedTests {
 	 * Thread.sleep() Use only for DEMO!
 	 * @throws Exception - use for Thread.Sleep().
 	 */
-	//@Test (dataProvider = "subclass")
+	@Test (dataProvider = "subclass")
 	public void testCreateSubclass(ISubclass subclass) throws Exception {
 		logger.info("Started");
 		AddSubclassPage addSubclassPage = registratorHomePage
@@ -104,7 +104,7 @@ public class AutomatedTests {
 	 * Thread.sleep() Use only for DEMO!
 	 * @throws Exception - use for Thread.Sleep().
 	 */
-	@Test (dataProvider = "subclass")
+	//@Test (dataProvider = "subclass")
 	public void testAddResource(ISubclass subclass) throws Exception {
 		logger.info("Started");
 		AddResourcePage addResourcePage = registratorHomePage.clickAddNewResource();

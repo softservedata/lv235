@@ -1,8 +1,8 @@
 package com.softserve.edu.registrator.tests.serch;
 
-import com.softserve.edu.registrator.pages.search.user.ActiveUserPageContent;
-import com.softserve.edu.registrator.pages.search.user.ISearchFields;
-import com.softserve.edu.registrator.pages.search.user.SearchFieldsData;
+import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.registrator.data.users.UserRepository;
+import com.softserve.edu.registrator.pages.search.user.*;
 import com.softserve.edu.registrator.tests.community.AdminHomePageTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -18,7 +18,9 @@ public class SearchTest extends AdminHomePageTestRunner {
     @DataProvider
     public Object[][] searchData() {
         return new Object[][] {
-                { new SearchFieldsData("ihor", "IvaSurname", "") },
+                {UserRepository.get().testActiveUserSearch()}
+                    //new SearchFieldsData("ihor", "IvaSurname", "IvaTest@gmail.com","ihor")},
+              //  {new TestData("ihor")}
         };
     }
     /**
@@ -31,16 +33,19 @@ public class SearchTest extends AdminHomePageTestRunner {
      * @throws Exception - used by Thread.sleep() for DEMO
      */
 
-    @Test(dataProvider = "searchData")
-    public void searchByFistNameWithEmailTest(ISearchFields searchFields) throws Exception {
+   @Test(dataProvider = "searchData")
+    public void searchByFistNameWithEmailTest(IUser searchFields/*ISearchFields searchFields*/) throws Exception {
+        logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
-        page.inputFirstNameData(searchFields);
-        page.inputInEmailField("IvaTest@gmail.com");
+        page.inputFirstNameData(searchFields.getPerson().getFirstname());
+        //page.inputFirstNameData(searchFields);
+       // page.inputEmailData(searchFields);
         page.clickSearchButton();
         Thread.sleep(DELAY_FOR_DEMO);
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "ihor",
+                        page.getTestName(searchFields),
+                       // page.getTestName(searchFields),
                         page.getRefTable().getColumnIndexByValueOfHeader("Ім'я")).
                         isEmpty());
         Assert.assertTrue(
@@ -49,13 +54,14 @@ public class SearchTest extends AdminHomePageTestRunner {
                         page.getRefTable().getColumnIndexByValueOfHeader("Електронна пошта")).
                         isEmpty());
         setAdminHomePage(page);
+        logger.info("Done");
     }
 
     /**
      * Test for checking search functional by FirstName and Login.
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-    @Test
+   // @Test
     public void searchByFistNameWithLoginTest() throws Exception {
        ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputInFirstNameField("ihor");
@@ -79,7 +85,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      * Test for checking search functional by Login and Community.
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-    @Test
+   // @Test
     public void searchLoginWithCommunity() throws Exception {
         ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputInLoginField("adminIhor");
@@ -103,7 +109,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      * Test for checking search functional by E-mail and LastName.
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-    @Test
+   // @Test
     public void searchEmailWithLastName() throws Exception {
         ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputInEmailField("IvaTest@gmail.com");
@@ -127,7 +133,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      * Test for checking search functional by Community and LastName.
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-    @Test
+   // @Test
     public void searchCommunityWithLastname() throws Exception {
         ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputInCommunityField("Львівська");
