@@ -18,7 +18,7 @@ public class DeleteCommunityTest extends AdminHomePageTestRunner {
 	}
 	
 	@Test(dataProvider = "dataCommunity")
-	public void DeleteCommunityOk(ICommunity community) {
+	public void DeleteCommunityOk(ICommunity community) throws InterruptedException {
 		CommunityPage communityPage = getAdminHomePage()
 				.clickCommunities()
 				.deleteCommunityOk(community);

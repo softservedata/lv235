@@ -1,6 +1,5 @@
 package com.softserve.edu.registrator.pages.edits;
 
-
 import java.util.HashMap;
 
 import org.openqa.selenium.WebElement;
