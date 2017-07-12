@@ -91,7 +91,7 @@ public class EditPage extends PassiveEditUserPage {
         return new EditPage();
     }
      public ActiveUsersPage clickConfirmButton(){
-       getConfirmButton().click();
+       confirmButton.click();
        return new ActiveUsersPage();
      }
 

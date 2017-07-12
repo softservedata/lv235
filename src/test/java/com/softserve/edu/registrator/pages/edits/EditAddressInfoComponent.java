@@ -1,11 +1,11 @@
 package com.softserve.edu.registrator.pages.edits;
 
-import java.util.HashMap;
-
-import org.openqa.selenium.WebElement;
-
+import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.pages.common.ATopComponent.ChangeLanguageFields;
 import com.softserve.edu.registrator.tools.search.Search;
+import org.openqa.selenium.WebElement;
+
+import java.util.HashMap;
 
 /**
  * Created by User on 6/20/2017.
@@ -128,11 +128,11 @@ public class EditAddressInfoComponent {
     }
 
     //Functional for get Value
-    public String getCityValueText(){
+    public String getCityValueText() {
         return getCityField().getAttribute(ADDRESS_VALUE);
     }
 
-    public String getRegionValueText(){
+    public String getRegionValueText() {
         return getRegionField().getAttribute(ADDRESS_VALUE);
     }
 
@@ -170,53 +170,60 @@ public class EditAddressInfoComponent {
     }
 
     //Functional for labels
-    public String getMainAddressLabelTetx(){
+    public String getMainAddressLabelTetx() {
         return getAddressMainLabel().getText().trim();
     }
-    public  String getRegionLabelTetx(){
+
+    public String getRegionLabelTetx() {
         return getRegionLabel().getText().trim();
     }
-    public String getCityLabelText(){
+
+    public String getCityLabelText() {
         return getCityLabel().getText().trim();
     }
-    public String getDistrictLabelText(){
+
+    public String getDistrictLabelText() {
         return getDistrictLabel().getText().trim();
     }
-    public String getStreetLabelText(){
+
+    public String getStreetLabelText() {
         return getStreetLabel().getText().trim();
     }
-    public String getBuildingLabelTetx(){
+
+    public String getBuildingLabelTetx() {
         return getBuildingLabel().getText().trim();
     }
-    public String getFlatLabelText(){
+
+    public String getFlatLabelText() {
         return getFlatLabel().getText().trim();
     }
-    public String getPostcodeLabelText(){
-       return getPostcodeLabel().getText().trim();
+
+    public String getPostcodeLabelText() {
+        return getPostcodeLabel().getText().trim();
     }
 
     //Functional methods, relating to address fields
-    public void setRegionFieldValue(String region){
-     getRegionField().clear();
-     getRegionField().sendKeys(region);
+    public void setRegionFieldValue(String region) {
+        getRegionField().clear();
+        getRegionField().sendKeys(region);
     }
 
-    public  void setCityFieldValue(String city){
+    public void setCityFieldValue(String city) {
         getCityField().clear();
         getCityField().sendKeys(city);
     }
 
-    public void setDistrictFieldValue(String district){
-    getDistrictField().clear();
-    getDistrictField().sendKeys(district);
+    public void setDistrictFieldValue(String district) {
+        getDistrictField().clear();
+        getDistrictField().sendKeys(district);
     }
 
-    public void setStreetFieldValue(String street){
-    getStreetField().clear();
-    getStreetField().sendKeys(street);
+    public void setStreetFieldValue(String street) {
+        getStreetField().clear();
+        getStreetField().sendKeys(street);
     }
 
-    public void setBuildingFieldValue(String building){
+    public void setBuildingFieldValue(String building) {
         getBuildingField().clear();
         getBuildingField().sendKeys(building);
     }
@@ -226,9 +233,19 @@ public class EditAddressInfoComponent {
         getFlatField().sendKeys(flat);
     }
 
-    public void setPostcode(String postcode){
-    getPostcodeField().clear();
-    getPostcodeField().sendKeys(postcode);
+    public void setPostcode(String postcode) {
+        getPostcodeField().clear();
+        getPostcodeField().sendKeys(postcode);
     }
 
+    //******************************************
+    public String getRegionFieldValue(IUser testRegion) {
+        return testRegion.getAddress().getRegion();
+    }
+    public String getCityFieldValue(IUser testCity) {
+        return testCity.getAddress().getCity();
+    }
+    public String getFlatFieldValue(IUser testFlat) {
+        return testFlat.getAddress().getFlat();
+    }
 }

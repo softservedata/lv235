@@ -1,8 +1,12 @@
 package com.softserve.edu.registrator.tests.edit;
 
+import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.registrator.tests.TestRunner;
+import com.softserve.edu.registrator.tests.community.AdminHomePageTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.softserve.edu.registrator.data.users.UserRepository;
@@ -14,12 +18,22 @@ import com.softserve.edu.registrator.pages.user.PassiveEditUserPage;
 
 /**
  * Test to editing passport information
- * 
+ *
  * @version 1.2
  * @author Ihor
  *
  */
-public class EditPassportInfoTest {
+public class EditPassportInfoTest extends TestRunner{
+	/**
+	 * Data provider
+	 * @return the test data
+	 */
+	@DataProvider
+	public Object[][] searchData() {
+		return new Object[][]{
+				{UserRepository.get().testActiveUserSearch(),}
+		};
+	}
 
 	/**
 	 * Delay for Thread.Sleep().
@@ -38,29 +52,39 @@ public class EditPassportInfoTest {
 
 	/**
 	 * Test for editing passport fields
-	 * 
+	 *
 	 * @throws Exception
 	 *             - used by Thread.sleep() for DEMO
 	 */
-	@Test
-	public void SearchTestBasicInfo() throws Exception {
-
-		PassiveEditUserPage passiveEditPage = adminHomePage.gotoActiveUsers().gotoEditUserByLogin("adminIhor");
+	@Test(dataProvider = "EditPassportInfo")
+	public void SearchTestBasicInfo(IUser data) throws Exception {
+        logger.info("Started");
+		PassiveEditUserPage passiveEditPage = adminHomePage.gotoActiveUsers()
+				.gotoEditUserByLogin(data.getAccount().getLogin());
 		Thread.sleep(DELAY_FOR_DEMO);
 		// Go to Edit page by Login
 		EditPage editPage = passiveEditPage.clickEditPageButton();
 		// Editing
-		editPage.getEditPassportInfo().setSeriaFiledValue("ЛЛ");
-		editPage.getEditPassportInfo().setNumberFieldValue("123456");
-		editPage.getEditPassportInfo().setPublishFieldValue("1234567");
+		editPage.getEditPassportInfo().setSeriaFiledValue(data.getPassport().getSeria());
+		editPage.getEditPassportInfo().setNumberFieldValue(data.getPassport().getNumber());
+		Thread.sleep(DELAY_FOR_DEMO);
+		editPage.getEditPassportInfo().setPublishFieldValue(data.getPassport().getPublished());
+		Thread.sleep(DELAY_FOR_DEMO);
 		ActiveUsersPage activeUsersPage = editPage.clickConfirmButton();
+		Thread.sleep(DELAY_FOR_DEMO);
 		// Go to Edit page by Login
-		activeUsersPage.gotoEditUserByLogin("adminIhor");
+		activeUsersPage.gotoEditUserByLogin(data.getAccount().getLogin());
+		Thread.sleep(DELAY_FOR_DEMO);
 		EditPage editBasic = passiveEditPage.clickEditPageButton();
 		// test for editing BasicInfoComponent
-		Assert.assertEquals(editBasic.getEditPassportInfo().getSeriaValueText(), "ЛЛ");
-		Assert.assertEquals(editBasic.getEditPassportInfo().getNumberValueText(), "123456");
-		Assert.assertEquals(editBasic.getEditPassportInfo().getPublishValueText(), "1234567");
+		Assert.assertEquals(editBasic.getEditPassportInfo().getSeriaValueText()
+				, data.getPassport().getSeria());
+		Assert.assertEquals(editBasic.getEditPassportInfo().getNumberValueText()
+				, data.getPassport().getNumber());
+		Assert.assertEquals(editBasic.getEditPassportInfo().getPublishValueText()
+				, data.getPassport().getPublished());
+		logger.info("Done");
+		System.out.println(data.getPassport().getPublished());
 	}
 
 	/**

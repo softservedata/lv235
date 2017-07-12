@@ -3,6 +3,7 @@ package com.softserve.edu.registrator.pages.edits;
 import java.util.HashMap;
 import java.util.List;
 
+import com.softserve.edu.registrator.data.users.IUser;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -191,6 +192,16 @@ public class EditPassportInfoComponent {
     public void setPublishFieldValue(String publish) {
         getPublishedField().clear();
         getPublishedField().sendKeys(publish);
+    }
+    //******************************************
+    public String getSeriaFieldValue(IUser testSeria) {
+        return testSeria.getPassport().getSeria();
+    }
+    public String getNumberFieldValue(IUser testNumber) {
+        return testNumber.getPassport().getNumber();
+    }
+    public String getPublishFieldValue(IUser testPublish) {
+        return testPublish.getPassport().getPublished();
     }
 
 }

@@ -3,6 +3,7 @@ package com.softserve.edu.registrator.pages.edits;
 import java.util.HashMap;
 import java.util.List;
 
+import com.softserve.edu.registrator.data.users.IUser;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -298,6 +299,16 @@ public class EditBasicInfoComponent {
         getStatusField().click();
         getBlockUser().click();
         getStatusField().click();
+    }
+    //******************************************
+    public String getNameFieldValue(IUser testName) {
+        return testName.getPerson().getFirstname();
+    }
+    public String getLastNameFieldValue(IUser testLastName) {
+        return testLastName.getPerson().getLastname();
+    }
+    public String getEmailFieldValue(IUser testEmail) {
+        return testEmail.getPerson().getEmail();
     }
 
 }
