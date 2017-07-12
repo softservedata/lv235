@@ -2,7 +2,7 @@ package com.softserve.edu.registrator.tests.serch;
 
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
-import com.softserve.edu.registrator.pages.search.user.*;
+import com.softserve.edu.registrator.pages.search.user.ActiveUserPageContent;
 import com.softserve.edu.registrator.tests.community.AdminHomePageTestRunner;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -10,19 +10,19 @@ import org.testng.annotations.Test;
 
 /**
  * Test to editing passport information
- *@version 1.2
- *@author Ihor
  *
+ * @author Ihor
+ * @version 1.2
  */
 public class SearchTest extends AdminHomePageTestRunner {
     @DataProvider
     public Object[][] searchData() {
-        return new Object[][] {
-                {UserRepository.get().testActiveUserSearch()}
-                    //new SearchFieldsData("ihor", "IvaSurname", "IvaTest@gmail.com","ihor")},
-              //  {new TestData("ihor")}
+        return new Object[][]{
+                {UserRepository.get().testActiveUserSearch(),
+                        UserRepository.get().testActiveUserSearchTableData()}
         };
     }
+
     /**
      * Delay for Thread.Sleep().
      */
@@ -30,28 +30,26 @@ public class SearchTest extends AdminHomePageTestRunner {
 
     /**
      * Test for checking search functional by FirstName and E-mail.
+     *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-
-   @Test(dataProvider = "searchData")
-    public void searchByFistNameWithEmailTest(IUser searchFields/*ISearchFields searchFields*/) throws Exception {
+    @Test(dataProvider = "searchData")
+    public void searchByFistNameWithEmailTest(IUser searchFields, IUser data) throws Exception {
         logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputFirstNameData(searchFields.getPerson().getFirstname());
-        //page.inputFirstNameData(searchFields);
-       // page.inputEmailData(searchFields);
+        page.inputEmailData(searchFields.getPerson().getEmail());
         page.clickSearchButton();
         Thread.sleep(DELAY_FOR_DEMO);
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
                         page.getTestName(searchFields),
-                       // page.getTestName(searchFields),
-                        page.getRefTable().getColumnIndexByValueOfHeader("Ім'я")).
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByName(data))).
                         isEmpty());
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "IvaTest@gmail.com",
-                        page.getRefTable().getColumnIndexByValueOfHeader("Електронна пошта")).
+                        page.getEmailTestData(searchFields),
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByEmail(data))).
                         isEmpty());
         setAdminHomePage(page);
         logger.info("Done");
@@ -59,97 +57,109 @@ public class SearchTest extends AdminHomePageTestRunner {
 
     /**
      * Test for checking search functional by FirstName and Login.
+     *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-   // @Test
-    public void searchByFistNameWithLoginTest() throws Exception {
-       ActiveUserPageContent page = getAdminHomePage().clickActive();
-        page.inputInFirstNameField("ihor");
-        page.inputInLoginField("adminIhor");
+    @Test(dataProvider = "searchData")
+    public void searchByFistNameWithLoginTest(IUser searchField, IUser data) throws Exception {
+        logger.info("Started");
+        ActiveUserPageContent page = getAdminHomePage().clickActive();
+        page.inputFirstNameData(searchField.getPerson().getFirstname());
+        page.inputLoginData(searchField.getAccount().getLogin());
         page.clickSearchButton();
         Thread.sleep(DELAY_FOR_DEMO);
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "ihor",
-                        page.getRefTable().getColumnIndexByValueOfHeader("Ім'я")).
+                        page.getTestName(searchField),
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByName(data))).
                         isEmpty());
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "adminIhor",
-                        page.getRefTable().getColumnIndexByValueOfHeader("Логін")).
+                        page.getTestLogin(searchField),
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByLogin(data))).
                         isEmpty());
         setAdminHomePage(page);
+        logger.info("Done");
     }
 
     /**
      * Test for checking search functional by Login and Community.
+     *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-   // @Test
-    public void searchLoginWithCommunity() throws Exception {
+    @Test(dataProvider = "searchData")
+    public void searchLoginWithCommunity(IUser searchField, IUser data) throws Exception {
+        logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
-        page.inputInLoginField("adminIhor");
-        page.inputInCommunityField("Львівська");
+        page.inputLoginData(searchField.getAccount().getLogin());
+        page.inputCommunityData(searchField.getAccount().getCommunity());
         page.clickSearchButton();
         Thread.sleep(DELAY_FOR_DEMO);
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "adminIhor",
-                        page.getRefTable().getColumnIndexByValueOfHeader("Логін")).
+                        page.getTestLogin(searchField),
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByLogin(data))).
                         isEmpty());
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "Львівська",
-                        page.getRefTable().getColumnIndexByValueOfHeader("Територіальна громада")).
+                        page.getTestCommunity(searchField),
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByCommunity(data))).
                         isEmpty());
         setAdminHomePage(page);
+        logger.info("Done");
     }
 
     /**
      * Test for checking search functional by E-mail and LastName.
+     *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-   // @Test
-    public void searchEmailWithLastName() throws Exception {
+     @Test(dataProvider = "searchData")
+    public void searchEmailWithLastName(IUser searchField, IUser data) throws Exception {
+         logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
-        page.inputInEmailField("IvaTest@gmail.com");
-        page.inputInLastNameField("IvaTestSurname");
+        page.inputEmailData(searchField.getPerson().getEmail());
+        page.inputLastNameData(searchField.getPerson().getLastname());
         page.clickSearchButton();
         Thread.sleep(DELAY_FOR_DEMO);
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "IvaTest@gmail.com",
-                        page.getRefTable().getColumnIndexByValueOfHeader("Електронна пошта")).
+                        page.getEmailTestData(searchField),
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByEmail(data))).
                         isEmpty());
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "IvaTestSurname",
-                        page.getRefTable().getColumnIndexByValueOfHeader("Прізвище")).
+                        page.getTestLastName(searchField),
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnByLastName(data))).
                         isEmpty());
         setAdminHomePage(page);
+         logger.info("Done");
     }
 
     /**
      * Test for checking search functional by Community and LastName.
+     *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-   // @Test
-    public void searchCommunityWithLastname() throws Exception {
+     @Test(dataProvider = "searchData")
+    public void searchCommunityWithLastName(IUser searchField, IUser data) throws Exception {
+         logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
-        page.inputInCommunityField("Львівська");
-        page.inputInLastNameField("IvaTestSurname");
+        page.inputCommunityData(searchField.getAccount().getCommunity());
+        page.inputLastNameData(searchField.getPerson().getLastname());
         page.clickSearchButton();
         Thread.sleep(DELAY_FOR_DEMO);
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "Львівська",
-                        page.getRefTable().getColumnIndexByValueOfHeader("Територіальна громада")).
+                        page.getTestCommunity(searchField),
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByCommunity(data))).
                         isEmpty());
         Assert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
-                        "IvaTestSurname",
-                        page.getRefTable().getColumnIndexByValueOfHeader("Прізвище")).
+                        page.getTestLastName(searchField),
+                        page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnByLastName(data))).
                         isEmpty());
         setAdminHomePage(page);
+         logger.info("Done");
     }
 }

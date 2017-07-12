@@ -23,10 +23,12 @@ public class Person implements IFirstname, ILastname, IEmail, IBuildPerson, IPer
 	private String middlename;
 	private String email;
 	private String phonenumber;
+	private String login;
 
 	private Person() {
 		this.middlename = new String();
 		this.phonenumber = new String();
+		this.login=new String();
 	}
 
 	// static factory - - - - - - - - - -
@@ -87,5 +89,6 @@ public class Person implements IFirstname, ILastname, IEmail, IBuildPerson, IPer
 	public String getPhonenumber() {
 		return phonenumber;
 	}
+	public String getLogin(){return login;}
 
 }

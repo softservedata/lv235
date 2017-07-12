@@ -280,17 +280,55 @@ public class ActiveUserPageContent extends ActiveUsersPage {
         getFirstNameField().clear();
         getFirstNameField().sendKeys(data);
     }
-    public void inputEmailData(ISearchFields data){
-    getEmailField().clear();
-    getEmailField().sendKeys(data.getEmail());
+    public void inputLastNameData(String data) {
+        getLastNameField().clear();
+        getLastNameField().sendKeys(data);
     }
-    //------------------------
+    public void inputEmailData(String data){
+    getEmailField().clear();
+    getEmailField().sendKeys(data);
+    }
+    public void inputLoginData(String data){
+       getLoginField().clear();
+        getLoginField().sendKeys(data);
+    }
+    public void inputCommunityData(String data){
+        getTerritorialCommunityField().clear();
+        getTerritorialCommunityField().sendKeys(data);
+    }
+    //---------test data for input data in fields---------------
     public String getTestName(IUser testName){
         return testName.getPerson().getFirstname();
     }
+    public String getEmailTestData(IUser testEmail){
+        return testEmail.getPerson().getEmail();
+    }
+    public String getTestLogin(IUser testLogin){
+        return  testLogin.getAccount().getLogin();
+    }
+    public String getTestCommunity(IUser testCommunity){
+        return testCommunity.getAccount().getCommunity();
+    }
+    public String getTestLastName(IUser testLastName){
+        return testLastName.getPerson().getLastname();
+    }
 
-    //-----------------------------
-
+    //----------test data for table searching-------------------
+     public String getColumnNameByName(IUser nameOfColumn){
+        return nameOfColumn.getPerson().getFirstname();
+     }
+     public String getColumnNameByEmail(IUser emailOfColumn){
+     return emailOfColumn.getPerson().getEmail();
+     }
+     public String getColumnNameByLogin(IUser loginOfColumn){
+         return loginOfColumn.getAccount().getLogin();
+     }
+     public String getColumnNameByCommunity(IUser communityOfColumn){
+         return communityOfColumn.getAccount().getCommunity();
+     }
+     public String getColumnByLastName(IUser lastNameOfColumn){
+         return lastNameOfColumn.getPerson().getLastname();
+     }
 
 
 }
