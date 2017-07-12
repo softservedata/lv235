@@ -6,6 +6,10 @@ import com.softserve.edu.registrator.tools.logs.ReporterWrapper;
 
 public final class FlexAssert {
     private final String APPEND_TEXT = "\nDescription: %s";
+    private final String APPEND_STACK_TRACE_ELEMENT = "\nat %s";
+    private static final String ERROR_ASSERT_MESSAGE = "\n%s%s";
+    private static final String NEW_LINE = "\n";
+    private static final String BREAK_LINE = "<BR>";
 
     private static volatile FlexAssert instance = null;
     //
@@ -41,10 +45,10 @@ public final class FlexAssert {
     }
 
     private void verify(boolean pass, String errorText) {
-        System.out.println("\t+++ pass = " + pass + "  errorText = " + errorText);
+        //System.out.println("\t+++ pass = " + pass + "  errorText = " + errorText);
         summaryResult = summaryResult && pass;
         if (!pass) {
-            ReporterWrapper.get().error(errorText);
+            ReporterWrapper.get().error(errorText.replaceAll(NEW_LINE, BREAK_LINE));
             ReporterWrapper.get().addSourceCode();
             ReporterWrapper.get().addScreenShot();
             addWarning(errorText);
@@ -55,19 +59,27 @@ public final class FlexAssert {
         summaryDescription.append(String.format(APPEND_TEXT, warningText));
     }
 
+    private String getStackTrace() {
+        StringBuilder stackTrace = new StringBuilder();
+        // get Stack Trace
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        for (int i = 3; i < stackTraceElements.length; i++) {
+            //System.out.println("\nClass: " + stackTraceElements[i].getClassName());
+            //System.out.println("Method: " + stackTraceElements[i].getMethodName());
+            //System.out.println("Line: " + stackTraceElements[i].getLineNumber());
+            //System.out.println("ALL: " + stackTraceElements[i].toString());
+            stackTrace.append(String.format(APPEND_STACK_TRACE_ELEMENT,
+                    stackTraceElements[i].toString()));
+        }
+        return stackTrace.toString();
+    }
+
     public static void assertEquals(String actual, String expected) {
         try {
             Assert.assertEquals(actual, expected);
         } catch (AssertionError e) {
-            // TODO get Stack Trace
-            StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-            for (int i = 0; i < stackTrace.length; i++) {
-                System.out.println("\nClass: " + stackTrace[i].getClassName());
-                System.out.println("Method: " + stackTrace[i].getMethodName());
-                System.out.println("Line: " + stackTrace[i].getLineNumber());
-                System.out.println("ALL: " + stackTrace[i].toString());
-            }
-            get().verify(actual.equals(expected), e.toString());
+            get().verify(actual.equals(expected), String.format(ERROR_ASSERT_MESSAGE,
+                    e.toString(), get().getStackTrace()));
         }
     }
 
@@ -75,8 +87,8 @@ public final class FlexAssert {
         try {
             Assert.assertTrue(condition);
         } catch (AssertionError e) {
-            // TODO get Stack Trace
-            get().verify(condition, e.toString());
+            get().verify(condition, String.format(ERROR_ASSERT_MESSAGE,
+                    e.toString(), get().getStackTrace()));
         }
     }
 
@@ -84,6 +96,7 @@ public final class FlexAssert {
         instance = get();
         boolean result = instance.getPassed();
         String description = instance.getSummaryDescription();
+        //System.out.println("\n++++++++++\n" + description + "\n++++++++++\n");
         instance.init();
         Assert.assertTrue(result, description);
     }

@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.softserve.edu.registrator.data.external.ListUtils;
 import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.Application;
@@ -26,7 +27,13 @@ public class SmokeRunnerTest extends TestRunner {
                 };
     }
 
+    @DataProvider // (parallel = true)
+    public Object[][] external() {
+        return ListUtils.toMultiArray(UserRepository.get().fromCVSFile());
+    }
+
     //@Test(dataProvider = "credentials")
+    @Test(dataProvider = "external")
     public void checkLogin(IUser user) throws Exception {
         //
         CommonPage commonPage = Application.get().load()
@@ -68,12 +75,12 @@ public class SmokeRunnerTest extends TestRunner {
     public Object[][] localization() {
         return new Object[][] {
             //{ ChangeLanguageFields.UKRAINIAN },
-            //{ ChangeLanguageFields.RUSSIAN },
-            { ChangeLanguageFields.ENGLISH }
+            { ChangeLanguageFields.RUSSIAN },
+            //{ ChangeLanguageFields.ENGLISH }
             };
     }
 
-    @Test(dataProvider = "localization")
+    //@Test(dataProvider = "localization")
     public void checkLocalization(ChangeLanguageFields language) throws Exception {
         System.out.println("Start, language = " + language.toString());
         // Steps
@@ -89,7 +96,7 @@ public class SmokeRunnerTest extends TestRunner {
         System.out.println("Checking PASSWORD_LABEL ...");
         //
         String addError = new String();
-        if (language != ChangeLanguageFields.RUSSIAN) {
+        if (language == ChangeLanguageFields.RUSSIAN) {
             addError = "_ERROR";
         }
         FlexAssert.assertEquals(loginPage.getPasswordLabelText(),
