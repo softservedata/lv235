@@ -17,6 +17,7 @@ public class ScreenCapturingCustomException extends GeneralCustomException {
     }
 
     private void performReports() {
+        ReporterWrapper.get().addSourceCode();
         ReporterWrapper.get().addScreenShot();
     }
 
