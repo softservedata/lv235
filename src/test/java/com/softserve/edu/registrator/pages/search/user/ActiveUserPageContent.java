@@ -1,5 +1,6 @@
 package com.softserve.edu.registrator.pages.search.user;
 
+import com.softserve.edu.registrator.data.users.IUser;
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
@@ -274,9 +275,22 @@ public class ActiveUserPageContent extends ActiveUsersPage {
         return data.getEmail();
     }
 
-    //Data provider set methods
-    public void inputFirstNameData(ISearchFields data) {
+    //Data provider set methods ----in this place was changes,in parameters early was (ISearchFields data)
+    public void inputFirstNameData(String data) {
         getFirstNameField().clear();
-        getFirstNameField().sendKeys(data.getFirstName());
+        getFirstNameField().sendKeys(data);
     }
+    public void inputEmailData(ISearchFields data){
+    getEmailField().clear();
+    getEmailField().sendKeys(data.getEmail());
+    }
+    //------------------------
+    public String getTestName(IUser testName){
+        return testName.getPerson().getFirstname();
+    }
+
+    //-----------------------------
+
+
+
 }

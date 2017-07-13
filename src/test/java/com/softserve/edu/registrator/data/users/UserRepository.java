@@ -1,10 +1,9 @@
 package com.softserve.edu.registrator.data.users;
 
-import java.util.List;
-
 import com.softserve.edu.registrator.data.external.CSVUtils;
 import com.softserve.edu.registrator.data.external.ExcelUtils;
 
+import java.util.List;
 public final class UserRepository {
     private static volatile UserRepository instance = null;
 
@@ -229,7 +228,45 @@ public final class UserRepository {
                             .setPublished("Народом України")
                             );
     }
-
+    //ACTIVE USER SEARCHING TEST ONLY
+	public IUser testActiveUserSearch() {
+		return User.get()
+				.setPerson(Person.get()
+						.setFirstname("Ihor")
+						.setLastname("IvaSurname")
+						.setEmail("IvaTest@gmail.com")
+						.build()
+						.setMiddlename("")
+						.setPhonenumber("")
+				)
+				.setAccount(Account.get()
+						.setLogin("")
+						.setPassword("")
+						.setRole("")
+						.setStatus("")
+						.setCommunity("")
+						.build()
+						.setData("")
+						.setRegisterNumber("")
+						.setRegistratorNumber("")
+						.setVolumeNumber("")
+				)
+				.build()
+				.setAddress(Address.get()
+						.setRegion("")
+						.setDistrict("")
+						.setCity("")
+						.setStreet("")
+						.setBuilding("")
+						.setFlat("")
+						.setPostcode("")
+				)
+				.setPassport(Passport.get()
+						.setSeria("")
+						.setNumber("")
+						.setPublished("")
+				);
+	}
     // COMMISSIONER FOR TEST ONLY
     
     public IUser testCommissioner() {

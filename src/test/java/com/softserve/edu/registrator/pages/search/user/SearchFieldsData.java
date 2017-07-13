@@ -8,14 +8,16 @@ public class SearchFieldsData  implements ISearchFields {
     private String firstName;
     private String secondName;
     private String email;
+    private String testFirstName;
 
     /*
      * Constructor
      */
-    public SearchFieldsData(String firstName, String secondName, String email) {
+    public SearchFieldsData(String firstName, String secondName, String email,String testFirstName) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
+        this.testFirstName=testFirstName;
     }
 
     // Getters
@@ -30,10 +32,14 @@ public class SearchFieldsData  implements ISearchFields {
     public String getEmail() {
         return email;
     }
+    public String getTestFirstNameData(){return testFirstName;}
 
     // Setters
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+    public void setTestFirstName(String testName){
+        this.testFirstName=testName;
     }
 
     public void setSecondName(String secondName) {
