@@ -3,6 +3,7 @@ package com.softserve.edu.registrator.data.users;
 import java.util.List;
 
 import com.softserve.edu.registrator.data.external.CSVUtils;
+import com.softserve.edu.registrator.data.external.ExcelUtils;
 
 public final class UserRepository {
     private static volatile UserRepository instance = null;
@@ -401,9 +402,8 @@ public final class UserRepository {
         return new UserUtils(new CSVUtils("/existUsers.csv")).getAllUsers();
     }
 
-    // TODO
-    // public List<IUser> getExistUsersExcel() {
-    // return new UserUtils("/users.xlsx", new ExcelUtils()).getAllUsers();
-    // }
+    public List<IUser> fromExcelFile() {
+        return new UserUtils(new ExcelUtils("/existUsers.xlsx")).getAllUsers();
+    }
 
 }

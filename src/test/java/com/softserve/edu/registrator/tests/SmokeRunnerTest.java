@@ -29,7 +29,8 @@ public class SmokeRunnerTest extends TestRunner {
 
     @DataProvider // (parallel = true)
     public Object[][] external() {
-        return ListUtils.toMultiArray(UserRepository.get().fromCVSFile());
+        //return ListUtils.toMultiArray(UserRepository.get().fromCVSFile());
+        return ListUtils.toMultiArray(UserRepository.get().fromExcelFile());
     }
 
     //@Test(dataProvider = "credentials")
