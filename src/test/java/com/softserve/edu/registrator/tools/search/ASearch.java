@@ -5,9 +5,14 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.registrator.tools.exception.ScreenCapturingCustomException;
+
 public abstract class ASearch implements ISearch {
 
-	protected abstract  WebElement getWebElement(By by);
+    private static final String NO_SUCH_ELEMENT = "Unable to locate element(s): %s";
+    //
+    
+	protected abstract WebElement getWebElement(By by);
 	
 	protected abstract WebElement getWebElement(By by, WebElement fromWebElement);
 	
@@ -18,130 +23,166 @@ public abstract class ASearch implements ISearch {
 	@Override
 	public abstract boolean stalenessOf(WebElement webElement);
 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	
+	// TODO add static factory for getWebElement(s) metods or use AspectJ
+	
+    private WebElement searchWebElement(By by) {
+        try {
+            return getWebElement(by);
+        } catch (Exception e) {
+            throw new ScreenCapturingCustomException(String.format(NO_SUCH_ELEMENT, by.toString()));
+        }
+    }
+
+    private WebElement searchWebElement(By by, WebElement fromWebElement) {
+        try {
+            return getWebElement(by, fromWebElement);
+        } catch (Exception e) {
+            throw new ScreenCapturingCustomException(String.format(NO_SUCH_ELEMENT, by.toString()));
+        }
+    }
+
+    private List<WebElement> searchWebElements(By by) {
+        try {
+            return getWebElements(by);
+        } catch (Exception e) {
+            throw new ScreenCapturingCustomException(String.format(NO_SUCH_ELEMENT, by.toString()));
+        }
+    }
+
+    private List<WebElement> searchWebElements(By by, WebElement fromWebElement) {
+        try {
+            return getWebElements(by, fromWebElement);
+        } catch (Exception e) {
+            throw new ScreenCapturingCustomException(String.format(NO_SUCH_ELEMENT, by.toString()));
+        }
+    }
+
     // Search Element
 	
 	@Override
 	public WebElement id(String id) {
-		return getWebElement(By.id(id));
+		return searchWebElement(By.id(id));
 	}
 
 	@Override
 	public WebElement name(String name) {
-		return getWebElement(By.name(name));
+		return searchWebElement(By.name(name));
 	}
 
 	@Override
 	public WebElement xpath(String xpath) {
-		 return getWebElement(By.xpath(xpath));
+		 return searchWebElement(By.xpath(xpath));
 	}
 
 	@Override
 	public WebElement cssSelector(String cssSelector) {
-		return getWebElement(By.cssSelector(cssSelector));
+		return searchWebElement(By.cssSelector(cssSelector));
 	}
 
 	@Override
 	public WebElement className(String className) {
-		return getWebElement(By.className(className));
+		return searchWebElement(By.className(className));
 	}
 
 	@Override
 	public WebElement partialLinkText(String partialLinkText) {
-		return getWebElement(By.partialLinkText(partialLinkText));
+		return searchWebElement(By.partialLinkText(partialLinkText));
 	}
 
 	@Override
 	public WebElement linkText(String linkText) {
-		return getWebElement(By.linkText(linkText));
+		return searchWebElement(By.linkText(linkText));
 	}
 
 	@Override
 	public WebElement tagName(String tagName) {
-		return getWebElement(By.tagName(tagName));
+		return searchWebElement(By.tagName(tagName));
 	}
 
 	// Search From Element
 	
 	@Override
 	public WebElement id(String id, WebElement fromWebElement) {
-		return getWebElement(By.id(id), fromWebElement);
+		return searchWebElement(By.id(id), fromWebElement);
 	}
 
 	@Override
 	public WebElement name(String name, WebElement fromWebElement) {
-		return getWebElement(By.name(name), fromWebElement);
+		return searchWebElement(By.name(name), fromWebElement);
 	}
 
 	@Override
 	public WebElement xpath(String xpath, WebElement fromWebElement) {
-		return getWebElement(By.xpath(xpath), fromWebElement);
+		return searchWebElement(By.xpath(xpath), fromWebElement);
 	}
 
 	@Override
 	public WebElement cssSelector(String cssSelector, WebElement fromWebElement) {
-		return getWebElement(By.cssSelector(cssSelector), fromWebElement);
+		return searchWebElement(By.cssSelector(cssSelector), fromWebElement);
 	}
 
 	@Override
 	public WebElement className(String className, WebElement fromWebElement) {
-		return getWebElement(By.className(className), fromWebElement);
+		return searchWebElement(By.className(className), fromWebElement);
 	}
 
 	@Override
 	public WebElement partialLinkText(String partialLinkText, WebElement fromWebElement) {
-		return getWebElement(By.partialLinkText(partialLinkText), fromWebElement);
+		return searchWebElement(By.partialLinkText(partialLinkText), fromWebElement);
 	}
 
 	@Override
 	public WebElement linkText(String linkText, WebElement fromWebElement) {
-		return getWebElement(By.linkText(linkText), fromWebElement);
+		return searchWebElement(By.linkText(linkText), fromWebElement);
 	}
 
 	@Override
 	public WebElement tagName(String tagName, WebElement fromWebElement) {
-		return getWebElement(By.tagName(tagName), fromWebElement);
+		return searchWebElement(By.tagName(tagName), fromWebElement);
 	}
 
 	// Get List 
 	
 	@Override
 	public List<WebElement> names(String name) {
-		return getWebElements(By.name(name));
+		return searchWebElements(By.name(name));
 	}
 
 	@Override
 	public List<WebElement> xpaths(String xpath) {
-		return getWebElements(By.xpath(xpath));
+		return searchWebElements(By.xpath(xpath));
 	}
 	
 	@Override
 	public List<WebElement> xpaths(String xpath, WebElement fromWebElement) {
-		return getWebElements(By.xpath(xpath), fromWebElement);
+		return searchWebElements(By.xpath(xpath), fromWebElement);
 	}
 
 	@Override
 	public List<WebElement> cssSelectors(String cssSelector) {
-		return getWebElements(By.cssSelector(cssSelector));
+		return searchWebElements(By.cssSelector(cssSelector));
 	}
 
 	@Override
 	public List<WebElement> classNames(String className) {
-		return getWebElements(By.className(className));
+		return searchWebElements(By.className(className));
 	}
 
 	@Override
 	public List<WebElement> partialLinkTexts(String partialLinkText) {
-		return getWebElements(By.partialLinkText(partialLinkText));
+		return searchWebElements(By.partialLinkText(partialLinkText));
 	}
 
 	@Override
 	public List<WebElement> linkTexts(String linkText) {
-		return getWebElements(By.linkText(linkText));
+		return searchWebElements(By.linkText(linkText));
 	}
 
 	@Override
 	public List<WebElement> tagNames(String tagName) {
-		return getWebElements(By.tagName(tagName));
+		return searchWebElements(By.tagName(tagName));
 	}
 
 }

@@ -2,6 +2,8 @@ package com.softserve.edu.registrator.data.apps;
 
 public final class ApplicationSourcesRepository {
 
+    public static final String LOCAL_MANUALREGISTRATION = "http://java.training.local:8080/registrator/manualregistration";
+    
     private ApplicationSourcesRepository() {
     }
 
