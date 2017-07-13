@@ -42,6 +42,7 @@ public class ReporterWrapper {
     //private static final String IMG_TEMPLATE = "<br><img src='%s' alt='could not take screen shot' width='80%' height='80%'>";
     private static final String IMG_TEMPLATE = "<br><div><image style=\"max-width:90%%\" src=\"%s\"  alt=\"could not take screen shot\" /></div>";
     private static final String SCREENSHOT_FILENAME = "<br><p>Screenshot filename is %s</p>";
+    private static final String SOURCECODE_FILENAME = "<br><p><a href='%s'>Source Code</a> filename is %s</p>";
     private static final String SPACE = " ";
     //
     private static volatile ReporterWrapper instance = null;
@@ -92,6 +93,12 @@ public class ReporterWrapper {
         Reporter.log(String.format(SCREENSHOT_FILENAME, screenFileName));
         Reporter.log(String.format(IMG_TEMPLATE, screenFileName));
         return screenFileName;
+    }
+
+    public String addSourceCode() {
+        String sourceCodeFileName = new CaptureScreen().takeSourceCode();
+        Reporter.log(String.format(SOURCECODE_FILENAME, sourceCodeFileName, sourceCodeFileName));
+        return sourceCodeFileName;
     }
 
 }

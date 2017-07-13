@@ -1,7 +1,8 @@
 package com.softserve.edu.registrator.data.users;
 
-import org.apache.bcel.generic.IUSHR;
+import com.softserve.edu.registrator.data.external.CSVUtils;
 
+import java.util.List;
 public final class UserRepository {
     private static volatile UserRepository instance = null;
 
@@ -472,13 +473,14 @@ public final class UserRepository {
 	                            .setPublished("Народом України")
 	                            );
 	    }
-//TODO
-//    public List<IUser> getExistUsersCVS() {
-//        return new UserUtils().getAllUsers();
-//    }
-//
-//    public List<IUser> getExistUsersExcel() {
-//        return new UserUtils("/users.xlsx", new ExcelUtils()).getAllUsers();
-//    }
+
+    public List<IUser> fromCVSFile() {
+        return new UserUtils(new CSVUtils("/existUsers.csv")).getAllUsers();
+    }
+
+    // TODO
+    // public List<IUser> getExistUsersExcel() {
+    // return new UserUtils("/users.xlsx", new ExcelUtils()).getAllUsers();
+    // }
 
 }
