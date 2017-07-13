@@ -15,9 +15,9 @@ public final class UserUtils {
     public List<IUser> getAllUsers() {
         List<IUser> users = new ArrayList<IUser>();
         for (List<String> row : externalData.getAllCells()) {
-            //System.out.println("row = " + row);
-            //System.out.println("row.size() = " + row.size());
-            //System.out.println("row.get(2) = " + row.get(2));
+            System.out.println("row = " + row);
+            System.out.println("row.size() = " + row.size());
+            System.out.println("row.get(2) = " + row.get(2));
             if (!row.get(2).contains("@")) {
                 continue;
             }
