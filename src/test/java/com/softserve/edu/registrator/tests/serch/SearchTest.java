@@ -4,6 +4,7 @@ import com.softserve.edu.registrator.data.users.IUser;
 import com.softserve.edu.registrator.data.users.UserRepository;
 import com.softserve.edu.registrator.pages.search.user.ActiveUserPageContent;
 import com.softserve.edu.registrator.tests.community.AdminHomePageTestRunner;
+import com.softserve.edu.registrator.tools.assertion.FlexAssert;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -33,7 +34,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-    @Test(dataProvider = "searchData")
+ //   @Test(dataProvider = "searchData")
     public void searchByFistNameWithEmailTest(IUser searchFields, IUser data) throws Exception {
         logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
@@ -60,7 +61,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-    @Test(dataProvider = "searchData")
+   // @Test(dataProvider = "searchData")
     public void searchByFistNameWithLoginTest(IUser searchField, IUser data) throws Exception {
         logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
@@ -68,12 +69,12 @@ public class SearchTest extends AdminHomePageTestRunner {
         page.inputLoginData(searchField.getAccount().getLogin());
         page.clickSearchButton();
         Thread.sleep(DELAY_FOR_DEMO);
-        Assert.assertTrue(
+        FlexAssert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
                         page.getTestName(searchField),
                         page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByName(data))).
                         isEmpty());
-        Assert.assertTrue(
+        FlexAssert.assertTrue(
                 !page.getRefTable().getRowByValueInColumn(
                         page.getTestLogin(searchField),
                         page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByLogin(data))).
@@ -87,7 +88,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-    @Test(dataProvider = "searchData")
+  //  @Test(dataProvider = "searchData")
     public void searchLoginWithCommunity(IUser searchField, IUser data) throws Exception {
         logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
@@ -114,16 +115,16 @@ public class SearchTest extends AdminHomePageTestRunner {
      *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-     @Test(dataProvider = "searchData")
+    @Test(dataProvider = "searchData")
     public void searchEmailWithLastName(IUser searchField, IUser data) throws Exception {
-         logger.info("Started");
+        logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputEmailData(searchField.getPerson().getEmail());
         page.inputLastNameData(searchField.getPerson().getLastname());
         page.clickSearchButton();
         Thread.sleep(DELAY_FOR_DEMO);
-        Assert.assertTrue(
-                !page.getRefTable().getRowByValueInColumn(
+        FlexAssert.assertTrue(
+               ! page.getRefTable().getRowByValueInColumn(
                         page.getEmailTestData(searchField),
                         page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnNameByEmail(data))).
                         isEmpty());
@@ -133,7 +134,8 @@ public class SearchTest extends AdminHomePageTestRunner {
                         page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnByLastName(data))).
                         isEmpty());
         setAdminHomePage(page);
-         logger.info("Done");
+        FlexAssert.assertAll();
+        logger.info("Done");
     }
 
     /**
@@ -141,9 +143,9 @@ public class SearchTest extends AdminHomePageTestRunner {
      *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-     @Test(dataProvider = "searchData")
+   // @Test(dataProvider = "searchData")
     public void searchCommunityWithLastName(IUser searchField, IUser data) throws Exception {
-         logger.info("Started");
+        logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
         page.inputCommunityData(searchField.getAccount().getCommunity());
         page.inputLastNameData(searchField.getPerson().getLastname());
@@ -160,6 +162,6 @@ public class SearchTest extends AdminHomePageTestRunner {
                         page.getRefTable().getColumnIndexByValueOfHeader(page.getColumnByLastName(data))).
                         isEmpty());
         setAdminHomePage(page);
-         logger.info("Done");
+        logger.info("Done");
     }
 }

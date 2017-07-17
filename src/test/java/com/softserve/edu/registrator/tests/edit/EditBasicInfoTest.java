@@ -9,6 +9,7 @@ import com.softserve.edu.registrator.pages.user.ActiveUsersPage;
 import com.softserve.edu.registrator.pages.user.PassiveEditUserPage;
 import com.softserve.edu.registrator.tests.TestRunner;
 import com.softserve.edu.registrator.tests.community.AdminHomePageTestRunner;
+import com.softserve.edu.registrator.tools.assertion.FlexAssert;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -28,7 +29,7 @@ public class EditBasicInfoTest extends TestRunner {
 	 * @return the test data
 	 */
 	@DataProvider
-	public Object[][] searchData() {
+	public Object[][] EditBasicInfo() {
 		return new Object[][]{
 				{UserRepository.get().testActiveUserSearch(),}
 		};

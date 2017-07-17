@@ -95,7 +95,6 @@ public class BrowserWrapper {
 
     private WebDriver driver;
 
-    
     public BrowserWrapper(ApplicationSources applicationSources) {
         initWebDriver(applicationSources);
     }

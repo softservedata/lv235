@@ -29,7 +29,7 @@ public class EditPassportInfoTest extends TestRunner{
 	 * @return the test data
 	 */
 	@DataProvider
-	public Object[][] searchData() {
+	public Object[][] EditPassportInfo() {
 		return new Object[][]{
 				{UserRepository.get().testActiveUserSearch(),}
 		};
