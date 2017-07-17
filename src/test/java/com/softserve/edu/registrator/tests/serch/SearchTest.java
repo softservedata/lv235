@@ -34,7 +34,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
- //   @Test(dataProvider = "searchData")
+   @Test(dataProvider = "searchData")
     public void searchByFistNameWithEmailTest(IUser searchFields, IUser data) throws Exception {
         logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
@@ -61,7 +61,7 @@ public class SearchTest extends AdminHomePageTestRunner {
      *
      * @throws Exception - used by Thread.sleep() for DEMO
      */
-   // @Test(dataProvider = "searchData")
+    @Test(dataProvider = "searchData")
     public void searchByFistNameWithLoginTest(IUser searchField, IUser data) throws Exception {
         logger.info("Started");
         ActiveUserPageContent page = getAdminHomePage().clickActive();
