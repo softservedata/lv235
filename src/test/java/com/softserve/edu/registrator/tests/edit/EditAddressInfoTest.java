@@ -28,17 +28,17 @@ import java.sql.Wrapper;
  */
 public class EditAddressInfoTest extends TestRunner{
 
-
     /**
      * Data provider
      * @return the test data
      */
     @DataProvider
-    public Object[][] searchData() {
+    public Object[][] EditAddressInfo() {
         return new Object[][]{
                 {UserRepository.get().testActiveUserSearch(),}
         };
     }
+
     /**
      * Delay for Thread.Sleep().
      */

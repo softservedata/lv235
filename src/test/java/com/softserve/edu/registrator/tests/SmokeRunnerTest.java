@@ -34,7 +34,7 @@ public class SmokeRunnerTest extends TestRunner {
     }
 
     //@Test(dataProvider = "credentials")
-    @Test(dataProvider = "external")
+  //  @Test(dataProvider = "external")
     public void checkLogin(IUser user) throws Exception {
         //
         CommonPage commonPage = Application.get().load()
@@ -81,7 +81,7 @@ public class SmokeRunnerTest extends TestRunner {
             };
     }
 
-    //@Test(dataProvider = "localization")
+    @Test(dataProvider = "localization")
     public void checkLocalization(ChangeLanguageFields language) throws Exception {
         System.out.println("Start, language = " + language.toString());
         // Steps
