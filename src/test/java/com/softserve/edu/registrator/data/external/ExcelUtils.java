@@ -27,11 +27,11 @@ public class ExcelUtils implements IExternalData {
 	    }
 
     public String getFilename() {
-        return filename;
+        return this.filename;
     }
 
     public String getPath() {
-        return path;
+        return this.path;
     }
 
     public List<List<String>> getAllCells() {

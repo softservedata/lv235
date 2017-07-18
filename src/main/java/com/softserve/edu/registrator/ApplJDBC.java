@@ -11,25 +11,28 @@ public class ApplJDBC {
     private static Connection con = null;
 //    private static String username = "ssu-oms";
 //    private static String password = "ssu-oms";
-    //private static String username = "db215";
-    //private static String password = "db215";
+    //private static String username = "db235";
+    //private static String password = "db235";
     //private static String username = "root";
     //private static String password = "root";
     private static String username = "postgres";
     private static String password = "postgres";
     // Microsoft
+    //private static String URL = "jdbc:sqlserver://CLASS02.training.local\\SQLEXPRESS;databasename=Lv235Test;";
     ////private static String URL = "jdbc:sqlserver://CLASS02.training.local\\SQLEXPRESS;";
     ////private static String URL = "jdbc:sqlserver://CLASS02.training.local\\SQLEXPRESS;databasename=lv215Test;";
     //private static String URL = "jdbc:sqlserver://CLASS02.training.local\\SQLEXPRESS;databasename=lv196first;";
     //private static String URL = "jdbc:sqlserver://CLASS02.training.local\\SQLEXPRESS;databasename=Lv169OMS;";
     //private static String URL = "jdbc:sqlserver://ssu-sql12\\tc;databasename=ssu-oms;";
     // Sybase
+    //private static String URL = "jdbc:jtds:sqlserver://CLASS02/lv235Test;instance=SQLEXPRESS;";
     //private static String URL = "jdbc:jtds:sqlserver://CLASS02/lv215Test;instance=SQLEXPRESS;";
     //private static String URL = "jdbc:jtds:sqlserver://CLASS02;instance=SQLEXPRESS;";
     ////private static String URL = "jdbc:jtds:sqlserver://CLASS02/lv196first;instance=SQLEXPRESS;";
     //private static String URL = "jdbc:jtds:sqlserver://ssu-sql12/ssu-oms;instance=tc;";
     //private static String URL = "jdbc:jtds:sqlserver://CLASS02/Lv169OMS;instance=SQLEXPRESS;";
     // MySQL
+    //private static String URL = "jdbc:mysql://localhost:3306/lv235Test";
     //private static String URL = "jdbc:mysql://localhost:3306/lv215Test";
     //private static String URL = "jdbc:mysql://localhost:3306/measurement_devices";
     //private static String URL = "jdbc:mysql://localhost:3306/registrator_db";
@@ -53,9 +56,11 @@ public class ApplJDBC {
         // Load the driver
         con = DriverManager.getConnection(URL, username, password);
         if (con != null) {
-            System.out.println("Connection Successful! \n"); }
+            System.out.println("Connection Successful! \n");
+        }
         else {
-            System.exit(0); }
+            System.exit(0);
+        }
         Statement st = con.createStatement();
         // Statement allows you to send inquiries database
         //ResultSet rs = st.executeQuery("select * from TUser");
@@ -87,7 +92,9 @@ public class ApplJDBC {
         //st.execute("INSERT INTO Users (firstname,lastname,login,password,email) VALUES ('Taras','Tarasov','tara','qwerty3','a@i.ua');");
         //st.execute("UPDATE Users SET firstname='SuperTaras' WHERE lastname LIKE 'Tar%';");
         //st.execute("DELETE Users WHERE firstname='SuperTaras';");
-        ResultSet rs = st.executeQuery("select * from Users;");
+        //
+        //ResultSet rs = st.executeQuery("select * from Users;");
+        ResultSet rs = st.executeQuery("select user_id, email, first_name, login, password from Users;");
         //
         int columnCount = rs.getMetaData().getColumnCount();
         // Resultset.getMetaData () get the information

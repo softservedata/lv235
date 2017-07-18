@@ -1,9 +1,10 @@
 package com.softserve.edu.registrator.data.users;
 
-import com.softserve.edu.registrator.data.external.CSVUtils;
-import com.softserve.edu.registrator.data.external.ExcelUtils;
-
 import java.util.List;
+
+import com.softserve.edu.registrator.data.external.CSVUtils;
+import com.softserve.edu.registrator.data.external.DBUtils;
+import com.softserve.edu.registrator.data.external.ExcelUtils;
 public final class UserRepository {
     private static volatile UserRepository instance = null;
 
@@ -481,6 +482,13 @@ public final class UserRepository {
 
     public List<IUser> fromExcelFile() {
         return new UserUtils(new ExcelUtils("/existUsers.xlsx")).getAllUsers();
+    }
+
+    // TODO
+    public List<IUser> fromDB() {
+        return new UserUtils(new DBUtils("jdbc:postgresql://192.168.195.250:5432/registrator_db",
+                "postgres", "postgres",
+                "select user_id, email, first_name, login, password from Users;")).getAllUsers();
     }
 
 }
