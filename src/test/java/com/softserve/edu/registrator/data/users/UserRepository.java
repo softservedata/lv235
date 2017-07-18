@@ -447,8 +447,7 @@ public final class UserRepository {
     // TODO
     public List<IUser> fromDB() {
         return new UserUtils(new DBUtils("jdbc:postgresql://192.168.195.250:5432/registrator_db",
-                "postgres", "postgres",
-                "select user_id, email, first_name, login, password from Users;")).getAllUsers();
+                "postgres", "postgres", DBUtils.DBUtilsQueries.SELECT_USERS)).getAllUsers();
     }
 
 }

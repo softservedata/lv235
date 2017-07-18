@@ -11,13 +11,28 @@ import java.util.List;
 import com.softserve.edu.registrator.tools.exception.GeneralCustomException;
 
 public final class CSVUtils implements IExternalData {
+    
+    private static class CSVFactory implements IRowFactory {
+        public List<String> updateRow(List<String> row) {
+            return row;
+        }
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 	private final String CSV_SPLIT_BY = ",";
+	private IRowFactory rowFactory; 
 	private String filename;
 	private String path;
 	
 	public CSVUtils(String filename) {
 	    this.filename = filename;
 	    this.path = this.getClass().getResource(filename).getPath().substring(1);
+	    this.rowFactory = new CSVFactory();
+	}
+	
+	public IRowFactory getRowFactory() {
+	    return this.rowFactory;
 	}
 	
 	public String getFilename() {

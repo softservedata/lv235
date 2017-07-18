@@ -7,6 +7,8 @@ public interface IExternalData {
     String FILE_NOT_READ_EXCEPTION = "File %s could not be read";
     String FILE_NOT_CLOSE_EXCEPTION = "File %s could not be closed";
     
+    IRowFactory getRowFactory();
+
     String getPath();
     
     List<List<String>> getAllCells();

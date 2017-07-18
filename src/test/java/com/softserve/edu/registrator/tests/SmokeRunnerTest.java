@@ -30,11 +30,24 @@ public class SmokeRunnerTest extends TestRunner {
     @DataProvider // (parallel = true)
     public Object[][] external() {
         //return ListUtils.toMultiArray(UserRepository.get().fromCVSFile());
-        return ListUtils.toMultiArray(UserRepository.get().fromExcelFile());
+        //return ListUtils.toMultiArray(UserRepository.get().fromExcelFile());
+        return ListUtils.toMultiArray(UserRepository.get().fromDB());
     }
 
-    //@Test(dataProvider = "credentials")
     @Test(dataProvider = "external")
+    public void checkLog(IUser user) throws Exception {
+        //
+        System.out.println("\tuser.firstname = " + user.getPerson().getFirstname());
+        System.out.println("\tuser.login = " + user.getAccount().getLogin());
+        System.out.println("\tuser.email = " + user.getPerson().getEmail());
+        System.out.println("\tuser.password = " + user.getAccount().getPassword());
+        Application.get().load().successLogin(user);
+        Thread.sleep(2000);
+        //
+    }
+    
+    //@Test(dataProvider = "credentials")
+    //@Test(dataProvider = "external")
     public void checkLogin(IUser user) throws Exception {
         //
         CommonPage commonPage = Application.get().load()

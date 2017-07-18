@@ -17,14 +17,29 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.softserve.edu.registrator.tools.exception.GeneralCustomException;
 
 public class ExcelUtils implements IExternalData {
+
+    private static class ExcelFactory implements IRowFactory {
+        public List<String> updateRow(List<String> row) {
+            return row;
+        }
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     private static final int MAIN_BY_NUMBER_SHEET = 0;
+    private IRowFactory rowFactory; 
     private String filename;
     private String path;
 
     public ExcelUtils(String filename) {
 	        this.filename = filename;
 	        this.path = this.getClass().getResource(filename).getPath().substring(1);
+	        this.rowFactory = new ExcelFactory();
 	    }
+
+    public IRowFactory getRowFactory() {
+        return this.rowFactory;
+    }
 
     public String getFilename() {
         return this.filename;

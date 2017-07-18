@@ -6,6 +6,54 @@ import java.util.List;
 import com.softserve.edu.registrator.data.external.IExternalData;
 
 public final class UserUtils {
+
+    public static enum UserUtilsFields {
+        UNNECESSARY("Unnecessary", -1),
+        FIRSTNAME("Firstname", 0),
+        LASTNAME("Lastname", 1),
+        EMAIL("Email", 2),
+        MIDDLENAME("Middlename", 3),
+        PHONE_NUMBER("Phonenumber", 4),
+        LOGIN("Login", 5),
+        PASSWORD("Password", 6),
+        ROLE("Role", 7),
+        STATUS("Status", 8),
+        COMMUNITY("Community", 9),
+        DATA("Data", 10),
+        REGISTER_NUMBER("RegisterNumber", 11),
+        REGISTRATOR_NUMBER("RegistratorNumber", 12),
+        VOLUME_NUMBER("VolumeNumber", 13),
+        REGION("Region", 14),
+        DISTRICT("District", 15),
+        CITY("City", 16),
+        STREET("Street", 17),
+        BUILDING("Building", 18),
+        FLAT("Flat", 19),
+        POSTCODE("Postcode", 20),
+        SERIA("Seria", 21),
+        NUMBER("Number", 22),
+        PUBLISHED("Published", 23);
+        //
+        private String field;
+        private int number;
+
+        private UserUtilsFields(String field, int number) {
+            this.field = field;
+            this.number = number;
+        }
+
+        public int getnumber() {
+            return number;
+        }
+        
+        @Override
+        public String toString() {
+            return field;
+        }
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    
     private IExternalData externalData;
 
     public UserUtils(IExternalData externalData) {
@@ -15,9 +63,10 @@ public final class UserUtils {
     public List<IUser> getAllUsers() {
         List<IUser> users = new ArrayList<IUser>();
         for (List<String> row : externalData.getAllCells()) {
-            System.out.println("row = " + row);
-            System.out.println("row.size() = " + row.size());
-            System.out.println("row.get(2) = " + row.get(2));
+            row = externalData.getRowFactory().updateRow(row);
+            System.out.println("+++row = " + row);
+            System.out.println("+++row.size() = " + row.size());
+            System.out.println("+++row.get(2) = " + row.get(2));
             if (!row.get(2).contains("@")) {
                 continue;
             }
