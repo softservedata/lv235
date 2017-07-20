@@ -1,10 +1,12 @@
 package com.softserve.edu.registrator.pages.common;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.openqa.selenium.WebElement;
 
 import com.softserve.edu.registrator.data.users.IUser;
+import com.softserve.edu.registrator.tools.exception.GeneralCustomException;
 import com.softserve.edu.registrator.tools.search.Search;
 
 public class LoginPage extends ATopComponent {
@@ -32,6 +34,7 @@ public class LoginPage extends ATopComponent {
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    private static final String REGISTER_ERROR = "Button Register not Found";
 	public static final String NAME_IMAGE = "ukraine_logo2.gif";
 	//
 	private static final String LOGIN_LABEL_XPATH = "//label[contains(@for,'inputEmail')]";
@@ -50,6 +53,7 @@ public class LoginPage extends ATopComponent {
 	private WebElement passwordInput;
 	private WebElement signin;
 	private WebElement logo;
+	private List<WebElement> register;
 
 	public LoginPage() {
 		super();
@@ -100,9 +104,18 @@ public class LoginPage extends ATopComponent {
 		return this.logo;
 	}
 
+	public boolean isRegisterExist() {
+        register = Search.cssSelectors(REGISTER_CSSSELECTOR);
+        return register.size() > 0;
+    }
+	
 	public WebElement getRegister() {
 		// TODO Check WebElement Exist
-		return Search.cssSelector(REGISTER_CSSSELECTOR);
+		//return Search.cssSelector(REGISTER_CSSSELECTOR);
+	    if (!isRegisterExist()) {
+            throw new GeneralCustomException(REGISTER_ERROR);
+        }
+        return register.get(0);
 	}
 
 	// Functional
@@ -143,6 +156,11 @@ public class LoginPage extends ATopComponent {
 		return getLogoAttributeText(SRC_ATTRIBUTE);
 	}
 
+	public String getRegisterText() {
+        System.out.println("\t+++ getRegisterText() DONE");
+        return getRegister().getText().trim();
+    }
+	
 	// set Data
 
 	public void setLoginInput(String login) {
