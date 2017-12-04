@@ -14,5 +14,6 @@ public class AppTest {
 		Calc calc = new Calc();
 		Assert.assertEquals(3, calc.add(2, 1), 0.001);
 		Assert.assertEquals(2.5, calc.div(20, 8), 0.001);
+		System.out.println("@Test testApp() done");
 	}
 }
